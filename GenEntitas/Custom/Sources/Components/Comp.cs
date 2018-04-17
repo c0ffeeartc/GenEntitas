@@ -11,10 +11,3 @@ public class Comp : IComponent
 {
 	public					String					FileName;
 }
-
-[Serializable]
-public class FieldInfoComp
-{
-	public					String					TypeName;
-	public					String					FieldName;
-}

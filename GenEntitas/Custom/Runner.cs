@@ -11,8 +11,7 @@ namespace GenEntitas
 
 		public				void					Init					(  )
 		{
-			var main			= Contexts.sharedInstance.main;
-			var ent				= main.CreateEntity();
+			_contexts			= Contexts.sharedInstance;
 
 			_systems			= new Systems(  )
 				.Add( new GenContextsSystem( _contexts ) )

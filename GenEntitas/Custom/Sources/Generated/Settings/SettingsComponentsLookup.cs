@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 public static class SettingsComponentsLookup {
 
+    public const int GeneratePath = 0;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 1;
 
     public static readonly string[] componentNames = {
-
+        "GeneratePath"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(GeneratePath)
     };
 }
