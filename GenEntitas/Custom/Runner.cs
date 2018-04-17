@@ -24,7 +24,7 @@ namespace GenEntitas
 				.Add( new GenContextSystem( _contexts ) )
 
 				.Add( new GenComponentFlagSystem( _contexts ) )
-				.Add( new GenComponentSystem( _contexts ) );
+				.Add( new GenNonICompSystem( _contexts ) );
 		}
 	}
 }
