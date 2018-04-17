@@ -9,17 +9,20 @@
 public static class SettingsComponentsLookup {
 
     public const int GeneratePath = 0;
-    public const int RunInDryMode = 1;
+    public const int IgnoreNamespaces = 1;
+    public const int RunInDryMode = 2;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 3;
 
     public static readonly string[] componentNames = {
         "GeneratePath",
+        "IgnoreNamespaces",
         "RunInDryMode"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(GeneratePath),
+        typeof(IgnoreNamespaces),
         typeof(RunInDryMode)
     };
 }
