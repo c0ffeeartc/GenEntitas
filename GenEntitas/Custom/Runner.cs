@@ -15,6 +15,11 @@ namespace GenEntitas
 
 			_systems			= new Systems(  )
 				.Add( new GenContextsSystem( _contexts ) )
+
+				.Add( new GenContextAttributeSystem( _contexts ) )
+				.Add( new GenContextMatcherSystem( _contexts ) )
+				.Add( new GenContextSystem( _contexts ) )
+
 				.Add( new GenComponentFlagSystem( _contexts ) )
 				.Add( new GenComponentSystem( _contexts ) );
 		}
