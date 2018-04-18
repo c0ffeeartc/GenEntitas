@@ -54,7 +54,7 @@ namespace GenEntitas.Sources
 				{
 					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.comp.Name.AddComponentSuffix(  ) + ".cs";
 					var contents		= TEMPLATE
-                		.Replace("${componentNames}", contextName + CodeGeneratorExtentions.LOOKUP + ".componentNames")
+						.Replace("${componentNames}", contextName + CodeGeneratorExtentions.LOOKUP + ".componentNames")
 						.Replace( ent, contextName );
 					var generatedBy		= GetType().FullName;
 
