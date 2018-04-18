@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Entitas;
+using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
 namespace GenEntitas.Sources
@@ -65,7 +66,7 @@ namespace GenEntitas.Sources
 				foreach ( var contextName in contextNames )
 				{
 					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.comp.Name.AddComponentSuffix(  ) + ".cs";
-					var contents		= STANDARD_TEMPLATE.Replace( "${ContextType}", contextName );
+					var contents		= STANDARD_TEMPLATE.Replace( ent, contextName );
 					var generatedBy		= GetType().FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );
