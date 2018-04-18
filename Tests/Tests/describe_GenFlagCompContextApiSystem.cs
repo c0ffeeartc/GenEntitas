@@ -1,9 +1,11 @@
-﻿using GenEntitas.Sources;
+﻿using System;
+using System.Collections.Generic;
+using GenEntitas.Sources;
 using NSpec;
 
 namespace Tests.Tests
 {
-	public class describe_GenContextsSystem : nspec
+	public class describe_GenFlagCompContextApiSystem : nspec
 	{
 		private				Contexts				_contexts;
 
@@ -11,11 +13,12 @@ namespace Tests.Tests
 		{
 			context["when adding context comp entity"] = (  ) =>
 			{
-				_contexts				= new Contexts(  );
-				var system				= new GenContextsSystem( _contexts );
+				_contexts				= new Contexts();
+				var system				= new GenFlagCompContextApiSystem( _contexts );
 
 				var ent					= _contexts.main.CreateEntity(  );
-				ent.AddContextComp( "Main" );
+				ent.AddComp( "TestComp1" );
+				ent.AddContextNamesComp( new List<String>{ "Main" } );
 
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );
 
@@ -28,7 +31,6 @@ namespace Tests.Tests
 				{
 					system.Execute(  );
 					genFileGroup.count.should_be( 1 );
-					genFileGroup.GetSingleEntity(  ).generatedFileComp.FilePath.should_be( "Contexts.cs" );
 				};
 
 				it["Replaces markers in template"] = (  ) =>
