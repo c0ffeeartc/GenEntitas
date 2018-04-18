@@ -1,4 +1,6 @@
-﻿using GenEntitas.Sources;
+﻿using System;
+using System.Collections.Generic;
+using GenEntitas.Sources;
 using NSpec;
 
 namespace Tests.Tests
@@ -15,7 +17,8 @@ namespace Tests.Tests
 				var system				= new GenCompEntityApiInterfaceSystem( _contexts );
 
 				var ent					= _contexts.main.CreateEntity(  );
-				ent.AddContextComp( "Main" );
+				ent.AddComp( "TestComp1", "TestComp1" );
+				ent.AddContextNamesComp( new List<String>{ "Main", "Second" } );
 
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );
 
@@ -24,15 +27,19 @@ namespace Tests.Tests
 					genFileGroup.count.should_be( 0 );
 				};
 
-				it["has 1 generated file comps"] = (  ) =>
+				it["has 1 + contextNames.Count generated file comps"] = (  ) =>
 				{
 					system.Execute(  );
-					genFileGroup.count.should_be( 1 );
+					genFileGroup.count.should_be( 1 + ent.contextNamesComp.Values.Count );
 				};
 
 				it["Replaces markers in template"] = (  ) =>
 				{
-					genFileGroup.GetSingleEntity(  ).generatedFileComp.Contents.IndexOf( '$' ).should_be( -1 );
+					var fileEnts = genFileGroup.GetEntities(  );
+					foreach ( var fileEnt in fileEnts )
+					{
+						fileEnt.generatedFileComp.Contents.IndexOf( '$' ).should_be( -1 );
+					}
 				};
 			};
 		}

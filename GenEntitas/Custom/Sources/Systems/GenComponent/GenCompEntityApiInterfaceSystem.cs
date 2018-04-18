@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Entitas;
+using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
 namespace GenEntitas.Sources
@@ -37,26 +38,34 @@ namespace GenEntitas.Sources
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
-			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.PublicFieldsComp ).NoneOf( MainMatcher.DontGenerateComp ) );
+			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.ContextNamesComp ).NoneOf( MainMatcher.DontGenerateComp ) );
 		}
 
 		protected override	Boolean					Filter					( Ent entity )
 		{
-			return entity.hasComp && entity.hasPublicFieldsComp && !entity.isDontGenerateComp;
+			return entity.hasComp && entity.hasContextNamesComp && !entity.isDontGenerateComp;
 		}
 
-		// FIXME: generates wrong files
 		protected override	void					Execute					( List<Ent> entities )
 		{
 			foreach ( var ent in entities )
 			{
-				var contextNames = ent.contextNamesComp.Values;
-				foreach ( var contextName in contextNames )
 				{
 					var template		= ent.hasPublicFieldsComp ? STANDARD_TEMPLATE : FLAG_TEMPLATE;
 					var filePath		= "Components" + Path.DirectorySeparatorChar + "Interfaces" + Path.DirectorySeparatorChar + "I" + ent.comp.Name + "Entity.cs";
-					var contents		= template.Replace( "${ContextType}", contextName );
-					var generatedBy		= GetType().FullName;
+					var contents		= template.Replace( ent, String.Empty );
+					var generatedBy		= GetType(  ).FullName;
+
+					var fileEnt			= _contexts.main.CreateEntity(  );
+					fileEnt.AddGeneratedFileComp( filePath, contents, generatedBy );
+				}
+
+				var contextNames = ent.contextNamesComp.Values;
+				foreach ( var contextName in contextNames )
+				{
+					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + ent.ComponentNameWithContext(contextName).AddComponentSuffix() + ".cs";
+					var contents		= ENTITY_INTERFACE_TEMPLATE.Replace(ent, contextName);
+					var generatedBy		= GetType(  ).FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );
 					fileEnt.AddGeneratedFileComp( filePath, contents, generatedBy );
