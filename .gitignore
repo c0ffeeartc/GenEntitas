@@ -4,6 +4,7 @@
 *.sln
 *.csproj
 *.swp
+*.DotSettings
 
 obj/
 bin/
