@@ -1,4 +1,5 @@
-﻿using GenEntitas.Sources;
+﻿using System.Collections.Generic;
+using GenEntitas.Sources;
 using NSpec;
 
 namespace Tests.Tests
@@ -15,7 +16,8 @@ namespace Tests.Tests
 				var system				= new GenCompEntityApiSystem( _contexts );
 
 				var ent					= _contexts.main.CreateEntity(  );
-				ent.AddContextComp( "Main" );
+				ent.AddComp( "TestComp1", "TestComp1" );
+				ent.AddContextNamesComp( new List<string>{ "Main" });
 
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );
 

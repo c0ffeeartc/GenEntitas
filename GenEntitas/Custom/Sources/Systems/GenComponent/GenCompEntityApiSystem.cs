@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using DesperateDevs.Utils;
 using Entitas;
+using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
 namespace GenEntitas.Sources
@@ -71,12 +72,12 @@ ${memberAssignmentList}
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
-			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.PublicFieldsComp ).NoneOf( MainMatcher.DontGenerateComp ) );
+			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp ).NoneOf( MainMatcher.DontGenerateComp ) );
 		}
 
 		protected override	Boolean					Filter					( Ent entity )
 		{
-			return entity.hasComp && entity.hasPublicFieldsComp && !entity.isDontGenerateComp;
+			return entity.hasComp && !entity.isDontGenerateComp;
 		}
 
 		protected override	void					Execute					( List<Ent> entities )
@@ -89,9 +90,16 @@ ${memberAssignmentList}
 					var template		= ent.hasPublicFieldsComp ? STANDARD_TEMPLATE : FLAG_TEMPLATE;
 
 					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.comp.Name.AddComponentSuffix(  ) + ".cs";
+
 					var contents = template
-						.Replace( "${memberAssignmentList}", GenerateMemberAssignmentList( ent.publicFieldsComp.Values.ToArray(  ) ) )
-						.Replace( "${ContextType}", contextName );
+						.Replace( ent, contextName );
+
+					if ( ent.hasPublicFieldsComp )
+					{
+						contents = contents
+							.Replace( "${memberAssignmentList}", GenerateMemberAssignmentList( ent.publicFieldsComp.Values.ToArray(  ) ) );
+					}
+
 					var generatedBy		= GetType().FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );
