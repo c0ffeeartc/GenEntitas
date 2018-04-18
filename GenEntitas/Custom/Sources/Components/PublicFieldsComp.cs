@@ -5,11 +5,11 @@ using Entitas;
 [Main]
 public class PublicFieldsComp : IComponent
 {
-	public					List<FieldInfoComp>		Values;
+	public					List<FieldInfo>			Values;
 }
 
 [Serializable]
-public class FieldInfoComp
+public class FieldInfo
 {
 	public					String					TypeName;
 	public					String					FieldName;

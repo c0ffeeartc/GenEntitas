@@ -11,14 +11,14 @@ public partial class MainEntity {
     public PublicFieldsComp publicFieldsComp { get { return (PublicFieldsComp)GetComponent(MainComponentsLookup.PublicFieldsComp); } }
     public bool hasPublicFieldsComp { get { return HasComponent(MainComponentsLookup.PublicFieldsComp); } }
 
-    public void AddPublicFieldsComp(System.Collections.Generic.List<FieldInfoComp> newValues) {
+    public void AddPublicFieldsComp(System.Collections.Generic.List<FieldInfo> newValues) {
         var index = MainComponentsLookup.PublicFieldsComp;
         var component = CreateComponent<PublicFieldsComp>(index);
         component.Values = newValues;
         AddComponent(index, component);
     }
 
-    public void ReplacePublicFieldsComp(System.Collections.Generic.List<FieldInfoComp> newValues) {
+    public void ReplacePublicFieldsComp(System.Collections.Generic.List<FieldInfo> newValues) {
         var index = MainComponentsLookup.PublicFieldsComp;
         var component = CreateComponent<PublicFieldsComp>(index);
         component.Values = newValues;
