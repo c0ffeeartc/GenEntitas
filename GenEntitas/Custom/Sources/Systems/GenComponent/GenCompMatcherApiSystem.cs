@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Entitas;
+using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
 namespace GenEntitas.Sources
@@ -15,7 +16,7 @@ namespace GenEntitas.Sources
 
 		private				Contexts				_contexts;
 
-		private const		String					STANDARD_TEMPLATE		=
+		private const		String					TEMPLATE		=
 @"public sealed partial class ${MatcherType} {
 
     static Entitas.IMatcher<${EntityType}> _matcher${ComponentName};
@@ -52,7 +53,9 @@ namespace GenEntitas.Sources
 				foreach ( var contextName in contextNames )
 				{
 					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.comp.Name.AddComponentSuffix(  ) + ".cs";
-					var contents		= STANDARD_TEMPLATE.Replace( "${ContextType}", contextName );
+					var contents		= TEMPLATE
+                		.Replace("${componentNames}", contextName + CodeGeneratorExtentions.LOOKUP + ".componentNames")
+						.Replace( ent, contextName );
 					var generatedBy		= GetType().FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );
