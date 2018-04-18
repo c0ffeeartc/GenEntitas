@@ -18,7 +18,7 @@ namespace Tests.Tests
 
 				var ent					= _contexts.main.CreateEntity(  );
 				ent.AddComp( "TestComp1", "TestComp1" );
-				ent.AddContextNamesComp( new List<String>{ "Main" } );
+				ent.AddContextNamesComp( new List<String>{ "Main", "Second" } );
 				ent.AddPublicFieldsComp( new List<FieldInfo>{ new FieldInfo(){ FieldName = "Value", TypeName = "int" } } );
 
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );
@@ -28,15 +28,19 @@ namespace Tests.Tests
 					genFileGroup.count.should_be( 0 );
 				};
 
-				it["has 1 generated file comps"] = (  ) =>
+				it["has contextNames.Count generated file comps"] = (  ) =>
 				{
 					system.Execute(  );
-					genFileGroup.count.should_be( 1 );
+					genFileGroup.count.should_be( ent.contextNamesComp.Values.Count );
 				};
 
 				it["Replaces markers in template"] = (  ) =>
 				{
-					genFileGroup.GetSingleEntity(  ).generatedFileComp.Contents.IndexOf( '$' ).should_be( -1 );
+					var fileEnts = genFileGroup.GetEntities(  );
+					foreach ( var fileEnt in fileEnts )
+					{
+						fileEnt.generatedFileComp.Contents.IndexOf( '$' ).should_be( -1 );
+					}
 				};
 			};
 		}
