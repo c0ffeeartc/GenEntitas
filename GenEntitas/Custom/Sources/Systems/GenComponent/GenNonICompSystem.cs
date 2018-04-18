@@ -37,7 +37,7 @@ public sealed class ${FullComponentName} : Entitas.IComponent {
 			{
 				var ent				= entities[i];
 
-				var filePath		= "Components" + Path.DirectorySeparatorChar + ent.comp.FileName + ".cs";
+				var filePath		= "Components" + Path.DirectorySeparatorChar + ent.comp.Name + ".cs";
 				var contents		= Generate( ent.nonIComp.FullCompName, ent.nonIComp.FieldTypeName );
 				var generatedBy		= GetType(  ).FullName;
 

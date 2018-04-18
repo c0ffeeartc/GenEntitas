@@ -9,5 +9,12 @@ using Entitas;
 [Main]
 public class Comp : IComponent
 {
-	public					String					FileName;
+	public					String					Name;
+	public					String					FullTypeName;
+}
+
+[Main]
+public class CompUniquePrefix : IComponent
+{
+	public					String					Value;
 }

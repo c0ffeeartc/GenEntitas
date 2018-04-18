@@ -17,7 +17,7 @@ namespace Tests.Tests
 				var system				= new GenFlagCompContextApiSystem( _contexts );
 
 				var ent					= _contexts.main.CreateEntity(  );
-				ent.AddComp( "TestComp1" );
+				ent.AddComp( "TestComp1", "TestComp1" );
 				ent.AddContextNamesComp( new List<String>{ "Main" } );
 
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );

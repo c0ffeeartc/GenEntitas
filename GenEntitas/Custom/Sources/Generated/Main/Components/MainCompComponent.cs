@@ -11,17 +11,19 @@ public partial class MainEntity {
     public Comp comp { get { return (Comp)GetComponent(MainComponentsLookup.Comp); } }
     public bool hasComp { get { return HasComponent(MainComponentsLookup.Comp); } }
 
-    public void AddComp(string newFileName) {
+    public void AddComp(string newName, string newFullTypeName) {
         var index = MainComponentsLookup.Comp;
         var component = CreateComponent<Comp>(index);
-        component.FileName = newFileName;
+        component.Name = newName;
+        component.FullTypeName = newFullTypeName;
         AddComponent(index, component);
     }
 
-    public void ReplaceComp(string newFileName) {
+    public void ReplaceComp(string newName, string newFullTypeName) {
         var index = MainComponentsLookup.Comp;
         var component = CreateComponent<Comp>(index);
-        component.FileName = newFileName;
+        component.Name = newName;
+        component.FullTypeName = newFullTypeName;
         ReplaceComponent(index, component);
     }
 

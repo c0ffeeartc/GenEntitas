@@ -17,7 +17,7 @@ namespace Tests.Tests
 				var system				= new GenCompContextApiSystem( _contexts );
 
 				var ent					= _contexts.main.CreateEntity(  );
-				ent.AddComp( "TestComp1" );
+				ent.AddComp( "TestComp1", "TestComp1" );
 				ent.AddContextNamesComp( new List<String>{ "Main" } );
 				ent.AddPublicFieldsComp( new List<FieldInfo>{ new FieldInfo(){ FieldName = "Value", TypeName = "int" } } );
 

@@ -64,7 +64,7 @@ namespace GenEntitas.Sources
 				var contextNames = ent.contextNamesComp.Values;
 				foreach ( var contextName in contextNames )
 				{
-					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.comp.FileName.AddComponentSuffix(  ) + ".cs";
+					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.comp.Name.AddComponentSuffix(  ) + ".cs";
 					var contents		= STANDARD_TEMPLATE.Replace( "${ContextType}", contextName );
 					var generatedBy		= GetType().FullName;
 

@@ -54,7 +54,7 @@ namespace GenEntitas.Sources
 				foreach ( var contextName in contextNames )
 				{
 					var template		= ent.hasPublicFieldsComp ? STANDARD_TEMPLATE : FLAG_TEMPLATE;
-					var filePath		= "Components" + Path.DirectorySeparatorChar + "Interfaces" + Path.DirectorySeparatorChar + "I" + ent.comp.FileName + "Entity.cs";
+					var filePath		= "Components" + Path.DirectorySeparatorChar + "Interfaces" + Path.DirectorySeparatorChar + "I" + ent.comp.Name + "Entity.cs";
 					var contents		= template.Replace( "${ContextType}", contextName );
 					var generatedBy		= GetType().FullName;
 

@@ -9,21 +9,25 @@
 public static class MainComponentsLookup {
 
     public const int Comp = 0;
-    public const int ContextComp = 1;
-    public const int ContextNamesComp = 2;
-    public const int DontGenerateComp = 3;
-    public const int GeneratedFileComp = 4;
-    public const int NonIComp = 5;
-    public const int PublicFieldsComp = 6;
-    public const int UniqueComp = 7;
+    public const int CompUniquePrefix = 1;
+    public const int ContextComp = 2;
+    public const int ContextNamesComp = 3;
+    public const int DontGenerateComp = 4;
+    public const int EventComp = 5;
+    public const int GeneratedFileComp = 6;
+    public const int NonIComp = 7;
+    public const int PublicFieldsComp = 8;
+    public const int UniqueComp = 9;
 
-    public const int TotalComponents = 8;
+    public const int TotalComponents = 10;
 
     public static readonly string[] componentNames = {
         "Comp",
+        "CompUniquePrefix",
         "ContextComp",
         "ContextNamesComp",
         "DontGenerateComp",
+        "EventComp",
         "GeneratedFileComp",
         "NonIComp",
         "PublicFieldsComp",
@@ -32,9 +36,11 @@ public static class MainComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(Comp),
+        typeof(CompUniquePrefix),
         typeof(ContextComp),
         typeof(ContextNamesComp),
         typeof(DontGenerateComp),
+        typeof(EventComp),
         typeof(GeneratedFileComp),
         typeof(NonIComp),
         typeof(PublicFieldsComp),
