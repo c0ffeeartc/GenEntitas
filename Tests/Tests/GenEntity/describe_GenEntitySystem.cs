@@ -2,7 +2,7 @@
 using GenEntitas.Sources;
 using NSpec;
 
-namespace Tests.Tests.GenEntity
+namespace Tests.Tests
 {
 	public class describe_GenEntitySystem : nspec
 	{
