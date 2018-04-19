@@ -11,21 +11,17 @@ public partial class MainEntity {
     public EventComp eventComp { get { return (EventComp)GetComponent(MainComponentsLookup.EventComp); } }
     public bool hasEventComp { get { return HasComponent(MainComponentsLookup.EventComp); } }
 
-    public void AddEventComp(bool newBindToEntity, Entitas.CodeGeneration.Attributes.EventType newEventType, int newPriority) {
+    public void AddEventComp(System.Collections.Generic.List<EventInfo> newValues) {
         var index = MainComponentsLookup.EventComp;
         var component = CreateComponent<EventComp>(index);
-        component.BindToEntity = newBindToEntity;
-        component.EventType = newEventType;
-        component.Priority = newPriority;
+        component.Values = newValues;
         AddComponent(index, component);
     }
 
-    public void ReplaceEventComp(bool newBindToEntity, Entitas.CodeGeneration.Attributes.EventType newEventType, int newPriority) {
+    public void ReplaceEventComp(System.Collections.Generic.List<EventInfo> newValues) {
         var index = MainComponentsLookup.EventComp;
         var component = CreateComponent<EventComp>(index);
-        component.BindToEntity = newBindToEntity;
-        component.EventType = newEventType;
-        component.Priority = newPriority;
+        component.Values = newValues;
         ReplaceComponent(index, component);
     }
 

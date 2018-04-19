@@ -44,19 +44,19 @@ namespace Entitas.CodeGeneration.Plugins {
 			return template;
 		}
 
-        public static string Replace(this string template, MainEntity ent, string contextName, EventData eventData) {
-            var eventListener = ent.EventListener(contextName);
+        public static string Replace(this string template, MainEntity ent, string contextName, EventInfo eventInfo) {
+            var eventListener = ent.EventListener(contextName, eventInfo);
             var lowerEventListener = ent.hasContextNamesComp
-                ? contextName.LowercaseFirst() + ent.comp.Name + ent.GetEventTypeSuffix() + "Listener"
-                : ent.comp.Name.LowercaseFirst() + ent.GetEventTypeSuffix() + "Listener";
+                ? contextName.LowercaseFirst() + ent.comp.Name + ent.GetEventTypeSuffix(eventInfo) + "Listener"
+                : ent.comp.Name.LowercaseFirst() + ent.GetEventTypeSuffix(eventInfo) + "Listener";
 
             return template
                 .Replace(ent, contextName)
                 .Replace("${EventListenerComponent}", eventListener.AddComponentSuffix())
-                .Replace("${Event}", ent.Event(contextName))
+                .Replace("${Event}", ent.Event(contextName, eventInfo))
                 .Replace("${EventListener}", eventListener)
                 .Replace("${eventListener}", lowerEventListener)
-                .Replace("${EventType}", ent.GetEventTypeSuffix());
+                .Replace("${EventType}", ent.GetEventTypeSuffix(eventInfo));
         }
 
         public static string PrefixedComponentName(this MainEntity ent) {
@@ -64,14 +64,14 @@ namespace Entitas.CodeGeneration.Plugins {
             return uniquePrefix.LowercaseFirst() + ent.comp.Name;
         }
 
-        public static string Event(this MainEntity ent, string contextName) {
-            var optionalContextName = ent.hasContextNamesComp ? contextName : string.Empty;
-            return optionalContextName + ent.comp.Name + ent.GetEventTypeSuffix();
-        }
+		public static string Event(this MainEntity ent, string contextName, EventInfo eventInfo) {
+			var optionalContextName = ent.hasContextNamesComp ? contextName : string.Empty;
+			return optionalContextName + ent.comp.Name + ent.GetEventTypeSuffix(eventInfo);
+		}
 
-        public static string EventListener(this MainEntity ent, string contextName) {
-            return ent.Event(contextName) + "Listener";
-        }
+		public static string EventListener(this MainEntity ent, string contextName, EventInfo eventInfo) {
+			return ent.Event(contextName, eventInfo) + "Listener";
+		}
 
         public static string GetEventMethodArgs(this MainEntity ent, EventData eventData, string args) {
             if (!ent.hasPublicFieldsComp) {
@@ -83,9 +83,9 @@ namespace Entitas.CodeGeneration.Plugins {
                 : args;
         }
 
-        public static string GetEventTypeSuffix(this MainEntity ent) {
-            return ent.eventComp.EventType == EventType.Removed ? "Removed" : string.Empty;
-        }
+		public static string GetEventTypeSuffix(this MainEntity ent, EventInfo eventInfo) {
+			return eventInfo.EventType == EventType.Removed ? "Removed" : string.Empty;
+		}
 
         public static string GetMethodParameters(this List<FieldInfo> memberData, bool newPrefix) {
             return string.Join(", ", memberData
