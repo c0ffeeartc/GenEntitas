@@ -1,4 +1,5 @@
-﻿using GenEntitas.Sources;
+﻿using System;
+using GenEntitas.Sources;
 using NSpec;
 
 namespace Tests.Tests
@@ -17,6 +18,9 @@ namespace Tests.Tests
 				var ent					= _contexts.main.CreateEntity(  );
 				ent.AddContextComp( "Main" );
 
+				var ent2				= _contexts.main.CreateEntity(  );
+				ent2.AddContextComp( "Second" );
+
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );
 
 				it["has 0 generated file comps"] = (  ) =>
@@ -33,7 +37,9 @@ namespace Tests.Tests
 
 				it["Replaces markers in template"] = (  ) =>
 				{
-					genFileGroup.GetSingleEntity(  ).generatedFileComp.Contents.IndexOf( '$' ).should_be( -1 );
+					var fileEnt		= genFileGroup.GetSingleEntity(  );
+					fileEnt.generatedFileComp.Contents.IndexOf( '$' ).should_be( -1 );
+					//Console.Write( fileEnt.generatedFileComp.Contents );
 				};
 			};
 		}
