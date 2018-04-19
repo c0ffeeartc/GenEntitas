@@ -25,7 +25,7 @@ namespace Tests.Tests
 						new EventInfo{BindToEntity = false,EventType = EventType.Removed, Priority =  0},
 					} );
 
-				ent.AddContextNamesComp( new List<string>{ "Main", "Seconds" });
+				ent.AddContextNamesComp( new List<string>{ "Main", "Second" });
 
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );
 
