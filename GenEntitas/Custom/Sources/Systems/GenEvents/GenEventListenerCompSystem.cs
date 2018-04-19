@@ -15,18 +15,17 @@ namespace GenEntitas.Sources
 		}
 
 		private				Contexts				_contexts;
-
-		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
-		{
-			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.EventComp ) );
-		}
-
 		private const		String					TEMPLATE				=
 @"[Entitas.CodeGeneration.Attributes.DontGenerate(false)]
 public sealed class ${EventListenerComponent} : Entitas.IComponent {
     public System.Collections.Generic.List<I${EventListener}> value;
 }
 ";
+
+		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
+		{
+			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.EventComp ) );
+		}
 
 		protected override	Boolean					Filter					( Ent entity )
 		{

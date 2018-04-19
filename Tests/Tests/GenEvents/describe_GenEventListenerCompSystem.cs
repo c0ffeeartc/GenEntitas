@@ -46,7 +46,7 @@ namespace Tests.Tests
 					foreach ( var fileEnt in fileEnts )
 					{
 						fileEnt.generatedFileComp.Contents.IndexOf( '$' ).should_be( -1 );
-						Console.Write( fileEnt.generatedFileComp.Contents );
+						//Console.Write( fileEnt.generatedFileComp.Contents );
 					}
 				};
 			};
