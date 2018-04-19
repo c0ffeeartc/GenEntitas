@@ -73,12 +73,12 @@ namespace Entitas.CodeGeneration.Plugins {
 			return ent.Event(contextName, eventInfo) + "Listener";
 		}
 
-        public static string GetEventMethodArgs(this MainEntity ent, EventData eventData, string args) {
+        public static string GetEventMethodArgs(this MainEntity ent, EventInfo eventInfo, string args) {
             if (!ent.hasPublicFieldsComp) {
                 return string.Empty;
             }
 
-            return eventData.eventType == EventType.Removed
+            return eventInfo.EventType == EventType.Removed
                 ? string.Empty
                 : args;
         }
