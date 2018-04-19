@@ -13,13 +13,14 @@ public static class MainComponentsLookup {
     public const int ContextComp = 2;
     public const int ContextNamesComp = 3;
     public const int DontGenerateComp = 4;
-    public const int EventComp = 5;
-    public const int GeneratedFileComp = 6;
-    public const int NonIComp = 7;
-    public const int PublicFieldsComp = 8;
-    public const int UniqueComp = 9;
+    public const int EntityIndexComp = 5;
+    public const int EventComp = 6;
+    public const int GeneratedFileComp = 7;
+    public const int NonIComp = 8;
+    public const int PublicFieldsComp = 9;
+    public const int UniqueComp = 10;
 
-    public const int TotalComponents = 10;
+    public const int TotalComponents = 11;
 
     public static readonly string[] componentNames = {
         "Comp",
@@ -27,6 +28,7 @@ public static class MainComponentsLookup {
         "ContextComp",
         "ContextNamesComp",
         "DontGenerateComp",
+        "EntityIndexComp",
         "EventComp",
         "GeneratedFileComp",
         "NonIComp",
@@ -40,6 +42,7 @@ public static class MainComponentsLookup {
         typeof(ContextComp),
         typeof(ContextNamesComp),
         typeof(DontGenerateComp),
+        typeof(EntityIndexComp),
         typeof(EventComp),
         typeof(GeneratedFileComp),
         typeof(NonIComp),
