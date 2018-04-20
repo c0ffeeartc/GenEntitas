@@ -8,11 +8,16 @@ Future workflow is:
 Benefits:
   - if you know how to write an Entitas System, then you know how to extend generator
 
-What is done:
-  - Most generators with tests, except EntityIndexGenerator
-
-What needs to be done:
-  - EntityIndex
-  - PreProcessors
+Done:
+  - Generators
   - PostProcessors
+
+Needs to be done:
   - DataProviders
+  - PreProcessors
+  - Generators
+    - EntityIndexGenerator
+  - PostProcessors
+    - Convert newlines
+    - Update .csproj
+    - Debug.Log generated paths
