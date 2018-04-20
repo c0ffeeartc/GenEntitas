@@ -31,7 +31,11 @@ namespace GenEntitas
 
 				.Add( new PostProcAddFileHeaderSystem( _contexts ) )
 				.Add( new PostProcCleanTargetDirSystem( _contexts ) )
-				.Add( new PostProcWriteToDiskSystem( _contexts ) );
+				.Add( new PostProcMergeFilesSystem( _contexts ) )
+				.Add( new PostProcWriteToDiskSystem( _contexts ) )
+
+				.Add( new DestroySystem( _contexts ) )
+				;
 		}
 	}
 }

@@ -58,6 +58,7 @@
     <Compile Include="Custom\Sources\Components\Comp.cs" />
     <Compile Include="Custom\Sources\Components\ContextNamesComp.cs" />
     <Compile Include="Custom\Sources\Components\ContextComp.cs" />
+    <Compile Include="Custom\Sources\Components\Destroy.cs" />
     <Compile Include="Custom\Sources\Components\DontGenerateComp.cs" />
     <Compile Include="Custom\Sources\Components\EntityIndexComp.cs" />
     <Compile Include="Custom\Sources\Components\FeatureEvents\EventComp.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Custom\Sources\Generated\Main\Components\MainCompUniquePrefixComponent.cs" />
     <Compile Include="Custom\Sources\Generated\Main\Components\MainContextCompComponent.cs" />
     <Compile Include="Custom\Sources\Generated\Main\Components\MainContextNamesCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainDestroyComponent.cs" />
     <Compile Include="Custom\Sources\Generated\Main\Components\MainDontGenerateCompComponent.cs" />
     <Compile Include="Custom\Sources\Generated\Main\Components\MainEntityIndexCompComponent.cs" />
     <Compile Include="Custom\Sources\Generated\Main\Components\MainEventCompComponent.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="Custom\Sources\Generated\Settings\SettingsContext.cs" />
     <Compile Include="Custom\Sources\Generated\Settings\SettingsEntity.cs" />
     <Compile Include="Custom\Sources\Generated\Settings\SettingsMatcher.cs" />
+    <Compile Include="Custom\Sources\Systems\DestroySystem.cs" />
     <Compile Include="Custom\Sources\Systems\GenComponent\GenCompContextApiSystem.cs" />
     <Compile Include="Custom\Sources\Systems\GenComponent\GenCompEntityApiInterfaceSystem.cs" />
     <Compile Include="Custom\Sources\Systems\GenComponent\GenCompEntityApiSystem.cs" />
@@ -120,6 +123,7 @@
     <Compile Include="Custom\Sources\Systems\GenFeatureClassSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcAddFileHeaderSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcCleanTargetDirSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcMergeFilesSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcWriteToDiskSystem.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +135,7 @@
     <Content Include="Custom\Sources\Generated\Main\Components\MainCompUniquePrefixComponent.cs.meta" />
     <Content Include="Custom\Sources\Generated\Main\Components\MainContextCompComponent.cs.meta" />
     <Content Include="Custom\Sources\Generated\Main\Components\MainContextNamesCompComponent.cs.meta" />
+    <Content Include="Custom\Sources\Generated\Main\Components\MainDestroyComponent.cs.meta" />
     <Content Include="Custom\Sources\Generated\Main\Components\MainDontGenerateCompComponent.cs.meta" />
     <Content Include="Custom\Sources\Generated\Main\Components\MainEntityIndexCompComponent.cs.meta" />
     <Content Include="Custom\Sources\Generated\Main\Components\MainEventCompComponent.cs.meta" />

@@ -18,12 +18,12 @@ namespace GenEntitas.Sources
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
-			return context.CreateCollector( MainMatcher.GeneratedFileComp );
+			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.GeneratedFileComp ).NoneOf( MainMatcher.Destroy ) );
 		}
 
 		protected override	Boolean					Filter					( Ent entity )
 		{
-			return entity.hasGeneratedFileComp;
+			return entity.hasGeneratedFileComp && !entity.isDestroy;
 		}
 
 		protected override	void					Execute					( List<Ent> entities )
@@ -35,7 +35,7 @@ namespace GenEntitas.Sources
 
 				if ( _contexts.settings.isConsoleWriteLineGeneratedPaths )
 				{
-					Console.WriteLine( targetPath );
+					Console.WriteLine( targetPath + " - " + ent.generatedFileComp.GeneratedBy );
 				}
 
 				if ( _contexts.settings.isRunInDryMode )
