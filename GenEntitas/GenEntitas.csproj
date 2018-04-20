@@ -64,6 +64,7 @@
     <Compile Include="Custom\Sources\Components\GeneratedFileComp.cs" />
     <Compile Include="Custom\Sources\Components\NonIComp.cs" />
     <Compile Include="Custom\Sources\Components\PublicFieldsComp.cs" />
+    <Compile Include="Custom\Sources\Components\Settings\ConsoleWriteLineGeneratedPaths.cs" />
     <Compile Include="Custom\Sources\Components\Settings\GeneratePath.cs" />
     <Compile Include="Custom\Sources\Components\Settings\IgnoreNamespaces.cs" />
     <Compile Include="Custom\Sources\Components\Settings\RunInDryMode.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Custom\Sources\Generated\Main\MainContext.cs" />
     <Compile Include="Custom\Sources\Generated\Main\MainEntity.cs" />
     <Compile Include="Custom\Sources\Generated\Main\MainMatcher.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\Components\SettingsConsoleWriteLineGeneratedPathsComponent.cs" />
     <Compile Include="Custom\Sources\Generated\Settings\Components\SettingsGeneratePathComponent.cs" />
     <Compile Include="Custom\Sources\Generated\Settings\Components\SettingsIgnoreNamespacesComponent.cs" />
     <Compile Include="Custom\Sources\Generated\Settings\Components\SettingsRunInDryModeComponent.cs" />
@@ -143,6 +145,7 @@
     <Content Include="Custom\Sources\Generated\Main\MainMatcher.cs.meta" />
     <Content Include="Custom\Sources\Generated\Settings.meta" />
     <Content Include="Custom\Sources\Generated\Settings\Components.meta" />
+    <Content Include="Custom\Sources\Generated\Settings\Components\SettingsConsoleWriteLineGeneratedPathsComponent.cs.meta" />
     <Content Include="Custom\Sources\Generated\Settings\Components\SettingsGeneratePathComponent.cs.meta" />
     <Content Include="Custom\Sources\Generated\Settings\Components\SettingsIgnoreNamespacesComponent.cs.meta" />
     <Content Include="Custom\Sources\Generated\Settings\Components\SettingsRunInDryModeComponent.cs.meta" />

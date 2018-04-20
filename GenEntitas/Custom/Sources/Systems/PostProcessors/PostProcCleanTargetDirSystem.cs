@@ -27,6 +27,11 @@ namespace GenEntitas.Sources
 
 		protected override	void					Execute					( List<Ent> entities )
 		{
+			if ( _contexts.settings.isRunInDryMode )
+			{
+				return;
+			}
+
 			var generatePath		= Path.Combine( _contexts.settings.generatePath.Value, "Generated" );
 			var dirInfo				= new DirectoryInfo( generatePath );
 			if ( !dirInfo.Exists )

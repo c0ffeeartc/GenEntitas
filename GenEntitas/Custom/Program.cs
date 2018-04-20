@@ -16,7 +16,6 @@ namespace GenEntitas
 			runner.Init(  );
 
 			var contexts = runner.Contexts;
-			contexts.settings.SetGeneratePath( "./" );
 			FillContexts( contexts );
 
 			runner.Systems.Initialize(  );
@@ -27,6 +26,8 @@ namespace GenEntitas
 
 		public static void FillContexts( Contexts contexts )
 		{
+			contexts.settings.isConsoleWriteLineGeneratedPaths		= true;
+			contexts.settings.SetGeneratePath( "./" );
 			{
 				var ent			= contexts.main.CreateEntity(  );
 				ent.AddContextComp( "Main" );

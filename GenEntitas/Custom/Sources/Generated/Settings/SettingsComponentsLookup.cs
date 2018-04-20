@@ -8,19 +8,22 @@
 //------------------------------------------------------------------------------
 public static class SettingsComponentsLookup {
 
-    public const int GeneratePath = 0;
-    public const int IgnoreNamespaces = 1;
-    public const int RunInDryMode = 2;
+    public const int ConsoleWriteLineGeneratedPaths = 0;
+    public const int GeneratePath = 1;
+    public const int IgnoreNamespaces = 2;
+    public const int RunInDryMode = 3;
 
-    public const int TotalComponents = 3;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
+        "ConsoleWriteLineGeneratedPaths",
         "GeneratePath",
         "IgnoreNamespaces",
         "RunInDryMode"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(ConsoleWriteLineGeneratedPaths),
         typeof(GeneratePath),
         typeof(IgnoreNamespaces),
         typeof(RunInDryMode)

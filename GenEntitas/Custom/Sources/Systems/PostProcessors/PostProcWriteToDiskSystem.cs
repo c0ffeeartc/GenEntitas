@@ -32,13 +32,23 @@ namespace GenEntitas.Sources
 			foreach ( var ent in entities )
 			{
 				var targetPath		= Path.Combine( generatePath, ent.generatedFileComp.FilePath );
+
+				if ( _contexts.settings.isConsoleWriteLineGeneratedPaths )
+				{
+					Console.WriteLine( targetPath );
+				}
+
+				if ( _contexts.settings.isRunInDryMode )
+				{
+					continue;
+				}
+
 				var dirPath			= Path.GetDirectoryName( targetPath );
 				if ( dirPath != null && !Directory.Exists( dirPath ) )
 				{
 					Directory.CreateDirectory( dirPath );
 				}
 				File.WriteAllText( targetPath, ent.generatedFileComp.Contents, Encoding.UTF8 );
-				// Console.WriteLine( targetPath );
 			}
 		}
 	}
