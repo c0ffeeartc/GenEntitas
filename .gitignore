@@ -1,8 +1,6 @@
 .DS_Store
 
 .idea/
-*.sln
-*.csproj
 *.swp
 *.DotSettings
 

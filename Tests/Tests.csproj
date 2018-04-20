@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B214E5F-DF6B-4E4F-95E1-117A0C605D04}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tests</RootNamespace>
+    <AssemblyName>Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\GenEntitas\libs\Entitas\Entitas.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\GenEntitas\libs\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="NSpec, Version=1.0.7.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>Libs\NSpec.dll</HintPath>
+    </Reference>
+    <Reference Include="NSpecRunner, Version=1.0.7.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>Libs\NSpecRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <HintPath>Libs\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TestRunner.cs" />
+    <Compile Include="Tests\GenComponent\describe_GenCompContextApiSystem.cs" />
+    <Compile Include="Tests\GenComponent\describe_GenCompEntityApiInterfaceSystem.cs" />
+    <Compile Include="Tests\GenComponent\describe_GenCompEntityApiSystem.cs" />
+    <Compile Include="Tests\GenComponent\describe_GenCompLookupSystem.cs" />
+    <Compile Include="Tests\GenComponent\describe_GenCompMatcherApiSystem.cs" />
+    <Compile Include="Tests\GenComponent\describe_GenFlagCompContextApiSystem.cs" />
+    <Compile Include="Tests\GenComponent\describe_GenNonICompSystem.cs" />
+    <Compile Include="Tests\GenContexts\describe_GenContextsObserverSystem.cs" />
+    <Compile Include="Tests\GenContexts\describe_GenContextsSystem.cs" />
+    <Compile Include="Tests\GenContext\describe_GenContextAttributeSystem.cs" />
+    <Compile Include="Tests\GenContext\describe_GenContextMatcherSystem.cs" />
+    <Compile Include="Tests\GenContext\describe_GenContextSystem.cs" />
+    <Compile Include="Tests\GenEntity\describe_GenEntityIndexSystem.cs" />
+    <Compile Include="Tests\GenEntity\describe_GenEntitySystem.cs" />
+    <Compile Include="Tests\GenEvents\describe_GenEventEntityApiSystem.cs" />
+    <Compile Include="Tests\GenEvents\describe_GenEventListenerCompSystem.cs" />
+    <Compile Include="Tests\GenEvents\describe_GenEventListenerInterfaceSystem.cs" />
+    <Compile Include="Tests\GenEvents\describe_GenEventSystemsSystem.cs" />
+    <Compile Include="Tests\GenEvents\describe_GenEventSystemSystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GenEntitas\GenEntitas.csproj">
+      <Project>{1e517fbc-1f12-4fd9-9cda-ca08c4f2b5e9}</Project>
+      <Name>GenEntitas</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
