@@ -28,8 +28,10 @@ namespace GenEntitas
 				.Add( new GenFlagCompContextApiSystem( _contexts ) )
 
 				.Add( new GenNonICompSystem( _contexts ) )
+
 				.Add( new PostProcAddFileHeaderSystem( _contexts ) )
-				.Add( new PostProcWriteFilesSystem( _contexts ) );
+				.Add( new PostProcCleanTargetDirSystem( _contexts ) )
+				.Add( new PostProcWriteToDiskSystem( _contexts ) );
 		}
 	}
 }

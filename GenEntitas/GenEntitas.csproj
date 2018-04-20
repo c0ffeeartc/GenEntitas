@@ -117,7 +117,8 @@
     <Compile Include="Custom\Sources\Systems\GenEvents\GenEventSystemSystem.cs" />
     <Compile Include="Custom\Sources\Systems\GenFeatureClassSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcAddFileHeaderSystem.cs" />
-    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcWriteFilesSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcCleanTargetDirSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcWriteToDiskSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custom\Sources\Generated\Contexts.cs.meta" />
