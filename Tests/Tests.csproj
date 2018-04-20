@@ -57,31 +57,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestRunner.cs" />
-    <Compile Include="Tests\GenComponent\describe_GenCompContextApiSystem.cs" />
-    <Compile Include="Tests\GenComponent\describe_GenCompEntityApiInterfaceSystem.cs" />
-    <Compile Include="Tests\GenComponent\describe_GenCompEntityApiSystem.cs" />
-    <Compile Include="Tests\GenComponent\describe_GenCompLookupSystem.cs" />
-    <Compile Include="Tests\GenComponent\describe_GenCompMatcherApiSystem.cs" />
-    <Compile Include="Tests\GenComponent\describe_GenFlagCompContextApiSystem.cs" />
-    <Compile Include="Tests\GenComponent\describe_GenNonICompSystem.cs" />
-    <Compile Include="Tests\GenContexts\describe_GenContextsObserverSystem.cs" />
-    <Compile Include="Tests\GenContexts\describe_GenContextsSystem.cs" />
-    <Compile Include="Tests\GenContext\describe_GenContextAttributeSystem.cs" />
-    <Compile Include="Tests\GenContext\describe_GenContextMatcherSystem.cs" />
-    <Compile Include="Tests\GenContext\describe_GenContextSystem.cs" />
-    <Compile Include="Tests\GenEntity\describe_GenEntityIndexSystem.cs" />
-    <Compile Include="Tests\GenEntity\describe_GenEntitySystem.cs" />
-    <Compile Include="Tests\GenEvents\describe_GenEventEntityApiSystem.cs" />
-    <Compile Include="Tests\GenEvents\describe_GenEventListenerCompSystem.cs" />
-    <Compile Include="Tests\GenEvents\describe_GenEventListenerInterfaceSystem.cs" />
-    <Compile Include="Tests\GenEvents\describe_GenEventSystemsSystem.cs" />
-    <Compile Include="Tests\GenEvents\describe_GenEventSystemSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompContextApiSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompEntityApiInterfaceSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompEntityApiSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompLookupSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompMatcherApiSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenFlagCompContextApiSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenNonICompSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenContexts\describe_GenContextsObserverSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenContexts\describe_GenContextsSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenContext\describe_GenContextAttributeSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenContext\describe_GenContextMatcherSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenContext\describe_GenContextSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenEntity\describe_GenEntityIndexSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenEntity\describe_GenEntitySystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventEntityApiSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventListenerCompSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventListenerInterfaceSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventSystemsSystem.cs" />
+    <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventSystemSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenEntitas\GenEntitas.csproj">
       <Project>{1e517fbc-1f12-4fd9-9cda-ca08c4f2b5e9}</Project>
       <Name>GenEntitas</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\CodeGenerators" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
