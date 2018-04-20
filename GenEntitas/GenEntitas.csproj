@@ -116,6 +116,8 @@
     <Compile Include="Custom\Sources\Systems\GenEvents\GenEventSystemsSystem.cs" />
     <Compile Include="Custom\Sources\Systems\GenEvents\GenEventSystemSystem.cs" />
     <Compile Include="Custom\Sources\Systems\GenFeatureClassSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcAddFileHeaderSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcWriteFilesSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custom\Sources\Generated\Contexts.cs.meta" />

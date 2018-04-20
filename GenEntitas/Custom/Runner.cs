@@ -7,6 +7,7 @@ namespace GenEntitas
 	{
 		private				Contexts				_contexts;
 		private				Systems					_systems;
+		public				Contexts				Contexts				=> _contexts;
 		public				Systems					Systems					=> _systems;
 
 		public				void					Init					(  )
@@ -26,7 +27,9 @@ namespace GenEntitas
 				.Add( new GenCompContextApiSystem( _contexts ) )
 				.Add( new GenFlagCompContextApiSystem( _contexts ) )
 
-				.Add( new GenNonICompSystem( _contexts ) );
+				.Add( new GenNonICompSystem( _contexts ) )
+				.Add( new PostProcAddFileHeaderSystem( _contexts ) )
+				.Add( new PostProcWriteFilesSystem( _contexts ) );
 		}
 	}
 }
