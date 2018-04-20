@@ -1,18 +1,18 @@
 # GenEntitas
 Entitas generator using Entitas ECS framework
 
-Future workflow is:
+#### Future workflow
   - provide files in preferred format (json, dll, text)
   - generate
  
-Benefits:
+#### Benefits
   - if you know how to write an Entitas System, then you know how to extend generator
 
-Done:
+#### Done
   - Generators
   - PostProcessors
 
-Needs to be done:
+#### Needs to be done
   - DataProviders
   - PreProcessors
   - Generators
