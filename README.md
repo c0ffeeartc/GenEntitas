@@ -20,4 +20,3 @@ Entitas generator using Entitas ECS framework
   - PostProcessors
     - Convert newlines
     - Update .csproj
-    - Debug.Log generated paths
