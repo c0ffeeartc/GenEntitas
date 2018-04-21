@@ -76,6 +76,7 @@
     <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventListenerInterfaceSystem.cs" />
     <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventSystemsSystem.cs" />
     <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventSystemSystem.cs" />
+    <Compile Include="Tests\DataProviders\Reflection\describe_ReflectionToCompsSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenEntitas\GenEntitas.csproj">

@@ -11,14 +11,16 @@ public static class SettingsComponentsLookup {
     public const int ConsoleWriteLineGeneratedPaths = 0;
     public const int GeneratePath = 1;
     public const int IgnoreNamespaces = 2;
-    public const int RunInDryMode = 3;
+    public const int ReflectionAssemblyPaths = 3;
+    public const int RunInDryMode = 4;
 
-    public const int TotalComponents = 4;
+    public const int TotalComponents = 5;
 
     public static readonly string[] componentNames = {
         "ConsoleWriteLineGeneratedPaths",
         "GeneratePath",
         "IgnoreNamespaces",
+        "ReflectionAssemblyPaths",
         "RunInDryMode"
     };
 
@@ -26,6 +28,7 @@ public static class SettingsComponentsLookup {
         typeof(ConsoleWriteLineGeneratedPaths),
         typeof(GeneratePath),
         typeof(IgnoreNamespaces),
+        typeof(ReflectionAssemblyPaths),
         typeof(RunInDryMode)
     };
 }

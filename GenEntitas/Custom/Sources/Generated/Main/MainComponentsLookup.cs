@@ -19,9 +19,11 @@ public static class MainComponentsLookup {
     public const int GeneratedFileComp = 8;
     public const int NonIComp = 9;
     public const int PublicFieldsComp = 10;
-    public const int UniqueComp = 11;
+    public const int ReflectionComponentTypes = 11;
+    public const int TypeComp = 12;
+    public const int UniqueComp = 13;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
         "Comp",
@@ -35,6 +37,8 @@ public static class MainComponentsLookup {
         "GeneratedFileComp",
         "NonIComp",
         "PublicFieldsComp",
+        "ReflectionComponentTypes",
+        "TypeComp",
         "UniqueComp"
     };
 
@@ -50,6 +54,8 @@ public static class MainComponentsLookup {
         typeof(GeneratedFileComp),
         typeof(NonIComp),
         typeof(PublicFieldsComp),
+        typeof(ReflectionComponentTypes),
+        typeof(TypeComp),
         typeof(UniqueComp)
     };
 }
