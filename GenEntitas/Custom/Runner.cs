@@ -15,6 +15,9 @@ namespace GenEntitas
 			_contexts			= Contexts.sharedInstance;
 
 			_systems			= new Systems(  )
+				.Add( new ReflectionToCompTypesSystem( _contexts ) )
+				.Add( new ReflectionToCompsSystem( _contexts ) )
+
 				.Add( new GenContextsSystem( _contexts ) )
 				.Add( new GenContextsObserverSystem( _contexts ) )
 
