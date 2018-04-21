@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entitas.CodeGeneration.Attributes;
 using Entitas;
 
-[Main]
+[Context(Ids.Main)]
 public class PublicFieldsComp : IComponent
 {
 	public					List<FieldInfo>			Values;

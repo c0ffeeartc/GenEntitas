@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-[Settings, Unique]
+[Context(Ids.Settings), Unique]
 public class ConsoleWriteLineGeneratedPaths : IComponent
 {
 }

@@ -1,7 +1,8 @@
 ﻿using System;
 using Entitas;
+using Entitas.CodeGeneration.Attributes;
 
-[Main]
+[Context(Ids.Main)]
 public class Comp : IComponent
 {
 	public					String					Name;

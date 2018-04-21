@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-[Main]
+[Context(Ids.Main)]
 public class EntityIndexComp : IComponent
 {
 	public					List<EntityIndexInfo>	Values;

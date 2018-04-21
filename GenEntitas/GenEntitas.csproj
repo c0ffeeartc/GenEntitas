@@ -67,6 +67,7 @@
     <Compile Include="Custom\Sources\Components\EntityIndexComp.cs" />
     <Compile Include="Custom\Sources\Components\FeatureEvents\EventComp.cs" />
     <Compile Include="Custom\Sources\Components\GeneratedFileComp.cs" />
+    <Compile Include="Custom\Sources\Components\Ids.cs" />
     <Compile Include="Custom\Sources\Components\NonIComp.cs" />
     <Compile Include="Custom\Sources\Components\PublicFieldsComp.cs" />
     <Compile Include="Custom\Sources\Components\Settings\ConsoleWriteLineGeneratedPaths.cs" />

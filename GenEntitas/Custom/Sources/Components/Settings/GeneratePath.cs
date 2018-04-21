@@ -2,7 +2,7 @@
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-[Settings, Unique]
+[Context(Ids.Settings), Unique]
 public class GeneratePath : IComponent
 {
 	public					String					Value;
