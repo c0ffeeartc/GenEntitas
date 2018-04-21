@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using DesperateDevs.Utils;
 using Entitas;
+using Entitas.CodeGeneration.Attributes;
 using Ent = SettingsEntity;
 
 namespace GenEntitas.Sources
@@ -30,20 +31,40 @@ namespace GenEntitas.Sources
 		protected override	void					Execute					( List<Ent> entities )
 		{
 			var assemblyPaths		= entities[0].reflectionAssemblyPaths.Values;
-			var types				= new List<Type>();
+			var typeSet				= new HashSet<Type>();
 
 			foreach ( var path in assemblyPaths )
 			{
 				var assembly		= Assembly.LoadFrom( path );
-				var assemblyTypes	= assembly
-					.GetTypes(  )
-					.Where(type => !type.IsAbstract)
-					.Where(type => type.ImplementsInterface<IComponent>(  ) )
-					.ToArray(  );
-				types.AddRange( assemblyTypes );
+				var types			= assembly.GetTypes();
+
+			var dataFromComponents = types
+				.Where(type => type.ImplementsInterface<IComponent>())
+				.Where(type => !type.IsAbstract)
+				.ToArray();
+
+				typeSet.UnionWith( dataFromComponents );
+
+			var dataFromNonComponents = types
+				.Where(type => !type.ImplementsInterface<IComponent>())
+				.Where(type => !type.IsGenericType)
+				.Where(type => GetContextNames(type).Length > 0)
+				.ToArray();
+
+				typeSet.UnionWith( dataFromNonComponents );
+
 			}
 
-			_contexts.main.SetReflectionComponentTypes( types );
+			_contexts.main.SetReflectionComponentTypes( typeSet.ToList(  ) );
+		}
+
+		private				String[]				GetContextNames			(Type type)
+		{
+			return Attribute
+				.GetCustomAttributes(type)
+				.OfType<ContextAttribute>()
+				.Select(attr => attr.contextName)
+				.ToArray();
 		}
 	}
 }

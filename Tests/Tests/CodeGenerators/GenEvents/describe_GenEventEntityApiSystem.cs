@@ -21,8 +21,8 @@ namespace Tests.Tests
 				ent.AddComp( "TestComp1", "TestComp1" );
 				ent.AddEventComp( new List<EventInfo>(  )
 					{
-						new EventInfo{BindToEntity = true,EventType = EventType.Added, Priority =  0},
-						new EventInfo{BindToEntity = false,EventType = EventType.Removed, Priority =  0},
+						new EventInfo(bindToEntity : true,eventType : EventType.Added, priority :  0),
+						new EventInfo(bindToEntity : false,eventType : EventType.Removed, priority :  0),
 					} );
 
 				ent.AddContextNamesComp( new List<string>{ "Main", "Seconds" });

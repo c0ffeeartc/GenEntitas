@@ -11,6 +11,12 @@ public class PublicFieldsComp : IComponent
 [Serializable]
 public class FieldInfo
 {
+	public					FieldInfo				( String typeName, String fieldName )
+	{
+		TypeName			= typeName;
+		FieldName			= fieldName;
+	}
+
 	public					String					TypeName;
 	public					String					FieldName;
 }

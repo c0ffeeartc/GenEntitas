@@ -60,7 +60,7 @@ namespace Entitas.CodeGeneration.Plugins {
         }
 
         public static string PrefixedComponentName(this MainEntity ent) {
-        	var uniquePrefix = ent.hasCompUniquePrefix ? ent.compUniquePrefix.Value : "";
+        	var uniquePrefix = ent.hasUniquePrefixComp ? ent.uniquePrefixComp.Value : "";
             return uniquePrefix.LowercaseFirst() + ent.comp.Name;
         }
 

@@ -19,7 +19,7 @@ namespace Tests.Tests
 				var ent					= _contexts.main.CreateEntity(  );
 				ent.AddComp( "TestComp1", "TestComp1" );
 				ent.AddContextNamesComp( new List<String>{ "Main", "Second" } );
-				ent.AddPublicFieldsComp( new List<FieldInfo>{ new FieldInfo(){ FieldName = "Value", TypeName = "int" } } );
+				ent.AddPublicFieldsComp( new List<FieldInfo>{ new FieldInfo( fieldName : "Value", typeName : "int" ) } );
 
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );
 

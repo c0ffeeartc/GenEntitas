@@ -25,14 +25,10 @@ namespace Tests.Tests
 						new EntityIndexInfo
 						{
 							EntityIndexType = EntityIndexType.EntityIndex,
-							FieldInfo = new FieldInfo
-							{
-								FieldName = "test",
-								TypeName = "int",
-							}
+							FieldInfo = new FieldInfo ( fieldName : "test", typeName : "int" )
 						}
 					} );
-				ent.AddPublicFieldsComp( new List<FieldInfo>{new FieldInfo{FieldName = "test", TypeName = "int"}} );
+				ent.AddPublicFieldsComp( new List<FieldInfo>{ new FieldInfo( fieldName : "Value", typeName : "int" ) } );
 				ent.AddContextNamesComp( new List<String>{"Main", "Second"} );
 
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );

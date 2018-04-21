@@ -8,8 +8,8 @@
 //------------------------------------------------------------------------------
 public static class MainComponentsLookup {
 
-    public const int Comp = 0;
-    public const int CompUniquePrefix = 1;
+    public const int AlreadyImplementedComp = 0;
+    public const int Comp = 1;
     public const int ContextComp = 2;
     public const int ContextNamesComp = 3;
     public const int Destroy = 4;
@@ -22,12 +22,13 @@ public static class MainComponentsLookup {
     public const int ReflectionComponentTypes = 11;
     public const int TypeComp = 12;
     public const int UniqueComp = 13;
+    public const int UniquePrefixComp = 14;
 
-    public const int TotalComponents = 14;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
+        "AlreadyImplementedComp",
         "Comp",
-        "CompUniquePrefix",
         "ContextComp",
         "ContextNamesComp",
         "Destroy",
@@ -39,12 +40,13 @@ public static class MainComponentsLookup {
         "PublicFieldsComp",
         "ReflectionComponentTypes",
         "TypeComp",
-        "UniqueComp"
+        "UniqueComp",
+        "UniquePrefixComp"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(AlreadyImplementedComp),
         typeof(Comp),
-        typeof(CompUniquePrefix),
         typeof(ContextComp),
         typeof(ContextNamesComp),
         typeof(Destroy),
@@ -56,6 +58,7 @@ public static class MainComponentsLookup {
         typeof(PublicFieldsComp),
         typeof(ReflectionComponentTypes),
         typeof(TypeComp),
-        typeof(UniqueComp)
+        typeof(UniqueComp),
+        typeof(UniquePrefixComp)
     };
 }

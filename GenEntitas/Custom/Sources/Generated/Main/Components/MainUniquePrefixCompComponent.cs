@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class MainEntity {
 
-    public CompUniquePrefix compUniquePrefix { get { return (CompUniquePrefix)GetComponent(MainComponentsLookup.CompUniquePrefix); } }
-    public bool hasCompUniquePrefix { get { return HasComponent(MainComponentsLookup.CompUniquePrefix); } }
+    public UniquePrefixComp uniquePrefixComp { get { return (UniquePrefixComp)GetComponent(MainComponentsLookup.UniquePrefixComp); } }
+    public bool hasUniquePrefixComp { get { return HasComponent(MainComponentsLookup.UniquePrefixComp); } }
 
-    public void AddCompUniquePrefix(string newValue) {
-        var index = MainComponentsLookup.CompUniquePrefix;
-        var component = CreateComponent<CompUniquePrefix>(index);
+    public void AddUniquePrefixComp(string newValue) {
+        var index = MainComponentsLookup.UniquePrefixComp;
+        var component = CreateComponent<UniquePrefixComp>(index);
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceCompUniquePrefix(string newValue) {
-        var index = MainComponentsLookup.CompUniquePrefix;
-        var component = CreateComponent<CompUniquePrefix>(index);
+    public void ReplaceUniquePrefixComp(string newValue) {
+        var index = MainComponentsLookup.UniquePrefixComp;
+        var component = CreateComponent<UniquePrefixComp>(index);
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveCompUniquePrefix() {
-        RemoveComponent(MainComponentsLookup.CompUniquePrefix);
+    public void RemoveUniquePrefixComp() {
+        RemoveComponent(MainComponentsLookup.UniquePrefixComp);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class MainEntity {
 //------------------------------------------------------------------------------
 public sealed partial class MainMatcher {
 
-    static Entitas.IMatcher<MainEntity> _matcherCompUniquePrefix;
+    static Entitas.IMatcher<MainEntity> _matcherUniquePrefixComp;
 
-    public static Entitas.IMatcher<MainEntity> CompUniquePrefix {
+    public static Entitas.IMatcher<MainEntity> UniquePrefixComp {
         get {
-            if (_matcherCompUniquePrefix == null) {
-                var matcher = (Entitas.Matcher<MainEntity>)Entitas.Matcher<MainEntity>.AllOf(MainComponentsLookup.CompUniquePrefix);
+            if (_matcherUniquePrefixComp == null) {
+                var matcher = (Entitas.Matcher<MainEntity>)Entitas.Matcher<MainEntity>.AllOf(MainComponentsLookup.UniquePrefixComp);
                 matcher.componentNames = MainComponentsLookup.componentNames;
-                _matcherCompUniquePrefix = matcher;
+                _matcherUniquePrefixComp = matcher;
             }
 
-            return _matcherCompUniquePrefix;
+            return _matcherUniquePrefixComp;
         }
     }
 }

@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Custom\Program.cs" />
     <Compile Include="Custom\Runner.cs" />
+    <Compile Include="Custom\Sources\Components\AlreadyImplementedComp.cs" />
     <Compile Include="Custom\Sources\Components\Comp.cs" />
     <Compile Include="Custom\Sources\Components\ContextNamesComp.cs" />
     <Compile Include="Custom\Sources\Components\ContextComp.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Custom\Sources\Components\Settings\IgnoreNamespaces.cs" />
     <Compile Include="Custom\Sources\Components\Settings\RunInDryMode.cs" />
     <Compile Include="Custom\Sources\Components\UniqueComp.cs" />
+    <Compile Include="Custom\Sources\Components\UniquePrefixComp.cs" />
     <Compile Include="Custom\Sources\Extensions\CodeGeneratorExtensions2.cs" />
     <Compile Include="Custom\Sources\Extensions\CodeGeneratorExtentions.cs" />
     <Compile Include="Custom\Sources\Generated\**\*.cs" />
