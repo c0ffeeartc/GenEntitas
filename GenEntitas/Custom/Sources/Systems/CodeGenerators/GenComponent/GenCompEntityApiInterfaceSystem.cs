@@ -50,6 +50,11 @@ namespace GenEntitas.Sources
 		{
 			foreach ( var ent in entities )
 			{
+				if ( ent.contextNamesComp.Values.Count < 2 )
+				{
+					continue;
+				}
+
 				{
 					var template		= ent.hasPublicFieldsComp ? STANDARD_TEMPLATE : FLAG_TEMPLATE;
 					var filePath		= "Components" + Path.DirectorySeparatorChar + "Interfaces" + Path.DirectorySeparatorChar + "I" + ent.comp.Name + "Entity.cs";
