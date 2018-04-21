@@ -79,6 +79,10 @@
     <Compile Include="Tests\DataProviders\Reflection\describe_ReflectionToCompsSystem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ComponentsLib\ComponentsLib.csproj">
+      <Project>{4f2d16f7-0e52-4f91-9ff8-54ecc040d7ed}</Project>
+      <Name>ComponentsLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitas\GenEntitas.csproj">
       <Project>{1e517fbc-1f12-4fd9-9cda-ca08c4f2b5e9}</Project>
       <Name>GenEntitas</Name>

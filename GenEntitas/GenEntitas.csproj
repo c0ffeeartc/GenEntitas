@@ -61,27 +61,6 @@
   <ItemGroup>
     <Compile Include="Custom\Program.cs" />
     <Compile Include="Custom\Runner.cs" />
-    <Compile Include="Custom\Sources\Components\AlreadyImplementedComp.cs" />
-    <Compile Include="Custom\Sources\Components\Comp.cs" />
-    <Compile Include="Custom\Sources\Components\ContextNamesComp.cs" />
-    <Compile Include="Custom\Sources\Components\ContextComp.cs" />
-    <Compile Include="Custom\Sources\Components\DataProviders\Reflection\ReflectionAssemblyPaths.cs" />
-    <Compile Include="Custom\Sources\Components\DataProviders\Reflection\ReflectionComponentTypes.cs" />
-    <Compile Include="Custom\Sources\Components\DataProviders\Reflection\TypeComp.cs" />
-    <Compile Include="Custom\Sources\Components\Destroy.cs" />
-    <Compile Include="Custom\Sources\Components\DontGenerateComp.cs" />
-    <Compile Include="Custom\Sources\Components\EntityIndexComp.cs" />
-    <Compile Include="Custom\Sources\Components\FeatureEvents\EventComp.cs" />
-    <Compile Include="Custom\Sources\Components\GeneratedFileComp.cs" />
-    <Compile Include="Custom\Sources\Components\Ids.cs" />
-    <Compile Include="Custom\Sources\Components\NonIComp.cs" />
-    <Compile Include="Custom\Sources\Components\PublicFieldsComp.cs" />
-    <Compile Include="Custom\Sources\Components\Settings\ConsoleWriteLineGeneratedPaths.cs" />
-    <Compile Include="Custom\Sources\Components\Settings\GeneratePath.cs" />
-    <Compile Include="Custom\Sources\Components\Settings\IgnoreNamespaces.cs" />
-    <Compile Include="Custom\Sources\Components\Settings\RunInDryMode.cs" />
-    <Compile Include="Custom\Sources\Components\UniqueComp.cs" />
-    <Compile Include="Custom\Sources\Components\UniquePrefixComp.cs" />
     <Compile Include="Custom\Sources\Extensions\CodeGeneratorExtensions2.cs" />
     <Compile Include="Custom\Sources\Extensions\CodeGeneratorExtentions.cs" />
     <Compile Include="Custom\Sources\Generated\**\*.cs" />
