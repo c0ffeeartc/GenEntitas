@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using DesperateDevs.Utils;
@@ -35,8 +36,14 @@ namespace GenEntitas.Sources
 
 			foreach ( var path in assemblyPaths )
 			{
+				var fileInfo		= new FileInfo( path );
+				if ( !fileInfo.Exists )
+				{
+					Console.WriteLine( "No such file: " + fileInfo.FullName );
+					continue;
+				}
 				var assembly		= Assembly.LoadFrom( path );
-				var types			= assembly.GetTypes();
+				var types			= GetLoadableTypes( assembly );
 
 			var dataFromComponents = types
 				.Where(type => type.ImplementsInterface<IComponent>())
@@ -65,6 +72,19 @@ namespace GenEntitas.Sources
 				.OfType<ContextAttribute>()
 				.Select(attr => attr.contextName)
 				.ToArray();
+		}
+
+		public IEnumerable<Type> GetLoadableTypes( Assembly assembly )
+		{
+			if (assembly == null) throw new ArgumentNullException(nameof(assembly));
+			try
+			{
+				return assembly.GetTypes();
+			}
+			catch (ReflectionTypeLoadException e)
+			{
+				return e.Types.Where( t => t != null ).ToList();
+			}
 		}
 	}
 }

@@ -60,7 +60,7 @@ ${contextObservers}
 			}
 			var fileEnt			= _contexts.main.CreateEntity(  );
 			var contents		= Generate( contextNames.ToArray(  ) );
-			fileEnt.AddGeneratedFileComp( "ContextsObserver.cs", contents, GetType(  ).FullName );
+			fileEnt.AddGeneratedFileComp( "Contexts.cs", contents, GetType(  ).FullName );
 		}
 
 		private				String					Generate				( String[] contextNames )

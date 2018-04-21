@@ -4,6 +4,7 @@ using System.Linq;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
+using UnityEngine;
 using Ent = MainEntity;
 
 namespace GenEntitas.Sources
@@ -31,6 +32,8 @@ namespace GenEntitas.Sources
 		{
 			var types			= _contexts.main.reflectionComponentTypes.Values;
 
+			ProvideContexts( types );
+
 			foreach ( var t in types )
 			{
 				var ent = _contexts.main.CreateEntity();
@@ -57,6 +60,28 @@ namespace GenEntitas.Sources
 			else
 			{
 				ent.AddNonIComp( t.Name, t.ToCompilableString() );
+			}
+		}
+
+		private				void					ProvideContexts			( List<Type> types )
+		{
+			var contextNameSet		= new HashSet<String>(  );
+
+			foreach ( var t in types )
+			{
+				var contextNames	= Attribute
+				.GetCustomAttributes(t)
+				.OfType<ContextAttribute>()
+				.Select(attr => attr.contextName)
+				.ToList();
+
+				contextNameSet.UnionWith( contextNames );
+			}
+
+			foreach ( var name in contextNameSet )
+			{
+				var ent			= _contexts.main.CreateEntity(  );
+				ent.AddContextComp( name );
 			}
 		}
 
@@ -108,6 +133,11 @@ namespace GenEntitas.Sources
 				.Select(info => new FieldInfo(info.type.ToCompilableString(), info.name))
 				.ToList();
 
+			if ( memberData.Count == 0 )
+			{
+				return;
+			}
+
 			ent.AddPublicFieldsComp( memberData );
 		}
 
@@ -117,12 +147,7 @@ namespace GenEntitas.Sources
 				.OfType<UniquePrefixAttribute>()
 				.SingleOrDefault();
 
-			if ( attr == null )
-			{
-				return;
-			}
-
-			ent.AddUniquePrefixComp( attr.prefix );
+			ent.AddUniquePrefixComp( attr == null ? "is" : attr.prefix );
 		}
 
 		private				void					ProvideDontGenerate		( Ent ent )
