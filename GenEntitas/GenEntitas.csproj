@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandLine, Version=2.2.1.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32">
+      <HintPath>..\packages\CommandLineParser.2.2.1\lib\net45\CommandLine.dll</HintPath>
+    </Reference>
     <Reference Include="DesperateDevs.Utils, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>libs\Entitas\DesperateDevs.Utils.dll</HintPath>
     </Reference>
@@ -109,6 +112,15 @@
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcCleanTargetDirSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcMergeFilesSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcWriteToDiskSystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ComponentsLib\ComponentsLib.csproj">
+      <Project>{4f2d16f7-0e52-4f91-9ff8-54ecc040d7ed}</Project>
+      <Name>ComponentsLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

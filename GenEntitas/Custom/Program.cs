@@ -1,17 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
+using CommandLine;
 
 namespace GenEntitas
 {
+	class Options
+	{
+		[Option( "dllPaths", Required = true, HelpText = "Reflection dlls with Component classes" )]
+		public String DllPaths { get; set; }
+	}
+
 	internal class Program
 	{
 		public static void Main( string[] args )
+		{
+			Parser.Default.ParseArguments<Options>(args).WithParsed( WithParsedArgs );
+		}
+		private static void WithParsedArgs( Options options )
 		{
 			var runner = new Runner();
 			runner.Init(  );
 
 			var contexts = runner.Contexts;
-			FillContexts( contexts );
+			FillContexts( contexts, options );
 
 			runner.Systems.Initialize(  );
 			runner.Systems.Execute(  );
@@ -19,20 +30,11 @@ namespace GenEntitas
 			runner.Systems.TearDown(  );
 		}
 
-		public static void FillContexts( Contexts contexts )
+		private static void FillContexts( Contexts contexts, Options options )
 		{
 			contexts.settings.isConsoleWriteLineGeneratedPaths		= true;
 			contexts.settings.SetGeneratePath( "./" );
-			{
-				var ent			= contexts.main.CreateEntity(  );
-				ent.AddContextComp( "Main" );
-			}
-
-			{
-				var ent			= contexts.main.CreateEntity(  );
-				ent.AddComp( "TestComp1", "TestComp1" );
-				ent.AddContextNamesComp( new List<String>{ "Main" } );
-			}
+			contexts.settings.SetReflectionAssemblyPaths( options.DllPaths.Split(',').ToList(  ) );
 		}
 	}
 }
