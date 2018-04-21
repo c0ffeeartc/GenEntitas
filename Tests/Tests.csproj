@@ -62,7 +62,6 @@
     <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompEntityApiSystem.cs" />
     <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompLookupSystem.cs" />
     <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompMatcherApiSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenFlagCompContextApiSystem.cs" />
     <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenNonICompSystem.cs" />
     <Compile Include="Tests\CodeGenerators\GenContexts\describe_GenContextsObserverSystem.cs" />
     <Compile Include="Tests\CodeGenerators\GenContexts\describe_GenContextsSystem.cs" />

@@ -48,6 +48,27 @@ namespace GenEntitas.Sources
 }
 ";
 
+		private const		String					FLAG_TEMPLATE			=
+@"public partial class ${ContextType} {
+
+    public ${EntityType} ${componentName}Entity { get { return GetGroup(${MatcherType}.${ComponentName}).GetSingleEntity(); } }
+
+    public bool ${prefixedComponentName} {
+        get { return ${componentName}Entity != null; }
+        set {
+            var entity = ${componentName}Entity;
+            if (value != (entity != null)) {
+                if (value) {
+                    CreateEntity().${prefixedComponentName} = true;
+                } else {
+                    entity.Destroy();
+                }
+            }
+        }
+    }
+}
+";
+
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
 			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.UniqueComp, MainMatcher.PublicFieldsComp ).NoneOf( MainMatcher.DontGenerateComp ) );
@@ -62,11 +83,12 @@ namespace GenEntitas.Sources
 		{
 			foreach ( var ent in entities )
 			{
-				var contextNames = ent.contextNamesComp.Values;
+				var contextNames	= ent.contextNamesComp.Values;
+				var template		= ent.hasPublicFieldsComp ? STANDARD_TEMPLATE : FLAG_TEMPLATE;
 				foreach ( var contextName in contextNames )
 				{
 					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.comp.Name.AddComponentSuffix(  ) + ".cs";
-					var contents		= STANDARD_TEMPLATE.Replace( ent, contextName );
+					var contents		= template.Replace( ent, contextName );
 					var generatedBy		= GetType().FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );

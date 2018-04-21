@@ -69,7 +69,6 @@
     <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenCompEntityApiSystem.cs" />
     <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenCompLookupSystem.cs" />
     <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenCompMatcherApiSystem.cs" />
-    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenFlagCompContextApiSystem.cs" />
     <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenNonICompSystem.cs" />
     <Compile Include="Custom\Sources\Systems\CodeGenerators\GenContexts\GenContextsObserverSystem.cs" />
     <Compile Include="Custom\Sources\Systems\CodeGenerators\GenContexts\GenContextsSystem.cs" />

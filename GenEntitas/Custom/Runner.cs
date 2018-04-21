@@ -31,7 +31,6 @@ namespace GenEntitas
 				.Add( new GenCompEntityApiSystem( _contexts ) )
 				.Add( new GenCompEntityApiInterfaceSystem( _contexts ) )
 				.Add( new GenCompMatcherApiSystem( _contexts ) )
-				.Add( new GenFlagCompContextApiSystem( _contexts ) )
 
 				.Add( new GenNonICompSystem( _contexts ) )
 
