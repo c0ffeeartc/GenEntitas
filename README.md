@@ -11,7 +11,7 @@ Entitas generator using Entitas ECS framework
   - Done
  
 ### Benefits
-  - easy to extend, write Entitas System!
+  - easy to extend - write Entitas System!
 
 ### Done
   - DataProviders
