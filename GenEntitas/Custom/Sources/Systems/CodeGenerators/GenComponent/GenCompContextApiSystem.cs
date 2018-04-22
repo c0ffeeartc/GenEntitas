@@ -71,12 +71,12 @@ namespace GenEntitas.Sources
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
-			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.UniqueComp, MainMatcher.PublicFieldsComp ).NoneOf( MainMatcher.DontGenerateComp ) );
+			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.UniqueComp ).NoneOf( MainMatcher.DontGenerateComp ) );
 		}
 
 		protected override	Boolean					Filter					( Ent entity )
 		{
-			return entity.isUniqueComp && entity.hasComp && entity.hasPublicFieldsComp && !entity.isDontGenerateComp;
+			return entity.isUniqueComp && entity.hasComp && !entity.isDontGenerateComp;
 		}
 
 		protected override	void					Execute					( List<Ent> entities )
