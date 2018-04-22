@@ -19,15 +19,12 @@ Entitas generator using Entitas ECS framework
   - PostProcessors
 
 ### Needs to be done
+  - More tests
   - UI
   - Settings
     - read from file
     - on/off generators, data providers etc
-  - DataProviders
-    - More tests
   - PreProcessors
-  - Generators
-    - EntityIndexGenerator
   - PostProcessors
     - Convert newlines
     - Update .csproj
