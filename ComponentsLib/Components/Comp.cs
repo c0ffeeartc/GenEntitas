@@ -6,5 +6,6 @@ using Entitas.CodeGeneration.Attributes;
 public class Comp : IComponent
 {
 	public					String					Name;
+	[PrimaryEntityIndex]
 	public					String					FullTypeName;
 }
