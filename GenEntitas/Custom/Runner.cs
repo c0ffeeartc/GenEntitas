@@ -27,6 +27,9 @@ namespace GenEntitas
 				.Add( new GenContextMatcherSystem( _contexts ) )
 				.Add( new GenContextSystem( _contexts ) )
 
+				.Add( new GenEntitySystem( _contexts ) )
+
+				.Add( new GenCompLookupSystem( _contexts ) )
 				.Add( new GenCompContextApiSystem( _contexts ) )
 				.Add( new GenCompEntityApiSystem( _contexts ) )
 				.Add( new GenCompEntityApiInterfaceSystem( _contexts ) )
