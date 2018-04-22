@@ -61,26 +61,46 @@ ${getIndices}
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
-			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.EntityIndexComp, MainMatcher.PublicFieldsComp, MainMatcher.ContextNamesComp ) );
+			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.PublicFieldsComp ) );
 		}
 
 		protected override	Boolean					Filter					( Ent entity )
 		{
-			return entity.hasEntityIndexComp && entity.hasPublicFieldsComp && entity.hasContextNamesComp;
+			return entity.hasComp && entity.hasPublicFieldsComp;
 		}
 
 		protected override	void					Execute					( List<Ent> entities )
 		{
-			generateEntityIndices( entities.ToArray(  ) );
+			var entityIndexData = new List<EntityIndexData>(  );
+			foreach ( var ent in entities )
+			{
+				foreach ( var field in ent.publicFieldsComp.Values )
+				{
+					if ( field.EntityIndexInfo == null )
+					{
+						continue;
+					}
+
+					entityIndexData.Add( field.EntityIndexInfo.EntityIndexData );
+				}
+			}
+
+			if ( entityIndexData.Count == 0 )
+			{
+				return;
+			}
+
+			entityIndexData.Sort( (a, b) => a.GetEntityIndexName(  ).CompareTo( b.GetEntityIndexName(  ) ) );
+			generateEntityIndices( entityIndexData.ToArray(  ) );
 		}
 
-		void generateEntityIndices(Ent[] data) {
+		void generateEntityIndices(EntityIndexData[] data) {
 
 			var indexConstants = string.Join("\n", data
-				.Select(ent => INDEX_CONSTANTS_TEMPLATE
-					.Replace("${IndexName}", ent.entityIndexComp.HasMultiple(  )
-						? ent.entityIndexComp.GetEntityIndexName() + ent.entityIndexComp.GetMemberName().UppercaseFirst()
-						: ent.entityIndexComp.GetEntityIndexName()))
+				.Select(d => INDEX_CONSTANTS_TEMPLATE
+					.Replace("${IndexName}", d.GetHasMultiple()
+						? d.GetEntityIndexName() + d.GetMemberName().UppercaseFirst()
+						: d.GetEntityIndexName()))
 				.ToArray());
 
 			var addIndices = string.Join("\n\n", data
@@ -100,115 +120,81 @@ ${getIndices}
 				fileEnt.AddGeneratedFileComp( "EntityIndex.cs", fileContent, GetType().FullName );
 		}
 
-		string generateAddMethods(Ent ent) {
-			return string.Join("\n", ent.contextNamesComp.Values
+		string generateAddMethods(EntityIndexData data) {
+			return string.Join("\n", data.GetContextNames()
 				.Aggregate(new List<string>(), (addMethods, contextName) => {
-					addMethods.Add(generateAddMethod(ent, contextName));
+					addMethods.Add(generateAddMethod(data, contextName));
 					return addMethods;
 				}).ToArray());
 		}
 
-		string generateAddMethod(Ent ent, string contextName) {
-			return ent.entityIndexComp.IsCustom()
-				? generateCustomMethods(ent)
-				: generateMethods(ent, contextName);
+		string generateAddMethod(EntityIndexData data, string contextName) {
+			return data.IsCustom()
+				? generateCustomMethods(data)
+				: generateMethods(data, contextName);
 		}
 
-		string generateCustomMethods(Ent ent) {
+		string generateCustomMethods(EntityIndexData data) {
 			return ADD_CUSTOM_INDEX_TEMPLATE
-				.Replace("${contextName}", ent.contextNamesComp.Values[0].LowercaseFirst())
-				.Replace("${IndexType}", ent.entityIndexComp.GetEntityIndexType());
+				.Replace("${contextName}", data.GetContextNames()[0].LowercaseFirst())
+				.Replace("${IndexType}", data.GetEntityIndexType());
 		}
 
-		string generateMethods(Ent ent, string contextName) {
+		string generateMethods(EntityIndexData data, string contextName) {
 			return ADD_INDEX_TEMPLATE
 				.Replace("${contextName}", contextName.LowercaseFirst())
 				.Replace("${ContextName}", contextName)
-				.Replace("${IndexName}", ent.entityIndexComp.HasMultiple()
-					? ent.entityIndexComp.GetEntityIndexName() + ent.entityIndexComp.GetMemberName().UppercaseFirst()
-					: ent.entityIndexComp.GetEntityIndexName())
-				.Replace("${Matcher}", ent.entityIndexComp.GetEntityIndexName())
-				.Replace("${IndexType}", ent.entityIndexComp.GetEntityIndexType())
-				.Replace("${KeyType}", ent.entityIndexComp.GetKeyType())
-				.Replace("${ComponentType}", ent.entityIndexComp.GetComponentType())
-				.Replace("${MemberName}", ent.entityIndexComp.GetMemberName())
-				.Replace("${componentName}", ent.entityIndexComp.GetComponentType().ToComponentName(_contexts.settings.isIgnoreNamespaces).LowercaseFirst());
+				.Replace("${IndexName}", data.GetHasMultiple()
+					? data.GetEntityIndexName() + data.GetMemberName().UppercaseFirst()
+					: data.GetEntityIndexName())
+				.Replace("${Matcher}", data.GetEntityIndexName())
+				.Replace("${IndexType}", data.GetEntityIndexType())
+				.Replace("${KeyType}", data.GetKeyType())
+				.Replace("${ComponentType}", data.GetComponentType())
+				.Replace("${MemberName}", data.GetMemberName())
+				.Replace("${componentName}", data.GetComponentType().ToComponentName(_contexts.settings.isIgnoreNamespaces).LowercaseFirst());
 		}
 
-		string generateGetMethods(Ent ent) {
-			return string.Join("\n\n", ent.contextNamesComp.Values
+		string generateGetMethods(EntityIndexData data) {
+			return string.Join("\n\n", data.GetContextNames()
 				.Aggregate(new List<string>(), (getMethods, contextName) => {
-					getMethods.Add(generateGetMethod(ent, contextName));
+					getMethods.Add(generateGetMethod(data, contextName));
 					return getMethods;
 				}).ToArray());
 		}
 
-		string generateGetMethod(Ent ent, string contextName) {
+		string generateGetMethod(EntityIndexData data, string contextName) {
 			var template = "";
-			if (ent.entityIndexComp.GetEntityIndexType() == "Entitas.EntityIndex") {
+			if (data.GetEntityIndexType() == "Entitas.EntityIndex") {
 				template = GET_INDEX_TEMPLATE;
-			} else if (ent.entityIndexComp.GetEntityIndexType() == "Entitas.PrimaryEntityIndex") {
+			} else if (data.GetEntityIndexType() == "Entitas.PrimaryEntityIndex") {
 				template = GET_PRIMARY_INDEX_TEMPLATE;
 			} else {
-				return getCustomMethods(ent);
+				return getCustomMethods(data);
 			}
 
 			return template
 				.Replace("${ContextName}", contextName)
-				.Replace("${IndexName}", ent.entityIndexComp.HasMultiple()
-					? ent.entityIndexComp.GetEntityIndexName() + ent.entityIndexComp.GetMemberName().UppercaseFirst()
-					: ent.entityIndexComp.GetEntityIndexName())
-				.Replace("${IndexType}", ent.entityIndexComp.GetEntityIndexType())
-				.Replace("${KeyType}", ent.entityIndexComp.GetKeyType())
-				.Replace("${MemberName}", ent.entityIndexComp.GetMemberName());
+				.Replace("${IndexName}", data.GetHasMultiple()
+					? data.GetEntityIndexName() + data.GetMemberName().UppercaseFirst()
+					: data.GetEntityIndexName())
+				.Replace("${IndexType}", data.GetEntityIndexType())
+				.Replace("${KeyType}", data.GetKeyType())
+				.Replace("${MemberName}", data.GetMemberName());
 		}
 
-		string getCustomMethods(Ent ent) {
-			return string.Join("\n", ent.entityIndexComp.GetCustomMethods()
+		string getCustomMethods(EntityIndexData data) {
+			return string.Join("\n", data.GetCustomMethods()
 				.Select(m => CUSTOM_METHOD_TEMPLATE
 					.Replace("${ReturnType}", m.returnType)
 					.Replace("${MethodName}", m.methodName)
-					.Replace("${ContextName}", ent.contextNamesComp.Values[0])
+					.Replace("${ContextName}", data.GetContextNames()[0])
 					.Replace("${methodArgs}", string.Join(", ", m.parameters.Select(p => p.type + " " + p.name).ToArray()))
-					.Replace("${IndexType}", ent.entityIndexComp.GetEntityIndexType())
-					.Replace("${IndexName}", ent.entityIndexComp.HasMultiple()
-						? ent.entityIndexComp.GetEntityIndexName() + ent.entityIndexComp.GetMemberName().UppercaseFirst()
-						: ent.entityIndexComp.GetEntityIndexName())
+					.Replace("${IndexType}", data.GetEntityIndexType())
+					.Replace("${IndexName}", data.GetHasMultiple()
+						? data.GetEntityIndexName() + data.GetMemberName().UppercaseFirst()
+						: data.GetEntityIndexName())
 					.Replace("${args}", string.Join(", ", m.parameters.Select(p => p.name).ToArray()))).ToArray());
 		}
 	}
-    public static class EntityIndexDataExtension2 {
-		public static		String					GetEntityIndexName		( this EntityIndexComp entityIndexComp )
-		{
-			return "FIXME";
-		}
-		public static		String					GetEntityIndexType		( this EntityIndexComp entityIndexComp )
-		{
-			return "FIXME";
-		}
-		public static		String					GetMemberName			( this EntityIndexComp entityIndexComp )
-		{
-			return "FIXME";
-		}
-		public static		Boolean					IsCustom				( this EntityIndexComp entityIndexComp )
-		{
-			return false;  // FIXME
-		}
-		public static		String					GetComponentType		( this EntityIndexComp entityIndexComp )
-		{
-			return "FIXME";
-		}
-		public static		String					GetKeyType				( this EntityIndexComp entityIndexComp )
-		{
-			return "FIXME";
-		}
-		public static		MethodData[]			GetCustomMethods		( this EntityIndexComp entityIndexComp )
-		{
-			return new []{new MethodData( "int", "FIXME", new []{ new MemberData("int", "FIXME") } )};
-		}
-		public static		Boolean					HasMultiple				( this EntityIndexComp entityIndexComp )
-		{
-			return entityIndexComp.Values.Count > 1;  // FIXME
-		}
-    }
 }

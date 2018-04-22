@@ -10,7 +10,7 @@ public class PublicFieldsComp : IComponent
 }
 
 [Serializable]
-public class FieldInfo
+public partial class FieldInfo
 {
 	public					FieldInfo				( String typeName, String fieldName )
 	{
@@ -20,4 +20,9 @@ public class FieldInfo
 
 	public					String					TypeName;
 	public					String					FieldName;
+}
+
+public partial class FieldInfo
+{
+	public					EntityIndexInfo			EntityIndexInfo;
 }

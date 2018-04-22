@@ -17,6 +17,7 @@ namespace GenEntitas
 			_systems			= new Systems(  )
 				.Add( new ReflectionToCompTypesSystem( _contexts ) )
 				.Add( new ReflectionToCompsSystem( _contexts ) )
+				.Add( new ReflectionToEntityIndexSystem( _contexts ) )
 
 				.Add( new GenContextsSystem( _contexts ) )
 				.Add( new GenContextsObserverSystem( _contexts ) )
@@ -28,6 +29,7 @@ namespace GenEntitas
 				.Add( new GenContextSystem( _contexts ) )
 
 				.Add( new GenEntitySystem( _contexts ) )
+				.Add( new GenEntityIndexSystem( _contexts ) )
 
 				.Add( new GenCompLookupSystem( _contexts ) )
 				.Add( new GenCompContextApiSystem( _contexts ) )

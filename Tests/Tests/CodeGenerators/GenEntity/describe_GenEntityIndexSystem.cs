@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Entitas.CodeGeneration.Attributes;
 using GenEntitas.Sources;
 using NSpec;
 
@@ -19,15 +18,6 @@ namespace Tests.Tests
 
 				var ent					= _contexts.main.CreateEntity(  );
 				ent.AddComp( "TestComp1", "TestComp1" );
-				ent.AddEntityIndexComp(
-					new List<EntityIndexInfo>
-					{
-						new EntityIndexInfo
-						{
-							EntityIndexType = EntityIndexType.EntityIndex,
-							FieldInfo = new FieldInfo ( fieldName : "test", typeName : "int" )
-						}
-					} );
 				ent.AddPublicFieldsComp( new List<FieldInfo>{ new FieldInfo( fieldName : "Value", typeName : "int" ) } );
 				ent.AddContextNamesComp( new List<String>{"Main", "Second"} );
 

@@ -16,6 +16,7 @@ namespace GenEntitas.Sources
 			_contexts			= contexts;
 		}
 
+		public static	Dictionary<Type,List<String>> TypeToContextNames;
 		private				Contexts				_contexts;
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
@@ -34,6 +35,8 @@ namespace GenEntitas.Sources
 
 			ProvideContexts( types );
 
+			TypeToContextNames	= new Dictionary<Type, List<String>>(  );
+
 			foreach ( var t in types )
 			{
 				var ent = _contexts.main.CreateEntity();
@@ -46,6 +49,8 @@ namespace GenEntitas.Sources
 				ProvideUniqueComp( ent );
 				ProvidePublicFieldsComp( ent );
 				ProvideUniquePrefix( ent );
+
+				TypeToContextNames[t]	= ent.contextNamesComp.Values;
 			}
 		}
 
