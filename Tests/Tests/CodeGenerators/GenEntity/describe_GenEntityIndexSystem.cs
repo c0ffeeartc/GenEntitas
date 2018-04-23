@@ -1,7 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entitas;
+using Entitas.CodeGeneration.Attributes;
 using GenEntitas.Sources;
 using NSpec;
+
+[Context("Main"), Context("Second")]
+internal class TestEntityIndexComp1 : IComponent
+{
+	[EntityIndex]
+	public int Indexed;
+}
 
 namespace Tests.Tests
 {
@@ -14,12 +23,17 @@ namespace Tests.Tests
 			context["when adding context comp entity"] = (  ) =>
 			{
 				_contexts				= new Contexts(  );
-				var system				= new GenEntityIndexSystem( _contexts );
+				var systems				= new Systems(  )
+					.Add( new ReflectionToCompsSystem( _contexts ) )
+					.Add( new ReflectionToEntityIndexSystem( _contexts ) )
+					.Add( new GenEntityIndexSystem( _contexts ) )
+					;
 
 				var ent					= _contexts.main.CreateEntity(  );
-				ent.AddComp( "TestComp1", "TestComp1" );
-				ent.AddPublicFieldsComp( new List<FieldInfo>{ new FieldInfo( fieldName : "Value", typeName : "int" ) } );
-				ent.AddContextNamesComp( new List<String>{"Main", "Second"} );
+				ent.AddReflectionComponentTypes( new List<Type>
+				{
+					typeof(TestEntityIndexComp1)
+				} );
 
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );
 
@@ -30,7 +44,7 @@ namespace Tests.Tests
 
 				it["has contexts.Count generated file comps"] = (  ) =>
 				{
-					system.Execute(  );
+					systems.Execute(  );
 					genFileGroup.count.should_be( 1 );
 				};
 
