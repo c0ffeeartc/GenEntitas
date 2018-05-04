@@ -23,7 +23,7 @@ namespace Entitas.CodeGeneration.Plugins {
 		{
 			if ( ent.hasComp )
 			{
-				var componentName = ent.comp.Name;
+				var componentName = ent.ComponentName();
 				template = template
 					.Replace(contextName)
 					.Replace("${ComponentType}", ent.comp.FullTypeName)

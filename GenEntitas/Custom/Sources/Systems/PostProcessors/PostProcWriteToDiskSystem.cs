@@ -48,7 +48,7 @@ namespace GenEntitas.Sources
 				{
 					Directory.CreateDirectory( dirPath );
 				}
-				File.WriteAllText( targetPath, ent.generatedFileComp.Contents, Encoding.UTF8 );
+				File.WriteAllText( targetPath, ent.generatedFileComp.Contents );
 			}
 		}
 	}
