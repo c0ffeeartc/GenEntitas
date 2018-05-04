@@ -46,7 +46,7 @@ namespace Entitas.CodeGeneration.Plugins {
 
         public static string Replace(this string template, MainEntity ent, string contextName, EventInfo eventInfo) {
             var eventListener = ent.EventListener(contextName, eventInfo);
-            var lowerEventListener = ent.hasContextNamesComp
+            var lowerEventListener = ent.hasContextNamesComp && ent.contextNamesComp.Values.Count > 1
                 ? contextName.LowercaseFirst() + ent.comp.Name + ent.GetEventTypeSuffix(eventInfo) + "Listener"
                 : ent.comp.Name.LowercaseFirst() + ent.GetEventTypeSuffix(eventInfo) + "Listener";
 

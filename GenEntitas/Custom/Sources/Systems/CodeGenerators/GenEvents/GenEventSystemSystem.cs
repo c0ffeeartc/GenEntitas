@@ -89,22 +89,10 @@ namespace GenEntitas.Sources
 
 		protected override	void					Execute					( List<Ent> entities )
 		{
-			var contextEnts = new Dictionary<String, List<MainEntity>>(  );
 			foreach ( var ent in entities )
 			{
-				foreach ( var contextName in ent.contextNamesComp.Values )
-				{
-					if ( !contextEnts.ContainsKey( contextName ) )
-					{
-						contextEnts[contextName] = new List<MainEntity>( );
-					}
-					contextEnts[contextName].Add( ent );
-				}
-			}
-
-			foreach ( var ent in entities )
-			{
-				foreach ( var contextName in contextEnts.Keys )
+				var contextNames = ent.contextNamesComp.Values;
+				foreach ( var contextName in contextNames )
 				{
 					foreach ( var eventInfo in ent.eventComp.Values )
 					{
