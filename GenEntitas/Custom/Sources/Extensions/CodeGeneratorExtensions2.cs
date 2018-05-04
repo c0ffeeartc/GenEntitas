@@ -65,8 +65,8 @@ namespace Entitas.CodeGeneration.Plugins {
         }
 
 		public static string Event(this MainEntity ent, string contextName, EventInfo eventInfo) {
-			var optionalContextName = ent.hasContextNamesComp ? contextName : string.Empty;
-			return optionalContextName + ent.comp.Name + ent.GetEventTypeSuffix(eventInfo);
+			var optionalContextName = ent.hasContextNamesComp && ent.contextNamesComp.Values.Count > 1 ? contextName : string.Empty;
+			return optionalContextName + ent.ComponentName(  ) + ent.GetEventTypeSuffix(eventInfo);
 		}
 
 		public static string EventListener(this MainEntity ent, string contextName, EventInfo eventInfo) {

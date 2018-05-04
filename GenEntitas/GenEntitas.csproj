@@ -93,6 +93,7 @@
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcAddFileHeaderSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcCleanTargetDirSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcMergeFilesSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcLineEndings.cs" />
     <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcWriteToDiskSystem.cs" />
   </ItemGroup>
   <ItemGroup>

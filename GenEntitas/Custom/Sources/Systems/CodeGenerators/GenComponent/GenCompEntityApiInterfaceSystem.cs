@@ -57,7 +57,7 @@ namespace GenEntitas.Sources
 
 				{
 					var template		= ent.hasPublicFieldsComp ? STANDARD_TEMPLATE : FLAG_TEMPLATE;
-					var filePath		= "Components" + Path.DirectorySeparatorChar + "Interfaces" + Path.DirectorySeparatorChar + "I" + ent.comp.Name + "Entity.cs";
+					var filePath		= "Components" + Path.DirectorySeparatorChar + "Interfaces" + Path.DirectorySeparatorChar + "I" + ent.ComponentName(  ) + "Entity.cs";
 					var contents		= template.Replace( ent, String.Empty );
 					var generatedBy		= GetType(  ).FullName;
 
