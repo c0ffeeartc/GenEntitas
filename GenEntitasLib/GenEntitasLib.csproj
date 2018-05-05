@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8D430C04-A56B-4D66-9863-E68804C3596C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GenEntitasLib</RootNamespace>
+    <AssemblyName>GenEntitasLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DesperateDevs.CodeGeneration, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\GenEntitas\libs\Entitas\Editor\DesperateDevs.CodeGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Utils, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\GenEntitas\libs\Entitas\DesperateDevs.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\GenEntitas\libs\Entitas\Entitas.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\GenEntitas\libs\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Plugins, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\GenEntitas\libs\Entitas\Editor\Plugins\Entitas\Entitas.CodeGeneration.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\GenEntitas\libs\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Custom\Sources\Extensions\CodeGeneratorExtensions2.cs" />
+    <Compile Include="Custom\Sources\Extensions\CodeGeneratorExtentions.cs" />
+    <Compile Include="Custom\Sources\Generated\Contexts.cs" />
+    <Compile Include="Custom\Sources\Generated\Feature.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainAlreadyImplementedCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainContextCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainContextNamesCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainDestroyComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainDontGenerateCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainEntityIndexCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainEventCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainGeneratedFileCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainNonICompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainPublicFieldsCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainReflectionComponentTypesComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainTypeCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainUniqueCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\Components\MainUniquePrefixCompComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\MainAttribute.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\MainComponentsLookup.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\MainContext.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\MainEntity.cs" />
+    <Compile Include="Custom\Sources\Generated\Main\MainMatcher.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\Components\SettingsConsoleWriteLineGeneratedPathsComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\Components\SettingsGeneratePathComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\Components\SettingsIgnoreNamespacesComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\Components\SettingsReflectionAssemblyPathsComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\Components\SettingsRunInDryModeComponent.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\SettingsAttribute.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\SettingsComponentsLookup.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\SettingsContext.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\SettingsEntity.cs" />
+    <Compile Include="Custom\Sources\Generated\Settings\SettingsMatcher.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenCompContextApiSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenCompEntityApiInterfaceSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenCompEntityApiSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenCompLookupSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenCompMatcherApiSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenComponent\GenNonICompSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenContexts\GenContextsObserverSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenContexts\GenContextsSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenContext\GenContextAttributeSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenContext\GenContextMatcherSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenContext\GenContextSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenEntity\GenEntityIndexSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenEntity\GenEntitySystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenEvents\GenEventEntityApiSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenEvents\GenEventListenerCompSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenEvents\GenEventListenerInterfaceSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenEvents\GenEventSystemsSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenEvents\GenEventSystemSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\CodeGenerators\GenFeatureClassSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\DataProviders\Reflection\ReflectionToCompsSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\DataProviders\Reflection\ReflectionToCompTypesSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\DataProviders\Reflection\ReflectionToEntityIndexSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\DestroySystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcAddFileHeaderSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcCleanTargetDirSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcLineEndings.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcMergeFilesSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PostProcessors\PostProcWriteToDiskSystem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ComponentsLib\ComponentsLib.csproj">
+      <Project>{4f2d16f7-0e52-4f91-9ff8-54ecc040d7ed}</Project>
+      <Name>ComponentsLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Custom" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+</Project>

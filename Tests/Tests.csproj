@@ -85,9 +85,9 @@
       <Project>{4f2d16f7-0e52-4f91-9ff8-54ecc040d7ed}</Project>
       <Name>ComponentsLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GenEntitas\GenEntitas.csproj">
-      <Project>{1e517fbc-1f12-4fd9-9cda-ca08c4f2b5e9}</Project>
-      <Name>GenEntitas</Name>
+    <ProjectReference Include="..\GenEntitasLib\GenEntitasLib.csproj">
+      <Project>{8d430c04-a56b-4d66-9863-e68804c3596c}</Project>
+      <Name>GenEntitasLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

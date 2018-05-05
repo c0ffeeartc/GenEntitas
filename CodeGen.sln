@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitas", "GenEntitas\Ge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentsLib", "ComponentsLib\ComponentsLib.csproj", "{4F2D16F7-0E52-4F91-9FF8-54ECC040D7ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitasLib", "GenEntitasLib\GenEntitasLib.csproj", "{8D430C04-A56B-4D66-9863-E68804C3596C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4F2D16F7-0E52-4F91-9FF8-54ECC040D7ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F2D16F7-0E52-4F91-9FF8-54ECC040D7ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F2D16F7-0E52-4F91-9FF8-54ECC040D7ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D430C04-A56B-4D66-9863-E68804C3596C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D430C04-A56B-4D66-9863-E68804C3596C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D430C04-A56B-4D66-9863-E68804C3596C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D430C04-A56B-4D66-9863-E68804C3596C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
