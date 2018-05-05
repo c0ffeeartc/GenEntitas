@@ -26,5 +26,4 @@ Entitas generator using Entitas ECS framework
     - on/off generators, data providers etc
   - PreProcessors
   - PostProcessors
-    - Convert newlines
-    - Update .csproj
+    - Update .csproj. Instead of this postprocessor glob can be used for non-unity csproj files
