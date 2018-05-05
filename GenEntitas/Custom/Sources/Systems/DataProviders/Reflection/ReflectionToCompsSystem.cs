@@ -5,7 +5,6 @@ using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Plugins;
-using UnityEngine;
 using Ent = MainEntity;
 
 namespace GenEntitas.Sources

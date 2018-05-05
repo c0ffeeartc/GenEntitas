@@ -39,7 +39,13 @@ namespace GenEntitas
 
 				.Add( new GenNonICompSystem( _contexts ) )
 
-				.Add( new PostProcAddFileHeaderSystem( _contexts ) )
+				.Add( new GenEventEntityApiSystem( _contexts ) )
+				.Add( new GenEventListenerCompSystem( _contexts ) )
+				.Add( new GenEventListenerInterfaceSystem( _contexts ) )
+				.Add( new GenEventSystemSystem( _contexts ) )
+				.Add( new GenEventSystemsSystem( _contexts ) )
+
+				//.Add( new PostProcAddFileHeaderSystem( _contexts ) )
 				.Add( new PostProcCleanTargetDirSystem( _contexts ) )
 				.Add( new PostProcMergeFilesSystem( _contexts ) )
 				.Add( new PostProcLineEndings( _contexts ) )
