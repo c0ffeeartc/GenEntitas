@@ -4,6 +4,7 @@ using System.Linq;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
+using Entitas.CodeGeneration.Plugins;
 using UnityEngine;
 using Ent = MainEntity;
 
@@ -122,6 +123,31 @@ namespace GenEntitas.Sources
 			}
 
 			ent.AddEventComp( eventInfos );
+			ProvideEventCompNewEnts( ent );
+		}
+
+		private				void					ProvideEventCompNewEnts		( MainEntity ent )
+		{
+			foreach ( var contextName in ent.contextNamesComp.Values )
+			{
+				var eventComp					= _contexts.main.CreateEntity(  );
+
+				foreach ( var eventInfo in ent.eventComp.Values )
+				{
+					var componentName				= ent.comp.FullTypeName.ToComponentName( _contexts.settings.isIgnoreNamespaces );
+					var optionalContextName			= ent.contextNamesComp.Values.Count > 1 ? contextName : string.Empty;
+					var eventTypeSuffix				= ent.GetEventTypeSuffix( eventInfo );
+					var listenerComponentName		= optionalContextName + componentName + eventTypeSuffix + "Listener";
+					var eventCompFullTypeName		= listenerComponentName.AddComponentSuffix();
+
+					eventComp.AddComp( listenerComponentName, eventCompFullTypeName );
+					eventComp.AddContextNamesComp( new List<String>{ contextName } );
+					eventComp.AddPublicFieldsComp( new List<FieldInfo>
+						{
+							new FieldInfo( "System.Collections.Generic.List<I" + listenerComponentName + ">", "value" )
+						} );
+				}
+			}
 		}
 
 		private				void					ProvideUniqueComp		( Ent ent )

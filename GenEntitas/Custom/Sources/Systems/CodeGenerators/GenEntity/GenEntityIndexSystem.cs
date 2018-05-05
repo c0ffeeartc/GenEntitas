@@ -117,7 +117,7 @@ ${getIndices}
 				.Replace("${getIndices}", getIndices);
 
 				var fileEnt			= _contexts.main.CreateEntity(  );
-				fileEnt.AddGeneratedFileComp( "EntityIndex.cs", fileContent, GetType().FullName );
+				fileEnt.AddGeneratedFileComp( "Contexts.cs", fileContent, GetType().FullName );
 		}
 
 		string generateAddMethods(EntityIndexData data) {

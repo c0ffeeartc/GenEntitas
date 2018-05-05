@@ -98,6 +98,7 @@ ${contextAssignmentsList}
 				var ent = entities[i];
 				contextNames.Add( ent.contextComp.Name );
 			}
+			contextNames.Sort( ( a, b ) => String.Compare( a, b, StringComparison.Ordinal ) );
 			var fileEnt			= _contexts.main.CreateEntity(  );
 			var contents		= Generate( contextNames.ToArray(  ) );
 			fileEnt.AddGeneratedFileComp( "Contexts.cs", contents, GetType(  ).FullName );

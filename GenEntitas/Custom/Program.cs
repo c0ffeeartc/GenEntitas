@@ -5,7 +5,7 @@ using CommandLine;
 
 namespace GenEntitas
 {
-	class Options
+	public class Options
 	{
 		[Option( "dllPaths", Required = true, HelpText = "Reflection dlls with Component classes" )]
 		public String DllPaths { get; set; }
@@ -21,9 +21,10 @@ namespace GenEntitas
 	{
 		public static void Main( string[] args )
 		{
-			Parser.Default.ParseArguments<Options>(args).WithParsed( WithParsedArgs );
+			Parser.Default.ParseArguments<Options>(args).WithParsed( Run );
 		}
-		private static void WithParsedArgs( Options options )
+
+		public static void Run( Options options )
 		{
 			if ( !Directory.Exists( options.GeneratePath ) )
 			{
