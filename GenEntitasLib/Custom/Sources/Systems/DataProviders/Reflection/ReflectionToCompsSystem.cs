@@ -57,7 +57,8 @@ namespace GenEntitas.Sources
 		private				void					ProvideComp				( MainEntity ent )
 		{
 			var t		= ent.typeComp.Value;
-			if ( t.ImplementsInterface<IComponent>(  ) )
+			if ( t.ImplementsInterface<IComponent>(  )
+				&& !Attribute.GetCustomAttributes(t).OfType<DontGenerateAttribute>().Any() )
 			{
 				ent.AddComp( t.Name, t.ToCompilableString(  ) );
 				ent.isAlreadyImplementedComp	= true;
