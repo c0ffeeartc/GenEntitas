@@ -1,30 +1,42 @@
 # GenEntitas
 Entitas generator using Entitas ECS framework
 
+### Benefits
+  - easy to extend - write Entitas System!
+
 ### Parts
+---
   - [Tests](./Tests)
   - [Components](./ComponentsLib)
   - [Systems](./GenEntitasLib)
   - [Console Runner](./GenEntitas)
 
-### Workflow
-  - Open solution
+### Workflows
+---
+
+#### Building generator
+
+  - Open `CodeGen.sln` solution file
+  - Build solution
+  - After successful build `GenEntitas/bin` will contain `GenEntitas.exe` along with dependency libraries
+
+#### Generating from game components dll
+
   - Create library project for Component classes
   - Fill components library project with components. Same as in Unity, use [Context("Game")] instead of [Game] attribute
-  - (Optional) Reference components project in GenEntitas project. Helps Assembly.LoadFrom function to get needed types
-  - Build
+  - (Optional) Reference components project in GenEntitasLib project. Helps `Assembly.LoadFrom` function to get needed types
+  - Build components dll
   - Run `mono GenEntitas.exe` and follow console help - fill dllPaths, and generatePath
   - Done
- 
-### Benefits
-  - easy to extend - write Entitas System!
 
 ### Done
+---
   - DataProviders
   - Generators
   - PostProcessors
 
 ### Needs to be done
+---
   - More tests
   - UI
   - Settings
@@ -33,3 +45,4 @@ Entitas generator using Entitas ECS framework
   - PreProcessors
   - PostProcessors
     - Update .csproj. Instead of this postprocessor glob can be used for non-unity csproj files
+
