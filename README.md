@@ -1,6 +1,12 @@
 # GenEntitas
 Entitas generator using Entitas ECS framework
 
+### Parts
+  - [Tests](./Tests)
+  - [Components](./ComponentsLib)
+  - [Systems](./GenEntitasLib)
+  - [Console Runner](./GenEntitas)
+
 ### Workflow
   - Open solution
   - Create library project for Component classes
