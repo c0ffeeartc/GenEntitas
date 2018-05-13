@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+      <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,22 +35,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DesperateDevs.CodeGeneration, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\GenEntitas\libs\Entitas\Editor\DesperateDevs.CodeGeneration.dll</HintPath>
+      <HintPath>..\Libraries\Entitas\Editor\DesperateDevs.CodeGeneration.dll</HintPath>
     </Reference>
     <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\GenEntitas\libs\Entitas\Entitas.dll</HintPath>
+      <HintPath>..\Libraries\Entitas\Entitas.dll</HintPath>
     </Reference>
     <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\GenEntitas\libs\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
+      <HintPath>..\Libraries\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="NSpec, Version=1.0.7.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>Libs\NSpec.dll</HintPath>
+      <HintPath>..\Libraries\NSpec.dll</HintPath>
     </Reference>
     <Reference Include="NSpecRunner, Version=1.0.7.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>Libs\NSpecRunner.dll</HintPath>
+      <HintPath>..\Libraries\NSpecRunner.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <HintPath>Libs\nunit.framework.dll</HintPath>
+      <HintPath>..\Libraries\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
