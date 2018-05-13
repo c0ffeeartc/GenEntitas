@@ -10,6 +10,12 @@ public class EntityIndexComp : IComponent
 	public					List<EntityIndexInfo>	Values;
 }
 
+[Context(Ids.Main)]
+public class CustomEntityIndexComp : IComponent
+{
+	public					EntityIndexData			EntityIndexData;
+}
+
 public class EntityIndexInfo
 {
 	public					EntityIndexData			EntityIndexData;

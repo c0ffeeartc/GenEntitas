@@ -32,7 +32,8 @@ namespace GenEntitas.Sources
 		protected override	void					Execute					( List<Ent> entities )
 		{
 			var assemblyPaths		= entities[0].reflectionAssemblyPaths.Values;
-			var typeSet				= new HashSet<Type>();
+			var compTypes			= new HashSet<Type>();
+			var loadableTypes		= new HashSet<Type>();
 
 			foreach ( var path in assemblyPaths )
 			{
@@ -44,25 +45,27 @@ namespace GenEntitas.Sources
 				}
 				var assembly		= Assembly.LoadFrom( path );
 				var types			= GetLoadableTypes( assembly );
+				loadableTypes.UnionWith( types );
 
-			var dataFromComponents = types
+				var dataFromComponents = types
 				.Where(type => type.ImplementsInterface<IComponent>())
 				.Where(type => !type.IsAbstract)
 				.ToArray();
 
-				typeSet.UnionWith( dataFromComponents );
+				compTypes.UnionWith( dataFromComponents );
 
-			var dataFromNonComponents = types
+				var dataFromNonComponents = types
 				.Where(type => !type.ImplementsInterface<IComponent>())
 				.Where(type => !type.IsGenericType)
 				.Where(type => GetContextNames(type).Length > 0)
 				.ToArray();
 
-				typeSet.UnionWith( dataFromNonComponents );
+				compTypes.UnionWith( dataFromNonComponents );
 
 			}
 
-			_contexts.main.SetReflectionComponentTypes( typeSet.ToList(  ) );
+			_contexts.main.SetReflectionComponentTypes( compTypes.ToList(  ) );
+			_contexts.main.SetReflectionLoadableTypes( loadableTypes.ToList(  ) );
 		}
 
 		private				String[]				GetContextNames			(Type type)

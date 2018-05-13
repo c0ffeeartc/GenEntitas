@@ -8,3 +8,9 @@ public class ReflectionComponentTypes : IComponent
 {
 	public					List<Type>				Values;
 }
+
+[Context(Ids.Main), Unique]
+public class ReflectionLoadableTypes : IComponent
+{
+	public					List<Type>				Values;
+}

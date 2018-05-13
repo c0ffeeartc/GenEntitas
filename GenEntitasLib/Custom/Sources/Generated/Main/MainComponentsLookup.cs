@@ -4,25 +4,28 @@ public static class MainComponentsLookup {
     public const int Comp = 1;
     public const int ContextComp = 2;
     public const int ContextNamesComp = 3;
-    public const int Destroy = 4;
-    public const int DontGenerateComp = 5;
-    public const int EntityIndexComp = 6;
-    public const int EventComp = 7;
-    public const int GeneratedFileComp = 8;
-    public const int NonIComp = 9;
-    public const int PublicFieldsComp = 10;
-    public const int ReflectionComponentTypes = 11;
-    public const int TypeComp = 12;
-    public const int UniqueComp = 13;
-    public const int UniquePrefixComp = 14;
+    public const int CustomEntityIndexComp = 4;
+    public const int Destroy = 5;
+    public const int DontGenerateComp = 6;
+    public const int EntityIndexComp = 7;
+    public const int EventComp = 8;
+    public const int GeneratedFileComp = 9;
+    public const int NonIComp = 10;
+    public const int PublicFieldsComp = 11;
+    public const int ReflectionComponentTypes = 12;
+    public const int ReflectionLoadableTypes = 13;
+    public const int TypeComp = 14;
+    public const int UniqueComp = 15;
+    public const int UniquePrefixComp = 16;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 17;
 
     public static readonly string[] componentNames = {
         "AlreadyImplementedComp",
         "Comp",
         "ContextComp",
         "ContextNamesComp",
+        "CustomEntityIndexComp",
         "Destroy",
         "DontGenerateComp",
         "EntityIndexComp",
@@ -31,6 +34,7 @@ public static class MainComponentsLookup {
         "NonIComp",
         "PublicFieldsComp",
         "ReflectionComponentTypes",
+        "ReflectionLoadableTypes",
         "TypeComp",
         "UniqueComp",
         "UniquePrefixComp"
@@ -41,6 +45,7 @@ public static class MainComponentsLookup {
         typeof(Comp),
         typeof(ContextComp),
         typeof(ContextNamesComp),
+        typeof(CustomEntityIndexComp),
         typeof(Destroy),
         typeof(DontGenerateComp),
         typeof(EntityIndexComp),
@@ -49,6 +54,7 @@ public static class MainComponentsLookup {
         typeof(NonIComp),
         typeof(PublicFieldsComp),
         typeof(ReflectionComponentTypes),
+        typeof(ReflectionLoadableTypes),
         typeof(TypeComp),
         typeof(UniqueComp),
         typeof(UniquePrefixComp)

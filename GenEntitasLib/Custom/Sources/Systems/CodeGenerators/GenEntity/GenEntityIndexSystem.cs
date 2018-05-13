@@ -8,9 +8,9 @@ using Ent = MainEntity;
 
 namespace GenEntitas.Sources
 {
-	public class GenEntityIndexSystem : ReactiveSystem<Ent>
+	public class GenEntityIndexSystem : IExecuteSystem
 	{
-		public				GenEntityIndexSystem			( Contexts contexts ) : base( contexts.main )
+		public				GenEntityIndexSystem			( Contexts contexts )
 		{
 			_contexts			= contexts;
 		}
@@ -59,18 +59,10 @@ ${getIndices}
     }
 ";
 
-		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
+		public				void					Execute					(  )
 		{
-			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.PublicFieldsComp ) );
-		}
-
-		protected override	Boolean					Filter					( Ent entity )
-		{
-			return entity.hasComp && entity.hasPublicFieldsComp;
-		}
-
-		protected override	void					Execute					( List<Ent> entities )
-		{
+			var entities = _contexts.main.GetGroup( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.PublicFieldsComp ) ).GetEntities(  );
+			
 			var entityIndexData = new List<EntityIndexData>(  );
 			foreach ( var ent in entities )
 			{
@@ -83,6 +75,12 @@ ${getIndices}
 
 					entityIndexData.Add( field.EntityIndexInfo.EntityIndexData );
 				}
+			}
+
+			var entsCustomIndex		= _contexts.main.GetGroup( MainMatcher.CustomEntityIndexComp ).GetEntities(  );
+			foreach ( var ent in entsCustomIndex )
+			{
+				entityIndexData.Add( ent.customEntityIndexComp.EntityIndexData );
 			}
 
 			if ( entityIndexData.Count == 0 )

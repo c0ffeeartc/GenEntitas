@@ -48,27 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\AlreadyImplementedComp.cs" />
-    <Compile Include="Components\Comp.cs" />
-    <Compile Include="Components\ContextComp.cs" />
-    <Compile Include="Components\ContextNamesComp.cs" />
-    <Compile Include="Components\DataProviders\Reflection\ReflectionAssemblyPaths.cs" />
-    <Compile Include="Components\DataProviders\Reflection\ReflectionComponentTypes.cs" />
-    <Compile Include="Components\DataProviders\Reflection\TypeComp.cs" />
-    <Compile Include="Components\Destroy.cs" />
-    <Compile Include="Components\DontGenerateComp.cs" />
-    <Compile Include="Components\EntityIndexComp.cs" />
-    <Compile Include="Components\FeatureEvents\EventComp.cs" />
-    <Compile Include="Components\GeneratedFileComp.cs" />
-    <Compile Include="Components\Ids.cs" />
-    <Compile Include="Components\NonIComp.cs" />
-    <Compile Include="Components\PublicFieldsComp.cs" />
-    <Compile Include="Components\Settings\ConsoleWriteLineGeneratedPaths.cs" />
-    <Compile Include="Components\Settings\GeneratePath.cs" />
-    <Compile Include="Components\Settings\IgnoreNamespaces.cs" />
-    <Compile Include="Components\Settings\RunInDryMode.cs" />
-    <Compile Include="Components\UniqueComp.cs" />
-    <Compile Include="Components\UniquePrefixComp.cs" />
+    <Compile Include="Components/**/*.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

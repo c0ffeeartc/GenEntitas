@@ -21,17 +21,17 @@ namespace GenEntitas.Sources
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
-			return context.CreateCollector( MainMatcher.ReflectionComponentTypes );
+			return context.CreateCollector( MainMatcher.ReflectionLoadableTypes );
 		}
 
 		protected override	Boolean					Filter					( Ent entity )
 		{
-			return entity.hasReflectionComponentTypes;
+			return entity.hasReflectionLoadableTypes;
 		}
 
 		protected override	void					Execute					( List<Ent> entities )
 		{
-			var types				= _contexts.main.reflectionComponentTypes.Values;
+			var types				= _contexts.main.reflectionLoadableTypes.Values;
 
 			var typeTodEntIndexData = new Dictionary<String, EntityIndexData>(  );
 			var entityIndexDatas	= GetData( types );
@@ -75,6 +75,22 @@ namespace GenEntitas.Sources
 
 				ent.ReplacePublicFieldsComp( publicFields );
 			}
+
+			var customEntityIndexDatas = GetCustomData( types );
+			foreach ( var data in customEntityIndexDatas )
+			{
+				var ent			= _contexts.main.CreateEntity(  );
+				ent.AddCustomEntityIndexComp( data );
+			}
+		}
+
+		private				EntityIndexData[]		GetCustomData			( List<Type> types )
+		{
+			var customEntityIndexData = types
+				.Where(type => !type.IsAbstract)
+				.Where(type => Attribute.IsDefined(type, typeof(CustomEntityIndexAttribute)))
+				.Select(createCustomEntityIndexData);
+			return customEntityIndexData.ToArray(  );
 		}
 
 		private				EntityIndexData[]		GetData					( List<Type> types )
@@ -88,14 +104,7 @@ namespace GenEntitas.Sources
 				.Where(kv => kv.Value.Any(info => info.attributes.Any(attr => attr.attribute is AbstractEntityIndexAttribute)))
 				.SelectMany(kv => createEntityIndexData(kv.Key, kv.Value));
 
-			var customEntityIndexData = types
-				.Where(type => !type.IsAbstract)
-				.Where(type => Attribute.IsDefined(type, typeof(CustomEntityIndexAttribute)))
-				.Select(createCustomEntityIndexData);
-
-			return entityIndexData
-				.Concat(customEntityIndexData)
-				.ToArray();
+			return entityIndexData.ToArray();
 		}
 
 		private				EntityIndexData[]		createEntityIndexData	(Type type, List<PublicMemberInfo> infos)
