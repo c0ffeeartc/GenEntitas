@@ -21,7 +21,7 @@ Entitas generator using Entitas ECS framework
 #### Generating from game components dll
 
   - Create library project for Component classes
-  - Fill components library project with components. Same as in Unity, use [Context("Game")] instead of [Game] attribute
+  - Fill components library project with components. Same as in Unity, use `[Context("Game")]` instead of `[Game]` attribute
   - (Optional) Reference components project in GenEntitasLib project. Helps `Assembly.LoadFrom` function to get needed types
   - Build components dll
   - Run `mono GenEntitas.exe` and follow console help - fill dllPaths, and generatePath
