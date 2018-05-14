@@ -3,6 +3,7 @@
 .idea/
 *.swp
 *.DotSettings
+*.meta
 
 obj/
 bin/
