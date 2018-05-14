@@ -29,13 +29,17 @@ namespace GenEntitas.Sources
 		protected override	void					Execute					( List<Ent> entities )
 		{
 			var generatePath		= Path.Combine( _contexts.settings.generatePath.Value, "Generated" );
+			var stringBuilder	= new StringBuilder(  );
 			foreach ( var ent in entities )
 			{
 				var targetPath		= Path.Combine( generatePath, ent.generatedFileComp.FilePath );
 
 				if ( _contexts.settings.isConsoleWriteLineGeneratedPaths )
 				{
-					Console.WriteLine( targetPath + " - " + ent.generatedFileComp.GeneratedBy );
+					stringBuilder.Append( targetPath );
+					stringBuilder.Append( " - " );
+					stringBuilder.Append( ent.generatedFileComp.GeneratedBy );
+					stringBuilder.Append( "\n" );
 				}
 
 				if ( _contexts.settings.isRunInDryMode )
@@ -49,6 +53,15 @@ namespace GenEntitas.Sources
 					Directory.CreateDirectory( dirPath );
 				}
 				File.WriteAllText( targetPath, ent.generatedFileComp.Contents );
+			}
+
+			if ( _contexts.settings.isConsoleWriteLineGeneratedPaths )
+			{
+				var s = stringBuilder.ToString(  );
+				Console.Write( s );
+#if UNITY_EDITOR
+				UnityEngine.Debug.Log( s );
+#endif
 			}
 		}
 	}
