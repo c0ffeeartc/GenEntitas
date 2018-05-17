@@ -1,11 +1,11 @@
 public partial class MainEntity {
 
-    public GeneratedFileComp generatedFileComp { get { return (GeneratedFileComp)GetComponent(MainComponentsLookup.GeneratedFileComp); } }
+    public GenEntitas.GeneratedFileComp generatedFileComp { get { return (GenEntitas.GeneratedFileComp)GetComponent(MainComponentsLookup.GeneratedFileComp); } }
     public bool hasGeneratedFileComp { get { return HasComponent(MainComponentsLookup.GeneratedFileComp); } }
 
     public void AddGeneratedFileComp(string newFilePath, string newContents, string newGeneratedBy) {
         var index = MainComponentsLookup.GeneratedFileComp;
-        var component = CreateComponent<GeneratedFileComp>(index);
+        var component = CreateComponent<GenEntitas.GeneratedFileComp>(index);
         component.FilePath = newFilePath;
         component.Contents = newContents;
         component.GeneratedBy = newGeneratedBy;
@@ -14,7 +14,7 @@ public partial class MainEntity {
 
     public void ReplaceGeneratedFileComp(string newFilePath, string newContents, string newGeneratedBy) {
         var index = MainComponentsLookup.GeneratedFileComp;
-        var component = CreateComponent<GeneratedFileComp>(index);
+        var component = CreateComponent<GenEntitas.GeneratedFileComp>(index);
         component.FilePath = newFilePath;
         component.Contents = newContents;
         component.GeneratedBy = newGeneratedBy;

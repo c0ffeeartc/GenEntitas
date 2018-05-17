@@ -41,22 +41,22 @@ public static class MainComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(AlreadyImplementedComp),
-        typeof(Comp),
-        typeof(ContextComp),
-        typeof(ContextNamesComp),
-        typeof(CustomEntityIndexComp),
-        typeof(Destroy),
-        typeof(DontGenerateComp),
-        typeof(EntityIndexComp),
-        typeof(EventComp),
-        typeof(GeneratedFileComp),
-        typeof(NonIComp),
-        typeof(PublicFieldsComp),
-        typeof(ReflectionComponentTypes),
-        typeof(ReflectionLoadableTypes),
-        typeof(TypeComp),
-        typeof(UniqueComp),
-        typeof(UniquePrefixComp)
+        typeof(GenEntitas.AlreadyImplementedComp),
+        typeof(GenEntitas.Comp),
+        typeof(GenEntitas.ContextComp),
+        typeof(GenEntitas.ContextNamesComp),
+        typeof(GenEntitas.CustomEntityIndexComp),
+        typeof(GenEntitas.Destroy),
+        typeof(GenEntitas.DontGenerateComp),
+        typeof(GenEntitas.EntityIndexComp),
+        typeof(GenEntitas.EventComp),
+        typeof(GenEntitas.GeneratedFileComp),
+        typeof(GenEntitas.NonIComp),
+        typeof(GenEntitas.PublicFieldsComp),
+        typeof(GenEntitas.ReflectionComponentTypes),
+        typeof(GenEntitas.ReflectionLoadableTypes),
+        typeof(GenEntitas.TypeComp),
+        typeof(GenEntitas.UniqueComp),
+        typeof(GenEntitas.UniquePrefixComp)
     };
 }

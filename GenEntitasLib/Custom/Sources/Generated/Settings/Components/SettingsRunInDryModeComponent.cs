@@ -19,7 +19,7 @@ public partial class SettingsContext {
 
 public partial class SettingsEntity {
 
-    static readonly RunInDryMode runInDryModeComponent = new RunInDryMode();
+    static readonly GenEntitas.RunInDryMode runInDryModeComponent = new GenEntitas.RunInDryMode();
 
     public bool isRunInDryMode {
         get { return HasComponent(SettingsComponentsLookup.RunInDryMode); }

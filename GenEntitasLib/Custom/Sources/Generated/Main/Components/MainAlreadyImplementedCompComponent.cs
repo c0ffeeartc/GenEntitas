@@ -1,6 +1,6 @@
 public partial class MainEntity {
 
-    static readonly AlreadyImplementedComp alreadyImplementedCompComponent = new AlreadyImplementedComp();
+    static readonly GenEntitas.AlreadyImplementedComp alreadyImplementedCompComponent = new GenEntitas.AlreadyImplementedComp();
 
     public bool isAlreadyImplementedComp {
         get { return HasComponent(MainComponentsLookup.AlreadyImplementedComp); }

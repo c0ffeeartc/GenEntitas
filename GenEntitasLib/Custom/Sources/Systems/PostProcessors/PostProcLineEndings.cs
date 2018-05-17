@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Entitas;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class PostProcLineEndings : ReactiveSystem<Ent>
 	{

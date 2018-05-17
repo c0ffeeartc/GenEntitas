@@ -5,7 +5,7 @@ using Entitas;
 using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class GenEventEntityApiSystem : ReactiveSystem<Ent>
 	{
@@ -59,10 +59,10 @@ namespace GenEntitas.Sources
 					var eventInfos = ent.eventComp.Values;
 					foreach ( var eventInfo in eventInfos )
 					{
-						var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.EventListener(contextName, eventInfo).AddComponentSuffix() + ".cs";
+						var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.EventListener( _contexts, contextName, eventInfo).AddComponentSuffix() + ".cs";
 
 						var contents = TEMPLATE
-							.Replace(ent, contextName, eventInfo);
+							.Replace( _contexts, ent, contextName, eventInfo);
 
 						var generatedBy		= GetType().FullName;
 

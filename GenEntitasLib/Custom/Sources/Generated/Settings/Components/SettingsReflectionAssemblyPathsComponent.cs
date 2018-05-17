@@ -1,12 +1,12 @@
 public partial class SettingsContext {
 
     public SettingsEntity reflectionAssemblyPathsEntity { get { return GetGroup(SettingsMatcher.ReflectionAssemblyPaths).GetSingleEntity(); } }
-    public ReflectionAssemblyPaths reflectionAssemblyPaths { get { return reflectionAssemblyPathsEntity.reflectionAssemblyPaths; } }
+    public GenEntitas.ReflectionAssemblyPaths reflectionAssemblyPaths { get { return reflectionAssemblyPathsEntity.reflectionAssemblyPaths; } }
     public bool hasReflectionAssemblyPaths { get { return reflectionAssemblyPathsEntity != null; } }
 
     public SettingsEntity SetReflectionAssemblyPaths(System.Collections.Generic.List<string> newValues) {
         if (hasReflectionAssemblyPaths) {
-            throw new Entitas.EntitasException("Could not set ReflectionAssemblyPaths!\n" + this + " already has an entity with ReflectionAssemblyPaths!",
+            throw new Entitas.EntitasException("Could not set ReflectionAssemblyPaths!\n" + this + " already has an entity with GenEntitas.ReflectionAssemblyPaths!",
                 "You should check if the context already has a reflectionAssemblyPathsEntity before setting it or use context.ReplaceReflectionAssemblyPaths().");
         }
         var entity = CreateEntity();
@@ -30,19 +30,19 @@ public partial class SettingsContext {
 
 public partial class SettingsEntity {
 
-    public ReflectionAssemblyPaths reflectionAssemblyPaths { get { return (ReflectionAssemblyPaths)GetComponent(SettingsComponentsLookup.ReflectionAssemblyPaths); } }
+    public GenEntitas.ReflectionAssemblyPaths reflectionAssemblyPaths { get { return (GenEntitas.ReflectionAssemblyPaths)GetComponent(SettingsComponentsLookup.ReflectionAssemblyPaths); } }
     public bool hasReflectionAssemblyPaths { get { return HasComponent(SettingsComponentsLookup.ReflectionAssemblyPaths); } }
 
     public void AddReflectionAssemblyPaths(System.Collections.Generic.List<string> newValues) {
         var index = SettingsComponentsLookup.ReflectionAssemblyPaths;
-        var component = CreateComponent<ReflectionAssemblyPaths>(index);
+        var component = CreateComponent<GenEntitas.ReflectionAssemblyPaths>(index);
         component.Values = newValues;
         AddComponent(index, component);
     }
 
     public void ReplaceReflectionAssemblyPaths(System.Collections.Generic.List<string> newValues) {
         var index = SettingsComponentsLookup.ReflectionAssemblyPaths;
-        var component = CreateComponent<ReflectionAssemblyPaths>(index);
+        var component = CreateComponent<GenEntitas.ReflectionAssemblyPaths>(index);
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

@@ -8,7 +8,7 @@ using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class ReflectionToEntityIndexSystem : ReactiveSystem<Ent>
 	{

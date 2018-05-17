@@ -4,6 +4,9 @@ using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Plugins;
 
+namespace GenEntitas
+{
+
 [Context(Ids.Main)]
 public class EntityIndexComp : IComponent
 {
@@ -29,4 +32,6 @@ public class EntityIndexInfo
 	public					String					MemberName;
 	public					Boolean					HasMultple;
 	
+}
+
 }

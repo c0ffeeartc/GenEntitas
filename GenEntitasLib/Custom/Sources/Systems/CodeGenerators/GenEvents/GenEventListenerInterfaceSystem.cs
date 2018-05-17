@@ -5,7 +5,7 @@ using Entitas;
 using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class GenEventListenerInterfaceSystem : ReactiveSystem<Ent>
 	{
@@ -42,14 +42,14 @@ namespace GenEntitas.Sources
 					var eventInfos = ent.eventComp.Values;
 					foreach ( var eventInfo in eventInfos )
 					{
-						var filePath		= "Events" + Path.DirectorySeparatorChar + "Interfaces" + Path.DirectorySeparatorChar + "I" + ent.EventListener(contextName, eventInfo) + ".cs";
+						var filePath		= "Events" + Path.DirectorySeparatorChar + "Interfaces" + Path.DirectorySeparatorChar + "I" + ent.EventListener( _contexts, contextName, eventInfo) + ".cs";
 
 						var contents = TEMPLATE
 							.Replace("${methodParameters}", ent.GetEventMethodArgs(eventInfo
 								, ent.hasPublicFieldsComp
 									? ", " + ent.publicFieldsComp.Values.GetMethodParameters(false)
 									: ""))
-							.Replace(ent, contextName, eventInfo);
+							.Replace( _contexts, ent, contextName, eventInfo);
 
 						var generatedBy		= GetType().FullName;
 

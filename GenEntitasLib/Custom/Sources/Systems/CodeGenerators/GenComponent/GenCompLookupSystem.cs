@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Entitas;
-using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class GenCompLookupSystem : ReactiveSystem<Ent>
 	{
@@ -78,7 +77,7 @@ ${componentTypesList}
 
 				var componentConstantsList = string.Join("\n", ents.ToArray()
 					.Select((ent, index) => COMPONENT_CONSTANT_TEMPLATE
-						.Replace("${ComponentName}", ent.ComponentName() )
+						.Replace("${ComponentName}", ent.ComponentName( _contexts ) )
 						.Replace("${Index}", index.ToString())).ToArray());
 
 				var totalComponentsConstant = TOTAL_COMPONENTS_CONSTANT_TEMPLATE
@@ -86,7 +85,7 @@ ${componentTypesList}
 
 				var componentNamesList = string.Join(",\n", ents
 					.Select(ent => COMPONENT_NAME_TEMPLATE
-						.Replace("${ComponentName}", ent.ComponentName())
+						.Replace("${ComponentName}", ent.ComponentName( _contexts ))
 					).ToArray());
 
 				var componentTypesList = string.Join(",\n", ents.ToArray()

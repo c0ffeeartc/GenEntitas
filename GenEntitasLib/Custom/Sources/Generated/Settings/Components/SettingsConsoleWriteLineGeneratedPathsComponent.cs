@@ -19,7 +19,7 @@ public partial class SettingsContext {
 
 public partial class SettingsEntity {
 
-    static readonly ConsoleWriteLineGeneratedPaths consoleWriteLineGeneratedPathsComponent = new ConsoleWriteLineGeneratedPaths();
+    static readonly GenEntitas.ConsoleWriteLineGeneratedPaths consoleWriteLineGeneratedPathsComponent = new GenEntitas.ConsoleWriteLineGeneratedPaths();
 
     public bool isConsoleWriteLineGeneratedPaths {
         get { return HasComponent(SettingsComponentsLookup.ConsoleWriteLineGeneratedPaths); }

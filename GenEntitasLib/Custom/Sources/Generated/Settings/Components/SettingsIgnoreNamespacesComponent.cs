@@ -19,7 +19,7 @@ public partial class SettingsContext {
 
 public partial class SettingsEntity {
 
-    static readonly IgnoreNamespaces ignoreNamespacesComponent = new IgnoreNamespaces();
+    static readonly GenEntitas.IgnoreNamespaces ignoreNamespacesComponent = new GenEntitas.IgnoreNamespaces();
 
     public bool isIgnoreNamespaces {
         get { return HasComponent(SettingsComponentsLookup.IgnoreNamespaces); }

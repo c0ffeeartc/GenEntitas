@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GenEntitas.Sources;
+using GenEntitas;
 using NSpec;
 
 namespace Tests.Tests

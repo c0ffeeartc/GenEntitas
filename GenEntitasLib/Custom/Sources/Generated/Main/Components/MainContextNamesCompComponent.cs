@@ -1,18 +1,18 @@
 public partial class MainEntity {
 
-    public ContextNamesComp contextNamesComp { get { return (ContextNamesComp)GetComponent(MainComponentsLookup.ContextNamesComp); } }
+    public GenEntitas.ContextNamesComp contextNamesComp { get { return (GenEntitas.ContextNamesComp)GetComponent(MainComponentsLookup.ContextNamesComp); } }
     public bool hasContextNamesComp { get { return HasComponent(MainComponentsLookup.ContextNamesComp); } }
 
     public void AddContextNamesComp(System.Collections.Generic.List<string> newValues) {
         var index = MainComponentsLookup.ContextNamesComp;
-        var component = CreateComponent<ContextNamesComp>(index);
+        var component = CreateComponent<GenEntitas.ContextNamesComp>(index);
         component.Values = newValues;
         AddComponent(index, component);
     }
 
     public void ReplaceContextNamesComp(System.Collections.Generic.List<string> newValues) {
         var index = MainComponentsLookup.ContextNamesComp;
-        var component = CreateComponent<ContextNamesComp>(index);
+        var component = CreateComponent<GenEntitas.ContextNamesComp>(index);
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

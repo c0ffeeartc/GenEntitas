@@ -1,18 +1,18 @@
 public partial class MainEntity {
 
-    public ContextComp contextComp { get { return (ContextComp)GetComponent(MainComponentsLookup.ContextComp); } }
+    public GenEntitas.ContextComp contextComp { get { return (GenEntitas.ContextComp)GetComponent(MainComponentsLookup.ContextComp); } }
     public bool hasContextComp { get { return HasComponent(MainComponentsLookup.ContextComp); } }
 
     public void AddContextComp(string newName) {
         var index = MainComponentsLookup.ContextComp;
-        var component = CreateComponent<ContextComp>(index);
+        var component = CreateComponent<GenEntitas.ContextComp>(index);
         component.Name = newName;
         AddComponent(index, component);
     }
 
     public void ReplaceContextComp(string newName) {
         var index = MainComponentsLookup.ContextComp;
-        var component = CreateComponent<ContextComp>(index);
+        var component = CreateComponent<GenEntitas.ContextComp>(index);
         component.Name = newName;
         ReplaceComponent(index, component);
     }

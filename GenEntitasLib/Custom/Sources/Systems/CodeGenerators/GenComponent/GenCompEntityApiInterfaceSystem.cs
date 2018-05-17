@@ -5,7 +5,7 @@ using Entitas;
 using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class GenCompEntityApiInterfaceSystem : ReactiveSystem<Ent>
 	{
@@ -57,8 +57,8 @@ namespace GenEntitas.Sources
 
 				{
 					var template		= ent.hasPublicFieldsComp ? STANDARD_TEMPLATE : FLAG_TEMPLATE;
-					var filePath		= "Components" + Path.DirectorySeparatorChar + "Interfaces" + Path.DirectorySeparatorChar + "I" + ent.ComponentName(  ) + "Entity.cs";
-					var contents		= template.Replace( ent, String.Empty );
+					var filePath		= "Components" + Path.DirectorySeparatorChar + "Interfaces" + Path.DirectorySeparatorChar + "I" + ent.ComponentName( _contexts ) + "Entity.cs";
+					var contents		= template.Replace( _contexts, ent, String.Empty );
 					var generatedBy		= GetType(  ).FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );
@@ -69,7 +69,7 @@ namespace GenEntitas.Sources
 				foreach ( var contextName in contextNames )
 				{
 					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + ent.ComponentNameWithContext(contextName).AddComponentSuffix() + ".cs";
-					var contents		= ENTITY_INTERFACE_TEMPLATE.Replace(ent, contextName);
+					var contents		= ENTITY_INTERFACE_TEMPLATE.Replace( _contexts, ent, contextName);
 					var generatedBy		= GetType(  ).FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );

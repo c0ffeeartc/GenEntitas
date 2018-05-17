@@ -8,7 +8,7 @@ using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Ent = SettingsEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class ReflectionToCompTypesSystem : ReactiveSystem<SettingsEntity>
 	{

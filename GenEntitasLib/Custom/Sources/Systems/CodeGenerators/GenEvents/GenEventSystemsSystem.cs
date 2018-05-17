@@ -6,7 +6,7 @@ using Entitas;
 using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class GenEventSystemsSystem : ReactiveSystem<Ent>
 	{
@@ -58,7 +58,7 @@ ${systemsList}
 				var orderedEventData = contextEnts[contextName]
 					.SelectMany(ent => ent.eventComp.Values.Select(eventData => new DataTuple { Ent = ent, EventInfo = eventData }).ToArray())
 					.OrderBy(tuple => tuple.EventInfo.Priority)
-					.ThenBy(tuple => tuple.Ent.ComponentName())
+					.ThenBy(tuple => tuple.Ent.ComponentName( _contexts ))
 					.ToList();
 
 				contextNameToDataTuples.Add(contextName, orderedEventData);
@@ -98,9 +98,9 @@ ${systemsList}
 		private				String					GenerateAddSystem		(string contextName, DataTuple data)
 		{
 			return SYSTEM_ADD_TEMPLATE
-				.Replace(data.Ent, contextName, data.EventInfo)
+				.Replace( _contexts, data.Ent, contextName, data.EventInfo)
 				.Replace("${priority}", data.EventInfo.Priority.ToString())
-				.Replace("${Event}", data.Ent.Event(contextName, data.EventInfo));
+				.Replace("${Event}", data.Ent.Event( _contexts, contextName, data.EventInfo));
 		}
 
 		struct DataTuple

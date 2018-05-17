@@ -4,7 +4,7 @@ using System.Text;
 using Entitas;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class PostProcAddFileHeaderSystem : ReactiveSystem<Ent>
 	{

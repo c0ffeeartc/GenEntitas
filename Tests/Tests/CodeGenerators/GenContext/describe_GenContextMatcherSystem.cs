@@ -1,4 +1,4 @@
-﻿using GenEntitas.Sources;
+﻿using GenEntitas;
 using NSpec;
 
 namespace Tests.Tests

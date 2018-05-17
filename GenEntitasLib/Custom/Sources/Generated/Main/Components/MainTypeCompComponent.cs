@@ -1,18 +1,18 @@
 public partial class MainEntity {
 
-    public TypeComp typeComp { get { return (TypeComp)GetComponent(MainComponentsLookup.TypeComp); } }
+    public GenEntitas.TypeComp typeComp { get { return (GenEntitas.TypeComp)GetComponent(MainComponentsLookup.TypeComp); } }
     public bool hasTypeComp { get { return HasComponent(MainComponentsLookup.TypeComp); } }
 
     public void AddTypeComp(System.Type newValue) {
         var index = MainComponentsLookup.TypeComp;
-        var component = CreateComponent<TypeComp>(index);
+        var component = CreateComponent<GenEntitas.TypeComp>(index);
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceTypeComp(System.Type newValue) {
         var index = MainComponentsLookup.TypeComp;
-        var component = CreateComponent<TypeComp>(index);
+        var component = CreateComponent<GenEntitas.TypeComp>(index);
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

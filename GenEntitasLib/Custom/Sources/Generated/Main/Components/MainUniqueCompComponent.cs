@@ -1,6 +1,6 @@
 public partial class MainEntity {
 
-    static readonly UniqueComp uniqueCompComponent = new UniqueComp();
+    static readonly GenEntitas.UniqueComp uniqueCompComponent = new GenEntitas.UniqueComp();
 
     public bool isUniqueComp {
         get { return HasComponent(MainComponentsLookup.UniqueComp); }

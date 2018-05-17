@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Entitas.CodeGeneration.Attributes;
-using GenEntitas.Sources;
+using GenEntitas;
 using NSpec;
 
 namespace Tests.Tests

@@ -1,6 +1,6 @@
 public partial class MainEntity {
 
-    static readonly Destroy destroyComponent = new Destroy();
+    static readonly GenEntitas.Destroy destroyComponent = new GenEntitas.Destroy();
 
     public bool isDestroy {
         get { return HasComponent(MainComponentsLookup.Destroy); }

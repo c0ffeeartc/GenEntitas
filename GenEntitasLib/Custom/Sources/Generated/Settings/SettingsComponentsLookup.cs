@@ -17,10 +17,10 @@ public static class SettingsComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(ConsoleWriteLineGeneratedPaths),
-        typeof(GeneratePath),
-        typeof(IgnoreNamespaces),
-        typeof(ReflectionAssemblyPaths),
-        typeof(RunInDryMode)
+        typeof(GenEntitas.ConsoleWriteLineGeneratedPaths),
+        typeof(GenEntitas.GeneratePath),
+        typeof(GenEntitas.IgnoreNamespaces),
+        typeof(GenEntitas.ReflectionAssemblyPaths),
+        typeof(GenEntitas.RunInDryMode)
     };
 }

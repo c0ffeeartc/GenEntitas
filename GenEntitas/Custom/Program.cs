@@ -7,6 +7,9 @@ namespace GenEntitas
 {
 	public class Options
 	{
+		[Option( "ignoreNamespaces", Default = true, HelpText = "do not add namespace to component name. Default = true" )]
+		public Boolean IgnoreNamespaces { get; set; }
+
 		[Option( "dllPaths", Required = true, HelpText = "Reflection dlls with Component classes" )]
 		public String DllPaths { get; set; }
 
@@ -47,6 +50,7 @@ namespace GenEntitas
 		private static void FillContexts( Contexts contexts, Options options )
 		{
 			contexts.settings.isConsoleWriteLineGeneratedPaths		= true;
+			contexts.settings.isIgnoreNamespaces					= options.IgnoreNamespaces;
 			contexts.settings.isRunInDryMode						= options.RunInDryMode;
 			contexts.settings.SetGeneratePath( String.IsNullOrEmpty( options.GeneratePath ) ? "./" : options.GeneratePath );
 			contexts.settings.SetReflectionAssemblyPaths( options.DllPaths.Split(',').ToList(  ) );

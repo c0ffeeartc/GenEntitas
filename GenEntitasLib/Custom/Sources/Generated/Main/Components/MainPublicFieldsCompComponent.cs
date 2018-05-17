@@ -1,18 +1,18 @@
 public partial class MainEntity {
 
-    public PublicFieldsComp publicFieldsComp { get { return (PublicFieldsComp)GetComponent(MainComponentsLookup.PublicFieldsComp); } }
+    public GenEntitas.PublicFieldsComp publicFieldsComp { get { return (GenEntitas.PublicFieldsComp)GetComponent(MainComponentsLookup.PublicFieldsComp); } }
     public bool hasPublicFieldsComp { get { return HasComponent(MainComponentsLookup.PublicFieldsComp); } }
 
-    public void AddPublicFieldsComp(System.Collections.Generic.List<FieldInfo> newValues) {
+    public void AddPublicFieldsComp(System.Collections.Generic.List<GenEntitas.FieldInfo> newValues) {
         var index = MainComponentsLookup.PublicFieldsComp;
-        var component = CreateComponent<PublicFieldsComp>(index);
+        var component = CreateComponent<GenEntitas.PublicFieldsComp>(index);
         component.Values = newValues;
         AddComponent(index, component);
     }
 
-    public void ReplacePublicFieldsComp(System.Collections.Generic.List<FieldInfo> newValues) {
+    public void ReplacePublicFieldsComp(System.Collections.Generic.List<GenEntitas.FieldInfo> newValues) {
         var index = MainComponentsLookup.PublicFieldsComp;
-        var component = CreateComponent<PublicFieldsComp>(index);
+        var component = CreateComponent<GenEntitas.PublicFieldsComp>(index);
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

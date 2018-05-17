@@ -1,18 +1,18 @@
 public partial class MainEntity {
 
-    public UniquePrefixComp uniquePrefixComp { get { return (UniquePrefixComp)GetComponent(MainComponentsLookup.UniquePrefixComp); } }
+    public GenEntitas.UniquePrefixComp uniquePrefixComp { get { return (GenEntitas.UniquePrefixComp)GetComponent(MainComponentsLookup.UniquePrefixComp); } }
     public bool hasUniquePrefixComp { get { return HasComponent(MainComponentsLookup.UniquePrefixComp); } }
 
     public void AddUniquePrefixComp(string newValue) {
         var index = MainComponentsLookup.UniquePrefixComp;
-        var component = CreateComponent<UniquePrefixComp>(index);
+        var component = CreateComponent<GenEntitas.UniquePrefixComp>(index);
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceUniquePrefixComp(string newValue) {
         var index = MainComponentsLookup.UniquePrefixComp;
-        var component = CreateComponent<UniquePrefixComp>(index);
+        var component = CreateComponent<GenEntitas.UniquePrefixComp>(index);
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

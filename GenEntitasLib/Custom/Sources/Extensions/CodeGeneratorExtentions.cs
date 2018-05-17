@@ -1,15 +1,11 @@
-﻿using System.Linq;
-using DesperateDevs.Utils;
+﻿using DesperateDevs.Utils;
 using Entitas;
-using Entitas.CodeGeneration.Attributes;
 
-namespace GenEntitas.Sources {
+namespace GenEntitas {
 
     public static class CodeGeneratorExtentions {
 
         public const string LOOKUP = "ComponentsLookup";
-
-        public static bool ignoreNamespaces;
 
         public static string Replace(this string template, string contextName) {
             return template

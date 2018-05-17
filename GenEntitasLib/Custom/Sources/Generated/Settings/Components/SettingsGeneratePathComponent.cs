@@ -1,12 +1,12 @@
 public partial class SettingsContext {
 
     public SettingsEntity generatePathEntity { get { return GetGroup(SettingsMatcher.GeneratePath).GetSingleEntity(); } }
-    public GeneratePath generatePath { get { return generatePathEntity.generatePath; } }
+    public GenEntitas.GeneratePath generatePath { get { return generatePathEntity.generatePath; } }
     public bool hasGeneratePath { get { return generatePathEntity != null; } }
 
     public SettingsEntity SetGeneratePath(string newValue) {
         if (hasGeneratePath) {
-            throw new Entitas.EntitasException("Could not set GeneratePath!\n" + this + " already has an entity with GeneratePath!",
+            throw new Entitas.EntitasException("Could not set GeneratePath!\n" + this + " already has an entity with GenEntitas.GeneratePath!",
                 "You should check if the context already has a generatePathEntity before setting it or use context.ReplaceGeneratePath().");
         }
         var entity = CreateEntity();
@@ -30,19 +30,19 @@ public partial class SettingsContext {
 
 public partial class SettingsEntity {
 
-    public GeneratePath generatePath { get { return (GeneratePath)GetComponent(SettingsComponentsLookup.GeneratePath); } }
+    public GenEntitas.GeneratePath generatePath { get { return (GenEntitas.GeneratePath)GetComponent(SettingsComponentsLookup.GeneratePath); } }
     public bool hasGeneratePath { get { return HasComponent(SettingsComponentsLookup.GeneratePath); } }
 
     public void AddGeneratePath(string newValue) {
         var index = SettingsComponentsLookup.GeneratePath;
-        var component = CreateComponent<GeneratePath>(index);
+        var component = CreateComponent<GenEntitas.GeneratePath>(index);
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceGeneratePath(string newValue) {
         var index = SettingsComponentsLookup.GeneratePath;
-        var component = CreateComponent<GeneratePath>(index);
+        var component = CreateComponent<GenEntitas.GeneratePath>(index);
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

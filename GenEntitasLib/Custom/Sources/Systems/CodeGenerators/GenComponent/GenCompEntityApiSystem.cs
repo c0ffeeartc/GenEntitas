@@ -7,7 +7,7 @@ using Entitas;
 using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class GenCompEntityApiSystem : ReactiveSystem<Ent>
 	{
@@ -92,7 +92,7 @@ ${memberAssignmentList}
 					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.comp.Name.AddComponentSuffix(  ) + ".cs";
 
 					var contents = template
-						.Replace( ent, contextName );
+						.Replace( _contexts, ent, contextName );
 
 					if ( ent.hasPublicFieldsComp )
 					{

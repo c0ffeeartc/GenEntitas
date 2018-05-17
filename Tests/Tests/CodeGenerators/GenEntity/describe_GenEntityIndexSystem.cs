@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
-using GenEntitas.Sources;
+using GenEntitas;
 using NSpec;
 
 [Context("Main"), Context("Second")]

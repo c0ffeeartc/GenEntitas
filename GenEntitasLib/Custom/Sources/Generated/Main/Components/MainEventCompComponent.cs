@@ -1,18 +1,18 @@
 public partial class MainEntity {
 
-    public EventComp eventComp { get { return (EventComp)GetComponent(MainComponentsLookup.EventComp); } }
+    public GenEntitas.EventComp eventComp { get { return (GenEntitas.EventComp)GetComponent(MainComponentsLookup.EventComp); } }
     public bool hasEventComp { get { return HasComponent(MainComponentsLookup.EventComp); } }
 
-    public void AddEventComp(System.Collections.Generic.List<EventInfo> newValues) {
+    public void AddEventComp(System.Collections.Generic.List<GenEntitas.EventInfo> newValues) {
         var index = MainComponentsLookup.EventComp;
-        var component = CreateComponent<EventComp>(index);
+        var component = CreateComponent<GenEntitas.EventComp>(index);
         component.Values = newValues;
         AddComponent(index, component);
     }
 
-    public void ReplaceEventComp(System.Collections.Generic.List<EventInfo> newValues) {
+    public void ReplaceEventComp(System.Collections.Generic.List<GenEntitas.EventInfo> newValues) {
         var index = MainComponentsLookup.EventComp;
-        var component = CreateComponent<EventComp>(index);
+        var component = CreateComponent<GenEntitas.EventComp>(index);
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

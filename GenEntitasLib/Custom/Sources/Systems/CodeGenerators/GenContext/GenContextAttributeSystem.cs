@@ -4,7 +4,7 @@ using System.IO;
 using Entitas;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class GenContextAttributeSystem : ReactiveSystem<Ent>
 	{

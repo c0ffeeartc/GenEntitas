@@ -1,18 +1,18 @@
 public partial class MainEntity {
 
-    public CustomEntityIndexComp customEntityIndexComp { get { return (CustomEntityIndexComp)GetComponent(MainComponentsLookup.CustomEntityIndexComp); } }
+    public GenEntitas.CustomEntityIndexComp customEntityIndexComp { get { return (GenEntitas.CustomEntityIndexComp)GetComponent(MainComponentsLookup.CustomEntityIndexComp); } }
     public bool hasCustomEntityIndexComp { get { return HasComponent(MainComponentsLookup.CustomEntityIndexComp); } }
 
     public void AddCustomEntityIndexComp(Entitas.CodeGeneration.Plugins.EntityIndexData newEntityIndexData) {
         var index = MainComponentsLookup.CustomEntityIndexComp;
-        var component = CreateComponent<CustomEntityIndexComp>(index);
+        var component = CreateComponent<GenEntitas.CustomEntityIndexComp>(index);
         component.EntityIndexData = newEntityIndexData;
         AddComponent(index, component);
     }
 
     public void ReplaceCustomEntityIndexComp(Entitas.CodeGeneration.Plugins.EntityIndexData newEntityIndexData) {
         var index = MainComponentsLookup.CustomEntityIndexComp;
-        var component = CreateComponent<CustomEntityIndexComp>(index);
+        var component = CreateComponent<GenEntitas.CustomEntityIndexComp>(index);
         component.EntityIndexData = newEntityIndexData;
         ReplaceComponent(index, component);
     }

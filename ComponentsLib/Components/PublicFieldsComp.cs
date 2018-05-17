@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Entitas.CodeGeneration.Attributes;
 using Entitas;
 
+namespace GenEntitas
+{
+
 [Context(Ids.Main)]
 public class PublicFieldsComp : IComponent
 {
@@ -25,4 +28,6 @@ public partial class FieldInfo
 public partial class FieldInfo
 {
 	public					EntityIndexInfo			EntityIndexInfo;
+}
+
 }

@@ -1,6 +1,6 @@
 public partial class MainEntity {
 
-    static readonly DontGenerateComp dontGenerateCompComponent = new DontGenerateComp();
+    static readonly GenEntitas.DontGenerateComp dontGenerateCompComponent = new GenEntitas.DontGenerateComp();
 
     public bool isDontGenerateComp {
         get { return HasComponent(MainComponentsLookup.DontGenerateComp); }

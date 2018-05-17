@@ -5,7 +5,7 @@ using DesperateDevs.Utils;
 using Entitas;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class GenContextsObserverSystem : ReactiveSystem<Ent>
 	{

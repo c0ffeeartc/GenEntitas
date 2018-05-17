@@ -73,12 +73,12 @@ public partial class Contexts {
         main.AddEntityIndex(new Entitas.PrimaryEntityIndex<MainEntity, string>(
             Comp,
             main.GetGroup(MainMatcher.Comp),
-            (e, c) => ((Comp)c).FullTypeName));
+            (e, c) => ((GenEntitas.Comp)c).FullTypeName));
 
         main.AddEntityIndex(new Entitas.EntityIndex<MainEntity, System.Type>(
             TypeComp,
             main.GetGroup(MainMatcher.TypeComp),
-            (e, c) => ((TypeComp)c).Value));
+            (e, c) => ((GenEntitas.TypeComp)c).Value));
     }
 }
 

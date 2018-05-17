@@ -1,5 +1,5 @@
 ﻿using Entitas;
-using GenEntitas.Sources;
+using GenEntitas;
 
 namespace GenEntitas
 {

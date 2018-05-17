@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
+namespace GenEntitas
+{
+
 [Context(Ids.Main)]
 public class EventComp : IComponent
 {
@@ -21,4 +24,6 @@ public class EventInfo
 	public					Boolean					BindToEntity;
 	public					EventType				EventType;
 	public					Int32					Priority;
+}
+
 }

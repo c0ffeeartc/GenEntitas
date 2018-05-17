@@ -1,11 +1,11 @@
 public partial class MainEntity {
 
-    public NonIComp nonIComp { get { return (NonIComp)GetComponent(MainComponentsLookup.NonIComp); } }
+    public GenEntitas.NonIComp nonIComp { get { return (GenEntitas.NonIComp)GetComponent(MainComponentsLookup.NonIComp); } }
     public bool hasNonIComp { get { return HasComponent(MainComponentsLookup.NonIComp); } }
 
     public void AddNonIComp(string newFullCompName, string newFieldTypeName) {
         var index = MainComponentsLookup.NonIComp;
-        var component = CreateComponent<NonIComp>(index);
+        var component = CreateComponent<GenEntitas.NonIComp>(index);
         component.FullCompName = newFullCompName;
         component.FieldTypeName = newFieldTypeName;
         AddComponent(index, component);
@@ -13,7 +13,7 @@ public partial class MainEntity {
 
     public void ReplaceNonIComp(string newFullCompName, string newFieldTypeName) {
         var index = MainComponentsLookup.NonIComp;
-        var component = CreateComponent<NonIComp>(index);
+        var component = CreateComponent<GenEntitas.NonIComp>(index);
         component.FullCompName = newFullCompName;
         component.FieldTypeName = newFieldTypeName;
         ReplaceComponent(index, component);

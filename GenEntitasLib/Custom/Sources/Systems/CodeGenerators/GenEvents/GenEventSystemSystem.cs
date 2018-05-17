@@ -8,7 +8,7 @@ using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class GenEventSystemSystem : ReactiveSystem<Ent>
 	{
@@ -109,7 +109,7 @@ namespace GenEntitas.Sources
 				: GetMethodArgs( ent.publicFieldsComp.Values.ToArray( ) ) ) );
 
 			var filePath = "Events" + Path.DirectorySeparatorChar + "Systems" + Path.DirectorySeparatorChar +
-			               ent.Event( contextName, eventInfo ) + "EventSystem.cs";
+			               ent.Event( _contexts, contextName, eventInfo ) + "EventSystem.cs";
 
 			var template = eventInfo.BindToEntity
 				? BIND_TO_ENTITY_TEMPLATE
@@ -117,7 +117,7 @@ namespace GenEntitas.Sources
 
 			var cachedAccess = !ent.hasPublicFieldsComp
 				? string.Empty
-				: "var component = e." + ent.ComponentName( ).LowercaseFirst( ) + ";";
+				: "var component = e." + ent.ComponentName( _contexts ).LowercaseFirst( ) + ";";
 
 			if ( eventInfo.EventType == EventType.Removed )
 			{
@@ -130,7 +130,7 @@ namespace GenEntitas.Sources
 				.Replace( "${filter}", GetFilter( ent, contextName, eventInfo ) )
 				.Replace( "${cachedAccess}", cachedAccess )
 				.Replace( "${methodArgs}", methodArgs )
-				.Replace( ent, contextName, eventInfo );
+				.Replace( _contexts, ent, contextName, eventInfo );
 
 			var generatedBy = GetType( ).FullName;
 
@@ -158,16 +158,16 @@ namespace GenEntitas.Sources
 				switch (eventInfo.EventType)
 				{
 					case EventType.Added:
-						filter = "entity.has" + ent.ComponentName();
+						filter = "entity.has" + ent.ComponentName( _contexts );
 						break;
 					case EventType.Removed:
-						filter = "!entity.has" + ent.ComponentName();
+						filter = "!entity.has" + ent.ComponentName( _contexts );
 						break;
 				}
 			}
 
 			if (eventInfo.BindToEntity) {
-				filter += " && entity.has" + ent.EventListener(contextName, eventInfo);
+				filter += " && entity.has" + ent.EventListener( _contexts, contextName, eventInfo);
 			}
 
 			return filter;

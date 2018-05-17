@@ -5,7 +5,7 @@ using Entitas;
 using Entitas.CodeGeneration.Plugins;
 using Ent = MainEntity;
 
-namespace GenEntitas.Sources
+namespace GenEntitas
 {
 	public class GenCompMatcherApiSystem : ReactiveSystem<Ent>
 	{
@@ -55,7 +55,7 @@ namespace GenEntitas.Sources
 					var filePath		= contextName + Path.DirectorySeparatorChar + "Components" + Path.DirectorySeparatorChar + contextName + ent.comp.Name.AddComponentSuffix(  ) + ".cs";
 					var contents		= TEMPLATE
 						.Replace("${componentNames}", contextName + CodeGeneratorExtentions.LOOKUP + ".componentNames")
-						.Replace( ent, contextName );
+						.Replace( _contexts, ent, contextName );
 					var generatedBy		= GetType().FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );
