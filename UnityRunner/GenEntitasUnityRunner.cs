@@ -5,6 +5,10 @@ using GenEntitas;
 using UnityEditor;
 using UnityEngine;
 
+namespace GenEntitas
+{
+
+
 	public class Options
 	{
 		public String DllPaths { get; set; }
@@ -52,4 +56,5 @@ public class GenEntitasUnityRunner : MonoBehaviour
 		contexts.settings.SetGeneratePath( String.IsNullOrEmpty( options.GeneratePath ) ? "./" : options.GeneratePath );
 		contexts.settings.SetReflectionAssemblyPaths( options.DllPaths.Split(',').ToList(  ) );
 	}
+}
 }
