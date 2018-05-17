@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Entitas;
-using Ent = MainEntity;
+using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {

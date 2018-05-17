@@ -7,7 +7,7 @@ namespace GenEntitas
 {
 	public class Options
 	{
-		[Option( "ignoreNamespaces", Default = true, HelpText = "do not add namespace to component name. Default = true" )]
+		[Option( "ignoreNamespaces", Default = true, HelpText = "do not add namespace to component name" )]
 		public Boolean IgnoreNamespaces { get; set; }
 
 		[Option( "dllPaths", Required = true, HelpText = "Reflection dlls with Component classes" )]
@@ -15,6 +15,9 @@ namespace GenEntitas
 
 		[Option( "generatePath", Required = true, HelpText = "Where to place Generated folder. WARNING: removes and creates Generated folder on each run" )]
 		public String GeneratePath { get; set; }
+
+		[Option( "generatedNamespace", Default = "", HelpText = "do not add namespace to component name" )]
+		public String GeneratedNamespace { get; set; }
 
 		[Option( "dryMode", HelpText = "Do not remove or write anything on disk. WARNING: plugin devs should handle this option" )]
 		public Boolean RunInDryMode { get; set; }
@@ -53,6 +56,7 @@ namespace GenEntitas
 			contexts.settings.isIgnoreNamespaces					= options.IgnoreNamespaces;
 			contexts.settings.isRunInDryMode						= options.RunInDryMode;
 			contexts.settings.SetGeneratePath( String.IsNullOrEmpty( options.GeneratePath ) ? "./" : options.GeneratePath );
+			contexts.settings.SetGeneratedNamespace( options.GeneratedNamespace );
 			contexts.settings.SetReflectionAssemblyPaths( options.DllPaths.Split(',').ToList(  ) );
 		}
 	}

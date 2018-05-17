@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Entitas;
-using Ent = MainEntity;
+using Ent = GenEntitas.MainEntity;
 
 
 namespace GenEntitas
@@ -101,7 +101,7 @@ ${contextAssignmentsList}
 			contextNames.Sort( ( a, b ) => String.Compare( a, b, StringComparison.Ordinal ) );
 			var fileEnt			= _contexts.main.CreateEntity(  );
 			var contents		= Generate( contextNames.ToArray(  ) );
-			fileEnt.AddGeneratedFileComp( "Contexts.cs", contents, GetType(  ).FullName );
+			fileEnt.AddGeneratedFileComp( "Contexts.cs", contents.WrapInNamespace( _contexts ), GetType(  ).FullName );
 		}
 	}
 }

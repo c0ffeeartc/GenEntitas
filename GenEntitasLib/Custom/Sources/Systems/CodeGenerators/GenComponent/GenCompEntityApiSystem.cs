@@ -5,7 +5,7 @@ using System.Linq;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Plugins;
-using Ent = MainEntity;
+using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
@@ -103,7 +103,7 @@ ${memberAssignmentList}
 					var generatedBy		= GetType().FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );
-					fileEnt.AddGeneratedFileComp( filePath, contents, generatedBy );
+					fileEnt.AddGeneratedFileComp( filePath, contents.WrapInNamespace( _contexts ), generatedBy );
 				}
 			}
 		}

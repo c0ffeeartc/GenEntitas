@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public partial class Contexts : Entitas.IContexts {
 
     public static Contexts sharedInstance {
@@ -40,6 +41,9 @@ public partial class Contexts : Entitas.IContexts {
     }
 }
 
+}
+
+namespace GenEntitas {
 public partial class Contexts {
 
 #if (!ENTITAS_DISABLE_VISUAL_DEBUGGING && UNITY_EDITOR)
@@ -63,6 +67,9 @@ public partial class Contexts {
 #endif
 }
 
+}
+
+namespace GenEntitas {
 public partial class Contexts {
 
     public const string Comp = "Comp";
@@ -91,4 +98,5 @@ public static class ContextsExtensions {
     public static System.Collections.Generic.HashSet<MainEntity> GetEntitiesWithTypeComp(this MainContext context, System.Type Value) {
         return ((Entitas.EntityIndex<MainEntity, System.Type>)context.GetEntityIndex(Contexts.TypeComp)).GetEntities(Value);
     }
+}
 }

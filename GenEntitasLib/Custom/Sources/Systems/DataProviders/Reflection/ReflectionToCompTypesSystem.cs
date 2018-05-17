@@ -6,7 +6,7 @@ using System.Reflection;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
-using Ent = SettingsEntity;
+using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {

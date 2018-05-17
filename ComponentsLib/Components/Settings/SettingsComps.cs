@@ -26,4 +26,10 @@ public class GeneratePath : IComponent
 	public					String					Value;
 }
 
+[Context(Ids.Settings), Unique]
+public class GeneratedNamespace : IComponent
+{
+	public					String					Value;
+}
+
 }

@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public partial class MainEntity {
 
     public GenEntitas.ContextNamesComp contextNamesComp { get { return (GenEntitas.ContextNamesComp)GetComponent(MainComponentsLookup.ContextNamesComp); } }
@@ -22,6 +23,9 @@ public partial class MainEntity {
     }
 }
 
+}
+
+namespace GenEntitas {
 public sealed partial class MainMatcher {
 
     static Entitas.IMatcher<MainEntity> _matcherContextNamesComp;
@@ -37,4 +41,6 @@ public sealed partial class MainMatcher {
             return _matcherContextNamesComp;
         }
     }
+}
+
 }

@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public partial class MainEntity {
 
     public GenEntitas.UniquePrefixComp uniquePrefixComp { get { return (GenEntitas.UniquePrefixComp)GetComponent(MainComponentsLookup.UniquePrefixComp); } }
@@ -22,6 +23,9 @@ public partial class MainEntity {
     }
 }
 
+}
+
+namespace GenEntitas {
 public sealed partial class MainMatcher {
 
     static Entitas.IMatcher<MainEntity> _matcherUniquePrefixComp;
@@ -37,4 +41,6 @@ public sealed partial class MainMatcher {
             return _matcherUniquePrefixComp;
         }
     }
+}
+
 }

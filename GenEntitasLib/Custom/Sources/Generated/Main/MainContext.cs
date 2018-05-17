@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public sealed partial class MainContext : Entitas.Context<MainEntity> {
 
     public MainContext()
@@ -19,4 +20,6 @@ public sealed partial class MainContext : Entitas.Context<MainEntity> {
 
         ) {
     }
+}
+
 }

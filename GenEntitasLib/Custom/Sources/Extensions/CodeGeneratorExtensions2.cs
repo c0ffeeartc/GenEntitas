@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DesperateDevs.Utils;
 using Entitas;
@@ -18,6 +19,12 @@ namespace GenEntitas {
         public static string ComponentNameWithContext(this MainEntity ent, string contextName) {
             return contextName + ent.comp.Name;
         }
+
+		public static string WrapInNamespace( this string s, Contexts contexts )
+		{
+			var value	= contexts.settings.generatedNamespace.Value;
+			return String.IsNullOrEmpty( value ) ? s : $"namespace {value} {{\n{s}\n}}\n";
+		}
 
 		public static string Replace( this string template, Contexts contexts, MainEntity ent, string contextName )
 		{

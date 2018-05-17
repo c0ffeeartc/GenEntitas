@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public sealed partial class MainMatcher {
 
     public static Entitas.IAllOfMatcher<MainEntity> AllOf(params int[] indices) {
@@ -15,4 +16,6 @@ public sealed partial class MainMatcher {
     public static Entitas.IAnyOfMatcher<MainEntity> AnyOf(params Entitas.IMatcher<MainEntity>[] matchers) {
           return Entitas.Matcher<MainEntity>.AnyOf(matchers);
     }
+}
+
 }

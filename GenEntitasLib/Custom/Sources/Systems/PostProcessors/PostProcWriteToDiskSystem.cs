@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Entitas;
-using Ent = MainEntity;
+using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {

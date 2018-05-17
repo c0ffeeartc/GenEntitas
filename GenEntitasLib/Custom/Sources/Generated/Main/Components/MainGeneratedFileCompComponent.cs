@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public partial class MainEntity {
 
     public GenEntitas.GeneratedFileComp generatedFileComp { get { return (GenEntitas.GeneratedFileComp)GetComponent(MainComponentsLookup.GeneratedFileComp); } }
@@ -26,6 +27,9 @@ public partial class MainEntity {
     }
 }
 
+}
+
+namespace GenEntitas {
 public sealed partial class MainMatcher {
 
     static Entitas.IMatcher<MainEntity> _matcherGeneratedFileComp;
@@ -41,4 +45,6 @@ public sealed partial class MainMatcher {
             return _matcherGeneratedFileComp;
         }
     }
+}
+
 }

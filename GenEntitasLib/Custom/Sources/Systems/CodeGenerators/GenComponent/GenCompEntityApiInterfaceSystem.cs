@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Entitas;
 using Entitas.CodeGeneration.Plugins;
-using Ent = MainEntity;
+using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
@@ -62,7 +62,7 @@ namespace GenEntitas
 					var generatedBy		= GetType(  ).FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );
-					fileEnt.AddGeneratedFileComp( filePath, contents, generatedBy );
+					fileEnt.AddGeneratedFileComp( filePath, contents.WrapInNamespace( _contexts ), generatedBy );
 				}
 
 				var contextNames = ent.contextNamesComp.Values;
@@ -73,7 +73,7 @@ namespace GenEntitas
 					var generatedBy		= GetType(  ).FullName;
 
 					var fileEnt			= _contexts.main.CreateEntity(  );
-					fileEnt.AddGeneratedFileComp( filePath, contents, generatedBy );
+					fileEnt.AddGeneratedFileComp( filePath, contents.WrapInNamespace( _contexts ), generatedBy );
 				}
 			}
 		}

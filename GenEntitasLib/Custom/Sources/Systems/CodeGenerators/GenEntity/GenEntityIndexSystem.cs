@@ -4,7 +4,7 @@ using System.Linq;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Plugins;
-using Ent = MainEntity;
+using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
@@ -115,7 +115,7 @@ ${getIndices}
 				.Replace("${getIndices}", getIndices);
 
 				var fileEnt			= _contexts.main.CreateEntity(  );
-				fileEnt.AddGeneratedFileComp( "Contexts.cs", fileContent, GetType().FullName );
+				fileEnt.AddGeneratedFileComp( "Contexts.cs", fileContent.WrapInNamespace( _contexts ), GetType().FullName );
 		}
 
 		string generateAddMethods(EntityIndexData data) {

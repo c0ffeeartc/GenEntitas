@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public partial class SettingsContext {
 
     public SettingsEntity runInDryModeEntity { get { return GetGroup(SettingsMatcher.RunInDryMode).GetSingleEntity(); } }
@@ -17,6 +18,9 @@ public partial class SettingsContext {
     }
 }
 
+}
+
+namespace GenEntitas {
 public partial class SettingsEntity {
 
     static readonly GenEntitas.RunInDryMode runInDryModeComponent = new GenEntitas.RunInDryMode();
@@ -41,6 +45,9 @@ public partial class SettingsEntity {
     }
 }
 
+}
+
+namespace GenEntitas {
 public sealed partial class SettingsMatcher {
 
     static Entitas.IMatcher<SettingsEntity> _matcherRunInDryMode;
@@ -56,4 +63,6 @@ public sealed partial class SettingsMatcher {
             return _matcherRunInDryMode;
         }
     }
+}
+
 }

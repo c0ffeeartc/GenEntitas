@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public partial class MainEntity {
 
     public GenEntitas.CustomEntityIndexComp customEntityIndexComp { get { return (GenEntitas.CustomEntityIndexComp)GetComponent(MainComponentsLookup.CustomEntityIndexComp); } }
@@ -22,6 +23,9 @@ public partial class MainEntity {
     }
 }
 
+}
+
+namespace GenEntitas {
 public sealed partial class MainMatcher {
 
     static Entitas.IMatcher<MainEntity> _matcherCustomEntityIndexComp;
@@ -37,4 +41,6 @@ public sealed partial class MainMatcher {
             return _matcherCustomEntityIndexComp;
         }
     }
+}
+
 }

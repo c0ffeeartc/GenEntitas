@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public static class MainComponentsLookup {
 
     public const int AlreadyImplementedComp = 0;
@@ -59,4 +60,6 @@ public static class MainComponentsLookup {
         typeof(GenEntitas.UniqueComp),
         typeof(GenEntitas.UniquePrefixComp)
     };
+}
+
 }

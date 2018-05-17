@@ -1,3 +1,4 @@
+namespace GenEntitas {
 #if (!ENTITAS_DISABLE_VISUAL_DEBUGGING && UNITY_EDITOR)
 
 public class Feature : Entitas.VisualDebugging.Unity.DebugSystems {
@@ -100,3 +101,5 @@ public class Feature : Entitas.Systems {
 }
 
 #endif
+
+}

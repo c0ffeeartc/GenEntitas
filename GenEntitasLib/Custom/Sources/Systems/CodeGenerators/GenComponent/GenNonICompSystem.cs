@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Entitas;
-using Ent = MainEntity;
+using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
@@ -42,7 +42,7 @@ public sealed class ${FullComponentName} : Entitas.IComponent {
 				var generatedBy		= GetType(  ).FullName;
 
 				var fileEnt			= _contexts.main.CreateEntity(  );
-				fileEnt.AddGeneratedFileComp( filePath, contents, generatedBy );
+				fileEnt.AddGeneratedFileComp( filePath, contents.WrapInNamespace( _contexts ), generatedBy );
 			}
 		}
 

@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public partial class SettingsContext {
 
     public SettingsEntity ignoreNamespacesEntity { get { return GetGroup(SettingsMatcher.IgnoreNamespaces).GetSingleEntity(); } }
@@ -17,6 +18,9 @@ public partial class SettingsContext {
     }
 }
 
+}
+
+namespace GenEntitas {
 public partial class SettingsEntity {
 
     static readonly GenEntitas.IgnoreNamespaces ignoreNamespacesComponent = new GenEntitas.IgnoreNamespaces();
@@ -41,6 +45,9 @@ public partial class SettingsEntity {
     }
 }
 
+}
+
+namespace GenEntitas {
 public sealed partial class SettingsMatcher {
 
     static Entitas.IMatcher<SettingsEntity> _matcherIgnoreNamespaces;
@@ -56,4 +63,6 @@ public sealed partial class SettingsMatcher {
             return _matcherIgnoreNamespaces;
         }
     }
+}
+
 }

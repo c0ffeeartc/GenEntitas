@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public sealed partial class SettingsContext : Entitas.Context<SettingsEntity> {
 
     public SettingsContext()
@@ -19,4 +20,6 @@ public sealed partial class SettingsContext : Entitas.Context<SettingsEntity> {
 
         ) {
     }
+}
+
 }

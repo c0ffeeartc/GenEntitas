@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public partial class MainEntity {
 
     static readonly GenEntitas.AlreadyImplementedComp alreadyImplementedCompComponent = new GenEntitas.AlreadyImplementedComp();
@@ -22,6 +23,9 @@ public partial class MainEntity {
     }
 }
 
+}
+
+namespace GenEntitas {
 public sealed partial class MainMatcher {
 
     static Entitas.IMatcher<MainEntity> _matcherAlreadyImplementedComp;
@@ -37,4 +41,6 @@ public sealed partial class MainMatcher {
             return _matcherAlreadyImplementedComp;
         }
     }
+}
+
 }

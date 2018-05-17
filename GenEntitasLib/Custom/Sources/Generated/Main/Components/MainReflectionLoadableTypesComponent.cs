@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public partial class MainContext {
 
     public MainEntity reflectionLoadableTypesEntity { get { return GetGroup(MainMatcher.ReflectionLoadableTypes).GetSingleEntity(); } }
@@ -28,6 +29,9 @@ public partial class MainContext {
     }
 }
 
+}
+
+namespace GenEntitas {
 public partial class MainEntity {
 
     public GenEntitas.ReflectionLoadableTypes reflectionLoadableTypes { get { return (GenEntitas.ReflectionLoadableTypes)GetComponent(MainComponentsLookup.ReflectionLoadableTypes); } }
@@ -52,6 +56,9 @@ public partial class MainEntity {
     }
 }
 
+}
+
+namespace GenEntitas {
 public sealed partial class MainMatcher {
 
     static Entitas.IMatcher<MainEntity> _matcherReflectionLoadableTypes;
@@ -67,4 +74,6 @@ public sealed partial class MainMatcher {
             return _matcherReflectionLoadableTypes;
         }
     }
+}
+
 }

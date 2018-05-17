@@ -1,3 +1,4 @@
+namespace GenEntitas {
 public partial class SettingsContext {
 
     public SettingsEntity reflectionAssemblyPathsEntity { get { return GetGroup(SettingsMatcher.ReflectionAssemblyPaths).GetSingleEntity(); } }
@@ -28,6 +29,9 @@ public partial class SettingsContext {
     }
 }
 
+}
+
+namespace GenEntitas {
 public partial class SettingsEntity {
 
     public GenEntitas.ReflectionAssemblyPaths reflectionAssemblyPaths { get { return (GenEntitas.ReflectionAssemblyPaths)GetComponent(SettingsComponentsLookup.ReflectionAssemblyPaths); } }
@@ -52,6 +56,9 @@ public partial class SettingsEntity {
     }
 }
 
+}
+
+namespace GenEntitas {
 public sealed partial class SettingsMatcher {
 
     static Entitas.IMatcher<SettingsEntity> _matcherReflectionAssemblyPaths;
@@ -67,4 +74,6 @@ public sealed partial class SettingsMatcher {
             return _matcherReflectionAssemblyPaths;
         }
     }
+}
+
 }

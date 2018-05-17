@@ -6,7 +6,7 @@ using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Plugins;
-using Ent = MainEntity;
+using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {

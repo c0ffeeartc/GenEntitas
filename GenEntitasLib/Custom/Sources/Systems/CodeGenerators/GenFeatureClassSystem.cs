@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Entitas;
-using Ent = MainEntity;
+using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
@@ -133,7 +133,7 @@ public class Feature : Entitas.Systems {
 		protected override	void					Execute					( List<Ent> entities )
 		{
 			var ent				= _contexts.main.CreateEntity(  );
-			ent.AddGeneratedFileComp( "Feature.cs", FEATURE_TEMPLATE, GetType(  ).FullName );
+			ent.AddGeneratedFileComp( "Feature.cs", FEATURE_TEMPLATE.WrapInNamespace( _contexts ), GetType(  ).FullName );
 		}
 	}
 }

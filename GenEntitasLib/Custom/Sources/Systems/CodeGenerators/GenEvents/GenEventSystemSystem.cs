@@ -6,7 +6,7 @@ using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Plugins;
-using Ent = MainEntity;
+using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
@@ -135,7 +135,7 @@ namespace GenEntitas
 			var generatedBy = GetType( ).FullName;
 
 			var fileEnt = _contexts.main.CreateEntity( );
-			fileEnt.AddGeneratedFileComp( filePath, contents, generatedBy );
+			fileEnt.AddGeneratedFileComp( filePath, contents.WrapInNamespace( _contexts ), generatedBy );
 		}
 
 		private				String					GetFilter				( MainEntity ent, string contextName, EventInfo eventInfo )
