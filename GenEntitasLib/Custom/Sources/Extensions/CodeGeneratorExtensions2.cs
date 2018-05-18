@@ -22,7 +22,9 @@ namespace GenEntitas {
 
 		public static string WrapInNamespace( this string s, Contexts contexts )
 		{
-			var value	= contexts.settings.generatedNamespace.Value;
+			var value	= contexts.settings.hasGeneratedNamespace
+				? contexts.settings.generatedNamespace.Value
+				: null;
 			return String.IsNullOrEmpty( value ) ? s : $"namespace {value} {{\n{s}\n}}\n";
 		}
 

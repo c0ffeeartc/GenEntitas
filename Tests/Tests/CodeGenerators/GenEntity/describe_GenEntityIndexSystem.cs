@@ -34,6 +34,10 @@ namespace Tests.Tests
 				{
 					typeof(TestEntityIndexComp1)
 				} );
+				ent.AddReflectionLoadableTypes( new List<Type>
+				{
+					typeof(TestEntityIndexComp1)
+				} );
 
 				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );
 
