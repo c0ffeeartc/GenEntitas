@@ -64,26 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestRunner.cs" />
-    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompContextApiSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompEntityApiInterfaceSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompEntityApiSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompLookupSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenCompMatcherApiSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenComponent\describe_GenNonICompSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenContexts\describe_GenContextsObserverSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenContexts\describe_GenContextsSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenContext\describe_GenContextAttributeSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenContext\describe_GenContextMatcherSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenContext\describe_GenContextSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenEntity\describe_GenEntityIndexSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenEntity\describe_GenEntitySystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventEntityApiSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventListenerCompSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventListenerInterfaceSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventSystemsSystem.cs" />
-    <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventSystemSystem.cs" />
-    <Compile Include="Tests\DataProviders\Reflection\describe_ReflectionToCompsSystem.cs" />
-    <Compile Include="Tests\GenEntitasSprache\describe_SettingsParser.cs" />
+    <Compile Include="Tests\**\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ComponentsLib\ComponentsLib.csproj">
