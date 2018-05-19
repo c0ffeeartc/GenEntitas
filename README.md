@@ -22,7 +22,6 @@ Entitas generator using Entitas ECS framework
   - More tests
   - UI
   - Settings
-    - read from file
     - on/off generators, data providers etc
   - PreProcessors
   - PostProcessors
