@@ -2,39 +2,64 @@
 using System.IO;
 using System.Linq;
 using CommandLine;
+using Sprache;
 
 namespace GenEntitas
 {
-	public class Options
+	public class Args
 	{
-		[Option( "ignoreNamespaces", Default = true, HelpText = "do not add namespace to component name" )]
+		[Option( "SettingsPath", Default = "", HelpText = "path to settings file. WARNING: If file is provided other command line options are ignored" )]
+		public String SettingsPath { get; set; }
+
+		[Option( "IgnoreNamespaces", Default = true, HelpText = "do not add namespace to component name" )]
 		public Boolean IgnoreNamespaces { get; set; }
 
-		[Option( "dllPaths", Required = true, HelpText = "Reflection dlls with Component classes" )]
+		[Option( "DllPaths", HelpText = "Reflection dlls with Component classes" )]
 		public String DllPaths { get; set; }
 
-		[Option( "generatePath", Required = true, HelpText = "Where to place Generated folder. WARNING: removes and creates Generated folder on each run" )]
+		[Option( "GeneratePath", HelpText = "Where to place Generated folder. WARNING: removes and creates Generated folder on each run" )]
 		public String GeneratePath { get; set; }
 
-		[Option( "generatedNamespace", Default = "", HelpText = "do not add namespace to component name" )]
+		[Option( "GeneratedNamespace", Default = "", HelpText = "do not add namespace to component name" )]
 		public String GeneratedNamespace { get; set; }
 
-		[Option( "dryMode", HelpText = "Do not remove or write anything on disk. WARNING: plugin devs should handle this option" )]
-		public Boolean RunInDryMode { get; set; }
+		[Option( "DryRun", HelpText = "Do not remove or write anything on disk. WARNING: plugin devs should handle this option" )]
+		public Boolean DryRun { get; set; }
 	}
 
 	internal class Program
 	{
 		public static void Main( string[] args )
 		{
-			Parser.Default.ParseArguments<Options>(args).WithParsed( Run );
+			Parser.Default.ParseArguments<Args>(args).WithParsed( Run );
 		}
 
-		public static void Run( Options options )
+		public static void Run( Args args )
 		{
-			if ( !Directory.Exists( options.GeneratePath ) )
+			Settings settings		= null;
+			if ( String.IsNullOrEmpty( args.SettingsPath )  )
 			{
-				Console.WriteLine( $"Generate path does not exist: '{options.GeneratePath}'" );
+				settings						= new Settings( );
+				settings.IgnoreNamespaces		= args.IgnoreNamespaces;
+				settings.DllPaths				= args.DllPaths;
+				settings.GeneratedNamespace		= args.GeneratedNamespace;
+				settings.GeneratePath			= args.GeneratePath;
+				settings.DryRun					= args.DryRun;
+			}
+			else
+			{
+				if ( !File.Exists( args.SettingsPath ) )
+				{
+					Console.WriteLine( $"Settings file does not exist: '{args.SettingsPath}'\nTry --help" );
+					return;
+				}
+				var settingsStr = File.ReadAllText( args.SettingsPath );
+				settings = SettingsGrammar.SettingsParser.Parse( settingsStr );
+			}
+
+			if ( !Directory.Exists( settings.GeneratePath ) )
+			{
+				Console.WriteLine( $"Generate path does not exist: '{settings.GeneratePath}'\nTry --help" );
 				return;
 			}
 
@@ -42,7 +67,7 @@ namespace GenEntitas
 			runner.Init(  );
 
 			var contexts = runner.Contexts;
-			FillContexts( contexts, options );
+			FillContexts( contexts, settings );
 
 			runner.Systems.Initialize(  );
 			runner.Systems.Execute(  );
@@ -50,14 +75,14 @@ namespace GenEntitas
 			runner.Systems.TearDown(  );
 		}
 
-		private static void FillContexts( Contexts contexts, Options options )
+		private static void FillContexts( Contexts contexts, Settings settings )
 		{
 			contexts.settings.isConsoleWriteLineGeneratedPaths		= true;
-			contexts.settings.isIgnoreNamespaces					= options.IgnoreNamespaces;
-			contexts.settings.isRunInDryMode						= options.RunInDryMode;
-			contexts.settings.SetGeneratePath( String.IsNullOrEmpty( options.GeneratePath ) ? "./" : options.GeneratePath );
-			contexts.settings.SetGeneratedNamespace( options.GeneratedNamespace );
-			contexts.settings.SetReflectionAssemblyPaths( options.DllPaths.Split(',').ToList(  ) );
+			contexts.settings.isIgnoreNamespaces					= settings.IgnoreNamespaces;
+			contexts.settings.isRunInDryMode						= settings.DryRun;
+			contexts.settings.SetGeneratePath( String.IsNullOrEmpty( settings.GeneratePath ) ? "./" : settings.GeneratePath );
+			contexts.settings.SetGeneratedNamespace( settings.GeneratedNamespace );
+			contexts.settings.SetReflectionAssemblyPaths( settings.DllPaths.Split(',').ToList(  ) );
 		}
 	}
 }

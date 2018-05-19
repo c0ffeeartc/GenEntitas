@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-      <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,6 +52,9 @@
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
       <HintPath>..\Libraries\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Sprache, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Sprache.2.1.2\lib\net45\Sprache.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -80,6 +83,7 @@
     <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventSystemsSystem.cs" />
     <Compile Include="Tests\CodeGenerators\GenEvents\describe_GenEventSystemSystem.cs" />
     <Compile Include="Tests\DataProviders\Reflection\describe_ReflectionToCompsSystem.cs" />
+    <Compile Include="Tests\GenEntitasSprache\describe_SettingsParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ComponentsLib\ComponentsLib.csproj">
@@ -89,6 +93,10 @@
     <ProjectReference Include="..\GenEntitasLib\GenEntitasLib.csproj">
       <Project>{8d430c04-a56b-4d66-9863-e68804c3596c}</Project>
       <Name>GenEntitasLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitasSettings\GenEntitasSettings.csproj">
+      <Project>{8a20ffca-dd53-41fc-871a-d480dad827f9}</Project>
+      <Name>GenEntitasSettings</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
