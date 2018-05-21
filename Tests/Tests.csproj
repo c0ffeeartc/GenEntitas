@@ -43,6 +43,9 @@
     <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\Libraries\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
     </Reference>
+    <Reference Include="FluentAssertions, Version=5.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a">
+      <HintPath>..\packages\FluentAssertions.5.3.0\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
     <Reference Include="NSpec, Version=1.0.7.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\Libraries\NSpec.dll</HintPath>
     </Reference>
@@ -57,6 +60,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -71,6 +77,10 @@
       <Project>{4f2d16f7-0e52-4f91-9ff8-54ecc040d7ed}</Project>
       <Name>ComponentsLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenEntitasLang\GenEntitasLang.csproj">
+      <Project>{53B5C6C4-68B8-421F-ADD9-CF0BEF51E1B0}</Project>
+      <Name>GenEntitasLang</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitasLib\GenEntitasLib.csproj">
       <Project>{8d430c04-a56b-4d66-9863-e68804c3596c}</Project>
       <Name>GenEntitasLib</Name>
@@ -82,6 +92,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\CodeGenerators" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
