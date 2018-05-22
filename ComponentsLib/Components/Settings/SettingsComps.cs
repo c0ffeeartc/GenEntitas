@@ -6,6 +6,18 @@ namespace GenEntitas
 {
 
 [Context(Ids.Settings), Unique]
+public class SettingsPath : IComponent
+{
+	public					String					Value;
+}
+
+[Context(Ids.Settings), Unique]
+public class SettingsParseInput : IComponent
+{
+	public					String					Value;
+}
+
+[Context(Ids.Settings), Unique]
 public class IgnoreNamespaces : IComponent
 {
 }

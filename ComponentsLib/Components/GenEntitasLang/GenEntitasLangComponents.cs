@@ -23,7 +23,7 @@ namespace GenEntitas
 	{
 	}
 
-	[Context(Ids.Settings)]
+	[Context(Ids.Settings), Unique]
 	public class GenEntitasLangPaths : IComponent
 	{
 		public				String					Values;

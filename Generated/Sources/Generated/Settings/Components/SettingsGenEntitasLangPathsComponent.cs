@@ -1,4 +1,37 @@
 namespace GenEntitas {
+public partial class SettingsContext {
+
+    public SettingsEntity genEntitasLangPathsEntity { get { return GetGroup(SettingsMatcher.GenEntitasLangPaths).GetSingleEntity(); } }
+    public GenEntitas.GenEntitasLangPaths genEntitasLangPaths { get { return genEntitasLangPathsEntity.genEntitasLangPaths; } }
+    public bool hasGenEntitasLangPaths { get { return genEntitasLangPathsEntity != null; } }
+
+    public SettingsEntity SetGenEntitasLangPaths(string newValues) {
+        if (hasGenEntitasLangPaths) {
+            throw new Entitas.EntitasException("Could not set GenEntitasLangPaths!\n" + this + " already has an entity with GenEntitas.GenEntitasLangPaths!",
+                "You should check if the context already has a genEntitasLangPathsEntity before setting it or use context.ReplaceGenEntitasLangPaths().");
+        }
+        var entity = CreateEntity();
+        entity.AddGenEntitasLangPaths(newValues);
+        return entity;
+    }
+
+    public void ReplaceGenEntitasLangPaths(string newValues) {
+        var entity = genEntitasLangPathsEntity;
+        if (entity == null) {
+            entity = SetGenEntitasLangPaths(newValues);
+        } else {
+            entity.ReplaceGenEntitasLangPaths(newValues);
+        }
+    }
+
+    public void RemoveGenEntitasLangPaths() {
+        genEntitasLangPathsEntity.Destroy();
+    }
+}
+
+}
+
+namespace GenEntitas {
 public partial class SettingsEntity {
 
     public GenEntitas.GenEntitasLangPaths genEntitasLangPaths { get { return (GenEntitas.GenEntitasLangPaths)GetComponent(SettingsComponentsLookup.GenEntitasLangPaths); } }

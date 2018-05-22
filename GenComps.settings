@@ -1,4 +1,4 @@
 IgnoreNamespaces = true
-DllPaths = ./ComponentsLib/bin/Debug/ComponentsLib.dll
+ReflectionAssemblyPaths = ./ComponentsLib/bin/Debug/ComponentsLib.dll
 GeneratePath = ./Generated/Sources
 GeneratedNamespace = GenEntitas

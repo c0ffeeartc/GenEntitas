@@ -8,8 +8,10 @@ public static class SettingsComponentsLookup {
     public const int IgnoreNamespaces = 4;
     public const int ReflectionAssemblyPaths = 5;
     public const int RunInDryMode = 6;
+    public const int SettingsParseInput = 7;
+    public const int SettingsPath = 8;
 
-    public const int TotalComponents = 7;
+    public const int TotalComponents = 9;
 
     public static readonly string[] componentNames = {
         "ConsoleWriteLineGeneratedPaths",
@@ -18,7 +20,9 @@ public static class SettingsComponentsLookup {
         "GeneratePath",
         "IgnoreNamespaces",
         "ReflectionAssemblyPaths",
-        "RunInDryMode"
+        "RunInDryMode",
+        "SettingsParseInput",
+        "SettingsPath"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -28,7 +32,9 @@ public static class SettingsComponentsLookup {
         typeof(GenEntitas.GeneratePath),
         typeof(GenEntitas.IgnoreNamespaces),
         typeof(GenEntitas.ReflectionAssemblyPaths),
-        typeof(GenEntitas.RunInDryMode)
+        typeof(GenEntitas.RunInDryMode),
+        typeof(GenEntitas.SettingsParseInput),
+        typeof(GenEntitas.SettingsPath)
     };
 }
 
