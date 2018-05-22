@@ -67,7 +67,7 @@ namespace Tests.Tests
 			{
 				{
 					@"alias a : ""1""
-					alias b : ""2""
+					b : ""2""
 					alias c : ""3""",
 					new Dictionary<String, String>
 					{
@@ -202,6 +202,11 @@ namespace Tests.Tests
 					}, 
   					false
 				},
+				{
+					"publicFields :",
+					new PublicFieldsComp{ }, 
+  					true
+				},
 			}.Do( ( given, expected, throws ) => {
 			it["parses public fields comp"] = () =>
 			{
@@ -230,6 +235,7 @@ namespace Tests.Tests
 			{
 				{ "comp Destroy", "Destroy", false },
 				{ " 	comp 	Destroy 	", "Destroy", false },
+				{ "compDestroy", "Destroy", true },
 			}.Do( ( given, expected, throws ) => {
 			it["parses comp"] = () =>
 			{

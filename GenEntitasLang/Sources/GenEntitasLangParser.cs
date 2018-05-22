@@ -64,7 +64,7 @@ namespace GenEntitasLang
 			CompPublicFields =
 				from publicFieldsKeyword in Parse.String( "publicFields" )
 				from colon in Parse.Char( ':' ).Token(  )
-				from fieldInfos in FieldInfo.Token(  ).Many(  )
+				from fieldInfos in FieldInfo.Token(  ).AtLeastOnce(  )
 				select new PublicFieldsComp
 					{
 						Values = fieldInfos.ToList(  )
@@ -81,19 +81,33 @@ namespace GenEntitasLang
 				;
 
 			CompEnt = 
-				from compKeyword in Parse.String( "comp" ).Token(  )
+				from ws11 in Parse.WhiteSpace.Many(  )
+				from compKeyword in Parse.String( "comp" )
+				from ws in Parse.WhiteSpace.AtLeastOnce(  )
 				from id in Identifier.Token(  )
 				from comps in CompParam.Many(  ).Optional(  )
 				select AddComp( _contexts, id, comps.GetOrElse( null ) );
 
+			AliasRule = 
+				from key in Identifier
+				from colon in Parse.Char( ':' ).Token(  )
+				from value in QuotedString
+				select new KeyValuePair<String, String>( key, value );
+
 			Alias =
-				from ws11 in Parse.WhiteSpace.Many(  )
+				( from ws11 in Parse.WhiteSpace.Many(  )
 				from aliasKeyword in Parse.String( "alias" )
 				from ws in Parse.WhiteSpace.AtLeastOnce(  )
-				from id in Identifier.Token(  )
-				from colon in Parse.Char( ':' ).Token(  )
-				from str in QuotedString.Token(  )
-				select AddAlias( _contexts, id, str );
+				from aliasKvs in AliasRule.Token(  ).AtLeastOnce(  )
+				select aliasKvs )
+				.Select( keyValues =>
+				{
+					foreach ( var kv in keyValues )
+					{
+						AddAlias( _contexts, kv.Key, kv.Value );
+					}
+					return _contexts.main.aliasCompEntity;
+				} );
 
 			AliasBlock =
 				from aliasList in Alias.Many(  )
@@ -107,11 +121,11 @@ namespace GenEntitasLang
 		public readonly		Parser<IComponent>		CompUnique;
 		public readonly		Parser<IComponent>		CompPublicFields;
 		public readonly		Parser<FieldInfo>		FieldInfo;
-		public readonly		Parser<KeyValuePair<String,String>>	IdToValue;
 		public readonly		Parser<String>			Identifier;
 		public readonly		Parser<String>			QuotedString;
 		public readonly		Parser<String>			QuotedIdentifier;
 		public readonly		Parser<MainEntity>		Alias;
+		public readonly		Parser<KeyValuePair<String,String>>	AliasRule;
 		public readonly		Parser<String>			AliasGet;
 		public readonly		Parser<MainEntity>		AliasBlock;
 		private				Int32					_parseCompId;
