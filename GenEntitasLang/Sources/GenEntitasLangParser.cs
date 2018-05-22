@@ -62,6 +62,7 @@ namespace GenEntitasLang
 				select new FieldInfo( typeName, fieldName );
 
 			CompPublicFields =
+				from ws in Parse.WhiteSpace.Many(  )
 				from publicFieldsKeyword in Parse.String( "publicFields" )
 				from colon in Parse.Char( ':' ).Token(  )
 				from fieldInfos in FieldInfo.Token(  ).AtLeastOnce(  )
@@ -113,8 +114,17 @@ namespace GenEntitasLang
 				from aliasList in Alias.Many(  )
 				select _contexts.main.aliasCompEntity;
 
+			CompBlock =
+				from comps in CompEnt.AtLeastOnce(  )
+				select comps;
+
+			Root =
+				from aliases in AliasBlock.Optional(  )
+				from comps in CompBlock
+				select _contexts;
 		}
 
+		public readonly		Parser<IEnumerable<MainEntity>>		CompBlock;
 		public readonly		Parser<MainEntity>		CompEnt;
 		public readonly		Parser<IComponent>		CompParam;
 		public readonly		Parser<IComponent>		CompContextNames;
@@ -128,6 +138,7 @@ namespace GenEntitasLang
 		public readonly		Parser<KeyValuePair<String,String>>	AliasRule;
 		public readonly		Parser<String>			AliasGet;
 		public readonly		Parser<MainEntity>		AliasBlock;
+		public readonly		Parser<Contexts>		Root;
 		private				Int32					_parseCompId;
 		private				Contexts				_contexts;
 		private				Dictionary<Type,Int32>	_mainTypesToI			= new Dictionary<Type, Int32>(  );

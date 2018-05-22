@@ -294,5 +294,176 @@ namespace Tests.Tests
 				ent.publicFieldsComp.Values[1].TypeName.should_be( "float" );
 			}; } );
 		}
+
+		private				void					test_ParseCompBlock			(  )
+		{
+			Contexts contexts = null;
+			before				= ()=>
+			{
+				contexts	= new Contexts();
+			};
+
+			new Each<String, Boolean>
+			{
+				{
+					@"comp A in First
+							unique
+							publicFields :
+								x : ""int""
+								y : ""float""
+
+					comp B in Second
+							publicFields :
+								x : ""int""
+								y : ""float"""
+					, false
+				},
+			}.Do( ( given, throws ) => {
+			it["parses comp block"] = () =>
+			{
+				var parsers		= new GenEntitasLangParser( contexts );
+				var parser		= parsers.CompBlock;
+				if ( throws )
+				{
+					Action act = (  ) => { parser.Parse( given ); };
+					act.Should(  ).Throw<ParseException>(  );
+					return;
+				}
+
+				var ents			= parser.Parse( given );
+
+				var hasCheckedUnique = false;
+				foreach ( var ent in ents )
+				{
+					if ( !hasCheckedUnique && ent.isUniqueComp )
+					{
+						hasCheckedUnique	= true;
+						ent.hasComp.should_be_true(  );
+						ent.comp.FullTypeName.should_be( "A" );
+						ent.comp.Name.should_be( "A" );
+
+						ent.hasContextNamesComp.should_be_true(  );
+						ent.contextNamesComp.Values.should_contain( "First" );
+
+						ent.isUniqueComp.should_be_true(  );
+
+						ent.hasPublicFieldsComp.should_be_true(  );
+						ent.publicFieldsComp.Values.Count.should_be( 2 );
+						ent.publicFieldsComp.Values[0].FieldName.should_be( "x" );
+						ent.publicFieldsComp.Values[0].TypeName.should_be( "int" );
+						ent.publicFieldsComp.Values[1].FieldName.should_be( "y" );
+						ent.publicFieldsComp.Values[1].TypeName.should_be( "float" );
+					}
+					else
+					{
+						ent.hasComp.should_be_true(  );
+						ent.comp.FullTypeName.should_be( "B" );
+						ent.comp.Name.should_be( "B" );
+
+						ent.hasContextNamesComp.should_be_true(  );
+						ent.contextNamesComp.Values.should_contain( "Second" );
+
+						ent.isUniqueComp.should_be_false(  );
+
+						ent.hasPublicFieldsComp.should_be_true(  );
+						ent.publicFieldsComp.Values.Count.should_be( 2 );
+						ent.publicFieldsComp.Values[0].FieldName.should_be( "x" );
+						ent.publicFieldsComp.Values[0].TypeName.should_be( "int" );
+						ent.publicFieldsComp.Values[1].FieldName.should_be( "y" );
+						ent.publicFieldsComp.Values[1].TypeName.should_be( "float" );
+					}
+				}
+			}; } );
+
+		}
+
+		private				void					test_ParsesRoot			(  )
+		{
+			Contexts contexts = null;
+			before				= ()=>
+			{
+				contexts	= new Contexts();
+			};
+
+			new Each<String, Boolean>
+			{
+				{
+					@"	alias integer : ""int""
+						alias single : ""float""
+						alias double : ""double""
+
+					comp A in First
+							unique
+							publicFields :
+								x : integer
+								y : single
+
+					comp B in Second
+							publicFields :
+								x : ""int""
+								y : ""double"""
+					, false
+				},
+			}.Do( ( given, throws ) => {
+			it["parses root"] = () =>
+			{
+				var parsers		= new GenEntitasLangParser( contexts );
+				var parser		= parsers.Root;
+				if ( throws )
+				{
+					Action act = (  ) => { parser.Parse( given ); };
+					act.Should(  ).Throw<ParseException>(  );
+					return;
+				}
+
+				parser.Parse( given );
+
+				contexts.main.hasAliasComp.should_be_true(  );
+				var aliases = contexts.main.aliasComp.Values;
+				aliases.Count.should_be( 3 );
+
+				var ents = contexts.main.GetGroup( MainMatcher.Comp ).GetEntities(  );
+				ents.Length.should_be( 2 );
+
+				{
+					var ent				= ents[0].isUniqueComp ? ents[0] : ents[1];
+					ent.hasComp.should_be_true(  );
+					ent.comp.FullTypeName.should_be( "A" );
+					ent.comp.Name.should_be( "A" );
+
+					ent.hasContextNamesComp.should_be_true(  );
+					ent.contextNamesComp.Values.should_contain( "First" );
+
+					ent.isUniqueComp.should_be_true(  );
+
+					ent.hasPublicFieldsComp.should_be_true(  );
+					ent.publicFieldsComp.Values.Count.should_be( 2 );
+					ent.publicFieldsComp.Values[0].FieldName.should_be( "x" );
+					ent.publicFieldsComp.Values[0].TypeName.should_be( "int" );
+					ent.publicFieldsComp.Values[1].FieldName.should_be( "y" );
+					ent.publicFieldsComp.Values[1].TypeName.should_be( "float" );
+				}
+
+				{
+					var ent				= ents[0].isUniqueComp ? ents[1] : ents[0];
+					ent.hasComp.should_be_true(  );
+					ent.comp.FullTypeName.should_be( "B" );
+					ent.comp.Name.should_be( "B" );
+
+					ent.hasContextNamesComp.should_be_true(  );
+					ent.contextNamesComp.Values.should_contain( "Second" );
+
+					ent.isUniqueComp.should_be_false(  );
+
+					ent.hasPublicFieldsComp.should_be_true(  );
+					ent.publicFieldsComp.Values.Count.should_be( 2 );
+					ent.publicFieldsComp.Values[0].FieldName.should_be( "x" );
+					ent.publicFieldsComp.Values[0].TypeName.should_be( "int" );
+					ent.publicFieldsComp.Values[1].FieldName.should_be( "y" );
+					ent.publicFieldsComp.Values[1].TypeName.should_be( "double" );
+				}
+			}; } );
+
+		}
 	}
 }
