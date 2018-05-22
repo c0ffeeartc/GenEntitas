@@ -11,6 +11,7 @@ Entitas generator using Entitas ECS framework
   - [Console Runner](./GenEntitas)
   - [Unity Runner](./UnityRunner)
   - [Settings](GenEntitasSettings)
+  - [GenEntitasLang](./GenEntitasLang)
 
 ### Done
 
