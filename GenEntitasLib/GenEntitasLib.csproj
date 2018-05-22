@@ -64,6 +64,10 @@
       <Project>{4f2d16f7-0e52-4f91-9ff8-54ecc040d7ed}</Project>
       <Name>ComponentsLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Generated\Generated.csproj">
+      <Project>{48ba263f-4d24-41e4-9dc6-0c3799acaec7}</Project>
+      <Name>Generated</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Custom" />
