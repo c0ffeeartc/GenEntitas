@@ -140,8 +140,7 @@ namespace Tests.Tests
 			new Each<String, ContextNamesComp, Boolean>
 			{
 				{
-					@"in
-						""First"", ""Second""",
+					"in First, Second",
 					new ContextNamesComp
 					{
 						Values = new List<String>(  )
@@ -153,8 +152,7 @@ namespace Tests.Tests
   					false
 				},
 				{
-					@"in
-						""First "", ""Second""",
+					"in 1First , Second",
 					new ContextNamesComp
 					{
 						Values = new List<String>(  )
@@ -252,7 +250,7 @@ namespace Tests.Tests
 			new Each<String, Boolean>
 			{
 				{
-					@"comp Destroy in ""First"", ""Second""
+					@"comp Destroy in First, Second
 							unique
 							publicFields :
 								x : ""int""
