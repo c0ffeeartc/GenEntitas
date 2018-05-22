@@ -111,7 +111,7 @@ namespace GenEntitasLang
 
 			AliasBlock =
 				from aliasList in Alias.Many(  )
-				select AddAliasBlock( _contexts );
+				select _contexts.main.aliasCompEntity;
 
 		}
 
@@ -165,11 +165,6 @@ namespace GenEntitasLang
 			values[key]			= value;
 			_contexts.main.ReplaceAliasComp( values );
 			return _contexts.main.aliasCompEntity;
-		}
-
-		private				MainEntity				AddAliasBlock			( Contexts contexts )
-		{
-			return contexts.main.aliasCompEntity;
 		}
 
 	}
