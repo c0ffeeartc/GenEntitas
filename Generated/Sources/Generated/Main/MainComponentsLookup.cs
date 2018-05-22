@@ -11,16 +11,18 @@ public static class MainComponentsLookup {
     public const int DontGenerateComp = 7;
     public const int EntityIndexComp = 8;
     public const int EventComp = 9;
-    public const int GeneratedFileComp = 10;
-    public const int NonIComp = 11;
-    public const int PublicFieldsComp = 12;
-    public const int ReflectionComponentTypes = 13;
-    public const int ReflectionLoadableTypes = 14;
-    public const int TypeComp = 15;
-    public const int UniqueComp = 16;
-    public const int UniquePrefixComp = 17;
+    public const int GenEntitasLangInputString = 10;
+    public const int GeneratedFileComp = 11;
+    public const int NonIComp = 12;
+    public const int ParsedByGenEntitasLang = 13;
+    public const int PublicFieldsComp = 14;
+    public const int ReflectionComponentTypes = 15;
+    public const int ReflectionLoadableTypes = 16;
+    public const int TypeComp = 17;
+    public const int UniqueComp = 18;
+    public const int UniquePrefixComp = 19;
 
-    public const int TotalComponents = 18;
+    public const int TotalComponents = 20;
 
     public static readonly string[] componentNames = {
         "AliasComp",
@@ -33,8 +35,10 @@ public static class MainComponentsLookup {
         "DontGenerateComp",
         "EntityIndexComp",
         "EventComp",
+        "GenEntitasLangInputString",
         "GeneratedFileComp",
         "NonIComp",
+        "ParsedByGenEntitasLang",
         "PublicFieldsComp",
         "ReflectionComponentTypes",
         "ReflectionLoadableTypes",
@@ -54,8 +58,10 @@ public static class MainComponentsLookup {
         typeof(GenEntitas.DontGenerateComp),
         typeof(GenEntitas.EntityIndexComp),
         typeof(GenEntitas.EventComp),
+        typeof(GenEntitas.GenEntitasLangInputString),
         typeof(GenEntitas.GeneratedFileComp),
         typeof(GenEntitas.NonIComp),
+        typeof(GenEntitas.ParsedByGenEntitasLang),
         typeof(GenEntitas.PublicFieldsComp),
         typeof(GenEntitas.ReflectionComponentTypes),
         typeof(GenEntitas.ReflectionLoadableTypes),

@@ -33,8 +33,6 @@ namespace GenEntitas
 		{
 			var types			= _contexts.main.reflectionComponentTypes.Values;
 
-			ProvideContexts( types );
-
 			TypeToContextNames	= new Dictionary<Type, List<String>>(  );
 
 			foreach ( var t in types )
@@ -66,28 +64,6 @@ namespace GenEntitas
 			else
 			{
 				ent.AddNonIComp( t.Name, t.ToCompilableString() );
-			}
-		}
-
-		private				void					ProvideContexts			( List<Type> types )
-		{
-			var contextNameSet		= new HashSet<String>(  );
-
-			foreach ( var t in types )
-			{
-				var contextNames	= Attribute
-				.GetCustomAttributes(t)
-				.OfType<ContextAttribute>()
-				.Select(attr => attr.contextName)
-				.ToList();
-
-				contextNameSet.UnionWith( contextNames );
-			}
-
-			foreach ( var name in contextNameSet )
-			{
-				var ent			= _contexts.main.CreateEntity(  );
-				ent.AddContextComp( name );
 			}
 		}
 

@@ -1,5 +1,4 @@
 ﻿using Entitas;
-using GenEntitas;
 
 namespace GenEntitas
 {
@@ -18,6 +17,10 @@ namespace GenEntitas
 				.Add( new ReflectionToCompTypesSystem( _contexts ) )
 				.Add( new ReflectionToCompsSystem( _contexts ) )
 				.Add( new ReflectionToEntityIndexSystem( _contexts ) )
+
+				.Add( new ProvideGenEntitasLangToCompsSystem( _contexts ) )
+
+				.Add( new ContextEntsProviderSystem( _contexts ) )
 
 				.Add( new GenContextsSystem( _contexts ) )
 				.Add( new GenContextsObserverSystem( _contexts ) )

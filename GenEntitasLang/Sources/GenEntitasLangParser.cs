@@ -148,6 +148,7 @@ namespace GenEntitasLang
 			_parseCompId++;
 			var ent = _contexts.main.CreateEntity(  );
 			ent.AddComp( id, id );
+			ent.isParsedByGenEntitasLang	= true;
 			if ( comps == null )
 			{
 				return ent;

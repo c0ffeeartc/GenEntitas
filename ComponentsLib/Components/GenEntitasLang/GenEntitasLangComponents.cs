@@ -11,4 +11,21 @@ namespace GenEntitas
 	{
 		public			Dictionary<String,String>	Values;
 	}
+
+	[Context(Ids.Main)]
+	public class GenEntitasLangInputString : IComponent
+	{
+		public				String					Value;
+	}
+
+	[Context(Ids.Main)]
+	public class ParsedByGenEntitasLang : IComponent
+	{
+	}
+
+	[Context(Ids.Settings)]
+	public class GenEntitasLangPaths : IComponent
+	{
+		public				String					Values;
+	}
 }

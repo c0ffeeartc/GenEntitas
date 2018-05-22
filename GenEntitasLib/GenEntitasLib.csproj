@@ -47,6 +47,9 @@
     <Reference Include="Entitas.CodeGeneration.Plugins, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\Libraries\Entitas\Editor\Plugins\Entitas\Entitas.CodeGeneration.Plugins.dll</HintPath>
     </Reference>
+    <Reference Include="Sprache, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Sprache.2.1.2\lib\net45\Sprache.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -64,6 +67,10 @@
       <Project>{4f2d16f7-0e52-4f91-9ff8-54ecc040d7ed}</Project>
       <Name>ComponentsLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenEntitasLang\GenEntitasLang.csproj">
+      <Project>{53b5c6c4-68b8-421f-add9-cf0bef51e1b0}</Project>
+      <Name>GenEntitasLang</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Generated\Generated.csproj">
       <Project>{48ba263f-4d24-41e4-9dc6-0c3799acaec7}</Project>
       <Name>Generated</Name>
@@ -71,6 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Custom" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
