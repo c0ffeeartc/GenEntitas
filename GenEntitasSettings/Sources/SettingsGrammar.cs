@@ -63,6 +63,10 @@ namespace GenEntitas
 						? d[nameof( ReflectionAssemblyPaths )].Split(',').ToList(  )
 						: new List<string>(  ) );
 
+					_contexts.settings.ReplaceGenEntitasLangPaths( d.ContainsKey( nameof( GenEntitasLangPaths ) )
+						? d[nameof( GenEntitasLangPaths )].Split(',').ToList(  )
+						: new List<string>(  ) );
+
 					return _contexts;
 				} );
 		}

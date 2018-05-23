@@ -26,6 +26,6 @@ namespace GenEntitas
 	[Context(Ids.Settings), Unique]
 	public class GenEntitasLangPaths : IComponent
 	{
-		public				String					Values;
+		public				List<String>			Values;
 	}
 }

@@ -21,6 +21,7 @@ namespace GenEntitas
 				.Add( new ReflectionToCompsSystem( _contexts ) )
 				.Add( new ReflectionToEntityIndexSystem( _contexts ) )
 
+				.Add( new ReadGenEntitasLangFilesSystem( _contexts ) )
 				.Add( new ProvideGenEntitasLangToCompsSystem( _contexts ) )
 
 				.Add( new ContextEntsProviderSystem( _contexts ) )
@@ -37,6 +38,7 @@ namespace GenEntitas
 				.Add( new GenEntitySystem( _contexts ) )
 				.Add( new GenEntityIndexSystem( _contexts ) )
 
+				.Add( new GenComponentSystem( _contexts ) )
 				.Add( new GenCompLookupSystem( _contexts ) )
 				.Add( new GenCompContextApiSystem( _contexts ) )
 				.Add( new GenCompEntityApiSystem( _contexts ) )

@@ -146,8 +146,12 @@ namespace GenEntitasLang
 		private				MainEntity				AddComp					( Contexts contexts, String id, IEnumerable<IComponent> comps )
 		{
 			_parseCompId++;
-			var ent = _contexts.main.CreateEntity(  );
-			ent.AddComp( id, id );
+			var ent						= _contexts.main.CreateEntity(  );
+			var generatedNamespace		= contexts.settings.generatedNamespace.Value;
+			var fullNamePrefix = String.IsNullOrEmpty( generatedNamespace )
+				? ""
+				: generatedNamespace + ".";
+			ent.AddComp( id, fullNamePrefix + id );
 			ent.isParsedByGenEntitasLang	= true;
 			if ( comps == null )
 			{
