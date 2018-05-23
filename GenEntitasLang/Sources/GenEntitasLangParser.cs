@@ -19,7 +19,7 @@ namespace GenEntitasLang
 
 			Identifier = 
 				from first in Parse.Letter.Once()
-				from rest in Parse.LetterOrDigit.XOr(Parse.Char('-')).XOr(Parse.Char('_')).Many()
+				from rest in Parse.LetterOrDigit.XOr(Parse.Char('_')).Many()
 				select new string(first.Concat(rest).ToArray());
 
 			QuotedString =
@@ -86,8 +86,8 @@ namespace GenEntitasLang
 				from compKeyword in Parse.String( "comp" )
 				from ws in Parse.WhiteSpace.AtLeastOnce(  )
 				from id in Identifier.Token(  )
-				from comps in CompParam.Many(  ).Optional(  )
-				select AddComp( _contexts, id, comps.GetOrElse( null ) );
+				from comps in CompParam.XMany(  )
+				select AddComp( _contexts, id, comps );
 
 			AliasRule = 
 				from key in Identifier

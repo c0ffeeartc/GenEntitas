@@ -263,6 +263,14 @@ namespace Tests.Tests
 								y : ""float"""
 					, false
 				},
+				{
+					@"comp Destroy in First, Second
+							unique
+							public Fields :
+								x : ""int""
+								y : ""float"""
+					, true
+				},
 			}.Do( ( given, throws ) => {
 			it["parses comp 2"] = () =>
 			{
