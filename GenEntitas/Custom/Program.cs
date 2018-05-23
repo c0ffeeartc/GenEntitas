@@ -5,7 +5,7 @@ namespace GenEntitas
 {
 	public class Args
 	{
-		[Option( "SettingsPath", Required = true, Default = "", HelpText = "path to settings file. WARNING: If file is provided other command line options are ignored" )]
+		[Option( "SettingsPath", Required = true, HelpText = "Path to settings file" )]
 		public String SettingsPath { get; set; }
 	}
 
