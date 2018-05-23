@@ -30,7 +30,7 @@ namespace GenEntitas
 			var path			= _contexts.settings.settingsPath.Value;
 			if ( !File.Exists( path ) )
 			{
-				throw new FileNotFoundException( $"Settings file does not exist: '{path}'\nTry --help" );
+				throw new FileNotFoundException( $"Settings file does not exist: '{path}'" );
 			}
 
 			var settingsStr		= File.ReadAllText( path );

@@ -35,7 +35,7 @@ namespace GenEntitas
 
 			if ( !Directory.Exists( _contexts.settings.generatePath.Value ) )
 			{
-				throw new DirectoryNotFoundException( $"Generate path does not exist: '{_contexts.settings.generatePath.Value}'\nTry --help" );
+				throw new DirectoryNotFoundException( $"Generate path does not exist: '{_contexts.settings.generatePath.Value}'" );
 			}
 		}
 	}
