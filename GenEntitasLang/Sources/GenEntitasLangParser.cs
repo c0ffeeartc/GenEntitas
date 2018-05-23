@@ -147,7 +147,9 @@ namespace GenEntitasLang
 		{
 			_parseCompId++;
 			var ent						= _contexts.main.CreateEntity(  );
-			var generatedNamespace		= contexts.settings.generatedNamespace.Value;
+			var generatedNamespace		= contexts.settings.hasGeneratedNamespace
+				? contexts.settings.generatedNamespace.Value
+				: "";
 			var fullNamePrefix = String.IsNullOrEmpty( generatedNamespace )
 				? ""
 				: generatedNamespace + ".";
