@@ -24,3 +24,7 @@ comp Position in Game, Input
 
 All keywords and grammar may be found in [GenEntitasLangParser.cs](./Sources/GenEntitasLangParser.cs).
 Later syntax will be better explained in a readme
+
+### Usage
+  - create files with GenEntitasLang syntax
+  - add `GenEntitasLangPaths = ./pathsToYourFileHere,~/anotherPath` to a settings file
