@@ -5,7 +5,7 @@ Syntax is mostly based on [Entitas-Lang](https://github.com/mzaks/Entitas-Lang),
 
 Example of acceptable string
 ```
-// Aliases allow cleaner write sytle 
+// Aliases allow cleaner write style 
 alias
     int : "System.Int32"
     single : "System.Single"
