@@ -5,10 +5,14 @@ Syntax is mostly based on [Entitas-Lang](https://github.com/mzaks/Entitas-Lang),
 
 Example of acceptable string
 ```
+// Aliases allow cleaner write sytle 
 alias
     int : "System.Int32"
     single : "System.Single"
 alias gameObj : "UnityEngine.GameObject"
+
+/* Comps provide info for generation.
+ Parser can be extended using Sprache */
 
 comp Destroy in Game
 
