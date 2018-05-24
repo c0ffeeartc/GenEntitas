@@ -25,7 +25,6 @@ Entitas generator using Entitas ECS framework
   - More tests
   - UI
   - Settings
-    - on/off generators, data providers etc
-  - PreProcessors
+    - on/off generators, change systems order
   - PostProcessors
     - Update .csproj. Instead of this postprocessor glob can be used for non-unity csproj files
