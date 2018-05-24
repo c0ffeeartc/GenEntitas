@@ -385,6 +385,42 @@ namespace Tests.Tests
 
 		}
 
+		private				void					test_ParsesComment		(  )
+		{
+			Contexts contexts = null;
+			before				= ()=>
+			{
+				contexts	= new Contexts();
+			};
+
+			new Each<String, String, Boolean>
+			{
+				{
+@"1 2/*3 4*//* zzz */ 5
+ 6// a // b
+7",
+@"1 2 5
+ 6
+7",
+					false
+				},
+			}.Do( ( given, expected, throws ) => {
+			it["parses comment.\ngiven \n{0}\nexpected \n{1}".With( given, expected )] = (  ) =>
+			{
+				var parsers		= new GenEntitasLangParser( contexts );
+				var parser		= parsers.RemoveCommentsParser;
+				if ( throws )
+				{
+					Action act = (  ) => { parser.Parse( given ); };
+					act.Should(  ).Throw<ParseException>(  );
+					return;
+				}
+
+				var result = parser.Parse( given );
+				result.should_be( expected );
+			}; } );
+		}
+
 		private				void					test_ParsesRoot			(  )
 		{
 			Contexts contexts = null;
@@ -399,6 +435,11 @@ namespace Tests.Tests
 					@"	alias integer : ""int""
 						alias single : ""float""
 						alias double : ""double""
+						/*alias x : ""0""
+						alias y : ""1""*/
+						//alias z : ""2""
+
+					//comp Commented in First
 
 					comp A in First
 							unique
@@ -416,15 +457,14 @@ namespace Tests.Tests
 			it["parses root"] = () =>
 			{
 				var parsers		= new GenEntitasLangParser( contexts );
-				var parser		= parsers.Root;
 				if ( throws )
 				{
-					Action act = (  ) => { parser.Parse( given ); };
+					Action act = (  ) => { parsers.ParseWithComments( given ); };
 					act.Should(  ).Throw<ParseException>(  );
 					return;
 				}
 
-				parser.Parse( given );
+				parsers.ParseWithComments( given );
 
 				contexts.main.hasAliasComp.should_be_true(  );
 				var aliases = contexts.main.aliasComp.Values;

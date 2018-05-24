@@ -32,7 +32,7 @@ namespace GenEntitas
 			foreach ( var ent in entities )
 			{
 				var str = ent.genEntitasLangInputString.Value;
-				parsers.Root.Parse( str );
+				parsers.ParseWithComments( str );
 			}
 
 			var group_			= _contexts.main.GetGroup( MainMatcher.ParsedByGenEntitasLang );

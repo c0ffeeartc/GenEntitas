@@ -17,6 +17,8 @@ namespace GenEntitasLang
 				_mainTypesToI[_contexts.main.contextInfo.componentTypes[i]] = i;
 			}
 
+			Comments = new CommentParser(  );
+
 			Identifier = 
 				from first in Parse.Letter.Once()
 				from rest in Parse.LetterOrDigit.XOr(Parse.Char('_')).Many()
@@ -118,12 +120,29 @@ namespace GenEntitasLang
 				from comps in CompEnt.AtLeastOnce(  )
 				select comps;
 
+			var anyCharTillComment =
+				Parse.AnyChar.Until( Comments.AnyComment ).Text(  );
+
+			var anyCharTillLineEnd =
+				from s in Parse.AnyChar.Until( Parse.LineEnd ).Text(  )
+				select s + '\n';
+
+			RemoveCommentsParser =
+				( from nonComment in
+					anyCharTillComment
+					.Or( anyCharTillLineEnd )
+					.Or( Parse.AnyChar.Many(  ).Text(  ) )
+				select nonComment ).Many(  )
+				.Select( values => String.Concat( values ) );
+
 			Root =
 				from aliases in AliasBlock.Optional(  )
 				from comps in CompBlock
 				select _contexts;
 		}
 
+		public readonly		CommentParser			Comments;
+		public readonly		Parser<String>			RemoveCommentsParser;
 		public readonly		Parser<IEnumerable<MainEntity>>		CompBlock;
 		public readonly		Parser<MainEntity>		CompEnt;
 		public readonly		Parser<IComponent>		CompParam;
@@ -142,6 +161,12 @@ namespace GenEntitasLang
 		private				Int32					_parseCompId;
 		private				Contexts				_contexts;
 		private				Dictionary<Type,Int32>	_mainTypesToI			= new Dictionary<Type, Int32>(  );
+
+		public				Contexts				ParseWithComments		( String str )
+		{
+			var withoutComments = RemoveCommentsParser.Parse( str );
+			return Root.Parse( withoutComments );
+		}
 
 		private				MainEntity				AddComp					( Contexts contexts, String id, IEnumerable<IComponent> comps )
 		{
