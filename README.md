@@ -3,7 +3,7 @@ Entitas generator using Entitas ECS framework
 
 ### Benefits
   - easy to extend - write Entitas System!
-  - supports multiple input sources during the same run - dlls for reflection, GenEntitasLang files
+  - multiple input sources during the same run - dlls for reflection, GenEntitasLang files
 
 ### Parts
   - [Tests](./Tests)
