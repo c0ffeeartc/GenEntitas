@@ -301,6 +301,42 @@ namespace Tests.Tests
 				ent.publicFieldsComp.Values[1].FieldName.should_be( "y" );
 				ent.publicFieldsComp.Values[1].TypeName.should_be( "float" );
 			}; } );
+
+			new Each<String, Boolean>
+			{
+				{
+					@"comp Destroy in First"
+					, false
+				},
+				{
+					@"comp Destroy in First
+					
+					"
+					, false
+				},
+			}.Do( ( given, throws ) => {
+			it["parses comp 3"] = () =>
+			{
+				var parser		= new GenEntitasLangParser( contexts );
+				if ( throws )
+				{
+					Action act = (  ) => { parser.CompEnt.Parse( given ); };
+					act.Should(  ).Throw<ParseException>(  );
+					return;
+				}
+
+				var ent			= parser.CompEnt.Parse( given );
+
+				ent.hasComp.should_be_true(  );
+				ent.comp.FullTypeName.should_be( "Destroy" );
+				ent.comp.Name.should_be( "Destroy" );
+
+				ent.hasContextNamesComp.should_be_true(  );
+				ent.contextNamesComp.Values.should_contain( "First" );
+
+				ent.isUniqueComp.should_be_false(  );
+				ent.hasPublicFieldsComp.should_be_false(  );
+			}; } );
 		}
 
 		private				void					test_ParseCompBlock			(  )
@@ -402,6 +438,13 @@ namespace Tests.Tests
 @"1 2 5
  6
 7",
+					false
+				},
+				{
+@"// 1
+2",
+@"
+2",
 					false
 				},
 			}.Do( ( given, expected, throws ) => {
@@ -510,6 +553,48 @@ namespace Tests.Tests
 					ent.publicFieldsComp.Values[1].FieldName.should_be( "y" );
 					ent.publicFieldsComp.Values[1].TypeName.should_be( "double" );
 				}
+			}; } );
+
+			new Each<String, Boolean>
+			{
+				{
+@"// just to test comments. Test1 should be generated
+comp Test1 in Main
+
+// Test2 should not be generated
+/*
+comp Test2 in Main
+*/
+"
+					, false
+				},
+			}.Do( ( given, throws ) => {
+			it["parses root 2"] = () =>
+			{
+				var parsers		= new GenEntitasLangParser( contexts );
+				if ( throws )
+				{
+					Action act = (  ) => { parsers.ParseWithComments( given ); };
+					act.Should(  ).Throw<ParseException>(  );
+					return;
+				}
+
+				contexts.settings.SetGeneratedNamespace( "Gen" );
+				parsers.ParseWithComments( given );
+
+				var ents = contexts.main.GetGroup( MainMatcher.Comp ).GetEntities(  );
+				ents.Length.should_be( 1 );
+
+				{
+					var ent				= ents[0];
+					ent.hasComp.should_be_true(  );
+					ent.comp.FullTypeName.should_be( "Gen.Test1" );
+					ent.comp.Name.should_be( "Test1" );
+
+					ent.hasContextNamesComp.should_be_true(  );
+					ent.contextNamesComp.Values.should_contain( "Main" );
+				}
+
 			}; } );
 
 		}

@@ -51,7 +51,7 @@ namespace GenEntitasLang
 			CompContextNames =
 				from contextsKeyword in Parse.String( "in" )
 				from ws in Parse.WhiteSpace.AtLeastOnce(  )
-				from contextNames in Identifier.DelimitedBy( Parse.Char( ',' ).Token(  ) )
+				from contextNames in Identifier.DelimitedBy( Parse.Char( ',' ).Token(  ) ).Token(  )
 				select new ContextNamesComp
 				{
 					Values = contextNames.ToList(  )
