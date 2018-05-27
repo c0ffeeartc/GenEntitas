@@ -4,7 +4,7 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
 ### Benefits
   - easy to extend - write Entitas System!
   - multiple input sources during the same run - dlls for reflection, GenEntitasLang files
-  - generated classes can be wrapped in optional namespace
+  - option to wrap generated classes into namespace
 
 ### Parts
   - [Tests](./Tests)
