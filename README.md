@@ -4,6 +4,7 @@ Entitas generator using Entitas ECS framework
 ### Benefits
   - easy to extend - write Entitas System!
   - multiple input sources during the same run - dlls for reflection, GenEntitasLang files
+  - generated classes can be wrapped in optional namespace
 
 ### Parts
   - [Tests](./Tests)
