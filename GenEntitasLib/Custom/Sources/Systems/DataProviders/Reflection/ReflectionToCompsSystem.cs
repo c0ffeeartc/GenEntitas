@@ -78,7 +78,7 @@ namespace GenEntitas
 
 			if ( contextNames.Count == 0 )
 			{
-				ent.AddContextNamesComp( new List<string>{ "Main" } );
+				ent.AddContextNamesComp( new List<string>{ "Undefined" } );
 				return;
 			}
 

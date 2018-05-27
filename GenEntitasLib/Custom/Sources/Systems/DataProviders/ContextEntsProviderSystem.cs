@@ -16,7 +16,7 @@ namespace GenEntitas
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
-			return context.CreateCollector( MainMatcher.ContextNamesComp );
+			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.ContextNamesComp ).NoneOf( MainMatcher.DontGenerateComp ) );
 		}
 
 		protected override	Boolean					Filter					( Ent entity )
