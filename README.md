@@ -1,5 +1,5 @@
 # GenEntitas
-Entitas generator using Entitas ECS framework
+Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS framework
 
 ### Benefits
   - easy to extend - write Entitas System!
@@ -15,17 +15,11 @@ Entitas generator using Entitas ECS framework
   - [Settings](GenEntitasSettings)
   - [GenEntitasLang](./GenEntitasLang)
 
-### Done
-
-  - DataProviders
-  - Generators
-  - PostProcessors
-
 ### Needs to be done
 
   - More tests
   - UI
   - Settings
     - on/off generators, change systems order
-  - PostProcessors
+  - PostProcessor
     - Update .csproj. Instead of this postprocessor glob can be used for non-unity csproj files
