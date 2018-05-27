@@ -106,7 +106,8 @@ namespace GenEntitas
 		{
 			foreach ( var contextName in ent.contextNamesComp.Values )
 			{
-				var eventComp					= _contexts.main.CreateEntity(  );
+				var eventListenerCompEnt			= _contexts.main.CreateEntity(  );
+				eventListenerCompEnt.isEventListenerComp	= true;
 
 				foreach ( var eventInfo in ent.eventComp.Values )
 				{
@@ -116,9 +117,9 @@ namespace GenEntitas
 					var listenerComponentName		= optionalContextName + componentName + eventTypeSuffix + "Listener";
 					var eventCompFullTypeName		= listenerComponentName.AddComponentSuffix();
 
-					eventComp.AddComp( listenerComponentName, eventCompFullTypeName );
-					eventComp.AddContextNamesComp( new List<String>{ contextName } );
-					eventComp.AddPublicFieldsComp( new List<FieldInfo>
+					eventListenerCompEnt.AddComp( listenerComponentName, eventCompFullTypeName );
+					eventListenerCompEnt.AddContextNamesComp( new List<String>{ contextName } );
+					eventListenerCompEnt.AddPublicFieldsComp( new List<FieldInfo>
 						{
 							new FieldInfo( "System.Collections.Generic.List<I" + listenerComponentName + ">", "value" )
 						} );

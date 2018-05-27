@@ -25,7 +25,7 @@ ${memberList}
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
-			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp ).NoneOf( MainMatcher.DontGenerateComp, MainMatcher.AlreadyImplementedComp ) );
+			return context.CreateCollector( MainMatcher.AllOf( MainMatcher.Comp ).NoneOf( MainMatcher.DontGenerateComp, MainMatcher.AlreadyImplementedComp, MainMatcher.EventListenerComp ) );
 		}
 
 		protected override	Boolean					Filter					( Ent entity )
@@ -50,7 +50,7 @@ ${memberList}
 							: ""
 					);
 
-				var filePath		= "Components" + Path.DirectorySeparatorChar + ent.comp.Name + ".cs";
+				var filePath		= "Components" + Path.DirectorySeparatorChar + ent.comp.Name.AddComponentSuffix(  ) + ".cs";
 				var generatedBy		= GetType(  ).FullName;
 				var fileEnt			= _contexts.main.CreateEntity(  );
 				fileEnt.AddGeneratedFileComp( filePath, contents.WrapInNamespace( _contexts ), generatedBy );

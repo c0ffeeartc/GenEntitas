@@ -11,18 +11,19 @@ public static class MainComponentsLookup {
     public const int DontGenerateComp = 7;
     public const int EntityIndexComp = 8;
     public const int EventComp = 9;
-    public const int GenEntitasLangInputString = 10;
-    public const int GeneratedFileComp = 11;
-    public const int NonIComp = 12;
-    public const int ParsedByGenEntitasLang = 13;
-    public const int PublicFieldsComp = 14;
-    public const int ReflectionComponentTypes = 15;
-    public const int ReflectionLoadableTypes = 16;
-    public const int TypeComp = 17;
-    public const int UniqueComp = 18;
-    public const int UniquePrefixComp = 19;
+    public const int EventListenerComp = 10;
+    public const int GenEntitasLangInputString = 11;
+    public const int GeneratedFileComp = 12;
+    public const int NonIComp = 13;
+    public const int ParsedByGenEntitasLang = 14;
+    public const int PublicFieldsComp = 15;
+    public const int ReflectionComponentTypes = 16;
+    public const int ReflectionLoadableTypes = 17;
+    public const int TypeComp = 18;
+    public const int UniqueComp = 19;
+    public const int UniquePrefixComp = 20;
 
-    public const int TotalComponents = 20;
+    public const int TotalComponents = 21;
 
     public static readonly string[] componentNames = {
         "AliasComp",
@@ -35,6 +36,7 @@ public static class MainComponentsLookup {
         "DontGenerateComp",
         "EntityIndexComp",
         "EventComp",
+        "EventListenerComp",
         "GenEntitasLangInputString",
         "GeneratedFileComp",
         "NonIComp",
@@ -58,6 +60,7 @@ public static class MainComponentsLookup {
         typeof(GenEntitas.DontGenerateComp),
         typeof(GenEntitas.EntityIndexComp),
         typeof(GenEntitas.EventComp),
+        typeof(GenEntitas.EventListenerComp),
         typeof(GenEntitas.GenEntitasLangInputString),
         typeof(GenEntitas.GeneratedFileComp),
         typeof(GenEntitas.NonIComp),

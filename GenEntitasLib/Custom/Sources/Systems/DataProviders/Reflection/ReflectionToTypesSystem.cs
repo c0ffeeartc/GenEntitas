@@ -10,9 +10,9 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
-	public class ReflectionToCompTypesSystem : ReactiveSystem<SettingsEntity>
+	public class ReflectionToTypesSystem : ReactiveSystem<SettingsEntity>
 	{
-		public				ReflectionToCompTypesSystem	( Contexts contexts ) : base( contexts.settings )
+		public				ReflectionToTypesSystem	( Contexts contexts ) : base( contexts.settings )
 		{
 			_contexts			= contexts;
 		}

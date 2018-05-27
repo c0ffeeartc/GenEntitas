@@ -26,4 +26,8 @@ public class EventInfo
 	public					Int32					Priority;
 }
 
+[Context(Ids.Main)]
+public class EventListenerComp : IComponent
+{
+}
 }
