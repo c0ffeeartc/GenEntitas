@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Entitas;
-using GenEntitas;
+using G = GenEntitas;
 using Sprache;
 
 namespace GenEntitasLang
 {
 	public class GenEntitasLangParser
 	{
-		public				GenEntitasLangParser	( Contexts contexts )
+		public				GenEntitasLangParser	( G.Contexts contexts )
 		{
 			_contexts = contexts;
 			for ( var i = 0; i < _contexts.main.contextInfo.componentTypes.Length; i++ )
@@ -52,7 +52,7 @@ namespace GenEntitasLang
 				from contextsKeyword in Parse.String( "in" )
 				from ws in Parse.WhiteSpace.AtLeastOnce(  )
 				from contextNames in Identifier.DelimitedBy( Parse.Char( ',' ).Token(  ) ).Token(  )
-				select new ContextNamesComp
+				select new G.ContextNamesComp
 				{
 					Values = contextNames.ToList(  )
 				};
@@ -61,21 +61,21 @@ namespace GenEntitasLang
 				from fieldName in Identifier
 				from colon in Parse.Char( ':' ).Token(  )
 				from typeName in AliasGet.Or( QuotedString )
-				select new FieldInfo( typeName, fieldName );
+				select new G.FieldInfo( typeName, fieldName );
 
 			CompPublicFields =
 				from ws in Parse.WhiteSpace.Many(  )
 				from publicFieldsKeyword in Parse.String( "publicFields" )
 				from colon in Parse.Char( ':' ).Token(  )
 				from fieldInfos in FieldInfo.Token(  ).AtLeastOnce(  )
-				select new PublicFieldsComp
+				select new G.PublicFieldsComp
 					{
 						Values = fieldInfos.ToList(  )
 					};
 
 			CompUnique =
 				from uniqueKeyword in Parse.String( "unique" ).Token(  )
-				select new UniqueComp(  );
+				select new G.UniqueComp(  );
 
 			CompParam =
 				CompContextNames
@@ -143,32 +143,32 @@ namespace GenEntitasLang
 
 		public readonly		CommentParser			Comments;
 		public readonly		Parser<String>			RemoveCommentsParser;
-		public readonly		Parser<IEnumerable<MainEntity>>		CompBlock;
-		public readonly		Parser<MainEntity>		CompEnt;
+		public readonly		Parser<IEnumerable<G.MainEntity>>		CompBlock;
+		public readonly		Parser<G.MainEntity>		CompEnt;
 		public readonly		Parser<IComponent>		CompParam;
 		public readonly		Parser<IComponent>		CompContextNames;
 		public readonly		Parser<IComponent>		CompUnique;
 		public readonly		Parser<IComponent>		CompPublicFields;
-		public readonly		Parser<FieldInfo>		FieldInfo;
+		public readonly		Parser<G.FieldInfo>		FieldInfo;
 		public readonly		Parser<String>			Identifier;
 		public readonly		Parser<String>			QuotedString;
 		public readonly		Parser<String>			QuotedIdentifier;
-		public readonly		Parser<MainEntity>		Alias;
+		public readonly		Parser<G.MainEntity>		Alias;
 		public readonly		Parser<KeyValuePair<String,String>>	AliasRule;
 		public readonly		Parser<String>			AliasGet;
-		public readonly		Parser<MainEntity>		AliasBlock;
-		public readonly		Parser<Contexts>		Root;
+		public readonly		Parser<G.MainEntity>		AliasBlock;
+		public readonly		Parser<G.Contexts>		Root;
 		private				Int32					_parseCompId;
-		private				Contexts				_contexts;
+		private				G.Contexts				_contexts;
 		private				Dictionary<Type,Int32>	_mainTypesToI			= new Dictionary<Type, Int32>(  );
 
-		public				Contexts				ParseWithComments		( String str )
+		public				G.Contexts				ParseWithComments		( String str )
 		{
 			var withoutComments = RemoveCommentsParser.Parse( str );
 			return Root.Parse( withoutComments );
 		}
 
-		private				MainEntity				AddComp					( Contexts contexts, String id, IEnumerable<IComponent> comps )
+		private				G.MainEntity			AddComp					( G.Contexts contexts, String id, IEnumerable<IComponent> comps )
 		{
 			_parseCompId++;
 			var ent						= _contexts.main.CreateEntity(  );
@@ -197,7 +197,7 @@ namespace GenEntitasLang
 			return ent;
 		}
 
-		private				MainEntity				AddAlias				( Contexts contexts, String key, String value )
+		private				G.MainEntity			AddAlias				( G.Contexts contexts, String key, String value )
 		{
 			if ( !contexts.main.hasAliasComp )
 			{
