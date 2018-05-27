@@ -39,6 +39,8 @@ public class Destroy : IComponent
 [Context(Ids.Main)]
 public class DontGenerateComp : IComponent
 {
+	//TODO
+	//public					Boolean					GenerateIndex;
 }
 
 [Context(Ids.Main)]
