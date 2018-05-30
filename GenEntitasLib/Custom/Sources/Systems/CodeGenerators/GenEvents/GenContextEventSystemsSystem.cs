@@ -8,9 +8,9 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
-	public class GenEventSystemsSystem : ReactiveSystem<Ent>
+	public class GenContextEventSystemsSystem : ReactiveSystem<Ent>
 	{
-		public				GenEventSystemsSystem	( Contexts contexts ) : base( contexts.main )
+		public				GenContextEventSystemsSystem	( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts			= contexts;
 		}

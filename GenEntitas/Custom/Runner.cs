@@ -51,6 +51,7 @@ namespace GenEntitas
 				.Add( new GenEventListenerCompSystem( _contexts ) )
 				.Add( new GenEventListenerInterfaceSystem( _contexts ) )
 				.Add( new GenEventSystemSystem( _contexts ) )
+				.Add( new GenContextEventSystemsSystem( _contexts ) )
 				.Add( new GenEventSystemsSystem( _contexts ) )
 
 				//.Add( new PostProcAddFileHeaderSystem( _contexts ) )

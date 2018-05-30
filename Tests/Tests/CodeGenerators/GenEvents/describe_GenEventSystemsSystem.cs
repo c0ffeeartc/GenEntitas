@@ -15,7 +15,7 @@ namespace Tests.Tests
 			context["when adding context comp entity"] = (  ) =>
 			{
 				_contexts				= new Contexts(  );
-				var system				= new GenEventSystemsSystem( _contexts );
+				var system				= new GenContextEventSystemsSystem( _contexts );
 
 				var ent					= _contexts.main.CreateEntity(  );
 				ent.AddComp( "TestComp1", "TestComp1" );
