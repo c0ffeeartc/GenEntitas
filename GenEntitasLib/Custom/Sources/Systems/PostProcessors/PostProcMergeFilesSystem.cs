@@ -9,10 +9,7 @@ namespace GenEntitas
 	{
 		public				PostProcMergeFilesSystem ( Contexts contexts ) : base( contexts.main )
 		{
-			_contexts			= contexts;
 		}
-
-		private				Contexts				_contexts;
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{

@@ -158,7 +158,6 @@ namespace GenEntitasLang
 		public readonly		Parser<String>			AliasGet;
 		public readonly		Parser<G.MainEntity>		AliasBlock;
 		public readonly		Parser<G.Contexts>		Root;
-		private				Int32					_parseCompId;
 		private				G.Contexts				_contexts;
 		private				Dictionary<Type,Int32>	_mainTypesToI			= new Dictionary<Type, Int32>(  );
 
@@ -170,7 +169,6 @@ namespace GenEntitasLang
 
 		private				G.MainEntity			AddComp					( G.Contexts contexts, String id, IEnumerable<IComponent> comps )
 		{
-			_parseCompId++;
 			var ent						= _contexts.main.CreateEntity(  );
 			var generatedNamespace		= contexts.settings.hasGeneratedNamespace
 				? contexts.settings.generatedNamespace.Value

@@ -8,11 +8,9 @@ namespace GenEntitas
 	{
 		public				DestroySystem			( Contexts contexts )
 		{
-			_contexts			= contexts;
 			_group				= contexts.main.GetGroup( MainMatcher.Destroy );
 		}
 
-		private				Contexts				_contexts;
 		private				IGroup<Ent>				_group;
 		private				List<Ent>				_buffer					= new List<Ent>(  );
 
