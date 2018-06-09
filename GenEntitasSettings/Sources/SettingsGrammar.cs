@@ -67,6 +67,10 @@ namespace GenEntitas
 						? d[nameof( GenEntitasLangPaths )].Split(',').ToList(  )
 						: new List<string>(  ) );
 
+					_contexts.settings.ReplaceSearchPaths( d.ContainsKey( nameof( SearchPaths ) )
+						? d[nameof( SearchPaths )].Split(',').ToList(  )
+						: new List<string>(  ) );
+
 					return _contexts;
 				} );
 		}

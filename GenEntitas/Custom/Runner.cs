@@ -16,6 +16,7 @@ namespace GenEntitas
 			_systems			= new Systems(  )
 				.Add( new ReadSettingsFileSystem( _contexts ) )
 				.Add( new ParseSettingsStrSystem( _contexts ) )
+				.Add( new AssemblyResolveSystem( _contexts ) )
 
 				.Add( new ReflectionToTypesSystem( _contexts ) )
 				.Add( new ReflectionToCompsSystem( _contexts ) )

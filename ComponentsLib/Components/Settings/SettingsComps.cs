@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
@@ -9,6 +10,12 @@ namespace GenEntitas
 public class SettingsPath : IComponent
 {
 	public					String					Value;
+}
+
+[Context(Ids.Settings), Unique]
+public class SearchPaths : IComponent
+{
+	public					List<String>			Value;
 }
 
 [Context(Ids.Settings), Unique]
