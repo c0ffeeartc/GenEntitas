@@ -18,6 +18,13 @@ public class SearchPaths : IComponent
 	public					List<String>			Value;
 }
 
+[Context(Ids.Settings)]
+[Unique]
+public class CsprojPath : IComponent
+{
+	public					String					Value;
+}
+
 [Context(Ids.Settings), Unique]
 public class SettingsParseInput : IComponent
 {
