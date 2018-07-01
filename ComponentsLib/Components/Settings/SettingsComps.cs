@@ -60,7 +60,7 @@ public class GeneratedNamespace : IComponent
 
 [Context(Ids.Settings)]
 [Unique]
-public class GenCompEntityApiInterface_ForSingleContext : IComponent
+public class GlobalGenCompEntityApiInterface_ForSingleContext : IComponent
 {
 }
 

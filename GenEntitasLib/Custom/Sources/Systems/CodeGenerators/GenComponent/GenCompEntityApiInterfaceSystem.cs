@@ -50,7 +50,8 @@ namespace GenEntitas
 		{
 			foreach ( var ent in entities )
 			{
-				if ( !_contexts.settings.isGenCompEntityApiInterface_ForSingleContext
+				if ( !_contexts.settings.isGlobalGenCompEntityApiInterface_ForSingleContext
+				    && !ent.isGenCompEntApiInterface_ForSingleContext
 					&& ent.contextNamesComp.Values.Count < 2 )
 				{
 					continue;

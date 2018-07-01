@@ -42,13 +42,13 @@ namespace GenEntitas
 						_contexts.settings.isIgnoreNamespaces = false;
 					}
 
-					if ( d.ContainsKey( nameof( GenCompEntityApiInterface_ForSingleContext ) ) )
+					if ( d.ContainsKey( nameof( GlobalGenCompEntityApiInterface_ForSingleContext ) ) )
 					{
-						_contexts.settings.isGenCompEntityApiInterface_ForSingleContext = BoolFromStr( d[nameof( GenCompEntityApiInterface_ForSingleContext )] );
+						_contexts.settings.isGlobalGenCompEntityApiInterface_ForSingleContext = BoolFromStr( d[nameof( GlobalGenCompEntityApiInterface_ForSingleContext )] );
 					}
 					else
 					{
-						_contexts.settings.isGenCompEntityApiInterface_ForSingleContext = false;
+						_contexts.settings.isGlobalGenCompEntityApiInterface_ForSingleContext = false;
 					}
 
 					if ( d.ContainsKey( nameof( RunInDryMode ) ) )

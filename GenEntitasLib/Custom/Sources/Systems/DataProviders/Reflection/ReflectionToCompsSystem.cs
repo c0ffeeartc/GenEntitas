@@ -47,6 +47,7 @@ namespace GenEntitas
 				ProvideUniqueComp( ent );
 				ProvidePublicFieldsComp( ent );
 				ProvideUniquePrefix( ent );
+				ProvideGenCompEntApiInterface_ForSingleContextAttr( ent );
 
 				TypeToContextNames[t]	= ent.contextNamesComp.Values;
 			}
@@ -165,6 +166,15 @@ namespace GenEntitas
 				.OfType<DontGenerateAttribute>()
 				.Any();
 			ent.isDontGenerateComp		= dontGenerate;
+		}
+
+		private				void					ProvideGenCompEntApiInterface_ForSingleContextAttr( Ent ent )
+		{
+			var value		= Attribute
+				.GetCustomAttributes(ent.typeComp.Value)
+				.OfType<GenCompEntApiInterface_ForSingleContextAttribute>()
+				.Any();
+			ent.isGenCompEntApiInterface_ForSingleContext = value;
 		}
 	}
 }
