@@ -58,4 +58,10 @@ public class GeneratedNamespace : IComponent
 	public					String					Value;
 }
 
+[Context(Ids.Settings)]
+[Unique]
+public class GenCompEntityApiInterface_ForSingleContext : IComponent
+{
+}
+
 }

@@ -12,8 +12,8 @@ namespace GenEntitas
 			_contexts = contexts;
 
 			Identifier =
-			(	from first in Parse.Letter.Once()
-				from rest in Parse.LetterOrDigit.Many().Text()
+			(	from first in Parse.Letter.Or( Parse.Char( '_' ) ).Once()
+				from rest in Parse.LetterOrDigit.Or( Parse.Char( '_' ) ).Many().Text()
 				select new String ( first.Concat( rest).ToArray(  ) )
 			).Token(  );
 
@@ -40,6 +40,15 @@ namespace GenEntitas
 					else
 					{
 						_contexts.settings.isIgnoreNamespaces = false;
+					}
+
+					if ( d.ContainsKey( nameof( GenCompEntityApiInterface_ForSingleContext ) ) )
+					{
+						_contexts.settings.isGenCompEntityApiInterface_ForSingleContext = BoolFromStr( d[nameof( GenCompEntityApiInterface_ForSingleContext )] );
+					}
+					else
+					{
+						_contexts.settings.isGenCompEntityApiInterface_ForSingleContext = false;
 					}
 
 					if ( d.ContainsKey( nameof( RunInDryMode ) ) )

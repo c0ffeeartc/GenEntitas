@@ -50,7 +50,8 @@ namespace GenEntitas
 		{
 			foreach ( var ent in entities )
 			{
-				if ( ent.contextNamesComp.Values.Count < 2 )
+				if ( !_contexts.settings.isGenCompEntityApiInterface_ForSingleContext
+					&& ent.contextNamesComp.Values.Count < 2 )
 				{
 					continue;
 				}
