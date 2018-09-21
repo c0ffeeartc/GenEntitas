@@ -69,14 +69,6 @@ public class UniquePrefixComp : IComponent
 	public					String					Value;
 }
 
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Struct, AllowMultiple = true)]
-public class GenCompEntApiInterface_ForSingleContextAttribute : Attribute
-{
-	public GenCompEntApiInterface_ForSingleContextAttribute()
-	{
-	}
-}
-
 [Context(Ids.Main)]
 public class GenCompEntApiInterface_ForSingleContext : IComponent
 {

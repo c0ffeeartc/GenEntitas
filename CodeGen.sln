@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitasLang", "GenEntita
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generated", "Generated\Generated.csproj", "{48BA263F-4D24-41E4-9DC6-0C3799ACAEC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitasAttributes", "GenEntitasAttributes\GenEntitasAttributes.csproj", "{4A541C51-AD33-46F3-95EF-F68027F83504}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{48BA263F-4D24-41E4-9DC6-0C3799ACAEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48BA263F-4D24-41E4-9DC6-0C3799ACAEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48BA263F-4D24-41E4-9DC6-0C3799ACAEC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A541C51-AD33-46F3-95EF-F68027F83504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A541C51-AD33-46F3-95EF-F68027F83504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A541C51-AD33-46F3-95EF-F68027F83504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A541C51-AD33-46F3-95EF-F68027F83504}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
