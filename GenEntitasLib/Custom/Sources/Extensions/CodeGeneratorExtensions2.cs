@@ -39,7 +39,7 @@ namespace GenEntitas {
 					.Replace("${ComponentName}", componentName)
 					.Replace("${componentName}", componentName.LowercaseFirst())
 					.Replace("${Index}", contextName + LOOKUP + "." + componentName)
-					.Replace("${prefixedComponentName}", ent.PrefixedComponentName());
+					.Replace("${prefixedComponentName}", ent.PrefixedComponentName(contexts));
 			}
 
 			if ( ent.hasPublicFieldsComp )
@@ -69,9 +69,9 @@ namespace GenEntitas {
                 .Replace("${EventType}", ent.GetEventTypeSuffix(eventInfo));
         }
 
-        public static string PrefixedComponentName(this MainEntity ent) {
+        public static string PrefixedComponentName(this MainEntity ent, Contexts contexts ) {
         	var uniquePrefix = ent.hasUniquePrefixComp ? ent.uniquePrefixComp.Value : "";
-            return uniquePrefix.LowercaseFirst() + ent.comp.Name;
+            return uniquePrefix.LowercaseFirst() + ent.ComponentName( contexts );
         }
 
 		public static string Event( this MainEntity ent, Contexts contexts, string contextName, EventInfo eventInfo ) {

@@ -105,7 +105,7 @@ namespace GenEntitas
 		private void CreateFileEnt( MainEntity ent, EventInfo eventInfo, string contextName )
 		{
 			var methodArgs = ent.GetEventMethodArgs( eventInfo, ", " + ( !ent.hasPublicFieldsComp
-				? ent.PrefixedComponentName( )
+				? ent.PrefixedComponentName( _contexts )
 				: GetMethodArgs( ent.publicFieldsComp.Values.ToArray( ) ) ) );
 
 			var filePath = "Events" + Path.DirectorySeparatorChar + "Systems" + Path.DirectorySeparatorChar +
@@ -146,10 +146,10 @@ namespace GenEntitas
 				switch (eventInfo.EventType)
 				{
 					case EventType.Added:
-						filter = "entity." + ent.PrefixedComponentName();
+						filter = "entity." + ent.PrefixedComponentName( _contexts );
 						break;
 					case EventType.Removed:
-						filter = "!entity." + ent.PrefixedComponentName();
+						filter = "!entity." + ent.PrefixedComponentName( _contexts );
 						break;
 				}
 			}
