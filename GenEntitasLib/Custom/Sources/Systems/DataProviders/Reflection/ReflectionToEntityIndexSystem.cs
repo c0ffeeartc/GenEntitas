@@ -33,11 +33,16 @@ namespace GenEntitas
 		{
 			var types				= _contexts.main.reflectionLoadableTypes.Values;
 
-			var typeTodEntIndexData = new Dictionary<String, EntityIndexData>(  );
+			var typeTodEntIndexData = new Dictionary<String, List<EntityIndexData>>(  );
 			var entityIndexDatas	= GetData( types );
 			foreach ( var data in entityIndexDatas )
 			{
-				typeTodEntIndexData[data.GetComponentType(  )] = data;
+				var key				= data.GetComponentType(  );
+				if ( !typeTodEntIndexData.ContainsKey( key ) )
+				{
+					typeTodEntIndexData[key] = new List<EntityIndexData>(  );
+				}
+				typeTodEntIndexData[key].Add( data );
 			}
 
 			var compEnts				= _contexts.main.GetGroup( MainMatcher.AllOf( MainMatcher.Comp, MainMatcher.PublicFieldsComp ) ).GetEntities(  );
@@ -49,9 +54,11 @@ namespace GenEntitas
 					continue;
 				}
 
-				var entityIndexData		= typeTodEntIndexData[ent.typeComp.Value.ToCompilableString(  )];
+				var entIndexDatas		= typeTodEntIndexData[ent.typeComp.Value.ToCompilableString(  )];
 				var publicFields		= ent.publicFieldsComp.Values;
 
+				foreach ( var entityIndexData in entIndexDatas )
+				{
 				foreach ( var field in publicFields )
 				{
 					if ( entityIndexData.GetMemberName(  ) != field.FieldName )
@@ -71,6 +78,7 @@ namespace GenEntitas
 					entIndexInfo.MemberType			= entityIndexData.GetKeyType(  );
 					entIndexInfo.MemberName			= entityIndexData.GetMemberName(  );
 					entIndexInfo.HasMultple			= entityIndexData.GetHasMultiple(  );
+				}
 				}
 
 				ent.ReplacePublicFieldsComp( publicFields );

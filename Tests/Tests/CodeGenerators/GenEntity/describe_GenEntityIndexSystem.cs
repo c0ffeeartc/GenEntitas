@@ -1,15 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using DesperateDevs.CodeGeneration;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using GenEntitas;
 using NSpec;
 
-[Context("Main"), Context("Second")]
+[Context("Main")]
+[Context("Second")]
 internal class TestEntityIndexComp1 : IComponent
 {
 	[EntityIndex]
 	public int Indexed;
+}
+
+[Context("Main")]
+[Context("Second")]
+internal class TestEntityIndexComp2 : IComponent
+{
+	[PrimaryEntityIndex]
+	public int PrimaryIndexed;
+	[EntityIndex]
+	public int EntityIndexed;
 }
 
 namespace Tests.Tests
@@ -62,6 +74,53 @@ namespace Tests.Tests
 						//Console.Write( fileEnt.generatedFileComp.Contents );
 					}
 				};
+			};
+		}
+
+		private				void					test_multiple_indexes	(  )
+		{
+			before					= (  )=>
+			{
+				_contexts			= new Contexts(  );
+			};
+
+			it["Contains two indexes of one component"] = (  ) =>
+			{
+				// given
+				var systems				= new Systems(  )
+					.Add( new ReflectionToCompsSystem( _contexts ) )
+					.Add( new ReflectionToEntityIndexSystem( _contexts ) )
+					.Add( new GenEntityIndexSystem( _contexts ) )
+					;
+
+				var ent					= _contexts.main.CreateEntity(  );
+				ent.AddReflectionComponentTypes( new List<Type>
+				{
+					typeof(TestEntityIndexComp2)
+				} );
+				ent.AddReflectionLoadableTypes( new List<Type>
+				{
+					typeof(TestEntityIndexComp2)
+				} );
+
+				// when
+				systems.Execute(  );
+
+				// then
+				var genFileGroup		= _contexts.main.GetGroup( MainMatcher.GeneratedFileComp );
+				var genFileEnts			= genFileGroup.GetEntities(  );
+				var hasContextsFile		= false;
+				foreach ( var genFile in genFileEnts )
+				{
+					if ( !genFile.generatedFileComp.FilePath.EndsWith( "Contexts.cs" ) )
+					{
+						continue;
+					}
+					hasContextsFile = true;
+					genFile.generatedFileComp.Contents.Contains( "PrimaryIndexed" ).should_be_true(  );
+					genFile.generatedFileComp.Contents.Contains( "EntityIndexed" ).should_be_true(  );
+				}
+				hasContextsFile.should_be( true );
 			};
 		}
 	}
