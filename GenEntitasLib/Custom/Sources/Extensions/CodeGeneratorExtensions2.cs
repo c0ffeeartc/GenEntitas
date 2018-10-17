@@ -57,8 +57,8 @@ namespace GenEntitas {
 	        EventInfo eventInfo ) {
             var eventListener = ent.EventListener( contexts, contextName, eventInfo);
             var lowerEventListener = ent.hasContextNamesComp && ent.contextNamesComp.Values.Count > 1
-                ? contextName.LowercaseFirst() + ent.comp.Name + ent.GetEventTypeSuffix(eventInfo) + "Listener"
-                : ent.comp.Name.LowercaseFirst() + ent.GetEventTypeSuffix(eventInfo) + "Listener";
+                ? contextName.LowercaseFirst() + ent.ComponentName(contexts) + ent.GetEventTypeSuffix(eventInfo) + "Listener"
+                : ent.ComponentName(contexts).LowercaseFirst() + ent.GetEventTypeSuffix(eventInfo) + "Listener";
 
             return template
                 .Replace( contexts, ent, contextName)
