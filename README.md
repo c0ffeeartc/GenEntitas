@@ -1,6 +1,13 @@
 # GenEntitas
 Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS framework
 
+### How it works
+  - Console Runner reads settings file
+  - Systems.Execute is called once
+    - DataProvider systems add entities with components
+    - Generator systems react to components in entities
+    - PostProcessor systems write changes to disk 
+
 ### Parts
   - [Tests](./Tests)
   - [Components](./ComponentsLib)
