@@ -19,7 +19,7 @@ namespace GenEntitas
 			Assembly assembly	= null;
 			try
 			{
-				Console.WriteLine( "  - Loading: " + args.Name );
+				Console.WriteLine( "  Loading: " + args.Name );
 				assembly		= Assembly.LoadFrom(new AssemblyName(args.Name).Name);
 			}
 			catch( Exception )
@@ -48,12 +48,12 @@ namespace GenEntitas
 				var path	= basePath + Path.DirectorySeparatorChar + assemblyName;
 				if ( File.Exists( path ) )
 				{
-					Console.WriteLine( "	- Resolved: " + path );
+					Console.WriteLine( "	Resolved: " + path );
 					return path;
 				}
 			}
 
-			Console.WriteLine( "	- Could not resolve: " + assemblyName );
+			Console.WriteLine( "	Could not resolve: " + assemblyName );
 			return null;
 		}
 	}
