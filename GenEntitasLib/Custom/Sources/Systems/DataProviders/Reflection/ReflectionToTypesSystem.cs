@@ -50,6 +50,7 @@ namespace GenEntitas
 				var dataFromComponents = types
 				.Where(type => type.ImplementsInterface<IComponent>())
 				.Where(type => !type.IsAbstract)
+				.Where( type => GetContextNames(type).Length > 0 )	// Force using ContextAttribute for IComponent
 				.ToArray();
 
 				compTypes.UnionWith( dataFromComponents );
