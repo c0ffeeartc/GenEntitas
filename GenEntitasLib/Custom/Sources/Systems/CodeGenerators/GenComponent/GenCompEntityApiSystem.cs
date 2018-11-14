@@ -21,19 +21,19 @@ namespace GenEntitas
         private const		String					STANDARD_TEMPLATE		=
 @"public partial class ${EntityType} {
 
-    public ${ComponentType} ${componentName} { get { return (${ComponentType})GetComponent(${Index}); } }
+    public ${ComponentType} ${validComponentName} { get { return (${ComponentType})GetComponent(${Index}); } }
     public bool has${ComponentName} { get { return HasComponent(${Index}); } }
 
     public void Add${ComponentName}(${newMethodParameters}) {
         var index = ${Index};
-        var component = CreateComponent<${ComponentType}>(index);
+        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
 ${memberAssignmentList}
         AddComponent(index, component);
     }
 
     public void Replace${ComponentName}(${newMethodParameters}) {
         var index = ${Index};
-        var component = CreateComponent<${ComponentType}>(index);
+        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
 ${memberAssignmentList}
         ReplaceComponent(index, component);
     }

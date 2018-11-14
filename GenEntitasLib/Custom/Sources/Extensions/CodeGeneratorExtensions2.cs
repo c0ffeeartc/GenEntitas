@@ -37,6 +37,7 @@ namespace GenEntitas {
 					.Replace(contextName)
 					.Replace("${ComponentType}", ent.comp.FullTypeName)
 					.Replace("${ComponentName}", componentName)
+					.Replace("${validComponentName}", componentName.LowercaseFirst())
 					.Replace("${componentName}", componentName.LowercaseFirst())
 					.Replace("${Index}", contextName + LOOKUP + "." + componentName)
 					.Replace("${prefixedComponentName}", ent.PrefixedComponentName(contexts));

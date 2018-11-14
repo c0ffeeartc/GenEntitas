@@ -16,6 +16,7 @@ namespace GenEntitas
 		private				Contexts				_contexts;
 		private const		String					TEMPLATE				=
             @"public sealed partial class ${ContextType} : Entitas.Context<${EntityType}> {
+
     public ${ContextType}()
         : base(
             ${Lookup}.TotalComponents,
@@ -26,6 +27,7 @@ namespace GenEntitas
                 ${Lookup}.componentTypes
             ),
             (entity) =>
+
 #if (ENTITAS_FAST_AND_UNSAFE)
                 new Entitas.UnsafeAERC(),
 #else
