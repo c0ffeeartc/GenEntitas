@@ -35,13 +35,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DesperateDevs.CodeGeneration, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Libraries\Entitas\Editor\DesperateDevs.CodeGeneration.dll</HintPath>
+      <HintPath>..\Libraries\Entitas\DesperateDevs\Editor\DesperateDevs.CodeGeneration.dll</HintPath>
     </Reference>
     <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Libraries\Entitas\Entitas.dll</HintPath>
+      <HintPath>..\Libraries\Entitas\Entitas\Entitas.dll</HintPath>
     </Reference>
     <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Libraries\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
+      <HintPath>..\Libraries\Entitas\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions, Version=5.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a">
       <HintPath>..\packages\FluentAssertions.5.3.0\lib\net45\FluentAssertions.dll</HintPath>

@@ -91,7 +91,7 @@ namespace GenEntitas
 			var type			= ent.typeComp.Value;
 			var eventInfos		= Attribute.GetCustomAttributes(type)
 				.OfType<EventAttribute>()
-				.Select(attr => new EventInfo(attr.bindToEntity, attr.eventType, attr.priority))
+				.Select(attr => new EventInfo(attr.eventTarget, attr.eventType, attr.priority))
 				.ToList();
 
 			if ( eventInfos.Count <= 0 )
@@ -153,7 +153,7 @@ namespace GenEntitas
 		private				void					ProvideUniquePrefix		( Ent ent )
 		{
 			var attr		= Attribute.GetCustomAttributes(ent.typeComp.Value)
-				.OfType<UniquePrefixAttribute>()
+				.OfType<FlagPrefixAttribute>()
 				.SingleOrDefault();
 
 			ent.AddUniquePrefixComp( attr == null ? "is" : attr.prefix );

@@ -33,13 +33,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Libraries\Entitas\Entitas.dll</HintPath>
+      <HintPath>..\Libraries\Entitas\Entitas\Entitas.dll</HintPath>
     </Reference>
     <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Libraries\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
+      <HintPath>..\Libraries\Entitas\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Entitas.CodeGeneration.Plugins, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Libraries\Entitas\Editor\Plugins\Entitas\Entitas.CodeGeneration.Plugins.dll</HintPath>
+      <HintPath>..\Libraries\Entitas\Entitas\Editor\Plugins\Entitas.CodeGeneration.Plugins.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

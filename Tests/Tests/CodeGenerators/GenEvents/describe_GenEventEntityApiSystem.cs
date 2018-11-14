@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Entitas.CodeGeneration.Attributes;
 using GenEntitas;
 using NSpec;
@@ -21,8 +20,8 @@ namespace Tests.Tests
 				ent.AddComp( "TestComp1", "TestComp1" );
 				ent.AddEventComp( new List<EventInfo>(  )
 					{
-						new EventInfo(bindToEntity : true,eventType : EventType.Added, priority :  0),
-						new EventInfo(bindToEntity : false,eventType : EventType.Removed, priority :  0),
+						new EventInfo(eventTarget : EventTarget.Self, eventType : EventType.Added, priority :  0),
+						new EventInfo(eventTarget : EventTarget.Any, eventType : EventType.Removed, priority :  0),
 					} );
 
 				ent.AddContextNamesComp( new List<string>{ "Main", "Seconds" });

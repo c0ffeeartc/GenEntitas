@@ -18,7 +18,7 @@ namespace GenEntitas
 		}
 
 		private				Contexts				_contexts;
-		private const		String					TEMPLATE				=
+		private const		String					TEMPLATE_ANY			=
 @"public sealed class ${Event}EventSystem : Entitas.ReactiveSystem<${EntityType}> {
 
     readonly Entitas.IGroup<${EntityType}> _listeners;
@@ -50,7 +50,7 @@ namespace GenEntitas
 }
 ";
 
-		private const		String				BIND_TO_ENTITY_TEMPLATE		=
+		private const		String					TEMPLATE_SELF			=
 @"public sealed class ${Event}EventSystem : Entitas.ReactiveSystem<${EntityType}> {
 
     public ${Event}EventSystem(Contexts contexts) : base(contexts.${contextName}) {
@@ -111,9 +111,9 @@ namespace GenEntitas
 			var filePath = "Events" + Path.DirectorySeparatorChar + "Systems" + Path.DirectorySeparatorChar +
 			               ent.Event( _contexts, contextName, eventInfo ) + "EventSystem.cs";
 
-			var template = eventInfo.BindToEntity
-				? BIND_TO_ENTITY_TEMPLATE
-				: TEMPLATE;
+			var template = eventInfo.EventTarget == EventTarget.Self
+				? TEMPLATE_SELF
+				: TEMPLATE_ANY;
 
 			var cachedAccess = !ent.hasPublicFieldsComp
 				? string.Empty
@@ -166,7 +166,7 @@ namespace GenEntitas
 				}
 			}
 
-			if (eventInfo.BindToEntity) {
+			if (eventInfo.EventTarget == EventTarget.Self) {
 				filter += " && entity.has" + ent.EventListener( _contexts, contextName, eventInfo);
 			}
 

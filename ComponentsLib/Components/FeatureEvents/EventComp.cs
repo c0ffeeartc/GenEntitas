@@ -14,14 +14,14 @@ public class EventComp : IComponent
 
 public class EventInfo
 {
-	public					EventInfo				( bool bindToEntity, EventType eventType, int priority )
+	public					EventInfo				( EventTarget eventTarget, EventType eventType, int priority )
 	{
-		BindToEntity		= bindToEntity;
+		EventTarget			= eventTarget;
 		EventType			= eventType;
 		Priority			= priority;
 	}
 
-	public					Boolean					BindToEntity;
+	public					EventTarget				EventTarget;
 	public					EventType				EventType;
 	public					Int32					Priority;
 }

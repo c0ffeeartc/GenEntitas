@@ -127,14 +127,14 @@ namespace Tests.Tests
 		}
 
 		[Context("Test")]
-		[Event(true)]
+		[Event(EventTarget.Self)]
 		private class TestFlagEventTrue : IComponent
 		{
 		}
 
 		[Context("Test")]
-		[Event(true)]
-		[Event(true, EventType.Removed)]
+		[Event(EventTarget.Self)]
+		[Event(EventTarget.Self, EventType.Removed)]
 		private class TestFlagEventTrueAddAndRemove : IComponent
 		{
 		}
