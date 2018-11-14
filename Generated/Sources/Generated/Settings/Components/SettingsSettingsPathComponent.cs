@@ -39,14 +39,14 @@ public partial class SettingsEntity {
 
     public void AddSettingsPath(string newValue) {
         var index = SettingsComponentsLookup.SettingsPath;
-        var component = CreateComponent<GenEntitas.SettingsPath>(index);
+        var component = (GenEntitas.SettingsPath)CreateComponent(index, typeof(GenEntitas.SettingsPath));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceSettingsPath(string newValue) {
         var index = SettingsComponentsLookup.SettingsPath;
-        var component = CreateComponent<GenEntitas.SettingsPath>(index);
+        var component = (GenEntitas.SettingsPath)CreateComponent(index, typeof(GenEntitas.SettingsPath));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

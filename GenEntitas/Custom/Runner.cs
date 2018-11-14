@@ -32,7 +32,7 @@ namespace GenEntitas
 
 				.Add( new GenFeatureClassSystem( _contexts ) )
 
-				.Add( new GenContextAttributeSystem( _contexts ) )
+//				.Add( new GenContextAttributeSystem( _contexts ) )
 				.Add( new GenContextMatcherSystem( _contexts ) )
 				.Add( new GenContextSystem( _contexts ) )
 

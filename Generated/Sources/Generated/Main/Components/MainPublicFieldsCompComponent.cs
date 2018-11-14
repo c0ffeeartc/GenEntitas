@@ -6,14 +6,14 @@ public partial class MainEntity {
 
     public void AddPublicFieldsComp(System.Collections.Generic.List<GenEntitas.FieldInfo> newValues) {
         var index = MainComponentsLookup.PublicFieldsComp;
-        var component = CreateComponent<GenEntitas.PublicFieldsComp>(index);
+        var component = (GenEntitas.PublicFieldsComp)CreateComponent(index, typeof(GenEntitas.PublicFieldsComp));
         component.Values = newValues;
         AddComponent(index, component);
     }
 
     public void ReplacePublicFieldsComp(System.Collections.Generic.List<GenEntitas.FieldInfo> newValues) {
         var index = MainComponentsLookup.PublicFieldsComp;
-        var component = CreateComponent<GenEntitas.PublicFieldsComp>(index);
+        var component = (GenEntitas.PublicFieldsComp)CreateComponent(index, typeof(GenEntitas.PublicFieldsComp));
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

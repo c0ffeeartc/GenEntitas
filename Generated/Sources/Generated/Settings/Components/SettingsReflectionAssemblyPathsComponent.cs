@@ -39,14 +39,14 @@ public partial class SettingsEntity {
 
     public void AddReflectionAssemblyPaths(System.Collections.Generic.List<string> newValues) {
         var index = SettingsComponentsLookup.ReflectionAssemblyPaths;
-        var component = CreateComponent<GenEntitas.ReflectionAssemblyPaths>(index);
+        var component = (GenEntitas.ReflectionAssemblyPaths)CreateComponent(index, typeof(GenEntitas.ReflectionAssemblyPaths));
         component.Values = newValues;
         AddComponent(index, component);
     }
 
     public void ReplaceReflectionAssemblyPaths(System.Collections.Generic.List<string> newValues) {
         var index = SettingsComponentsLookup.ReflectionAssemblyPaths;
-        var component = CreateComponent<GenEntitas.ReflectionAssemblyPaths>(index);
+        var component = (GenEntitas.ReflectionAssemblyPaths)CreateComponent(index, typeof(GenEntitas.ReflectionAssemblyPaths));
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

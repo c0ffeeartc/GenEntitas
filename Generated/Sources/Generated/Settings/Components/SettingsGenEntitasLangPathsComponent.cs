@@ -39,14 +39,14 @@ public partial class SettingsEntity {
 
     public void AddGenEntitasLangPaths(System.Collections.Generic.List<string> newValues) {
         var index = SettingsComponentsLookup.GenEntitasLangPaths;
-        var component = CreateComponent<GenEntitas.GenEntitasLangPaths>(index);
+        var component = (GenEntitas.GenEntitasLangPaths)CreateComponent(index, typeof(GenEntitas.GenEntitasLangPaths));
         component.Values = newValues;
         AddComponent(index, component);
     }
 
     public void ReplaceGenEntitasLangPaths(System.Collections.Generic.List<string> newValues) {
         var index = SettingsComponentsLookup.GenEntitasLangPaths;
-        var component = CreateComponent<GenEntitas.GenEntitasLangPaths>(index);
+        var component = (GenEntitas.GenEntitasLangPaths)CreateComponent(index, typeof(GenEntitas.GenEntitasLangPaths));
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

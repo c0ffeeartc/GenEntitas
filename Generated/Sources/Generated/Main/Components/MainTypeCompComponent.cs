@@ -6,14 +6,14 @@ public partial class MainEntity {
 
     public void AddTypeComp(System.Type newValue) {
         var index = MainComponentsLookup.TypeComp;
-        var component = CreateComponent<GenEntitas.TypeComp>(index);
+        var component = (GenEntitas.TypeComp)CreateComponent(index, typeof(GenEntitas.TypeComp));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceTypeComp(System.Type newValue) {
         var index = MainComponentsLookup.TypeComp;
-        var component = CreateComponent<GenEntitas.TypeComp>(index);
+        var component = (GenEntitas.TypeComp)CreateComponent(index, typeof(GenEntitas.TypeComp));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

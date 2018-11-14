@@ -39,14 +39,14 @@ public partial class SettingsEntity {
 
     public void AddCsprojPath(string newValue) {
         var index = SettingsComponentsLookup.CsprojPath;
-        var component = CreateComponent<GenEntitas.CsprojPath>(index);
+        var component = (GenEntitas.CsprojPath)CreateComponent(index, typeof(GenEntitas.CsprojPath));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceCsprojPath(string newValue) {
         var index = SettingsComponentsLookup.CsprojPath;
-        var component = CreateComponent<GenEntitas.CsprojPath>(index);
+        var component = (GenEntitas.CsprojPath)CreateComponent(index, typeof(GenEntitas.CsprojPath));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

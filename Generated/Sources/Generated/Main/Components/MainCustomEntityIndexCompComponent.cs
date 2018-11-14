@@ -6,14 +6,14 @@ public partial class MainEntity {
 
     public void AddCustomEntityIndexComp(Entitas.CodeGeneration.Plugins.EntityIndexData newEntityIndexData) {
         var index = MainComponentsLookup.CustomEntityIndexComp;
-        var component = CreateComponent<GenEntitas.CustomEntityIndexComp>(index);
+        var component = (GenEntitas.CustomEntityIndexComp)CreateComponent(index, typeof(GenEntitas.CustomEntityIndexComp));
         component.EntityIndexData = newEntityIndexData;
         AddComponent(index, component);
     }
 
     public void ReplaceCustomEntityIndexComp(Entitas.CodeGeneration.Plugins.EntityIndexData newEntityIndexData) {
         var index = MainComponentsLookup.CustomEntityIndexComp;
-        var component = CreateComponent<GenEntitas.CustomEntityIndexComp>(index);
+        var component = (GenEntitas.CustomEntityIndexComp)CreateComponent(index, typeof(GenEntitas.CustomEntityIndexComp));
         component.EntityIndexData = newEntityIndexData;
         ReplaceComponent(index, component);
     }

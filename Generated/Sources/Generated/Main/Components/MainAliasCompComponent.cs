@@ -39,14 +39,14 @@ public partial class MainEntity {
 
     public void AddAliasComp(System.Collections.Generic.Dictionary<string, string> newValues) {
         var index = MainComponentsLookup.AliasComp;
-        var component = CreateComponent<GenEntitas.AliasComp>(index);
+        var component = (GenEntitas.AliasComp)CreateComponent(index, typeof(GenEntitas.AliasComp));
         component.Values = newValues;
         AddComponent(index, component);
     }
 
     public void ReplaceAliasComp(System.Collections.Generic.Dictionary<string, string> newValues) {
         var index = MainComponentsLookup.AliasComp;
-        var component = CreateComponent<GenEntitas.AliasComp>(index);
+        var component = (GenEntitas.AliasComp)CreateComponent(index, typeof(GenEntitas.AliasComp));
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

@@ -39,14 +39,14 @@ public partial class SettingsEntity {
 
     public void AddGeneratedNamespace(string newValue) {
         var index = SettingsComponentsLookup.GeneratedNamespace;
-        var component = CreateComponent<GenEntitas.GeneratedNamespace>(index);
+        var component = (GenEntitas.GeneratedNamespace)CreateComponent(index, typeof(GenEntitas.GeneratedNamespace));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceGeneratedNamespace(string newValue) {
         var index = SettingsComponentsLookup.GeneratedNamespace;
-        var component = CreateComponent<GenEntitas.GeneratedNamespace>(index);
+        var component = (GenEntitas.GeneratedNamespace)CreateComponent(index, typeof(GenEntitas.GeneratedNamespace));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

@@ -6,14 +6,14 @@ public partial class MainEntity {
 
     public void AddContextNamesComp(System.Collections.Generic.List<string> newValues) {
         var index = MainComponentsLookup.ContextNamesComp;
-        var component = CreateComponent<GenEntitas.ContextNamesComp>(index);
+        var component = (GenEntitas.ContextNamesComp)CreateComponent(index, typeof(GenEntitas.ContextNamesComp));
         component.Values = newValues;
         AddComponent(index, component);
     }
 
     public void ReplaceContextNamesComp(System.Collections.Generic.List<string> newValues) {
         var index = MainComponentsLookup.ContextNamesComp;
-        var component = CreateComponent<GenEntitas.ContextNamesComp>(index);
+        var component = (GenEntitas.ContextNamesComp)CreateComponent(index, typeof(GenEntitas.ContextNamesComp));
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

@@ -39,14 +39,14 @@ public partial class SettingsEntity {
 
     public void AddSettingsParseInput(string newValue) {
         var index = SettingsComponentsLookup.SettingsParseInput;
-        var component = CreateComponent<GenEntitas.SettingsParseInput>(index);
+        var component = (GenEntitas.SettingsParseInput)CreateComponent(index, typeof(GenEntitas.SettingsParseInput));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceSettingsParseInput(string newValue) {
         var index = SettingsComponentsLookup.SettingsParseInput;
-        var component = CreateComponent<GenEntitas.SettingsParseInput>(index);
+        var component = (GenEntitas.SettingsParseInput)CreateComponent(index, typeof(GenEntitas.SettingsParseInput));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

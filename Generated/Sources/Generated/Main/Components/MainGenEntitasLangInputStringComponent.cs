@@ -6,14 +6,14 @@ public partial class MainEntity {
 
     public void AddGenEntitasLangInputString(string newValue) {
         var index = MainComponentsLookup.GenEntitasLangInputString;
-        var component = CreateComponent<GenEntitas.GenEntitasLangInputString>(index);
+        var component = (GenEntitas.GenEntitasLangInputString)CreateComponent(index, typeof(GenEntitas.GenEntitasLangInputString));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceGenEntitasLangInputString(string newValue) {
         var index = MainComponentsLookup.GenEntitasLangInputString;
-        var component = CreateComponent<GenEntitas.GenEntitasLangInputString>(index);
+        var component = (GenEntitas.GenEntitasLangInputString)CreateComponent(index, typeof(GenEntitas.GenEntitasLangInputString));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

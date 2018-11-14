@@ -39,14 +39,14 @@ public partial class MainEntity {
 
     public void AddReflectionLoadableTypes(System.Collections.Generic.List<System.Type> newValues) {
         var index = MainComponentsLookup.ReflectionLoadableTypes;
-        var component = CreateComponent<GenEntitas.ReflectionLoadableTypes>(index);
+        var component = (GenEntitas.ReflectionLoadableTypes)CreateComponent(index, typeof(GenEntitas.ReflectionLoadableTypes));
         component.Values = newValues;
         AddComponent(index, component);
     }
 
     public void ReplaceReflectionLoadableTypes(System.Collections.Generic.List<System.Type> newValues) {
         var index = MainComponentsLookup.ReflectionLoadableTypes;
-        var component = CreateComponent<GenEntitas.ReflectionLoadableTypes>(index);
+        var component = (GenEntitas.ReflectionLoadableTypes)CreateComponent(index, typeof(GenEntitas.ReflectionLoadableTypes));
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

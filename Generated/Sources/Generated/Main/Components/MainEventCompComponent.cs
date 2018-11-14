@@ -6,14 +6,14 @@ public partial class MainEntity {
 
     public void AddEventComp(System.Collections.Generic.List<GenEntitas.EventInfo> newValues) {
         var index = MainComponentsLookup.EventComp;
-        var component = CreateComponent<GenEntitas.EventComp>(index);
+        var component = (GenEntitas.EventComp)CreateComponent(index, typeof(GenEntitas.EventComp));
         component.Values = newValues;
         AddComponent(index, component);
     }
 
     public void ReplaceEventComp(System.Collections.Generic.List<GenEntitas.EventInfo> newValues) {
         var index = MainComponentsLookup.EventComp;
-        var component = CreateComponent<GenEntitas.EventComp>(index);
+        var component = (GenEntitas.EventComp)CreateComponent(index, typeof(GenEntitas.EventComp));
         component.Values = newValues;
         ReplaceComponent(index, component);
     }

@@ -1,5 +1,6 @@
 namespace GenEntitas {
 public sealed partial class MainContext : Entitas.Context<MainEntity> {
+
     public MainContext()
         : base(
             MainComponentsLookup.TotalComponents,
@@ -10,6 +11,7 @@ public sealed partial class MainContext : Entitas.Context<MainEntity> {
                 MainComponentsLookup.componentTypes
             ),
             (entity) =>
+
 #if (ENTITAS_FAST_AND_UNSAFE)
                 new Entitas.UnsafeAERC(),
 #else

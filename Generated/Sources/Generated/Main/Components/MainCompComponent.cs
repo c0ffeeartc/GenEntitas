@@ -6,7 +6,7 @@ public partial class MainEntity {
 
     public void AddComp(string newName, string newFullTypeName) {
         var index = MainComponentsLookup.Comp;
-        var component = CreateComponent<GenEntitas.Comp>(index);
+        var component = (GenEntitas.Comp)CreateComponent(index, typeof(GenEntitas.Comp));
         component.Name = newName;
         component.FullTypeName = newFullTypeName;
         AddComponent(index, component);
@@ -14,7 +14,7 @@ public partial class MainEntity {
 
     public void ReplaceComp(string newName, string newFullTypeName) {
         var index = MainComponentsLookup.Comp;
-        var component = CreateComponent<GenEntitas.Comp>(index);
+        var component = (GenEntitas.Comp)CreateComponent(index, typeof(GenEntitas.Comp));
         component.Name = newName;
         component.FullTypeName = newFullTypeName;
         ReplaceComponent(index, component);

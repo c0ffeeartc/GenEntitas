@@ -6,7 +6,7 @@ public partial class MainEntity {
 
     public void AddGeneratedFileComp(string newFilePath, string newContents, string newGeneratedBy) {
         var index = MainComponentsLookup.GeneratedFileComp;
-        var component = CreateComponent<GenEntitas.GeneratedFileComp>(index);
+        var component = (GenEntitas.GeneratedFileComp)CreateComponent(index, typeof(GenEntitas.GeneratedFileComp));
         component.FilePath = newFilePath;
         component.Contents = newContents;
         component.GeneratedBy = newGeneratedBy;
@@ -15,7 +15,7 @@ public partial class MainEntity {
 
     public void ReplaceGeneratedFileComp(string newFilePath, string newContents, string newGeneratedBy) {
         var index = MainComponentsLookup.GeneratedFileComp;
-        var component = CreateComponent<GenEntitas.GeneratedFileComp>(index);
+        var component = (GenEntitas.GeneratedFileComp)CreateComponent(index, typeof(GenEntitas.GeneratedFileComp));
         component.FilePath = newFilePath;
         component.Contents = newContents;
         component.GeneratedBy = newGeneratedBy;

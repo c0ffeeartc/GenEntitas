@@ -6,14 +6,14 @@ public partial class MainEntity {
 
     public void AddUniquePrefixComp(string newValue) {
         var index = MainComponentsLookup.UniquePrefixComp;
-        var component = CreateComponent<GenEntitas.UniquePrefixComp>(index);
+        var component = (GenEntitas.UniquePrefixComp)CreateComponent(index, typeof(GenEntitas.UniquePrefixComp));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceUniquePrefixComp(string newValue) {
         var index = MainComponentsLookup.UniquePrefixComp;
-        var component = CreateComponent<GenEntitas.UniquePrefixComp>(index);
+        var component = (GenEntitas.UniquePrefixComp)CreateComponent(index, typeof(GenEntitas.UniquePrefixComp));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

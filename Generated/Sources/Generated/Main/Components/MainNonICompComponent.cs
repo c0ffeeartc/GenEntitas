@@ -6,7 +6,7 @@ public partial class MainEntity {
 
     public void AddNonIComp(string newFullCompName, string newFieldTypeName) {
         var index = MainComponentsLookup.NonIComp;
-        var component = CreateComponent<GenEntitas.NonIComp>(index);
+        var component = (GenEntitas.NonIComp)CreateComponent(index, typeof(GenEntitas.NonIComp));
         component.FullCompName = newFullCompName;
         component.FieldTypeName = newFieldTypeName;
         AddComponent(index, component);
@@ -14,7 +14,7 @@ public partial class MainEntity {
 
     public void ReplaceNonIComp(string newFullCompName, string newFieldTypeName) {
         var index = MainComponentsLookup.NonIComp;
-        var component = CreateComponent<GenEntitas.NonIComp>(index);
+        var component = (GenEntitas.NonIComp)CreateComponent(index, typeof(GenEntitas.NonIComp));
         component.FullCompName = newFullCompName;
         component.FieldTypeName = newFieldTypeName;
         ReplaceComponent(index, component);
