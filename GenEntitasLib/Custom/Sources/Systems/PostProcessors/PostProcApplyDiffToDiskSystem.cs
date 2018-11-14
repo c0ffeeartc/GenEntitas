@@ -77,6 +77,10 @@ namespace GenEntitas
 		private				void					DeleteNonGenFiles		( List<Ent> ents, StringBuilder sb )
 		{
 			var dirInfo					= new DirectoryInfo( _generatePath );
+			if ( !dirInfo.Exists )
+			{
+				Directory.CreateDirectory( _generatePath );
+			}
 			var curFiles				= dirInfo.GetFiles( "*.cs", SearchOption.AllDirectories ).ToList(  );
 			var entGenPaths				= ents.Select( ent=> Path.Combine( dirInfo.FullName, ent.generatedFileComp.FilePath ) ).ToList(  );
 
