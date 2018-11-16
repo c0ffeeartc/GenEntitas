@@ -1,9 +1,11 @@
 ## Roslyn Data Provider
+ based on https://github.com/vedun-z/Entitas-CSharp
 
+### How it works
   - Reads solution file
-  - Fixes and create copy of `.sln` for OSX
-  - Compiles projects and provides List<INamedTypeSymbol> using Roslyn
-  - TODO: Provides entities with components from List<INamedTypeSymbol>
+  - For OSX - fixes and creates copy of `.sln`
+  - Compiles projects and provides `List<INamedTypeSymbol>` using Roslyn
+  - TODO: Provides entities with components from `List<INamedTypeSymbol>`
 
 ### Usage
 
