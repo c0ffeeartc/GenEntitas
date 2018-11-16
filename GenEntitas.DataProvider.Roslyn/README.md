@@ -5,7 +5,8 @@
   - Reads solution file
   - For OSX - fixes and creates copy of `.sln`
   - Compiles projects and provides `List<INamedTypeSymbol>` using Roslyn
-  - TODO: Provides entities with components from `List<INamedTypeSymbol>`
+  - Provides entities with components from `List<INamedTypeSymbol>`
+  - TODO: Provides EntityIndex
 
 ### Usage
 
