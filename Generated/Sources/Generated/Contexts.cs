@@ -73,6 +73,7 @@ namespace GenEntitas {
 public partial class Contexts {
 
     public const string Comp = "Comp";
+    public const string INamedTypeSymbol = "INamedTypeSymbol";
     public const string TypeComp = "TypeComp";
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
@@ -81,6 +82,11 @@ public partial class Contexts {
             Comp,
             main.GetGroup(MainMatcher.Comp),
             (e, c) => ((GenEntitas.Comp)c).FullTypeName));
+
+        main.AddEntityIndex(new Entitas.PrimaryEntityIndex<MainEntity, Microsoft.CodeAnalysis.INamedTypeSymbol>(
+            INamedTypeSymbol,
+            main.GetGroup(MainMatcher.INamedTypeSymbol),
+            (e, c) => ((GenEntitas.INamedTypeSymbolComponent)c).Value));
 
         main.AddEntityIndex(new Entitas.EntityIndex<MainEntity, System.Type>(
             TypeComp,
@@ -93,6 +99,10 @@ public static class ContextsExtensions {
 
     public static MainEntity GetEntityWithComp(this MainContext context, string FullTypeName) {
         return ((Entitas.PrimaryEntityIndex<MainEntity, string>)context.GetEntityIndex(Contexts.Comp)).GetEntity(FullTypeName);
+    }
+
+    public static MainEntity GetEntityWithINamedTypeSymbol(this MainContext context, Microsoft.CodeAnalysis.INamedTypeSymbol Value) {
+        return ((Entitas.PrimaryEntityIndex<MainEntity, Microsoft.CodeAnalysis.INamedTypeSymbol>)context.GetEntityIndex(Contexts.INamedTypeSymbol)).GetEntity(Value);
     }
 
     public static System.Collections.Generic.HashSet<MainEntity> GetEntitiesWithTypeComp(this MainContext context, System.Type Value) {

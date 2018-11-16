@@ -100,22 +100,22 @@ namespace GenEntitas
 			}
 
 			ent.AddEventComp( eventInfos );
-			ProvideEventCompNewEnts( ent );
+			ProvideEventCompNewEnts( _contexts, ent );
 		}
 
-		private				void					ProvideEventCompNewEnts		( MainEntity ent )
+		public static		void					ProvideEventCompNewEnts	( Contexts contexts, MainEntity ent )
 		{
 			foreach ( var contextName in ent.contextNamesComp.Values )
 			{
 				foreach ( var eventInfo in ent.eventComp.Values )
 				{
-					var componentName				= ent.comp.FullTypeName.ToComponentName( _contexts.settings.isIgnoreNamespaces );
+					var componentName				= ent.comp.FullTypeName.ToComponentName( contexts.settings.isIgnoreNamespaces );
 					var optionalContextName			= ent.contextNamesComp.Values.Count > 1 ? contextName : string.Empty;
 					var eventTypeSuffix				= ent.GetEventTypeSuffix( eventInfo );
 					var listenerComponentName		= optionalContextName + componentName + eventTypeSuffix + "Listener";
 					var eventCompFullTypeName		= listenerComponentName.AddComponentSuffix();
 
-					var eventListenerCompEnt			= _contexts.main.CreateEntity(  );
+					var eventListenerCompEnt			= contexts.main.CreateEntity(  );
 					eventListenerCompEnt.isEventListenerComp	= true;
 
 					eventListenerCompEnt.AddComp( listenerComponentName, eventCompFullTypeName );

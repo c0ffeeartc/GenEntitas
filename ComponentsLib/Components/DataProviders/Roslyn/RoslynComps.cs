@@ -8,6 +8,13 @@ using Microsoft.CodeAnalysis;
 namespace GenEntitas
 {
 
+[Context(Ids.Main)]
+public class INamedTypeSymbolComponent : IComponent
+{
+	[PrimaryEntityIndex]
+	public					INamedTypeSymbol		Value;
+}
+
 [Context(Ids.Settings)]
 [Unique]
 public class RoslynPathToSolution : IComponent

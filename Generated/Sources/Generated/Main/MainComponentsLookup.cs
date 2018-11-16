@@ -15,18 +15,19 @@ public static class MainComponentsLookup {
     public const int GenCompEntApiInterface_ForSingleContext = 11;
     public const int GenEntitasLangInputString = 12;
     public const int GeneratedFileComp = 13;
-    public const int NonIComp = 14;
-    public const int ParsedByGenEntitasLang = 15;
-    public const int PublicFieldsComp = 16;
-    public const int ReflectionComponentTypes = 17;
-    public const int ReflectionLoadableTypes = 18;
-    public const int RoslynAllTypes = 19;
-    public const int RoslynComponentTypes = 20;
-    public const int TypeComp = 21;
-    public const int UniqueComp = 22;
-    public const int UniquePrefixComp = 23;
+    public const int INamedTypeSymbol = 14;
+    public const int NonIComp = 15;
+    public const int ParsedByGenEntitasLang = 16;
+    public const int PublicFieldsComp = 17;
+    public const int ReflectionComponentTypes = 18;
+    public const int ReflectionLoadableTypes = 19;
+    public const int RoslynAllTypes = 20;
+    public const int RoslynComponentTypes = 21;
+    public const int TypeComp = 22;
+    public const int UniqueComp = 23;
+    public const int UniquePrefixComp = 24;
 
-    public const int TotalComponents = 24;
+    public const int TotalComponents = 25;
 
     public static readonly string[] componentNames = {
         "AliasComp",
@@ -43,6 +44,7 @@ public static class MainComponentsLookup {
         "GenCompEntApiInterface_ForSingleContext",
         "GenEntitasLangInputString",
         "GeneratedFileComp",
+        "INamedTypeSymbol",
         "NonIComp",
         "ParsedByGenEntitasLang",
         "PublicFieldsComp",
@@ -70,6 +72,7 @@ public static class MainComponentsLookup {
         typeof(GenEntitas.GenCompEntApiInterface_ForSingleContext),
         typeof(GenEntitas.GenEntitasLangInputString),
         typeof(GenEntitas.GeneratedFileComp),
+        typeof(GenEntitas.INamedTypeSymbolComponent),
         typeof(GenEntitas.NonIComp),
         typeof(GenEntitas.ParsedByGenEntitasLang),
         typeof(GenEntitas.PublicFieldsComp),
