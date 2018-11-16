@@ -9,12 +9,13 @@ public static class SettingsComponentsLookup {
     public const int GlobalGenCompEntityApiInterface_ForSingleContext = 5;
     public const int IgnoreNamespaces = 6;
     public const int ReflectionAssemblyPaths = 7;
-    public const int RunInDryMode = 8;
-    public const int SearchPaths = 9;
-    public const int SettingsParseInput = 10;
-    public const int SettingsPath = 11;
+    public const int RoslynPathToSolution = 8;
+    public const int RunInDryMode = 9;
+    public const int SearchPaths = 10;
+    public const int SettingsParseInput = 11;
+    public const int SettingsPath = 12;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
         "ConsoleWriteLineGeneratedPaths",
@@ -25,6 +26,7 @@ public static class SettingsComponentsLookup {
         "GlobalGenCompEntityApiInterface_ForSingleContext",
         "IgnoreNamespaces",
         "ReflectionAssemblyPaths",
+        "RoslynPathToSolution",
         "RunInDryMode",
         "SearchPaths",
         "SettingsParseInput",
@@ -40,6 +42,7 @@ public static class SettingsComponentsLookup {
         typeof(GenEntitas.GlobalGenCompEntityApiInterface_ForSingleContext),
         typeof(GenEntitas.IgnoreNamespaces),
         typeof(GenEntitas.ReflectionAssemblyPaths),
+        typeof(GenEntitas.RoslynPathToSolution),
         typeof(GenEntitas.RunInDryMode),
         typeof(GenEntitas.SearchPaths),
         typeof(GenEntitas.SettingsParseInput),

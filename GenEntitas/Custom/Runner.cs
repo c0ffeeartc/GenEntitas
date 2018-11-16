@@ -1,4 +1,5 @@
 ﻿using Entitas;
+using GenEntitas.DataProvider.Roslyn;
 
 namespace GenEntitas
 {
@@ -17,6 +18,10 @@ namespace GenEntitas
 				.Add( new ReadSettingsFileSystem( _contexts ) )
 				.Add( new ParseSettingsStrSystem( _contexts ) )
 				.Add( new AssemblyResolveSystem( _contexts ) )
+
+				.Add( new RoslynFixPathToSolutionSystem( _contexts ) )
+				.Add( new RoslynToTypesSystem( _contexts ) )
+				.Add( new RoslynToCompsSystem( _contexts ) )
 
 				.Add( new ReflectionToTypesSystem( _contexts ) )
 				.Add( new ReflectionToCompsSystem( _contexts ) )

@@ -20,11 +20,13 @@ public static class MainComponentsLookup {
     public const int PublicFieldsComp = 16;
     public const int ReflectionComponentTypes = 17;
     public const int ReflectionLoadableTypes = 18;
-    public const int TypeComp = 19;
-    public const int UniqueComp = 20;
-    public const int UniquePrefixComp = 21;
+    public const int RoslynAllTypes = 19;
+    public const int RoslynComponentTypes = 20;
+    public const int TypeComp = 21;
+    public const int UniqueComp = 22;
+    public const int UniquePrefixComp = 23;
 
-    public const int TotalComponents = 22;
+    public const int TotalComponents = 24;
 
     public static readonly string[] componentNames = {
         "AliasComp",
@@ -46,6 +48,8 @@ public static class MainComponentsLookup {
         "PublicFieldsComp",
         "ReflectionComponentTypes",
         "ReflectionLoadableTypes",
+        "RoslynAllTypes",
+        "RoslynComponentTypes",
         "TypeComp",
         "UniqueComp",
         "UniquePrefixComp"
@@ -71,6 +75,8 @@ public static class MainComponentsLookup {
         typeof(GenEntitas.PublicFieldsComp),
         typeof(GenEntitas.ReflectionComponentTypes),
         typeof(GenEntitas.ReflectionLoadableTypes),
+        typeof(GenEntitas.RoslynAllTypes),
+        typeof(GenEntitas.RoslynComponentTypes),
         typeof(GenEntitas.TypeComp),
         typeof(GenEntitas.UniqueComp),
         typeof(GenEntitas.UniquePrefixComp)

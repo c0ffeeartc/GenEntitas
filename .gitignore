@@ -10,5 +10,6 @@ bin/
 
 /GenEntitasUnity/
 
-/packages/
+/packages/*
 !packages/repositories.config
+!packages/MSBuild-mono/

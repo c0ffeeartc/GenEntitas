@@ -64,6 +64,10 @@ namespace GenEntitas
 						? d[nameof( GeneratedNamespace )]
 						: "" );
 
+					_contexts.settings.ReplaceRoslynPathToSolution( d.ContainsKey( nameof( RoslynPathToSolution ) )
+						? d[nameof( RoslynPathToSolution )]
+						: "" );
+
 					_contexts.settings.ReplaceGeneratePath( d.ContainsKey( nameof( GeneratePath ) )
 						? d[nameof( GeneratePath )]
 						: "" );
