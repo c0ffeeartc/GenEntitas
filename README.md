@@ -16,6 +16,7 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
   - [Unity Runner](./UnityRunner)
   - [Settings](GenEntitasSettings)
   - [GenEntitasLang](./GenEntitasLang)
+  - [RoslynDataProvider](./GenEntitas.DataProvider.Roslyn)
   
   
 ### Pros
