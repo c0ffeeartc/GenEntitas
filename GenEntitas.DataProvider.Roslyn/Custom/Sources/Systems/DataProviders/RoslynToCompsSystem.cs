@@ -118,19 +118,7 @@ namespace GenEntitas.DataProvider.Roslyn
 		private				void					ProvidePublicFieldsComp	( Ent ent )
 		{
 			var type					= ent.iNamedTypeSymbol.Value;
-			var memberInfos				= new List<FieldInfo>();
-			foreach (var member in type.GetMembers())
-			{
-				if ( ( member is IFieldSymbol || member is IPropertySymbol && IsAutoProperty( (IPropertySymbol)member ) )
-					&& !member.IsStatic
-					&& member.DeclaredAccessibility == Accessibility.Public 
-					&& member.CanBeReferencedByName) // We don't want any backing fields here.
-				{
-					var memberType = (member is IFieldSymbol) ? ((IFieldSymbol)member).Type : ((IPropertySymbol)member).Type;
-					memberInfos.Add( new FieldInfo( memberType.ToDisplayString(  ), member.Name ) );
-				}
-			}
-
+			var memberInfos				= GetPublicFieldsAndProperties( type );
 			if ( memberInfos.Count == 0 )
 			{
 				return;
@@ -139,18 +127,38 @@ namespace GenEntitas.DataProvider.Roslyn
 			ent.AddPublicFieldsComp( memberInfos );
 		}
 
-		private				Boolean					IsAutoProperty			( IPropertySymbol member )
+		private				List<FieldInfo>			GetPublicFieldsAndProperties ( INamedTypeSymbol type )
+		{
+			var memberInfos				= new List<FieldInfo>();
+			foreach (var member in type.GetMembers())
+			{
+				if ( ( member is IFieldSymbol || ( member is IPropertySymbol && IsAutoProperty( (IPropertySymbol)member ) ) )
+					&& !member.IsStatic
+					&& member.DeclaredAccessibility == Accessibility.Public 
+					&& member.CanBeReferencedByName ) // We don't want any backing fields here.
+				{
+					var memberType = (member is IFieldSymbol) ? ((IFieldSymbol)member).Type : ((IPropertySymbol)member).Type;
+					memberInfos.Add( new FieldInfo( memberType.ToDisplayString(  ), member.Name ) );
+				}
+			}
+			return memberInfos;
+		}
+
+		private static		Boolean					IsAutoProperty			( IPropertySymbol member )
         {
-            var ret = member.SetMethod != null && member.GetMethod != null &&
-                !member.GetMethod.DeclaringSyntaxReferences.First()
-                .GetSyntax()
-                .DescendantNodes()
-                .Any(x => x is MethodDeclarationSyntax) &&  
-                !member.SetMethod.DeclaringSyntaxReferences.First()
-                .GetSyntax()
-                .DescendantNodes()
-                .Any(x => x is MethodDeclarationSyntax);
-            return ret;
+            var ret = member.SetMethod != null
+				&& member.GetMethod != null
+				&& !member.GetMethod.DeclaringSyntaxReferences
+					.First()
+					.GetSyntax()
+					.DescendantNodes()
+					.Any(x => x is MethodDeclarationSyntax)
+				&& !member.SetMethod.DeclaringSyntaxReferences
+					.First()
+					.GetSyntax()
+					.DescendantNodes()
+					.Any(x => x is MethodDeclarationSyntax);
+			return ret;
         }
 
 		private				void					ProvideEventComp		( MainEntity ent )

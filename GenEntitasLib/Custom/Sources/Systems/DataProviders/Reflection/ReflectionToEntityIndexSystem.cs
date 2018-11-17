@@ -67,11 +67,12 @@ namespace GenEntitas
 					}
 					var entIndexInfo		= new EntityIndexInfo(  );
 					field.EntityIndexInfo	= entIndexInfo;
+					var isCustom					= entityIndexData.IsCustom(  );
 
 					entIndexInfo.EntityIndexData	= entityIndexData;
 					entIndexInfo.Type				= entityIndexData.GetEntityIndexType(  );
-					entIndexInfo.IsCustom			= entityIndexData.IsCustom(  );
-					entIndexInfo.CustomMethods		= entIndexInfo.IsCustom ? entityIndexData.GetCustomMethods(  ) : null;
+					entIndexInfo.IsCustom			= isCustom;
+					entIndexInfo.CustomMethods		= isCustom ? entityIndexData.GetCustomMethods(  ) : null;
 					entIndexInfo.Name				= entityIndexData.GetEntityIndexName(  );
 					entIndexInfo.ContextNames		= entityIndexData.GetContextNames(  );
 					entIndexInfo.ComponentType		= entityIndexData.GetComponentType(  );
