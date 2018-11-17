@@ -22,6 +22,7 @@ namespace GenEntitas
 				.Add( new RoslynFixPathToSolutionSystem( _contexts ) )
 				.Add( new RoslynToTypesSystem( _contexts ) )
 				.Add( new RoslynToCompsSystem( _contexts ) )
+				.Add( new RoslynToEntityIndexSystem( _contexts ) )
 
 				.Add( new ReflectionToTypesSystem( _contexts ) )
 				.Add( new ReflectionToCompsSystem( _contexts ) )

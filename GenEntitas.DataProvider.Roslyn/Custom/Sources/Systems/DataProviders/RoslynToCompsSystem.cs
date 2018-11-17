@@ -68,23 +68,11 @@ namespace GenEntitas.DataProvider.Roslyn
 
 		private				void					ProvideContextNamesComp	( MainEntity ent )
 		{
-			var t						= ent.iNamedTypeSymbol.Value;
-			List<String> contextNames	= null;
-			foreach ( var attr in t.GetAttributes(  ) )
+			var t					= ent.iNamedTypeSymbol.Value;
+			var contextNames		= t.GetContextNames(  );
+			if ( contextNames.Count == 0 )
 			{
-				if ( attr.AttributeClass.ToString(  ) == typeof( ContextAttribute ).FullName )
-				{
-					if ( contextNames == null )
-					{
-						contextNames = new List<String>(  );
-					}
-					contextNames.Add( (String)attr.ConstructorArguments[0].Value );
-				}
-			}
-
-			if ( contextNames == null )
-			{
-				ent.AddContextNamesComp( new List<string>{ "Undefined" } );
+				contextNames.Add( "Undefined" );
 				return;
 			}
 
@@ -118,7 +106,7 @@ namespace GenEntitas.DataProvider.Roslyn
 		private				void					ProvidePublicFieldsComp	( Ent ent )
 		{
 			var type					= ent.iNamedTypeSymbol.Value;
-			var memberInfos				= GetPublicFieldsAndProperties( type );
+			var memberInfos				= GetPublicFieldAndPropertyInfos( type );
 			if ( memberInfos.Count == 0 )
 			{
 				return;
@@ -127,21 +115,27 @@ namespace GenEntitas.DataProvider.Roslyn
 			ent.AddPublicFieldsComp( memberInfos );
 		}
 
-		private				List<FieldInfo>			GetPublicFieldsAndProperties ( INamedTypeSymbol type )
+		public static		List<ISymbol>	GetPublicFieldAndPropertySymbols ( INamedTypeSymbol type )
 		{
-			var memberInfos				= new List<FieldInfo>();
-			foreach (var member in type.GetMembers())
-			{
-				if ( ( member is IFieldSymbol || ( member is IPropertySymbol && IsAutoProperty( (IPropertySymbol)member ) ) )
+			return type.GetMembers(  )
+				.Where( member => ( ( member is IFieldSymbol || ( member is IPropertySymbol && IsAutoProperty( (IPropertySymbol)member ) ) )
 					&& !member.IsStatic
 					&& member.DeclaredAccessibility == Accessibility.Public 
 					&& member.CanBeReferencedByName ) // We don't want any backing fields here.
-				{
-					var memberType = (member is IFieldSymbol) ? ((IFieldSymbol)member).Type : ((IPropertySymbol)member).Type;
-					memberInfos.Add( new FieldInfo( memberType.ToDisplayString(  ), member.Name ) );
-				}
-			}
-			return memberInfos;
+					)
+				.Select( m => m )
+				.ToList(  );
+		}
+
+		private				List<FieldInfo>			GetPublicFieldAndPropertyInfos ( INamedTypeSymbol type )
+		{
+			return GetPublicFieldAndPropertySymbols( type )
+				.Select( symbol => new FieldInfo( 
+					( symbol is IFieldSymbol )
+						? ((IFieldSymbol)symbol).Type.ToDisplayString(  )
+						: ((IPropertySymbol)symbol).Type.ToDisplayString(  ),
+					symbol.Name ) )
+				 .ToList(  );
 		}
 
 		private static		Boolean					IsAutoProperty			( IPropertySymbol member )

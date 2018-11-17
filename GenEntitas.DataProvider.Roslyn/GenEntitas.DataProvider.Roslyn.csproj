@@ -108,6 +108,7 @@
   <ItemGroup>
     <Compile Include="Custom\Sources\Systems\DataProviders\INamedTypeSymbolExtensions.cs" />
     <Compile Include="Custom\Sources\Systems\DataProviders\RoslynToCompsSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\DataProviders\RoslynToEntityIndexSystem.cs" />
     <Compile Include="Custom\Sources\Systems\DataProviders\RoslynToTypesSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PreProcessors\RoslynFixPathToSolutionSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
