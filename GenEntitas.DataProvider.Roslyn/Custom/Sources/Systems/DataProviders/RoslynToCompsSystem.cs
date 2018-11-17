@@ -49,16 +49,13 @@ namespace GenEntitas.DataProvider.Roslyn
 
 		private				void					ProvideDontGenerate		( Ent ent )
 		{
-			ent.isDontGenerateComp		= ent.iNamedTypeSymbol.Value
-				.GetAttributes()
-				.Any( attr => attr.AttributeClass.ToString(  ) == typeof( DontGenerateAttribute ).FullName );
+			ent.isDontGenerateComp		= ent.iNamedTypeSymbol.Value.HasAttribute( typeof( DontGenerateAttribute ) );
 		}
 
 		private				void					ProvideComp				( MainEntity ent )
 		{
 			var t						= ent.iNamedTypeSymbol.Value;
-			var isComp					= t.AllInterfaces.Any( i => i.ToString(  ) == typeof( IComponent).FullName );
-			if ( isComp )
+			if ( t.Implements( typeof( IComponent ) ) )
 			{
 				ent.AddComp( t.Name, t.Name );
 				ent.isAlreadyImplementedComp	= true;
@@ -96,9 +93,7 @@ namespace GenEntitas.DataProvider.Roslyn
 
 		private				void					ProvideUniqueComp		( Ent ent )
 		{
-			ent.isUniqueComp		= ent.iNamedTypeSymbol.Value
-				.GetAttributes()
-				.Any( attr => attr.AttributeClass.ToString(  ) == typeof( UniqueAttribute ).FullName );
+			ent.isUniqueComp		= ent.iNamedTypeSymbol.Value.HasAttribute( typeof( UniqueAttribute ) );
 		}
 
 		private				void					ProvideFlagPrefix		( Ent ent )
@@ -117,9 +112,7 @@ namespace GenEntitas.DataProvider.Roslyn
 
 		private				void					ProvideGenCompEntApiInterface_ForSingleContextAttr( Ent ent )
 		{
-			ent.isGenCompEntApiInterface_ForSingleContext = ent.iNamedTypeSymbol.Value
-				.GetAttributes(  )
-				.Any( attr => attr.AttributeClass.ToString(  ) == typeof( GenCompEntApiInterface_ForSingleContextAttribute ).FullName );
+			ent.isGenCompEntApiInterface_ForSingleContext = ent.iNamedTypeSymbol.Value.HasAttribute( typeof( GenCompEntApiInterface_ForSingleContextAttribute ) );
 		}
 
 		private				void					ProvidePublicFieldsComp	( Ent ent )
@@ -163,18 +156,13 @@ namespace GenEntitas.DataProvider.Roslyn
 		private				void					ProvideEventComp		( MainEntity ent )
 		{
 			var type			= ent.iNamedTypeSymbol.Value;
-			var eventInfos		= new List<EventInfo>(  );
-
-			foreach ( var attr in type.GetAttributes(  ) )
-			{
-				if ( attr.AttributeClass.ToString(  ) == typeof( EventAttribute ).FullName )
-				{
-					var eventTarget		= (EventTarget)attr.ConstructorArguments[0].Value;
-					var eventType		= (EventType)attr.ConstructorArguments[1].Value;
-					var priority		= (Int32)attr.ConstructorArguments[2].Value;
-					eventInfos.Add( new EventInfo( eventTarget, eventType, priority ) );
-				}
-			}
+			var eventInfos		= type.GetAttributes(  )
+				.Where( attr => attr.AttributeClass.ToString(  ) == typeof( EventAttribute ).FullName )
+				.Select( attr => new EventInfo(
+					eventTarget			: (EventTarget)attr.ConstructorArguments[0].Value,
+					eventType			: (EventType)attr.ConstructorArguments[1].Value,
+					priority			: (Int32)attr.ConstructorArguments[2].Value ) )
+				.ToList(  );
 
 			if ( eventInfos.Count <= 0 )
 			{

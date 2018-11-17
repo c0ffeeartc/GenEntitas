@@ -106,6 +106,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\Sources\Systems\DataProviders\INamedTypeSymbolExtensions.cs" />
     <Compile Include="Custom\Sources\Systems\DataProviders\RoslynToCompsSystem.cs" />
     <Compile Include="Custom\Sources\Systems\DataProviders\RoslynToTypesSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PreProcessors\RoslynFixPathToSolutionSystem.cs" />

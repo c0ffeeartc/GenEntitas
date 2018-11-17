@@ -51,7 +51,7 @@ namespace GenEntitas
 			var compTypes = new List<INamedTypeSymbol>(  );
 
             foreach (var type in allTypes
-                .Where( type => type.AllInterfaces.Any( i => i.ToString(  ) == typeof( IComponent ).FullName ) )
+                .Where( type => type.Implements( typeof( IComponent ) ) )
                 .Where(type => !type.IsAbstract)
                 .Where(type => GetContextNames(type).Any()))  // force usage of contextAttribute for IComponent
             {
@@ -70,7 +70,7 @@ namespace GenEntitas
 			var nonCompTypes = new List<INamedTypeSymbol>(  );
 
             foreach (var type in allTypes
-               .Where( type => !type.AllInterfaces.Any( i => i.ToString(  ) == typeof( IComponent ).FullName ) )
+               .Where( type => !type.Implements( typeof( IComponent ) ) )
                .Where(type => !type.IsGenericType)
                .Where(type => GetContextNames(type).Any()))
             {
