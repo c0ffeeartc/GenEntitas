@@ -10,15 +10,14 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
 
 ### Parts
   - [Tests](./Tests)
-  - [Components](./ComponentsLib)
-  - [Systems](./GenEntitasLib)
-  - [Console Runner](./GenEntitas)
-  - [Unity Runner](./UnityRunner)
+  - [Components](./Components.Core.Components)
+  - [Systems](./GenEntitas.Core.Systems)
+  - [Console Runner](./GenEntitas.Runner.Console)
   - [Settings](GenEntitasSettings)
-  - [GenEntitasLang](./GenEntitasLang)
-  - [RoslynDataProvider](./GenEntitas.DataProvider.Roslyn)
-  
-  
+  - [GenEntitasLang](./GenEntitas.DataProvider.GenEntitasLang.Parser)
+  - [RoslynDataProvider](./GenEntitas.DataProvider.Roslyn.Systems)
+
+
 ### Pros
   - familiar ECS architecture for Entitas users
   - easy to add custom generator - create System, add it to Systems
