@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generated", "Generated\Gene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitasAttributes", "GenEntitasAttributes\GenEntitasAttributes.csproj", "{4A541C51-AD33-46F3-95EF-F68027F83504}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitas.DataProvider.Roslyn", "GenEntitas.DataProvider.Roslyn\GenEntitas.DataProvider.Roslyn.csproj", "{155AA141-3CDA-413B-B6E0-1C61C915905B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitas.DataProvider.Roslyn.Systems", "GenEntitas.DataProvider.Roslyn.Systems\GenEntitas.DataProvider.Roslyn.Systems.csproj", "{155AA141-3CDA-413B-B6E0-1C61C915905B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitas.Core.Common", "GenEntitas.Core.Common\GenEntitas.Core.Common.csproj", "{23C531CC-7DBB-4641-B0AC-899369A67815}"
 EndProject

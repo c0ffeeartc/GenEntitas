@@ -68,9 +68,9 @@
       <Project>{60c730ac-4f4a-4597-b7b0-bc4b85f44aba}</Project>
       <Name>GenEntitas.DataProvider.Reflection.Systems</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GenEntitas.DataProvider.Roslyn\GenEntitas.DataProvider.Roslyn.csproj">
+    <ProjectReference Include="..\GenEntitas.DataProvider.Roslyn.Systems\GenEntitas.DataProvider.Roslyn.Systems.csproj">
       <Project>{155aa141-3cda-413b-b6e0-1c61c915905b}</Project>
-      <Name>GenEntitas.DataProvider.Roslyn</Name>
+      <Name>GenEntitas.DataProvider.Roslyn.Systems</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenEntitasSettings\GenEntitasSettings.csproj">
       <Project>{8a20ffca-dd53-41fc-871a-d480dad827f9}</Project>

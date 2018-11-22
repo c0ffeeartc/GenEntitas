@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GenEntitas</RootNamespace>
-    <AssemblyName>GenEntitas.DataProvider.Roslyn</AssemblyName>
+    <AssemblyName>GenEntitas.DataProvider.Roslyn.Systems</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
