@@ -18,6 +18,7 @@ namespace GenEntitas
 
 		private				Contexts				_contexts;
 		private				String					_generatePath;
+		private				Boolean					_isDryRun;
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
@@ -32,6 +33,7 @@ namespace GenEntitas
 		protected override	void					Execute					( List<Ent> ents )
 		{
 			_generatePath			= Path.Combine( _contexts.settings.generatePath.Value, "Generated" );
+			_isDryRun				= _contexts.settings.isRunInDryMode;
 			var stringBuilder		= new StringBuilder(  );
 
 			DeleteNonGenFiles( ents, stringBuilder );
@@ -43,7 +45,15 @@ namespace GenEntitas
 
 			if ( _contexts.settings.isConsoleWriteLineGeneratedPaths )
 			{
-				Log( stringBuilder.ToString(  ) );
+				var s				= stringBuilder.ToString(  );
+				if ( String.IsNullOrEmpty( s ) )
+				{
+					Log( "No changes found since previous run" );
+				}
+				else
+				{
+					Log( s );
+				}
 			}
 		}
 
@@ -56,9 +66,19 @@ namespace GenEntitas
 #endif
 		}
 
+		private				void					CreateDirIfNeeded		( String dirPath )
+		{
+			if ( !_isDryRun
+				&& !String.IsNullOrEmpty( dirPath )
+				&& !Directory.Exists( dirPath ) )
+			{
+				Directory.CreateDirectory( dirPath );
+			}
+		}
+
 		private				void					Delete					( String path )
 		{
-			if ( _contexts.settings.isRunInDryMode )
+			if ( _isDryRun )
 			{
 				return;
 			}
@@ -67,7 +87,7 @@ namespace GenEntitas
 
 		private				void					Write					( String path, String contents )
 		{
-			if ( _contexts.settings.isRunInDryMode )
+			if ( _isDryRun )
 			{
 				return;
 			}
@@ -77,11 +97,12 @@ namespace GenEntitas
 		private				void					DeleteNonGenFiles		( List<Ent> ents, StringBuilder sb )
 		{
 			var dirInfo					= new DirectoryInfo( _generatePath );
-			if ( !dirInfo.Exists )
-			{
-				Directory.CreateDirectory( _generatePath );
-			}
-			var curFiles				= dirInfo.GetFiles( "*.cs", SearchOption.AllDirectories ).ToList(  );
+			CreateDirIfNeeded( _generatePath );
+
+			var curFiles				= dirInfo.Exists
+				? dirInfo.GetFiles( "*.cs", SearchOption.AllDirectories ).ToList(  )
+				: new List<FileInfo>(  );
+
 			var entGenPaths				= ents.Select( ent=> Path.Combine( dirInfo.FullName, ent.generatedFileComp.FilePath ) ).ToList(  );
 
 			for ( var i = 0; i < curFiles.Count; i++ )
@@ -107,10 +128,7 @@ namespace GenEntitas
 		{
 			var targetPath				= Path.Combine( _generatePath, ent.generatedFileComp.FilePath );
 			var dirPath					= Path.GetDirectoryName( targetPath );
-			if ( dirPath != null && !Directory.Exists( dirPath ) )
-			{
-				Directory.CreateDirectory( dirPath );
-			}
+			CreateDirIfNeeded( dirPath );
 
 			var contents				= ent.generatedFileComp.Contents;
 			var writeState				= WriteFileState.Undefined;
