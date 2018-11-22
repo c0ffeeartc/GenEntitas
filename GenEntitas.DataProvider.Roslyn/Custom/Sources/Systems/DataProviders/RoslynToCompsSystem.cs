@@ -57,7 +57,10 @@ namespace GenEntitas.DataProvider.Roslyn
 			var t						= ent.iNamedTypeSymbol.Value;
 			if ( t.Implements( typeof( IComponent ) ) )
 			{
-				ent.AddComp( t.Name, t.ContainingNamespace.Name + "." + t.Name );
+				var fullName		= String.IsNullOrEmpty( t.ContainingNamespace.Name )
+					? t.Name
+					: t.ContainingNamespace.Name + "." + t.Name;
+				ent.AddComp( t.Name, fullName );
 				ent.isAlreadyImplementedComp	= true;
 			}
 			else
