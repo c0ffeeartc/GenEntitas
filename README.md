@@ -10,7 +10,7 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
 
 ### Parts
   - [Tests](./Tests)
-  - [Components](./Components.Core.Components)
+  - [Components](./GenEntitas.Core.Components)
   - [Systems](./GenEntitas.Core.Systems)
   - [Console Runner](./GenEntitas.Runner.Console)
   - [Settings](GenEntitasSettings)
