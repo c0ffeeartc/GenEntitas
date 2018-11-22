@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BCFA3380-B411-4B65-A766-4BDCDAAE150A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GenEntitas.Core.Systems</RootNamespace>
+    <AssemblyName>GenEntitas.Core.Systems</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompContextApiSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompEntityApiInterfaceSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompEntityApiSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompLookupSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompMatcherApiSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenComponentSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenNonICompSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenContexts\GenContextsObserverSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenContexts\GenContextsSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenContext\GenContextAttributeSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenContext\GenContextMatcherSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenContext\GenContextSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenEntity\GenEntityIndexSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenEntity\GenEntitySystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenEvents\GenContextEventSystemsSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenEvents\GenEventEntityApiSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenEvents\GenEventListenerCompSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenEvents\GenEventListenerInterfaceSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenEvents\GenEventSystemsSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenEvents\GenEventSystemSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenFeatureClassSystem.cs" />
+    <Compile Include="Sources\Systems\DataProviders\ContextEntsProviderSystem.cs" />
+    <Compile Include="Sources\Systems\DataProviders\GenEntitasLang\ProvideGenEntitasLangToCompsSystem.cs" />
+    <Compile Include="Sources\Systems\DataProviders\GenEntitasLang\ReadGenEntitasLangFilesSystem.cs" />
+    <Compile Include="Sources\Systems\DestroySystem.cs" />
+    <Compile Include="Sources\Systems\PostProcessors\PostProcAddFileHeaderSystem.cs" />
+    <Compile Include="Sources\Systems\PostProcessors\PostProcApplyDiffToDiskSystem.cs" />
+    <Compile Include="Sources\Systems\PostProcessors\PostProcCleanTargetDirSystem.cs" />
+    <Compile Include="Sources\Systems\PostProcessors\PostProcLineEndings.cs" />
+    <Compile Include="Sources\Systems\PostProcessors\PostProcMergeFilesSystem.cs" />
+    <Compile Include="Sources\Systems\PostProcessors\PostProcWriteGenPathsToCsprojSystem.cs" />
+    <Compile Include="Sources\Systems\PostProcessors\PostProcWriteToDiskSystem.cs" />
+    <Compile Include="Sources\Systems\PreProcessors\AssemblyResolver\AssemblyResolver.cs" />
+    <Compile Include="Sources\Systems\PreProcessors\AssemblyResolver\AssemblyResolveSystem.cs" />
+    <Compile Include="Sources\Systems\PreProcessors\ParseSettingsStrSystem.cs" />
+    <Compile Include="Sources\Systems\PreProcessors\ReadSettingsFileSystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GenEntitas.Core.Components\GenEntitas.Core.Components.csproj">
+      <Project>{4a7d34bd-21c3-48c7-9f88-86004c6b88c9}</Project>
+      <Name>GenEntitas.Core.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.Core.Utils\GenEntitas.Core.Utils.csproj">
+      <Project>{39ce7b33-cd90-4114-b0d8-a4c5c4827419}</Project>
+      <Name>GenEntitas.Core.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitasAttributes\GenEntitasAttributes.csproj">
+      <Project>{4a541c51-ad33-46f3-95ef-f68027f83504}</Project>
+      <Name>GenEntitasAttributes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitasLang\GenEntitasLang.csproj">
+      <Project>{53b5c6c4-68b8-421f-add9-cf0bef51e1b0}</Project>
+      <Name>GenEntitasLang</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitasSettings\GenEntitasSettings.csproj">
+      <Project>{8a20ffca-dd53-41fc-871a-d480dad827f9}</Project>
+      <Name>GenEntitasSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Generated\Generated.csproj">
+      <Project>{48ba263f-4d24-41e4-9dc6-0c3799acaec7}</Project>
+      <Name>Generated</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DesperateDevs.CodeGeneration, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Libraries\Entitas\DesperateDevs\Editor\DesperateDevs.CodeGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Utils, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Libraries\Entitas\DesperateDevs\DesperateDevs.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Libraries\Entitas\Entitas\Entitas.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Libraries\Entitas\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Plugins, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Libraries\Entitas\Entitas\Editor\Plugins\Entitas.CodeGeneration.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Sprache, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Sprache.2.1.2\lib\net45\Sprache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+</Project>

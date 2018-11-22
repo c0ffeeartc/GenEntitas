@@ -4,7 +4,6 @@ using System.Linq;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
-using Entitas.CodeGeneration.Plugins;
 using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
@@ -100,32 +99,7 @@ namespace GenEntitas
 			}
 
 			ent.AddEventComp( eventInfos );
-			ProvideEventCompNewEnts( _contexts, ent );
-		}
-
-		public static		void					ProvideEventCompNewEnts	( Contexts contexts, MainEntity ent )
-		{
-			foreach ( var contextName in ent.contextNamesComp.Values )
-			{
-				foreach ( var eventInfo in ent.eventComp.Values )
-				{
-					var componentName				= ent.comp.FullTypeName.ToComponentName( contexts.settings.isIgnoreNamespaces );
-					var optionalContextName			= ent.contextNamesComp.Values.Count > 1 ? contextName : string.Empty;
-					var eventTypeSuffix				= ent.GetEventTypeSuffix( eventInfo );
-					var listenerComponentName		= optionalContextName + componentName + eventTypeSuffix + "Listener";
-					var eventCompFullTypeName		= listenerComponentName.AddComponentSuffix();
-
-					var eventListenerCompEnt			= contexts.main.CreateEntity(  );
-					eventListenerCompEnt.isEventListenerComp	= true;
-
-					eventListenerCompEnt.AddComp( listenerComponentName, eventCompFullTypeName );
-					eventListenerCompEnt.AddContextNamesComp( new List<String>{ contextName } );
-					eventListenerCompEnt.AddPublicFieldsComp( new List<FieldInfo>
-						{
-							new FieldInfo( "System.Collections.Generic.List<I" + listenerComponentName + ">", "value" )
-						} );
-				}
-			}
+			CodeGeneratorExtentions.ProvideEventCompNewEnts( _contexts, ent );
 		}
 
 		private				void					ProvideUniqueComp		( Ent ent )

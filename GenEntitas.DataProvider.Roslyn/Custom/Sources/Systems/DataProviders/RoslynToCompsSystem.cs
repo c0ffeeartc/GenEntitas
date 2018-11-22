@@ -172,7 +172,7 @@ namespace GenEntitas.DataProvider.Roslyn
 			}
 
 			ent.AddEventComp( eventInfos );
-			ReflectionToCompsSystem.ProvideEventCompNewEnts( _contexts, ent );
+			CodeGeneratorExtentions.ProvideEventCompNewEnts( _contexts, ent );
 		}
 	}
 }

@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{48BA263F-4D24-41E4-9DC6-0C3799ACAEC7}</ProjectGuid>
+    <ProjectGuid>{4A7D34BD-21C3-48C7-9F88-86004C6B88C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Generated</RootNamespace>
-    <AssemblyName>Generated</AssemblyName>
+    <RootNamespace>GenEntitas.Core.Components</RootNamespace>
+    <AssemblyName>GenEntitas.Core.Components</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,6 +32,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenEntitas.Core.Common\GenEntitas.Core.Common.csproj">
+      <Project>{23c531cc-7dbb-4641-b0ac-899369a67815}</Project>
+      <Name>GenEntitas.Core.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\Components.cs" />
+    <Compile Include="Components\DataProviders\Roslyn\RoslynComps.cs" />
+    <Compile Include="Components\EntityIndexComp.cs" />
+    <Compile Include="Components\FeatureEvents\EventComp.cs" />
+    <Compile Include="Components\GenEntitasLang\GenEntitasLangComponents.cs" />
+    <Compile Include="Components\PublicFieldsComp.cs" />
+    <Compile Include="Components\Settings\SettingsComps.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\Libraries\Entitas\Entitas\Entitas.dll</HintPath>
     </Reference>
@@ -43,44 +61,7 @@
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.3.2\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.1.37.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Collections.Immutable.1.1.37\lib\dotnet\System.Collections.Immutable.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Reflection.Metadata, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Reflection.Metadata.1.2.0\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sources\**\*.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sources" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GenEntitas.Core.Components\GenEntitas.Core.Components.csproj">
-      <Project>{4a7d34bd-21c3-48c7-9f88-86004c6b88c9}</Project>
-      <Name>GenEntitas.Core.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GenEntitas.DataProvider.Reflection.Components\GenEntitas.DataProvider.Reflection.Components.csproj">
-      <Project>{6c4df9de-6a9d-4a6b-b33a-2630edbc03e5}</Project>
-      <Name>GenEntitas.DataProvider.Reflection.Components</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
-    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

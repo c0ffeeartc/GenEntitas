@@ -51,9 +51,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ComponentsLib\ComponentsLib.csproj">
-      <Project>{4f2d16f7-0e52-4f91-9ff8-54ecc040d7ed}</Project>
-      <Name>ComponentsLib</Name>
+    <ProjectReference Include="..\GenEntitas.Core.Components\GenEntitas.Core.Components.csproj">
+      <Project>{4a7d34bd-21c3-48c7-9f88-86004c6b88c9}</Project>
+      <Name>GenEntitas.Core.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.DataProvider.Reflection.Components\GenEntitas.DataProvider.Reflection.Components.csproj">
+      <Project>{6c4df9de-6a9d-4a6b-b33a-2630edbc03e5}</Project>
+      <Name>GenEntitas.DataProvider.Reflection.Components</Name>
     </ProjectReference>
     <ProjectReference Include="..\Generated\Generated.csproj">
       <Project>{48BA263F-4D24-41E4-9DC6-0C3799ACAEC7}</Project>

@@ -56,20 +56,17 @@
     <Compile Include="Custom/Sources/**/*.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ComponentsLib\ComponentsLib.csproj">
-      <Project>{4f2d16f7-0e52-4f91-9ff8-54ecc040d7ed}</Project>
-      <Name>ComponentsLib</Name>
+    <ProjectReference Include="..\GenEntitas.Core.Systems\GenEntitas.Core.Systems.csproj">
+      <Project>{bcfa3380-b411-4b65-a766-4bdcdaae150a}</Project>
+      <Name>GenEntitas.Core.Systems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.DataProvider.Reflection.Systems\GenEntitas.DataProvider.Reflection.Systems.csproj">
+      <Project>{60c730ac-4f4a-4597-b7b0-bc4b85f44aba}</Project>
+      <Name>GenEntitas.DataProvider.Reflection.Systems</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenEntitas.DataProvider.Roslyn\GenEntitas.DataProvider.Roslyn.csproj">
       <Project>{155aa141-3cda-413b-b6e0-1c61c915905b}</Project>
       <Name>GenEntitas.DataProvider.Roslyn</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GenEntitasLib\GenEntitasLib.csproj">
-      <Project>{8d430c04-a56b-4d66-9863-e68804c3596c}</Project>
-      <Name>GenEntitasLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenEntitasSettings\GenEntitasSettings.csproj">
       <Project>{8a20ffca-dd53-41fc-871a-d480dad827f9}</Project>

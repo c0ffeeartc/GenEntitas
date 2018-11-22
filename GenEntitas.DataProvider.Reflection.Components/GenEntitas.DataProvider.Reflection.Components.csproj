@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{53B5C6C4-68B8-421F-ADD9-CF0BEF51E1B0}</ProjectGuid>
+    <ProjectGuid>{6C4DF9DE-6A9D-4A6B-B33A-2630EDBC03E5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GenEntitasLang</RootNamespace>
-    <AssemblyName>GenEntitasLang</AssemblyName>
+    <RootNamespace>GenEntitas.DataProvider.Reflection.Components</RootNamespace>
+    <AssemblyName>GenEntitas.DataProvider.Reflection.Components</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,30 +35,18 @@
     <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\Libraries\Entitas\Entitas\Entitas.dll</HintPath>
     </Reference>
-    <Reference Include="Sprache, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Sprache.2.1.2\lib\net45\Sprache.dll</HintPath>
+    <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Libraries\Entitas\Entitas\Entitas.CodeGeneration.Attributes.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sources\GenEntitasLangParser.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GenEntitas.Core.Components\GenEntitas.Core.Components.csproj">
-      <Project>{4a7d34bd-21c3-48c7-9f88-86004c6b88c9}</Project>
-      <Name>GenEntitas.Core.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Generated\Generated.csproj">
-      <Project>{48ba263f-4d24-41e4-9dc6-0c3799acaec7}</Project>
-      <Name>Generated</Name>
+    <ProjectReference Include="..\GenEntitas.Core.Common\GenEntitas.Core.Common.csproj">
+      <Project>{23c531cc-7dbb-4641-b0ac-899369a67815}</Project>
+      <Name>GenEntitas.Core.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="Sources\Components\ReflectionComps.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

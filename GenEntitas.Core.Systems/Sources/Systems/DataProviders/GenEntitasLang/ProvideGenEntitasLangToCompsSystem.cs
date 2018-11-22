@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Entitas;
 using GenEntitasLang;
-using Sprache;
 using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
