@@ -57,12 +57,12 @@ namespace GenEntitas.DataProvider.Roslyn
 			var t						= ent.iNamedTypeSymbol.Value;
 			if ( t.Implements( typeof( IComponent ) ) )
 			{
-				ent.AddComp( t.Name, t.Name );
+				ent.AddComp( t.Name, t.ContainingNamespace.Name + "." + t.Name );
 				ent.isAlreadyImplementedComp	= true;
 			}
 			else
 			{
-				ent.AddNonIComp( t.Name, t.Name );
+				ent.AddNonIComp( t.Name, t.ContainingNamespace.Name + "." + t.Name );
 			}
 		}
 
