@@ -124,10 +124,6 @@
     <Folder Include="Custom" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ComponentsLib\ComponentsLib.csproj">
-      <Project>{4f2d16f7-0e52-4f91-9ff8-54ecc040d7ed}</Project>
-      <Name>ComponentsLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GenEntitas.Core.Components\GenEntitas.Core.Components.csproj">
       <Project>{4a7d34bd-21c3-48c7-9f88-86004c6b88c9}</Project>
       <Name>GenEntitas.Core.Components</Name>
@@ -135,6 +131,10 @@
     <ProjectReference Include="..\GenEntitas.Core.Utils\GenEntitas.Core.Utils.csproj">
       <Project>{39ce7b33-cd90-4114-b0d8-a4c5c4827419}</Project>
       <Name>GenEntitas.Core.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.DataProvider.Roslyn.Components\GenEntitas.DataProvider.Roslyn.Components.csproj">
+      <Project>{95b7e1cf-03fa-4e87-9c8f-1a87230a7b7d}</Project>
+      <Name>GenEntitas.DataProvider.Roslyn.Components</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenEntitasAttributes\GenEntitasAttributes.csproj">
       <Project>{4a541c51-ad33-46f3-95ef-f68027f83504}</Project>

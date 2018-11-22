@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitas.DataProvider.Gen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitas.Runner.Console", "GenEntitas.Runner.Console\GenEntitas.Runner.Console.csproj", "{1E517FBC-1F12-4FD9-9CDA-CA08C4F2B5E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitas.DataProvider.Roslyn.Components", "GenEntitas.DataProvider.Roslyn.Components\GenEntitas.DataProvider.Roslyn.Components.csproj", "{95B7E1CF-03FA-4E87-9C8F-1A87230A7B7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{1E517FBC-1F12-4FD9-9CDA-CA08C4F2B5E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E517FBC-1F12-4FD9-9CDA-CA08C4F2B5E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E517FBC-1F12-4FD9-9CDA-CA08C4F2B5E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95B7E1CF-03FA-4E87-9C8F-1A87230A7B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95B7E1CF-03FA-4E87-9C8F-1A87230A7B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95B7E1CF-03FA-4E87-9C8F-1A87230A7B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95B7E1CF-03FA-4E87-9C8F-1A87230A7B7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

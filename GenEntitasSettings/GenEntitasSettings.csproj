@@ -63,6 +63,10 @@
       <Project>{6c4df9de-6a9d-4a6b-b33a-2630edbc03e5}</Project>
       <Name>GenEntitas.DataProvider.Reflection.Components</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.DataProvider.Roslyn.Components\GenEntitas.DataProvider.Roslyn.Components.csproj">
+      <Project>{95b7e1cf-03fa-4e87-9c8f-1a87230a7b7d}</Project>
+      <Name>GenEntitas.DataProvider.Roslyn.Components</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Generated\Generated.csproj">
       <Project>{48BA263F-4D24-41E4-9DC6-0C3799ACAEC7}</Project>
       <Name>Generated</Name>
