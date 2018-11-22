@@ -1,5 +1,5 @@
 IgnoreNamespaces = true
 xRoslynPathToSolution = ./CodeGen.sln
-ReflectionAssemblyPaths = ./GenEntitas.Core.Components/bin/Debug/GenEntitas.Core.Components.dll,./GenEntitas.DataProvider.Reflection.Components/bin/Debug/GenEntitas.DataProvider.Reflection.Components.dll
+ReflectionAssemblyPaths = ./GenEntitas.Core.Components/bin/Debug/GenEntitas.Core.Components.dll,./GenEntitas.DataProvider.Reflection.Components/bin/Debug/GenEntitas.DataProvider.Reflection.Components.dll,./GenEntitas.DataProvider.GenEntitasLang.Components/bin/Debug/GenEntitas.DataProvider.GenEntitasLang.Components.dll
 GeneratePath = ./Generated/Sources
 GeneratedNamespace = GenEntitas
