@@ -54,8 +54,6 @@
     <Compile Include="Sources\Systems\CodeGenerators\GenEvents\GenEventSystemSystem.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenFeatureClassSystem.cs" />
     <Compile Include="Sources\Systems\DataProviders\ContextEntsProviderSystem.cs" />
-    <Compile Include="Sources\Systems\DataProviders\GenEntitasLang\ProvideGenEntitasLangToCompsSystem.cs" />
-    <Compile Include="Sources\Systems\DataProviders\GenEntitasLang\ReadGenEntitasLangFilesSystem.cs" />
     <Compile Include="Sources\Systems\DestroySystem.cs" />
     <Compile Include="Sources\Systems\PostProcessors\PostProcAddFileHeaderSystem.cs" />
     <Compile Include="Sources\Systems\PostProcessors\PostProcApplyDiffToDiskSystem.cs" />

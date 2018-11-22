@@ -6,9 +6,9 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
-	public class ProvideGenEntitasLangToCompsSystem : ReactiveSystem<Ent>
+	public class GenEntitasLangToCompsSystem : ReactiveSystem<Ent>
 	{
-		public				ProvideGenEntitasLangToCompsSystem				( Contexts contexts ) : base( contexts.main )
+		public				GenEntitasLangToCompsSystem				( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts			= contexts;
 		}

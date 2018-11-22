@@ -60,6 +60,10 @@
       <Project>{bcfa3380-b411-4b65-a766-4bdcdaae150a}</Project>
       <Name>GenEntitas.Core.Systems</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.DataProvider.GenEntitasLang.Systems\GenEntitas.DataProvider.GenEntitasLang.Systems.csproj">
+      <Project>{c358ced5-121b-42b4-8d76-e0e982a57c3c}</Project>
+      <Name>GenEntitas.DataProvider.GenEntitasLang.Systems</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitas.DataProvider.Reflection.Systems\GenEntitas.DataProvider.Reflection.Systems.csproj">
       <Project>{60c730ac-4f4a-4597-b7b0-bc4b85f44aba}</Project>
       <Name>GenEntitas.DataProvider.Reflection.Systems</Name>

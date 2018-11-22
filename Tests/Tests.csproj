@@ -81,6 +81,14 @@
       <Project>{bcfa3380-b411-4b65-a766-4bdcdaae150a}</Project>
       <Name>GenEntitas.Core.Systems</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.DataProvider.GenEntitasLang.Components\GenEntitas.DataProvider.GenEntitasLang.Components.csproj">
+      <Project>{20a5e128-8bfd-4cc9-933e-215e6988e209}</Project>
+      <Name>GenEntitas.DataProvider.GenEntitasLang.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.DataProvider.GenEntitasLang.Parser\GenEntitas.DataProvider.GenEntitasLang.Parser.csproj">
+      <Project>{7ef3ba2e-9c27-4fac-a840-1753d395965d}</Project>
+      <Name>GenEntitas.DataProvider.GenEntitasLang.Parser</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitas.DataProvider.Reflection.Components\GenEntitas.DataProvider.Reflection.Components.csproj">
       <Project>{6c4df9de-6a9d-4a6b-b33a-2630edbc03e5}</Project>
       <Name>GenEntitas.DataProvider.Reflection.Components</Name>
@@ -88,10 +96,6 @@
     <ProjectReference Include="..\GenEntitas.DataProvider.Reflection.Systems\GenEntitas.DataProvider.Reflection.Systems.csproj">
       <Project>{60c730ac-4f4a-4597-b7b0-bc4b85f44aba}</Project>
       <Name>GenEntitas.DataProvider.Reflection.Systems</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GenEntitasLang\GenEntitasLang.csproj">
-      <Project>{53B5C6C4-68B8-421F-ADD9-CF0BEF51E1B0}</Project>
-      <Name>GenEntitasLang</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenEntitasSettings\GenEntitasSettings.csproj">
       <Project>{8a20ffca-dd53-41fc-871a-d480dad827f9}</Project>

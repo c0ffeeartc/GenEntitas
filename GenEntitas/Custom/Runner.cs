@@ -28,8 +28,8 @@ namespace GenEntitas
 				.Add( new ReflectionToCompsSystem( _contexts ) )
 				.Add( new ReflectionToEntityIndexSystem( _contexts ) )
 
-				.Add( new ReadGenEntitasLangFilesSystem( _contexts ) )
-				.Add( new ProvideGenEntitasLangToCompsSystem( _contexts ) )
+				.Add( new GenEntitasLangReadFilesSystem( _contexts ) )
+				.Add( new GenEntitasLangToCompsSystem( _contexts ) )
 
 				.Add( new ContextEntsProviderSystem( _contexts ) )
 
