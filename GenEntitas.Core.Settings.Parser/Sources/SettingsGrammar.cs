@@ -42,15 +42,6 @@ namespace GenEntitas
 						_contexts.settings.isIgnoreNamespaces = false;
 					}
 
-					if ( d.ContainsKey( nameof( GlobalGenCompEntityApiInterface_ForSingleContext ) ) )
-					{
-						_contexts.settings.isGlobalGenCompEntityApiInterface_ForSingleContext = BoolFromStr( d[nameof( GlobalGenCompEntityApiInterface_ForSingleContext )] );
-					}
-					else
-					{
-						_contexts.settings.isGlobalGenCompEntityApiInterface_ForSingleContext = false;
-					}
-
 					if ( d.ContainsKey( nameof( RunInDryMode ) ) )
 					{
 						_contexts.settings.isRunInDryMode = BoolFromStr( d[nameof( RunInDryMode )] );
