@@ -78,10 +78,6 @@
       <Project>{4a541c51-ad33-46f3-95ef-f68027f83504}</Project>
       <Name>GenEntitasAttributes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GenEntitasSettings\GenEntitasSettings.csproj">
-      <Project>{8a20ffca-dd53-41fc-871a-d480dad827f9}</Project>
-      <Name>GenEntitasSettings</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Generated\Generated.csproj">
       <Project>{48ba263f-4d24-41e4-9dc6-0c3799acaec7}</Project>
       <Name>Generated</Name>

@@ -101,10 +101,6 @@
       <Project>{60c730ac-4f4a-4597-b7b0-bc4b85f44aba}</Project>
       <Name>GenEntitas.DataProvider.Reflection.Systems</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GenEntitasSettings\GenEntitasSettings.csproj">
-      <Project>{8a20ffca-dd53-41fc-871a-d480dad827f9}</Project>
-      <Name>GenEntitasSettings</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Generated\Generated.csproj">
       <Project>{48ba263f-4d24-41e4-9dc6-0c3799acaec7}</Project>
       <Name>Generated</Name>

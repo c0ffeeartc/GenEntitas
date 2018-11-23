@@ -76,10 +76,6 @@
       <Project>{155aa141-3cda-413b-b6e0-1c61c915905b}</Project>
       <Name>GenEntitas.DataProvider.Roslyn.Systems</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GenEntitasSettings\GenEntitasSettings.csproj">
-      <Project>{8a20ffca-dd53-41fc-871a-d480dad827f9}</Project>
-      <Name>GenEntitasSettings</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Generated\Generated.csproj">
       <Project>{48ba263f-4d24-41e4-9dc6-0c3799acaec7}</Project>
       <Name>Generated</Name>
