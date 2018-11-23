@@ -77,6 +77,10 @@
       <Project>{4a7d34bd-21c3-48c7-9f88-86004c6b88c9}</Project>
       <Name>GenEntitas.Core.Components</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.Core.Settings.Parser\GenEntitas.Core.Settings.Parser.csproj">
+      <Project>{a69ff147-f908-4414-bb40-f5f74171ce5a}</Project>
+      <Name>GenEntitas.Core.Settings.Parser</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitas.Core.Systems\GenEntitas.Core.Systems.csproj">
       <Project>{bcfa3380-b411-4b65-a766-4bdcdaae150a}</Project>
       <Name>GenEntitas.Core.Systems</Name>

@@ -56,6 +56,10 @@
     <Compile Include="Custom/Sources/**/*.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenEntitas.Core.Settings.Systems\GenEntitas.Core.Settings.Systems.csproj">
+      <Project>{28d700b4-dfb0-400c-aa42-248c2a6433ce}</Project>
+      <Name>GenEntitas.Core.Settings.Systems</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitas.Core.Systems\GenEntitas.Core.Systems.csproj">
       <Project>{bcfa3380-b411-4b65-a766-4bdcdaae150a}</Project>
       <Name>GenEntitas.Core.Systems</Name>

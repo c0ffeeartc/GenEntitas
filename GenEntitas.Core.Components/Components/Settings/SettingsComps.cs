@@ -7,12 +7,6 @@ namespace GenEntitas
 {
 
 [Context(Ids.Settings), Unique]
-public class SettingsPath : IComponent
-{
-	public					String					Value;
-}
-
-[Context(Ids.Settings), Unique]
 public class SearchPaths : IComponent
 {
 	public					List<String>			Value;
@@ -21,12 +15,6 @@ public class SearchPaths : IComponent
 [Context(Ids.Settings)]
 [Unique]
 public class CsprojPath : IComponent
-{
-	public					String					Value;
-}
-
-[Context(Ids.Settings), Unique]
-public class SettingsParseInput : IComponent
 {
 	public					String					Value;
 }

@@ -13,7 +13,7 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
   - [Components](./GenEntitas.Core.Components)
   - [Systems](./GenEntitas.Core.Systems)
   - [Console Runner](./GenEntitas.Runner.Console)
-  - [Settings](GenEntitasSettings)
+  - [Settings](GenEntitas.Core.Settings.Parser)
   - [GenEntitasLang](./GenEntitas.DataProvider.GenEntitasLang.Parser)
   - [RoslynDataProvider](./GenEntitas.DataProvider.Roslyn.Systems)
 

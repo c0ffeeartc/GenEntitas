@@ -7,9 +7,9 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
-	public class ParseSettingsStrSystem : ReactiveSystem<Ent>
+	public class SettingsParseStrSystem : ReactiveSystem<Ent>
 	{
-		public				ParseSettingsStrSystem	( Contexts contexts ) : base( contexts.settings )
+		public				SettingsParseStrSystem	( Contexts contexts ) : base( contexts.settings )
 		{
 			_contexts			= contexts;
 		}

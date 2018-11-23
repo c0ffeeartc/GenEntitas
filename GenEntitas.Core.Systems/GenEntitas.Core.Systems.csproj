@@ -64,8 +64,6 @@
     <Compile Include="Sources\Systems\PostProcessors\PostProcWriteToDiskSystem.cs" />
     <Compile Include="Sources\Systems\PreProcessors\AssemblyResolver\AssemblyResolver.cs" />
     <Compile Include="Sources\Systems\PreProcessors\AssemblyResolver\AssemblyResolveSystem.cs" />
-    <Compile Include="Sources\Systems\PreProcessors\ParseSettingsStrSystem.cs" />
-    <Compile Include="Sources\Systems\PreProcessors\ReadSettingsFileSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenEntitas.Core.Components\GenEntitas.Core.Components.csproj">
@@ -79,10 +77,6 @@
     <ProjectReference Include="..\GenEntitasAttributes\GenEntitasAttributes.csproj">
       <Project>{4a541c51-ad33-46f3-95ef-f68027f83504}</Project>
       <Name>GenEntitasAttributes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GenEntitasLang\GenEntitasLang.csproj">
-      <Project>{53b5c6c4-68b8-421f-add9-cf0bef51e1b0}</Project>
-      <Name>GenEntitasLang</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenEntitasSettings\GenEntitasSettings.csproj">
       <Project>{8a20ffca-dd53-41fc-871a-d480dad827f9}</Project>
@@ -109,7 +103,6 @@
     <Reference Include="Entitas.CodeGeneration.Plugins, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\Libraries\Entitas\Entitas\Editor\Plugins\Entitas.CodeGeneration.Plugins.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Sprache, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Sprache.2.1.2\lib\net45\Sprache.dll</HintPath>
       <Private>True</Private>

@@ -6,9 +6,9 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
-	public class ReadSettingsFileSystem : ReactiveSystem<Ent>
+	public class SettingsReadFileSystem : ReactiveSystem<Ent>
 	{
-		public				ReadSettingsFileSystem	( Contexts contexts ) : base( contexts.settings )
+		public				SettingsReadFileSystem	( Contexts contexts ) : base( contexts.settings )
 		{
 			_contexts			= contexts;
 		}

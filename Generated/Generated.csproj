@@ -70,6 +70,10 @@
       <Project>{4a7d34bd-21c3-48c7-9f88-86004c6b88c9}</Project>
       <Name>GenEntitas.Core.Components</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.Core.Settings.Components\GenEntitas.Core.Settings.Components.csproj">
+      <Project>{0010be83-5e85-4f3b-879f-3172a3d38e88}</Project>
+      <Name>GenEntitas.Core.Settings.Components</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitas.DataProvider.GenEntitasLang.Components\GenEntitas.DataProvider.GenEntitasLang.Components.csproj">
       <Project>{20a5e128-8bfd-4cc9-933e-215e6988e209}</Project>
       <Name>GenEntitas.DataProvider.GenEntitasLang.Components</Name>

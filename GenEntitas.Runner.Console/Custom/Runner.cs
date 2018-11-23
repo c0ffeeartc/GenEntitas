@@ -15,8 +15,8 @@ namespace GenEntitas
 			_contexts			= Contexts.sharedInstance;
 
 			_systems			= new Systems(  )
-				.Add( new ReadSettingsFileSystem( _contexts ) )
-				.Add( new ParseSettingsStrSystem( _contexts ) )
+				.Add( new SettingsReadFileSystem( _contexts ) )
+				.Add( new SettingsParseStrSystem( _contexts ) )
 				.Add( new AssemblyResolveSystem( _contexts ) )
 
 				.Add( new RoslynFixPathToSolutionSystem( _contexts ) )
