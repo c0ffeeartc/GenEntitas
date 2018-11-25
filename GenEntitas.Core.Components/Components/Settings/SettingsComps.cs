@@ -14,7 +14,7 @@ public class SearchPaths : IComponent
 
 [Context(Ids.Settings)]
 [Unique]
-public class CsprojPath : IComponent
+public class WriteGeneratedPathsToCsProj : IComponent
 {
 	public					String					Value;
 }

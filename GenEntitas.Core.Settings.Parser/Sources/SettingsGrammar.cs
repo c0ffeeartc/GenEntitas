@@ -75,8 +75,8 @@ namespace GenEntitas
 						? d[nameof( SearchPaths )].Split(',').ToList(  )
 						: new List<string>(  ) );
 
-					_contexts.settings.ReplaceCsprojPath( d.ContainsKey( nameof( CsprojPath ) )
-						? d[nameof( CsprojPath )]
+					_contexts.settings.ReplaceWriteGeneratedPathsToCsProj( d.ContainsKey( nameof( WriteGeneratedPathsToCsProj ) )
+						? d[nameof( WriteGeneratedPathsToCsProj )]
 						: "" );
 
 					return _contexts;

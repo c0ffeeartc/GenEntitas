@@ -21,17 +21,17 @@ namespace GenEntitas
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
-			return context.CreateCollector( SettingsMatcher.CsprojPath );
+			return context.CreateCollector( SettingsMatcher.WriteGeneratedPathsToCsProj );
 		}
 
 		protected override	Boolean					Filter					( Ent ent )
 		{
-			return ent.hasCsprojPath;
+			return ent.hasWriteGeneratedPathsToCsProj;
 		}
 
 		protected override	void					Execute					( List<Ent> entities )
 		{
-			var path			= entities[0].csprojPath.Value;
+			var path			= entities[0].writeGeneratedPathsToCsProj.Value;
 			if ( String.IsNullOrEmpty( path ) )
 			{
 				return;
