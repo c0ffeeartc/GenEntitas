@@ -35,7 +35,7 @@ namespace GenEntitas
 				{
 					if ( d.ContainsKey( nameof( LogGeneratedPaths ) ) )
 					{
-						_contexts.settings.isLogGeneratedPaths = BoolFromStr( d[nameof( IgnoreNamespaces )] );
+						_contexts.settings.isLogGeneratedPaths = BoolFromStr( d[nameof( LogGeneratedPaths )] );
 					}
 					else
 					{
