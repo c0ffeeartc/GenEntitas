@@ -1,11 +1,11 @@
 namespace GenEntitas {
 public static class SettingsComponentsLookup {
 
-    public const int ConsoleWriteLineGeneratedPaths = 0;
-    public const int GenEntitasLangPaths = 1;
-    public const int GeneratedNamespace = 2;
-    public const int GeneratePath = 3;
-    public const int IgnoreNamespaces = 4;
+    public const int GenEntitasLangPaths = 0;
+    public const int GeneratedNamespace = 1;
+    public const int GeneratePath = 2;
+    public const int IgnoreNamespaces = 3;
+    public const int LogGeneratedPaths = 4;
     public const int ReflectionAssemblyPaths = 5;
     public const int RoslynPathToSolution = 6;
     public const int RunInDryMode = 7;
@@ -17,11 +17,11 @@ public static class SettingsComponentsLookup {
     public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
-        "ConsoleWriteLineGeneratedPaths",
         "GenEntitasLangPaths",
         "GeneratedNamespace",
         "GeneratePath",
         "IgnoreNamespaces",
+        "LogGeneratedPaths",
         "ReflectionAssemblyPaths",
         "RoslynPathToSolution",
         "RunInDryMode",
@@ -32,11 +32,11 @@ public static class SettingsComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(GenEntitas.ConsoleWriteLineGeneratedPaths),
         typeof(GenEntitas.GenEntitasLangPaths),
         typeof(GenEntitas.GeneratedNamespace),
         typeof(GenEntitas.GeneratePath),
         typeof(GenEntitas.IgnoreNamespaces),
+        typeof(GenEntitas.LogGeneratedPaths),
         typeof(GenEntitas.ReflectionAssemblyPaths),
         typeof(GenEntitas.RoslynPathToSolution),
         typeof(GenEntitas.RunInDryMode),

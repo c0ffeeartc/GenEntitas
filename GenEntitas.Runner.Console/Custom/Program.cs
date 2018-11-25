@@ -23,7 +23,6 @@ namespace GenEntitas
 			var contexts = runner.Contexts;
 
 			contexts.settings.SetSettingsPath( args.SettingsPath );
-			contexts.settings.isConsoleWriteLineGeneratedPaths		= true;
 
 			runner.Systems.Initialize(  );
 			runner.Systems.Execute(  );

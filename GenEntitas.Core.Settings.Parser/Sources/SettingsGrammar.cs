@@ -33,6 +33,15 @@ namespace GenEntitas
 					select dict )
 				.Select( d =>
 				{
+					if ( d.ContainsKey( nameof( LogGeneratedPaths ) ) )
+					{
+						_contexts.settings.isLogGeneratedPaths = BoolFromStr( d[nameof( IgnoreNamespaces )] );
+					}
+					else
+					{
+						_contexts.settings.isLogGeneratedPaths = true;
+					}
+
 					if ( d.ContainsKey( nameof( IgnoreNamespaces ) ) )
 					{
 						_contexts.settings.isIgnoreNamespaces = BoolFromStr( d[nameof( IgnoreNamespaces )] );

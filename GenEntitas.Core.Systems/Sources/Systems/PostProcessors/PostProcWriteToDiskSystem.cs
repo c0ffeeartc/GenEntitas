@@ -34,7 +34,7 @@ namespace GenEntitas
 			{
 				var targetPath		= Path.Combine( generatePath, ent.generatedFileComp.FilePath );
 
-				if ( _contexts.settings.isConsoleWriteLineGeneratedPaths )
+				if ( _contexts.settings.isLogGeneratedPaths )
 				{
 					stringBuilder.Append( targetPath );
 					stringBuilder.Append( " - " );
@@ -55,7 +55,7 @@ namespace GenEntitas
 				File.WriteAllText( targetPath, ent.generatedFileComp.Contents );
 			}
 
-			if ( _contexts.settings.isConsoleWriteLineGeneratedPaths )
+			if ( _contexts.settings.isLogGeneratedPaths )
 			{
 				var s = stringBuilder.ToString(  );
 				Console.Write( s );

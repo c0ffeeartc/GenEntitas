@@ -30,7 +30,7 @@ public class RunInDryMode : IComponent
 }
 
 [Context(Ids.Settings), Unique]
-public class ConsoleWriteLineGeneratedPaths : IComponent
+public class LogGeneratedPaths : IComponent
 {
 }
 

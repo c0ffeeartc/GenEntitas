@@ -43,7 +43,7 @@ namespace GenEntitas
 				WriteFile( ent, stringBuilder );
 			}
 
-			if ( _contexts.settings.isConsoleWriteLineGeneratedPaths )
+			if ( _contexts.settings.isLogGeneratedPaths )
 			{
 				var s				= stringBuilder.ToString(  );
 				if ( String.IsNullOrEmpty( s ) )
@@ -115,7 +115,7 @@ namespace GenEntitas
 				}
 				Delete( path );
 
-				if ( _contexts.settings.isConsoleWriteLineGeneratedPaths )
+				if ( _contexts.settings.isLogGeneratedPaths )
 				{
 					sb.Append( " - " );
 					sb.Append( path );
@@ -147,7 +147,7 @@ namespace GenEntitas
 				writeState				= WriteFileState.Keep;
 			}
 
-			if ( _contexts.settings.isConsoleWriteLineGeneratedPaths
+			if ( _contexts.settings.isLogGeneratedPaths
 				&& writeState != WriteFileState.Keep )
 			{
 				switch ( writeState )
