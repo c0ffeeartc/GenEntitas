@@ -21,10 +21,11 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
 ### Pros
   - familiar ECS architecture for Entitas users
   - easy to add custom generator - create System, add it to Systems
-  - multiple input sources during the same run - dlls for reflection, GenEntitasLang files
+  - multiple input sources - dlls for reflection, GenEntitasLang files, Roslyn
   - option to wrap generated classes into namespace
 
 ### Cons
   - unofficial
   - tied to specific entitas version
   - there is no settings auto creation. You'll have to provide paths to folders with unity dlls. After done once, settings can be copy/paste/tweaked for other projects
+  - Roslyn data provider lacks server mode, and because of that is much slower compared to Entitas Jenny
