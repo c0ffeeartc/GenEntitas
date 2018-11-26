@@ -10,7 +10,41 @@ namespace GenEntitas
 		public					SettingsGrammar			( Contexts contexts )
 		{
 			_contexts = contexts;
+			InitSettingsParser(  );
+			InitCommentsParser(  );
+		}
 
+		public					Parser<String>			Identifier;
+		public		Parser<KeyValuePair<String,String>>	KvParser;
+		public		Parser<Dictionary<String,String>>	DictParser;
+		public					Parser<Contexts>		SettingsParser;
+		public					CommentParser			Comments;
+		public					Parser<String>			RemoveCommentsParser;
+		private					Contexts				_contexts;
+
+		public					Contexts				ParseWithComments		( String str )
+		{
+			var withoutComments = RemoveCommentsParser.Parse( str );
+			return SettingsParser.Parse( withoutComments );
+		}
+
+		public static			Boolean					BoolFromStr				( String s )
+		{
+			if ( String.Compare( s, "true", StringComparison.OrdinalIgnoreCase ) == 0 )
+			{
+				return true;
+			}
+
+			if ( String.Compare( s, "false", StringComparison.OrdinalIgnoreCase ) == 0 )
+			{
+				return false;
+			}
+
+			throw new ParseException( $"Can't parse \"{s}\" to type bool" );
+		}
+
+		private					void					InitSettingsParser		(  )
+		{
 			Identifier =
 			(	from first in Parse.Letter.Or( Parse.Char( '_' ) ).Once()
 				from rest in Parse.LetterOrDigit.Or( Parse.Char( '_' ) ).Many().Text()
@@ -92,25 +126,24 @@ namespace GenEntitas
 				} );
 		}
 
-		public readonly			Parser<String>			Identifier;
-		public readonly		Parser<KeyValuePair<String,String>>	KvParser;
-		public readonly		Parser<Dictionary<String,String>>	DictParser;
-		public readonly			Parser<Contexts>		SettingsParser;
-		private					Contexts				_contexts;
-
-		public static			Boolean					BoolFromStr				( String s )
+		private					void					InitCommentsParser		(  )
 		{
-			if ( String.Compare( s, "true", StringComparison.OrdinalIgnoreCase ) == 0 )
-			{
-				return true;
-			}
+			Comments = new CommentParser(  );
 
-			if ( String.Compare( s, "false", StringComparison.OrdinalIgnoreCase ) == 0 )
-			{
-				return false;
-			}
+			var anyCharTillComment =
+				Parse.AnyChar.Until( Comments.AnyComment ).Text(  );
 
-			throw new ParseException( $"Can't parse \"{s}\" to type bool" );
+			var anyCharTillLineEnd =
+				from s in Parse.AnyChar.Until( Parse.LineEnd ).Text(  )
+				select s + '\n';
+
+			RemoveCommentsParser =
+				( from nonComment in
+					anyCharTillComment
+					.Or( anyCharTillLineEnd )
+					.Or( Parse.AnyChar.Many(  ).Text(  ) )
+				select nonComment ).Many(  )
+				.Select( values => String.Concat( values ) );
 		}
 	}
 }

@@ -30,8 +30,8 @@ namespace GenEntitas
 		{
 			var ent = entities[0];
 			
-			var parsers = new SettingsGrammar( _contexts );
-			parsers.SettingsParser.Parse( ent.settingsParseInput.Value );
+			var parser = new SettingsGrammar( _contexts );
+			parser.ParseWithComments( ent.settingsParseInput.Value );
 
 			if ( !Directory.Exists( _contexts.settings.generatePath.Value ) )
 			{
