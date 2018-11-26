@@ -1,5 +1,10 @@
-IgnoreNamespaces = true
-xRoslynPathToSolution = ./CodeGen.sln
-ReflectionAssemblyPaths = ./GenEntitas.Core.Components/bin/Debug/GenEntitas.Core.Components.dll,./GenEntitas.DataProvider.Reflection.Components/bin/Debug/GenEntitas.DataProvider.Reflection.Components.dll,./GenEntitas.DataProvider.GenEntitasLang.Components/bin/Debug/GenEntitas.DataProvider.GenEntitasLang.Components.dll,/Users/c0ffee/Proghub/Products/CodeGen/GenEntitas.DataProvider.Roslyn.Components/bin/Debug/GenEntitas.DataProvider.Roslyn.Components.dll,./GenEntitas.Core.Settings.Components/bin/Debug/GenEntitas.Core.Settings.Components.dll
-GeneratePath = ./Generated/Sources
-GeneratedNamespace = GenEntitas
+IgnoreNamespaces = "true"
+xRoslynPathToSolution = "./CodeGen.sln"
+ReflectionAssemblyPaths =
+    "./GenEntitas.Core.Components/bin/Debug/GenEntitas.Core.Components.dll",
+    "./GenEntitas.DataProvider.Reflection.Components/bin/Debug/GenEntitas.DataProvider.Reflection.Components.dll",
+    "./GenEntitas.DataProvider.GenEntitasLang.Components/bin/Debug/GenEntitas.DataProvider.GenEntitasLang.Components.dll",
+    "./GenEntitas.DataProvider.Roslyn.Components/bin/Debug/GenEntitas.DataProvider.Roslyn.Components.dll",
+    "./GenEntitas.Core.Settings.Components/bin/Debug/GenEntitas.Core.Settings.Components.dll"
+GeneratePath = "./Generated/Sources"
+GeneratedNamespace = "GenEntitas"

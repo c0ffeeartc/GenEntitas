@@ -36,7 +36,7 @@ namespace Tests.Tests.GenEntitasSprache
 			} );
 		}
 
-		private				void					test_KvParser(  )
+		private				void					test_KStrVListStrParser(  )
 		{
 			Contexts contexts	= null;
 			before				= (  ) =>
@@ -44,25 +44,37 @@ namespace Tests.Tests.GenEntitasSprache
 				contexts		= new Contexts(  );
 			};
 
-			new Each<String, String, String, Boolean>
+			new Each<String, String, List<String>, Boolean>
 			{
 				{
 					"K = V",
 					"K",
-					"V",
-					false
+					new List<String>{ "V" },
+					true
 				},
 				{
 					"K _ V",
 					"K",
-					"V",
+					new List<String>{ "V" },
 					true
+				},
+				{
+					"K = \"V\"",
+					"K",
+					new List<String>{ "V" },
+					false
+				},
+				{
+					@"K = ""ABC"", ""DEF""",
+					"K",
+					new List<String>{ "ABC", "DEF" },
+					false
 				},
 			}.Do( ( given, expectK, expectV, throws )
 			=> it["parses Kv"] = (  ) =>
 			{
 				var parsers		= new SettingsGrammar( contexts );
-				var parser		= parsers.KvParser;
+				var parser		= parsers.KStrVListStr;
 				if ( throws )
 				{
 					Action act = (  )=> { parser.Parse( given ); };
@@ -72,7 +84,10 @@ namespace Tests.Tests.GenEntitasSprache
 				var result = parser.Parse( given );
 
 				result.Key.should_be( expectK );
-				result.Value.should_be( expectV );
+				foreach ( var v in expectV )
+				{
+					result.Value.should_contain( v );
+				}
 			} );
 		}
 
@@ -84,15 +99,15 @@ namespace Tests.Tests.GenEntitasSprache
 				contexts		= new Contexts(  );
 			};
 
-			new Each<String, Dictionary<String, String>, Boolean>
+			new Each<String, Dictionary<String, List<String>>, Boolean>
 			{
 				{
-					"K = V\nA = B\nC = D",
-					new Dictionary<String,String>
+					"K = \"V\"\nA = \"B\"\nC = \"D\"",
+					new Dictionary<String,List<String>>
 					{
-						{ "K","V"},
-						{ "A","B"},
-						{ "C","D"},
+						{ "K", new List<String>{ "V" }},
+						{ "A",new List<String>{ "B" }},
+						{ "C",new List<String>{ "D" }},
 					},
 					false
 				},
@@ -127,9 +142,11 @@ namespace Tests.Tests.GenEntitasSprache
 			new Each<String, Boolean, String, Boolean>
 			{
 				{
-@"IgnoreNamespaces = true
-GeneratePath = path
-ReflectionAssemblyPaths = path1,path2",
+@"IgnoreNamespaces = ""true""
+GeneratePath = ""path""
+ReflectionAssemblyPaths =
+	""path1"",
+	""path2""",
 					true , "path" , false
 				},
 
