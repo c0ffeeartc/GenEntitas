@@ -2,6 +2,22 @@
 
 Settings class and string parser using [Sprache](https://github.com/sprache/Sprache)
 
+#### How it works
+  - Removes comments from file
+  - Parses `Dictionary<String, List<String>>`
+
+#### Syntax example
+```
+// comment
+Key1 = "true"
+Key2 =
+   "value1",
+   "value2",
+   "value3",
+ 
+/* another comment */
+   "value4",
+```
 Example [GenComps.settings](../GenComps.settings)
 
   - `GeneratePath` - path to existing directory in which a new directory `Generated` will be created
