@@ -70,6 +70,15 @@ namespace Tests.Tests.GenEntitasSprache
 					new List<String>{ "ABC", "DEF" },
 					false
 				},
+				{
+					@"K =
+					""ABC"",
+					""DEF"",
+					",
+					"K",
+					new List<String>{ "ABC", "DEF" },
+					false
+				},
 			}.Do( ( given, expectK, expectV, throws )
 			=> it["parses Kv"] = (  ) =>
 			{
@@ -88,6 +97,7 @@ namespace Tests.Tests.GenEntitasSprache
 				{
 					result.Value.should_contain( v );
 				}
+				result.Value.Count.should_be( expectV.Count );
 			} );
 		}
 
@@ -143,10 +153,20 @@ namespace Tests.Tests.GenEntitasSprache
 			{
 				{
 @"IgnoreNamespaces = ""true""
-GeneratePath = ""path""
 ReflectionAssemblyPaths =
 	""path1"",
-	""path2""",
+	""path2"",
+GeneratePath = ""path""
+",
+					true , "path" , false
+				},
+				{
+@"IgnoreNamespaces = ""true""
+ReflectionAssemblyPaths =
+	""path1"",
+	""path2""
+GeneratePath = ""path""
+",
 					true , "path" , false
 				},
 
@@ -168,6 +188,7 @@ ReflectionAssemblyPaths =
 				contexts.settings.generatePath.Value.should_be( generatePath );
 				contexts.settings.reflectionAssemblyPaths.Values.should_contain( "path1" );
 				contexts.settings.reflectionAssemblyPaths.Values.should_contain( "path2" );
+				contexts.settings.reflectionAssemblyPaths.Values.Count.should_be( 2 );
 			} );
 		}
 	}

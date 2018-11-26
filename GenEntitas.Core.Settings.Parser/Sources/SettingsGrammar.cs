@@ -62,6 +62,7 @@ namespace GenEntitas
 				(	from id in Identifier
 					from delim in Parse.Char( '=' ).Token(  )
 					from values in QuotedString.DelimitedBy( Parse.Char( ',' ).Token(  ) ).Token(  )
+					from trailingComa in Parse.Char( ',' ).Token(  ).Optional(  )
 					select new KeyValuePair<String, List<String>>( id, values.ToList(  ) )
 				).Token(  );
 
