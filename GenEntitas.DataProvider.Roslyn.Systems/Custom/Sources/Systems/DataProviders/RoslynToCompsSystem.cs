@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Microsoft.CodeAnalysis;
@@ -9,11 +11,17 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas.DataProvider.Roslyn
 {
+	[Export(typeof( IExecuteSystem ))]
+	[Guid("9D65F12D-1E7A-4467-AB9F-58A52BD5556E")]
 	public class RoslynToCompsSystem : ReactiveSystem<Ent>
 	{
 		public				RoslynToCompsSystem	( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts			= contexts;
+		}
+
+		public				RoslynToCompsSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;

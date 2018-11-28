@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Entitas;
 using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof( IExecuteSystem ))]
+	[Guid("43419B58-1DD7-4080-A9A8-B6DF6D021F1D")]
 	public class RoslynFixPathToSolutionSystem : ReactiveSystem<Ent>
 	{
 		public				RoslynFixPathToSolutionSystem						( Contexts contexts ) : base( contexts.settings )
+		{
+		}
+
+		public				RoslynFixPathToSolutionSystem					(  ) : this( Contexts.sharedInstance )
 		{
 		}
 

@@ -19,14 +19,21 @@ namespace GenEntitas
 		public		Parser<KeyValuePair<String,List<String>>>	KStrVListStr;
 		public		Parser<Dictionary<String,List<String>>>	DictParser;
 		public					Parser<Contexts>		SettingsParser;
+		public					Parser<Contexts>		SystemGuidsSettingsParser;
 		public					CommentParser			Comments;
 		public					Parser<String>			RemoveCommentsParser;
 		private					Contexts				_contexts;
 
-		public					Contexts				ParseWithComments		( String str )
+		public					Contexts				Parse					( String str )
 		{
 			var withoutComments = RemoveCommentsParser.Parse( str );
 			return SettingsParser.Parse( withoutComments );
+		}
+
+		public					Contexts				ParseSystemGuids		( String str )
+		{
+			var withoutComments = RemoveCommentsParser.Parse( str );
+			return SystemGuidsSettingsParser.Parse( withoutComments );
 		}
 
 		public static			Boolean					BoolFromStr				( String s )
@@ -47,28 +54,50 @@ namespace GenEntitas
 		private					void					InitSettingsParser		(  )
 		{
 			Identifier =
-			(	from first in Parse.Letter.Or( Parse.Char( '_' ) ).Once()
-				from rest in Parse.LetterOrDigit.Or( Parse.Char( '_' ) ).Many().Text()
+			(	from first in Sprache.Parse.Letter.Or( Sprache.Parse.Char( '_' ) ).Once()
+				from rest in Sprache.Parse.LetterOrDigit.Or( Sprache.Parse.Char( '_' ) ).Many().Text()
 				select new String ( first.Concat( rest).ToArray(  ) )
 			).Token(  );
 
 			QuotedString =
-				from openQuote in Parse.Char( '"' )
-				from content in Parse.AnyChar.Except( Parse.Char( '"' ) ).Many(  )
-				from closeQuote in Parse.Char( '"' )
+				from openQuote in Sprache.Parse.Char( '"' )
+				from content in Sprache.Parse.AnyChar.Except( Sprache.Parse.Char( '"' ) ).Many(  )
+				from closeQuote in Sprache.Parse.Char( '"' )
 				select new String( content.ToArray(  ) );
 
 			KStrVListStr	=
 				(	from id in Identifier
-					from delim in Parse.Char( '=' ).Token(  )
-					from values in QuotedString.DelimitedBy( Parse.Char( ',' ).Token(  ) ).Token(  )
-					from trailingComa in Parse.Char( ',' ).Token(  ).Optional(  )
+					from delim in Sprache.Parse.Char( '=' ).Token(  )
+					from values in QuotedString.DelimitedBy( Sprache.Parse.Char( ',' ).Token(  ) ).Token(  )
+					from trailingComa in Sprache.Parse.Char( ',' ).Token(  ).Optional(  )
 					select new KeyValuePair<String, List<String>>( id, values.ToList(  ) )
 				).Token(  );
 
 			DictParser	=
 				from kv in KStrVListStr.Many(  )
 				select kv.ToDictionary( k => k.Key, k => k.Value );
+
+			SystemGuidsSettingsParser			=
+				(	from dict in DictParser
+					select dict )
+				.Select( d =>
+				{
+					if ( d.ContainsKey( nameof( SystemGuids ) ) )
+					{
+						var guids = new List<Guid>(  );
+						foreach ( var str in d[ nameof ( SystemGuids )])
+						{
+							var guid	= new Guid( str );
+							guids.Add( guid );
+						}
+						_contexts.settings.ReplaceSystemGuids( guids ); 
+					}
+					else
+					{
+						_contexts.settings.ReplaceSystemGuids( new List<Guid>(  ) ); 
+					}
+					return _contexts;
+				} );
 
 			SettingsParser			=
 				( 	from dict in DictParser
@@ -139,17 +168,17 @@ namespace GenEntitas
 			Comments = new CommentParser(  );
 
 			var anyCharTillComment =
-				Parse.AnyChar.Until( Comments.AnyComment ).Text(  );
+				Sprache.Parse.AnyChar.Until( Comments.AnyComment ).Text(  );
 
 			var anyCharTillLineEnd =
-				from s in Parse.AnyChar.Until( Parse.LineEnd ).Text(  )
+				from s in Sprache.Parse.AnyChar.Until( Sprache.Parse.LineEnd ).Text(  )
 				select s + '\n';
 
 			RemoveCommentsParser =
 				( from nonComment in
 					anyCharTillComment
 					.Or( anyCharTillLineEnd )
-					.Or( Parse.AnyChar.Many(  ).Text(  ) )
+					.Or( Sprache.Parse.AnyChar.Many(  ).Text(  ) )
 				select nonComment ).Many(  )
 				.Select( values => String.Concat( values ) );
 		}

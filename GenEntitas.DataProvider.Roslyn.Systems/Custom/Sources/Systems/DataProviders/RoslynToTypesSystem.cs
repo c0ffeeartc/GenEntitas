@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.ComponentModel.Composition;
 using System.Text;
 using DesperateDevs.Utils;
 using Entitas;
@@ -14,11 +16,17 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof( IExecuteSystem ))]
+	[Guid("0F5D3CA4-FC93-469B-8D73-9C570EFE04F8")]
 	public class RoslynToTypesSystem : ReactiveSystem<Ent>
 	{
 		public				RoslynToTypesSystem	( Contexts contexts ) : base( contexts.settings )
 		{
 			_contexts			= contexts;
+		}
+
+		public				RoslynToTypesSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		public static	Dictionary<Type,List<String>> TypeToContextNames;

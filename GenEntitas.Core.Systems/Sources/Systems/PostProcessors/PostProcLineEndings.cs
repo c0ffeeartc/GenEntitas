@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Runtime.InteropServices;
 using Entitas;
 using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("16FCAE59-CEBD-4E32-95B4-A195015FD14F")]
 	public class PostProcLineEndings : ReactiveSystem<Ent>
 	{
 		public				PostProcLineEndings		( Contexts contexts ) : base( contexts.main )
+		{
+		}
+
+		public				PostProcLineEndings		(  ) : this( Contexts.sharedInstance )
 		{
 		}
 

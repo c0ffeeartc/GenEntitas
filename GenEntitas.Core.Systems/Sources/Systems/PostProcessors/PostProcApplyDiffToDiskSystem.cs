@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using Entitas;
 using Ent = GenEntitas.MainEntity;
@@ -9,11 +11,17 @@ using Ent = GenEntitas.MainEntity;
 namespace GenEntitas
 {
 	// Replaces PostProcCleanTargetDirSystem, PostProcWriteToDiskSystem
+	[Export(typeof(IExecuteSystem))]
+	[Guid("3EB8A0DE-D615-4263-AE20-5FD966814030")]
 	public class PostProcApplyDiffToDiskSystem : ReactiveSystem<Ent>
 	{
-		public				PostProcApplyDiffToDiskSystem ( Contexts contexts ) : base( contexts.main )
+		public				PostProcApplyDiffToDiskSystem					( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts			= contexts;
+		}
+
+		public				PostProcApplyDiffToDiskSystem					(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;
@@ -48,7 +56,7 @@ namespace GenEntitas
 				var s				= stringBuilder.ToString(  );
 				if ( String.IsNullOrEmpty( s ) )
 				{
-					Log( "No changes found since previous run" );
+					Log( "No changes found since previous run\n" );
 				}
 				else
 				{

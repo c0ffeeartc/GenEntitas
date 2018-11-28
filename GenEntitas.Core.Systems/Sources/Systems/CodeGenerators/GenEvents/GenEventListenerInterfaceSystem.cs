@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
+using System.Runtime.InteropServices;
 using Entitas;
 using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("3070B6D8-4982-4AD0-847E-954C49B1585F")]
 	public class GenEventListenerInterfaceSystem : ReactiveSystem<Ent>
 	{
-		public			GenEventListenerInterfaceSystem	( Contexts contexts ) : base( contexts.main )
+		public		GenEventListenerInterfaceSystem	( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts			= contexts;
+		}
+
+		public		GenEventListenerInterfaceSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;

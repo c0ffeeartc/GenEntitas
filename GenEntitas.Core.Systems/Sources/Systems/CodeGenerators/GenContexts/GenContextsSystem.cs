@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Entitas;
 using Ent = GenEntitas.MainEntity;
 
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("3FE790AB-3A60-41E5-8DF3-157D8B2B835E")]
 	public class GenContextsSystem : ReactiveSystem<Ent>
 	{
 		public				GenContextsSystem	( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts			= contexts;
+		}
+
+		public				GenContextsSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts			_contexts;

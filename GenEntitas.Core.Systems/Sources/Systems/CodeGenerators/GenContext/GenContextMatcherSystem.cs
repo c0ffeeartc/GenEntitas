@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
+using System.Runtime.InteropServices;
 using Entitas;
 using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("EF20AD61-F096-4CDC-A3A4-57BAC33AF31B")]
 	public class GenContextMatcherSystem : ReactiveSystem<Ent>
 	{
 		public				GenContextMatcherSystem	( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts			= contexts;
+		}
+
+		public				GenContextMatcherSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts			_contexts;

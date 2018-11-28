@@ -12,9 +12,10 @@ public static class SettingsComponentsLookup {
     public const int SearchPaths = 8;
     public const int SettingsParseInput = 9;
     public const int SettingsPath = 10;
-    public const int WriteGeneratedPathsToCsProj = 11;
+    public const int SystemGuids = 11;
+    public const int WriteGeneratedPathsToCsProj = 12;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
         "GenEntitasLangPaths",
@@ -28,6 +29,7 @@ public static class SettingsComponentsLookup {
         "SearchPaths",
         "SettingsParseInput",
         "SettingsPath",
+        "SystemGuids",
         "WriteGeneratedPathsToCsProj"
     };
 
@@ -43,6 +45,7 @@ public static class SettingsComponentsLookup {
         typeof(GenEntitas.SearchPaths),
         typeof(GenEntitas.SettingsParseInput),
         typeof(GenEntitas.SettingsPath),
+        typeof(GenEntitas.SystemGuids),
         typeof(GenEntitas.WriteGeneratedPathsToCsProj)
     };
 }

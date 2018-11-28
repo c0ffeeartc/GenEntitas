@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
+using System.Runtime.InteropServices;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
@@ -8,11 +10,17 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("852FFEBA-D466-4505-B239-7C33D14C0446")]
 	public class ReflectionToCompsSystem : ReactiveSystem<Ent>
 	{
 		public				ReflectionToCompsSystem	( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts			= contexts;
+		}
+
+		public				ReflectionToCompsSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		public static	Dictionary<Type,List<String>> TypeToContextNames;

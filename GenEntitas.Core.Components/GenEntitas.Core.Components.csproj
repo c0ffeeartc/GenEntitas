@@ -41,6 +41,7 @@
     <Compile Include="Components\Components.cs" />
     <Compile Include="Components\EntityIndexComp.cs" />
     <Compile Include="Components\FeatureEvents\EventComp.cs" />
+    <Compile Include="Components\ImportAndRunSystems\ImportSystemsComponents.cs" />
     <Compile Include="Components\PublicFieldsComp.cs" />
     <Compile Include="Components\Settings\SettingsComps.cs" />
   </ItemGroup>

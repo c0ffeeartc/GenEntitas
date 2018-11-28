@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Runtime.InteropServices;
 using System.Text;
 using Entitas;
 using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("93E843A5-D1F0-4F8E-825C-D5627635ADF7")]
 	public class PostProcAddFileHeaderSystem : ReactiveSystem<Ent>
 	{
+		public				PostProcAddFileHeaderSystem				(  ) : this( Contexts.sharedInstance )
+		{
+		}
+
 		public				PostProcAddFileHeaderSystem				( Contexts contexts ) : base( contexts.main )
 		{
 		}

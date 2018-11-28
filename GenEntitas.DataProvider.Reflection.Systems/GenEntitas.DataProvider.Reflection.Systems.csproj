@@ -70,6 +70,7 @@
       <HintPath>..\Libraries\Entitas\Entitas\Editor\Plugins\Entitas.CodeGeneration.Plugins.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sources\Systems\ReflectionToCompsSystem.cs" />

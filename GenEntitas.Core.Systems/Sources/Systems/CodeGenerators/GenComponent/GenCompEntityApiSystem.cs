@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Plugins;
@@ -9,11 +11,17 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("16BE46FC-D969-4E05-B250-7B3371AC34E8")]
 	public class GenCompEntityApiSystem : ReactiveSystem<Ent>
 	{
 		public				GenCompEntityApiSystem	( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts = contexts;
+		}
+
+		public				GenCompEntityApiSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;

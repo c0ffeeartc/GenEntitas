@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
@@ -10,11 +12,17 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("5936F4DB-62A4-4968-8611-7715C756F79D")]
 	public class ReflectionToTypesSystem : ReactiveSystem<SettingsEntity>
 	{
 		public				ReflectionToTypesSystem	( Contexts contexts ) : base( contexts.settings )
 		{
 			_contexts			= contexts;
+		}
+
+		public				ReflectionToTypesSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;

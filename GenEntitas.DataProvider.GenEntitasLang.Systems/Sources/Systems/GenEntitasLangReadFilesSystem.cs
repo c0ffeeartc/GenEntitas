@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
+using System.Runtime.InteropServices;
 using Entitas;
 using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("39CAC0DC-89A7-4BFE-93A4-48BBA7711250")]
 	public class GenEntitasLangReadFilesSystem : ReactiveSystem<Ent>
 	{
 		public				GenEntitasLangReadFilesSystem	( Contexts contexts ) : base( contexts.settings )
 		{
 			_contexts			= contexts;
+		}
+
+		public				GenEntitasLangReadFilesSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;

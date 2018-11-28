@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Entitas;
 using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("9D790958-9D53-4C1F-B55A-EAEB4CC821A4")]
 	public class PostProcWriteGenPathsToCsprojSystem : ReactiveSystem<SettingsEntity>
 	{
 		public				PostProcWriteGenPathsToCsprojSystem ( Contexts contexts ) : base( contexts.settings )
 		{
 			_contexts			= contexts;
 			_generatedGroup		= contexts.main.GetGroup( MainMatcher.AllOf( MainMatcher.GeneratedFileComp ).NoneOf( MainMatcher.Destroy ) );
+		}
+
+		public		PostProcWriteGenPathsToCsprojSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;

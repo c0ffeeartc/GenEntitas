@@ -8,3 +8,54 @@ ReflectionAssemblyPaths =
     "./GenEntitas.Core.Settings.Components/bin/Debug/GenEntitas.Core.Settings.Components.dll",
 GeneratePath = "./Generated/Sources"
 GeneratedNamespace = "GenEntitas"
+
+SystemGuids =
+    "43419B58-1DD7-4080-A9A8-B6DF6D021F1D", // RoslynFixPathToSolutionSystem
+    "0F5D3CA4-FC93-469B-8D73-9C570EFE04F8", // RoslynToTypesSystem
+    "9D65F12D-1E7A-4467-AB9F-58A52BD5556E", // RoslynToCompsSystem
+    "0173C3E7-746D-45CC-866C-C743C0753938", // RoslynToEntityIndexSystem
+
+
+    "5936F4DB-62A4-4968-8611-7715C756F79D", // ReflectionToTypesSystem
+    "852FFEBA-D466-4505-B239-7C33D14C0446", // ReflectionToCompsSystem
+    "BA2ADB4C-EE4D-40EE-A3D7-5EF239D418D9", // ReflectionToEntityIndexSystem
+
+    "39CAC0DC-89A7-4BFE-93A4-48BBA7711250", // GenEntitasLangReadFilesSystem
+    "8B97F691-DAC8-4AC3-A184-04908579FB82", // GenEntitasLangToCompsSystem
+
+    "695EB79E-E907-448A-886B-5ADA89E9E690", // ContextEntsProviderSystem
+
+    "3FE790AB-3A60-41E5-8DF3-157D8B2B835E", // GenContextsSystem
+    "CE5785C1-7BEA-4C18-9258-F6ADA365AC43", // GenContextsObserverSystem
+    "F6995038-626D-4D54-A9A5-02587FBAD575", // GenFeatureClassSystem
+
+    //"46A7731A-6A36-49E4-8A8C-542705BE50E2", // GenContextAttributeSystem
+    "EF20AD61-F096-4CDC-A3A4-57BAC33AF31B", // GenContextMatcherSystem
+    "EAE3F8D4-5E36-46BB-89B0-ECF8C691BB18", // GenContextSystem
+
+    "C3FCAC41-1750-4727-9A19-7F15ABA1D2AE", // GenEntitySystem
+    "541377C4-BC1F-4B1B-B9E6-5B6A0F73B6B4", // GenEntityIndexSystem
+
+    "E92BE793-1836-4E0C-B29C-C8D2CF92E799", // GenComponentSystem
+    "67E5AA92-AFDA-4EE3-AA24-2589129AE8F0", // GenCompLookupSystem
+    "45EE2A41-1018-426C-A7EE-14B86197068B", // GenCompContextApiSystem
+    "16BE46FC-D969-4E05-B250-7B3371AC34E8", // GenCompEntityApiSystem
+    "015C78AA-656F-4D00-8F46-6C255FDFA8BD", // GenCompEntityApiInterfaceSystem
+    "C1C3194D-5B71-435B-A0F6-23A4DD3E79CC", // GenCompMatcherApiSystem
+
+    "3E6C4884-71E8-4593-8D36-64ECAF7DC525", // GenNonICompSystem
+
+    "2FB50011-6494-47B1-8228-B1ACEA3995E8", // GenEventEntityApiSystem
+    "162F214A-DFCC-47C2-B906-EC0DC7586F8F", // GenEventListenerCompSystem
+    "3070B6D8-4982-4AD0-847E-954C49B1585F", // GenEventListenerInterfaceSystem
+    "9D74C6E5-14D2-4678-A81D-C916C008C8D6", // GenEventSystemSystem
+    "DAF1F159-1E60-44B0-8510-DE0A001E18E8", // GenContextEventSystemsSystem
+    "E5400EF9-6EB2-4BCA-885D-1315AC7B1C4D", // GenEventSystemsSystem
+
+    //"93E843A5-D1F0-4F8E-825C-D5627635ADF7", // PostProcAddFileHeaderSystem
+    "DAFB3479-BCDD-4CFB-BA35-5D072FC9FD34", // PostProcMergeFilesSystem
+    "16FCAE59-CEBD-4E32-95B4-A195015FD14F", // PostProcLineEndings
+    //"8283A655-B9BA-4106-ADC8-4245C4CAF059", // PostProcCleanTargetDirSystem
+    //"B4D95DA8-FB2E-4491-9CEA-02A24A8A6C88", // PostProcWriteToDiskSystem
+    "3EB8A0DE-D615-4263-AE20-5FD966814030", // PostProcApplyDiffToDiskSystem
+    "9D790958-9D53-4C1F-B55A-EAEB4CC821A4", // PostProcWriteGenPathsToCsprojSystem

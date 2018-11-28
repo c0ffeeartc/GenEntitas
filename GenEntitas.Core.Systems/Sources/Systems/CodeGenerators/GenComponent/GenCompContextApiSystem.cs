@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
+using System.Runtime.InteropServices;
 using Entitas;
-using Entitas.CodeGeneration.Plugins;
 using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("45EE2A41-1018-426C-A7EE-14B86197068B")]
 	public class GenCompContextApiSystem : ReactiveSystem<Ent>
 	{
 		public				GenCompContextApiSystem	( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts = contexts;
+		}
+
+		public				GenCompContextApiSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;

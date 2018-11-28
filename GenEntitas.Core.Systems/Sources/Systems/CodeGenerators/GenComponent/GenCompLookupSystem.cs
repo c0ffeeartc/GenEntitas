@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Entitas;
 using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("67E5AA92-AFDA-4EE3-AA24-2589129AE8F0")]
 	public class GenCompLookupSystem : ReactiveSystem<Ent>
 	{
 		public				GenCompLookupSystem	( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts = contexts;
+		}
+
+		public				GenCompLookupSystem		(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;

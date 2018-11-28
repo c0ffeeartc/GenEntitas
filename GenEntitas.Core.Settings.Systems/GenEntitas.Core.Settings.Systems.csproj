@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="Sources\Systems\SettingsParseStrSystem.cs" />
     <Compile Include="Sources\Systems\SettingsReadFileSystem.cs" />
+    <Compile Include="Sources\Systems\SystemGuidsSettingsParseStrSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenEntitas.Core.Components\GenEntitas.Core.Components.csproj">

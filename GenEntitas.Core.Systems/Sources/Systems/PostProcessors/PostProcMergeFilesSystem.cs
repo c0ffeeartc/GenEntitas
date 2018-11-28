@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Runtime.InteropServices;
 using Entitas;
 using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("DAFB3479-BCDD-4CFB-BA35-5D072FC9FD34")]
 	public class PostProcMergeFilesSystem : ReactiveSystem<Ent>
 	{
 		public				PostProcMergeFilesSystem ( Contexts contexts ) : base( contexts.main )
+		{
+		}
+
+		public				PostProcMergeFilesSystem(  ) : this( Contexts.sharedInstance )
 		{
 		}
 

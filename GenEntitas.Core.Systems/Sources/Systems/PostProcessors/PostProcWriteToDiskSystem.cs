@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using Entitas;
 using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("B4D95DA8-FB2E-4491-9CEA-02A24A8A6C88")]
 	public class PostProcWriteToDiskSystem : ReactiveSystem<Ent>
 	{
 		public				PostProcWriteToDiskSystem ( Contexts contexts ) : base( contexts.main )
 		{
 			_contexts			= contexts;
+		}
+
+		public				PostProcWriteToDiskSystem(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;

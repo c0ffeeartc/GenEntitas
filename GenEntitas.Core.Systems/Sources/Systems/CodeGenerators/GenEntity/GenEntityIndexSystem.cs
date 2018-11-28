@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
+using System.Runtime.InteropServices;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Plugins;
@@ -8,11 +10,17 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(IExecuteSystem))]
+	[Guid("541377C4-BC1F-4B1B-B9E6-5B6A0F73B6B4")]
 	public class GenEntityIndexSystem : IExecuteSystem
 	{
-		public				GenEntityIndexSystem			( Contexts contexts )
+		public				GenEntityIndexSystem	( Contexts contexts )
 		{
 			_contexts			= contexts;
+		}
+
+		public				GenEntityIndexSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;
