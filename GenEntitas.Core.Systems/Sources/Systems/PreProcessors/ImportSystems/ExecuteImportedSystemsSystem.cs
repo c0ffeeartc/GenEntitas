@@ -37,7 +37,7 @@ namespace GenEntitas
 			var systems				= GetRunSystems(  );
 			foreach ( var system in systems )
 			{
-				Console.WriteLine( system.GetType(  ).Name );
+				//Console.WriteLine( system.GetType(  ).Name );
 				system.Execute(  );
 			}
 		}
