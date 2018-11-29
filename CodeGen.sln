@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitas.Core.Settings.Pa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitas.Core.Settings.Components", "GenEntitas.Core.Settings.Components\GenEntitas.Core.Settings.Components.csproj", "{0010BE83-5E85-4F3B-879F-3172A3D38E88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenEntitas.Plugins.HelloWorld.Systems", "GenEntitas.Plugins.HelloWorld.Systems\GenEntitas.Plugins.HelloWorld.Systems.csproj", "{17FF317D-AE49-4332-BE72-2E81BB783B05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{0010BE83-5E85-4F3B-879F-3172A3D38E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0010BE83-5E85-4F3B-879F-3172A3D38E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0010BE83-5E85-4F3B-879F-3172A3D38E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17FF317D-AE49-4332-BE72-2E81BB783B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17FF317D-AE49-4332-BE72-2E81BB783B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17FF317D-AE49-4332-BE72-2E81BB783B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17FF317D-AE49-4332-BE72-2E81BB783B05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

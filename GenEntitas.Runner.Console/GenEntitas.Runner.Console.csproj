@@ -88,6 +88,10 @@
       <Project>{155aa141-3cda-413b-b6e0-1c61c915905b}</Project>
       <Name>GenEntitas.DataProvider.Roslyn.Systems</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.Plugins.HelloWorld.Systems\GenEntitas.Plugins.HelloWorld.Systems.csproj">
+      <Project>{17ff317d-ae49-4332-be72-2e81bb783b05}</Project>
+      <Name>GenEntitas.Plugins.HelloWorld.Systems</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Generated\Generated.csproj">
       <Project>{48ba263f-4d24-41e4-9dc6-0c3799acaec7}</Project>
       <Name>Generated</Name>
