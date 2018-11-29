@@ -10,7 +10,7 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("541377C4-BC1F-4B1B-B9E6-5B6A0F73B6B4")]
 	public class GenEntityIndexSystem : IExecuteSystem
 	{

@@ -12,7 +12,7 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("BA2ADB4C-EE4D-40EE-A3D7-5EF239D418D9")]
 	public class ReflectionToEntityIndexSystem : ReactiveSystem<Ent>
 	{

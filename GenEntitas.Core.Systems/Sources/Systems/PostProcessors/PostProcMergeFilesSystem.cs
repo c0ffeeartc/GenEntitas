@@ -7,7 +7,7 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("DAFB3479-BCDD-4CFB-BA35-5D072FC9FD34")]
 	public class PostProcMergeFilesSystem : ReactiveSystem<Ent>
 	{

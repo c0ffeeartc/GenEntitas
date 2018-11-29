@@ -8,7 +8,7 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("C893C745-BED3-48E6-8800-401EA88B8CE0")]
 	public class RoslynSetSettingsSystem : ReactiveSystem<Ent>
 	{

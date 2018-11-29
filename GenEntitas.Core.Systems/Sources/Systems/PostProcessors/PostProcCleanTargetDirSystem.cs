@@ -8,7 +8,7 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("8283A655-B9BA-4106-ADC8-4245C4CAF059")]
 	public class PostProcCleanTargetDirSystem : ReactiveSystem<Ent>
 	{

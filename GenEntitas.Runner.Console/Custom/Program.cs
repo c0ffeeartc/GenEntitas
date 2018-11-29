@@ -24,6 +24,11 @@ namespace GenEntitas
 
 			contexts.settings.SetSettingsPath( args.SettingsPath );
 
+			runner.BootstrapSystems.Initialize(  );
+			runner.BootstrapSystems.Execute(  );
+			runner.BootstrapSystems.Cleanup(  );
+			runner.BootstrapSystems.TearDown(  );
+
 			runner.Systems.Initialize(  );
 			runner.Systems.Execute(  );
 			runner.Systems.Cleanup(  );

@@ -11,7 +11,7 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas.DataProvider.Roslyn
 {
-	[Export(typeof( IExecuteSystem ))]
+	[Export(typeof(ISystem))]
 	[Guid("9D65F12D-1E7A-4467-AB9F-58A52BD5556E")]
 	public class RoslynToCompsSystem : ReactiveSystem<Ent>
 	{

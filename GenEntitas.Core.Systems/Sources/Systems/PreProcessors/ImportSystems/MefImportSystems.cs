@@ -9,10 +9,12 @@ namespace GenEntitas
 {
 	public class MefImportSystems
 	{
-		[ImportMany(typeof(IExecuteSystem))]
-		private			IEnumerable<IExecuteSystem>	_imports;
+#pragma warning disable 649
+		[ImportMany(typeof(ISystem))]
+		private				IEnumerable<ISystem>	_imports;
+#pragma warning restore 649
 
-		public				List<IExecuteSystem>	Import					(  )
+		public				List<ISystem>			Import					(  )
 		{
 			var catalog				= new DirectoryCatalog( ".", "GenEntitas.*.dll" );
 			var composition			= new CompositionContainer( catalog );

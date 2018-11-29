@@ -8,7 +8,7 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("EAE3F8D4-5E36-46BB-89B0-ECF8C691BB18")]
 	public class GenContextSystem : ReactiveSystem<Ent>
 	{

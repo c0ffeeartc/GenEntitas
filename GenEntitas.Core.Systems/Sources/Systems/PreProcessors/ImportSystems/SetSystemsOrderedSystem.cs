@@ -8,14 +8,16 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
-	public class ExecuteImportedSystemsSystem : ReactiveSystem<Ent>
+	public class SetSystemsOrderedSystem : ReactiveSystem<Ent>
 	{
-		public				ExecuteImportedSystemsSystem		( Contexts contexts ) : base( contexts.settings )
+		public				SetSystemsOrderedSystem		( Contexts contexts, Systems systems ) : base( contexts.settings )
 		{
 			_contexts				= contexts;
+			_systems				= systems;
 		}
 
 		private				Contexts				_contexts;
+		private				Systems					_systems;
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
@@ -34,19 +36,20 @@ namespace GenEntitas
 				throw new Exception( "No GUIDs provided in setting `SystemGuids`" );
 			}
 
-			var systems				= GetRunSystems(  );
+			var systems				= GetSystemsOrdered(  );
+			_contexts.main.ReplaceSystemsOrdered( systems );
 			foreach ( var system in systems )
 			{
-				//Console.WriteLine( system.GetType(  ).Name );
-				system.Execute(  );
+				_systems.Add( system );
 			}
+			_systems.Add( new DestroySystem( _contexts ) );
 		}
 
-		private				List<IExecuteSystem>	GetRunSystems			(  )
+		private				List<ISystem>			GetSystemsOrdered		(  )
 		{
-			var systems				= new List<IExecuteSystem>(  );
+			var systems				= new List<ISystem>(  );
 
-			var importedSystems		= _contexts.main.importedSystems.Values;
+			var importedSystems		= _contexts.main.systemsImported.Values;
 			var importedGuids		= new List<Guid>(  );
 			for ( var i = 0; i < importedSystems.Count; i++ )
 			{
@@ -78,7 +81,7 @@ namespace GenEntitas
 			return systems;
 		}
 
-		private				void					ThrowOnDuplicateGuid	( List<IExecuteSystem> systems, List<Guid> guids )
+		private				void					ThrowOnDuplicateGuid	( List<ISystem> systems, List<Guid> guids )
 		{
 			var guidSet				= new HashSet<Guid>(  );
 			for ( var i = 0; i < guids.Count; i++ )

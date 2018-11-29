@@ -14,9 +14,16 @@ public class SystemGuids : IComponent
 
 [Context(Ids.Main)]
 [Unique]
-public class ImportedSystemsComponent : IComponent
+public class SystemsImportedComponent : IComponent
 {
-	public				List<IExecuteSystem>	Values;
+	public					List<ISystem>		Values;
+}
+
+[Context(Ids.Main)]
+[Unique]
+public class SystemsOrderedComponent : IComponent
+{
+	public					List<ISystem>		Values;
 }
 
 }

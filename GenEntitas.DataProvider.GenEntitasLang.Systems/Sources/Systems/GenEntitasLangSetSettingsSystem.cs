@@ -7,7 +7,7 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("19410422-FD8A-4FF0-880F-F620657602E8")]
 	public class GenEntitasLangSetSettingsSystem : ReactiveSystem<Ent>
 	{

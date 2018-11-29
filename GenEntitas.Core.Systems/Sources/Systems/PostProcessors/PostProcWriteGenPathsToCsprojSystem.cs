@@ -9,7 +9,7 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("9D790958-9D53-4C1F-B55A-EAEB4CC821A4")]
 	public class PostProcWriteGenPathsToCsprojSystem : ReactiveSystem<SettingsEntity>
 	{

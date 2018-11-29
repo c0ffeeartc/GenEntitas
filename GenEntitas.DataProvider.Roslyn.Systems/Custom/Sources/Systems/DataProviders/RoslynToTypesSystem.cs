@@ -16,7 +16,7 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof( IExecuteSystem ))]
+	[Export(typeof(ISystem))]
 	[Guid("0F5D3CA4-FC93-469B-8D73-9C570EFE04F8")]
 	public class RoslynToTypesSystem : ReactiveSystem<Ent>
 	{

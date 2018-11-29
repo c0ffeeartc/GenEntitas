@@ -15,20 +15,21 @@ public static class MainComponentsLookup {
     public const int GenCompEntApiInterface_ForSingleContext = 11;
     public const int GenEntitasLangInputString = 12;
     public const int GeneratedFileComp = 13;
-    public const int ImportedSystems = 14;
-    public const int INamedTypeSymbol = 15;
-    public const int NonIComp = 16;
-    public const int ParsedByGenEntitasLang = 17;
-    public const int PublicFieldsComp = 18;
-    public const int ReflectionComponentTypes = 19;
-    public const int ReflectionLoadableTypes = 20;
-    public const int RoslynAllTypes = 21;
-    public const int RoslynComponentTypes = 22;
-    public const int TypeComp = 23;
-    public const int UniqueComp = 24;
-    public const int UniquePrefixComp = 25;
+    public const int INamedTypeSymbol = 14;
+    public const int NonIComp = 15;
+    public const int ParsedByGenEntitasLang = 16;
+    public const int PublicFieldsComp = 17;
+    public const int ReflectionComponentTypes = 18;
+    public const int ReflectionLoadableTypes = 19;
+    public const int RoslynAllTypes = 20;
+    public const int RoslynComponentTypes = 21;
+    public const int SystemsImported = 22;
+    public const int SystemsOrdered = 23;
+    public const int TypeComp = 24;
+    public const int UniqueComp = 25;
+    public const int UniquePrefixComp = 26;
 
-    public const int TotalComponents = 26;
+    public const int TotalComponents = 27;
 
     public static readonly string[] componentNames = {
         "AliasComp",
@@ -45,7 +46,6 @@ public static class MainComponentsLookup {
         "GenCompEntApiInterface_ForSingleContext",
         "GenEntitasLangInputString",
         "GeneratedFileComp",
-        "ImportedSystems",
         "INamedTypeSymbol",
         "NonIComp",
         "ParsedByGenEntitasLang",
@@ -54,6 +54,8 @@ public static class MainComponentsLookup {
         "ReflectionLoadableTypes",
         "RoslynAllTypes",
         "RoslynComponentTypes",
+        "SystemsImported",
+        "SystemsOrdered",
         "TypeComp",
         "UniqueComp",
         "UniquePrefixComp"
@@ -74,7 +76,6 @@ public static class MainComponentsLookup {
         typeof(GenEntitas.GenCompEntApiInterface_ForSingleContext),
         typeof(GenEntitas.GenEntitasLangInputString),
         typeof(GenEntitas.GeneratedFileComp),
-        typeof(GenEntitas.ImportedSystemsComponent),
         typeof(GenEntitas.INamedTypeSymbolComponent),
         typeof(GenEntitas.NonIComp),
         typeof(GenEntitas.ParsedByGenEntitasLang),
@@ -83,6 +84,8 @@ public static class MainComponentsLookup {
         typeof(GenEntitas.ReflectionLoadableTypes),
         typeof(GenEntitas.RoslynAllTypes),
         typeof(GenEntitas.RoslynComponentTypes),
+        typeof(GenEntitas.SystemsImportedComponent),
+        typeof(GenEntitas.SystemsOrderedComponent),
         typeof(GenEntitas.TypeComp),
         typeof(GenEntitas.UniqueComp),
         typeof(GenEntitas.UniquePrefixComp)

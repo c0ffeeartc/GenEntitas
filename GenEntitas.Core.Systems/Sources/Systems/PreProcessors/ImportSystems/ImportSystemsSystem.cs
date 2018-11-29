@@ -16,7 +16,7 @@ namespace GenEntitas
 		{
 			var import			= new MefImportSystems(  );
 			var systems			= import.Import(  );
-			_contexts.main.ReplaceImportedSystems( systems );
+			_contexts.main.ReplaceSystemsImported( systems );
 
 			// needs retriggering after importing systems from dlls
 			_contexts.settings.ReplaceSettingsPath( _contexts.settings.settingsPath.Value );

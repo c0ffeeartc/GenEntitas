@@ -11,7 +11,7 @@ using Ent = GenEntitas.MainEntity;
 namespace GenEntitas
 {
 	// Replaces PostProcCleanTargetDirSystem, PostProcWriteToDiskSystem
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("3EB8A0DE-D615-4263-AE20-5FD966814030")]
 	public class PostProcApplyDiffToDiskSystem : ReactiveSystem<Ent>
 	{

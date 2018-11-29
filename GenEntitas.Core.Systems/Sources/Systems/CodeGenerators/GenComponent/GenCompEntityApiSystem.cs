@@ -11,7 +11,7 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("16BE46FC-D969-4E05-B250-7B3371AC34E8")]
 	public class GenCompEntityApiSystem : ReactiveSystem<Ent>
 	{

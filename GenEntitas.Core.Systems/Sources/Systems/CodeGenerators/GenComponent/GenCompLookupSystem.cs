@@ -9,7 +9,7 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas
 {
-	[Export(typeof(IExecuteSystem))]
+	[Export(typeof(ISystem))]
 	[Guid("67E5AA92-AFDA-4EE3-AA24-2589129AE8F0")]
 	public class GenCompLookupSystem : ReactiveSystem<Ent>
 	{

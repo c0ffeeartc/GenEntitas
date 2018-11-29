@@ -12,7 +12,7 @@ using Ent = GenEntitas.MainEntity;
 
 namespace GenEntitas.DataProvider.Roslyn
 {
-	[Export(typeof( IExecuteSystem ))]
+	[Export(typeof(ISystem))]
 	[Guid("0173C3E7-746D-45CC-866C-C743C0753938")]
 	public class RoslynToEntityIndexSystem : ReactiveSystem<Ent>
 	{
