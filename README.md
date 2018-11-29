@@ -3,7 +3,7 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
 
 ### How it works
   - Console Runner reads settings file
-  - Import systems from dlls named `GenEntitas.*.dll` and have `Export(typeof(IExecute))` and `Guid` attributes
+  - Systems are imported from dlls
   - Systems `Initialize/Execute/Cleanup/TearDown` is called once
     - DataProvider systems add entities with components
     - Generator systems react to components in entities
@@ -17,6 +17,7 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
   - [Settings](GenEntitas.Core.Settings.Parser)
   - [GenEntitasLang](./GenEntitas.DataProvider.GenEntitasLang.Parser)
   - [RoslynDataProvider](./GenEntitas.DataProvider.Roslyn.Systems)
+  - [HelloWorld Plugin](./GenEntitas.Plugins.HelloWorld.Systems)
 
 
 ### Pros
