@@ -10,11 +10,14 @@ GeneratePath = "./Generated/Sources"
 GeneratedNamespace = "GenEntitas"
 
 SystemGuids =
+    "C893C745-BED3-48E6-8800-401EA88B8CE0", // RoslynSetSettingsSystem
+    "065BF37D-6843-4BAB-8154-2B1C1A3D8968", // ReflectionSetSettingsSystem
+    "19410422-FD8A-4FF0-880F-F620657602E8", // GenEntitasLangSetSettingsSystem
+
     "43419B58-1DD7-4080-A9A8-B6DF6D021F1D", // RoslynFixPathToSolutionSystem
     "0F5D3CA4-FC93-469B-8D73-9C570EFE04F8", // RoslynToTypesSystem
     "9D65F12D-1E7A-4467-AB9F-58A52BD5556E", // RoslynToCompsSystem
     "0173C3E7-746D-45CC-866C-C743C0753938", // RoslynToEntityIndexSystem
-
 
     "5936F4DB-62A4-4968-8611-7715C756F79D", // ReflectionToTypesSystem
     "852FFEBA-D466-4505-B239-7C33D14C0446", // ReflectionToCompsSystem

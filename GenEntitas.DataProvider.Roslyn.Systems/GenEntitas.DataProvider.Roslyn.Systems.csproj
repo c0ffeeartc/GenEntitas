@@ -112,6 +112,7 @@
     <Compile Include="Custom\Sources\Systems\DataProviders\RoslynToEntityIndexSystem.cs" />
     <Compile Include="Custom\Sources\Systems\DataProviders\RoslynToTypesSystem.cs" />
     <Compile Include="Custom\Sources\Systems\PreProcessors\RoslynFixPathToSolutionSystem.cs" />
+    <Compile Include="Custom\Sources\Systems\PreProcessors\RoslynSetSettingsSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +129,10 @@
     <ProjectReference Include="..\GenEntitas.Core.Components\GenEntitas.Core.Components.csproj">
       <Project>{4a7d34bd-21c3-48c7-9f88-86004c6b88c9}</Project>
       <Name>GenEntitas.Core.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.Core.Settings.Components\GenEntitas.Core.Settings.Components.csproj">
+      <Project>{0010be83-5e85-4f3b-879f-3172a3d38e88}</Project>
+      <Name>GenEntitas.Core.Settings.Components</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenEntitas.Core.Utils\GenEntitas.Core.Utils.csproj">
       <Project>{39ce7b33-cd90-4114-b0d8-a4c5c4827419}</Project>

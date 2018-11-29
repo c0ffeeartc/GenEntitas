@@ -63,9 +63,10 @@
     <Compile Include="Sources\**\*.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Sources" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\GenEntitas.Core.Common\GenEntitas.Core.Common.csproj">
+      <Project>{23c531cc-7dbb-4641-b0ac-899369a67815}</Project>
+      <Name>GenEntitas.Core.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitas.Core.Components\GenEntitas.Core.Components.csproj">
       <Project>{4a7d34bd-21c3-48c7-9f88-86004c6b88c9}</Project>
       <Name>GenEntitas.Core.Components</Name>

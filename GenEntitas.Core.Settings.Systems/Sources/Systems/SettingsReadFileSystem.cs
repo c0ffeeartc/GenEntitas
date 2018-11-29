@@ -33,7 +33,7 @@ namespace GenEntitas
 				throw new FileNotFoundException( $"Settings file does not exist: '{path}'" );
 			}
 
-			var settingsStr		= File.ReadAllText( path );
+		var settingsStr		= File.ReadAllText( path );
 			_contexts.settings.ReplaceSettingsParseInput( settingsStr );
 		}
 	}

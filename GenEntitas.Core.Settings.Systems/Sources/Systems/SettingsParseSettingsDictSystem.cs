@@ -4,9 +4,9 @@ using Entitas;
 
 namespace GenEntitas
 {
-	public class SystemGuidsSettingsParseStrSystem : ReactiveSystem<SettingsEntity>
+	public class SettingsParseSettingsDictSystem : ReactiveSystem<SettingsEntity>
 	{
-		public				SystemGuidsSettingsParseStrSystem	( Contexts contexts ) : base( contexts.settings )
+		public				SettingsParseSettingsDictSystem	( Contexts contexts ) : base( contexts.settings )
 		{
 			_contexts			= contexts;
 		}
@@ -27,8 +27,8 @@ namespace GenEntitas
 		{
 			var ent					= entities[0];
 
-			var parser				= new SettingsGrammar( _contexts );
-			parser.ParseSystemGuids( ent.settingsParseInput.Value );
+			var d					= _contexts.Services.Settings.Parse( ent.settingsParseInput.Value );
+			_contexts.settings.ReplaceSettingsDict( d );
 		}
 	}
 }

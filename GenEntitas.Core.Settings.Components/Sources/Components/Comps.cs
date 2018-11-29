@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
@@ -14,6 +15,13 @@ public class SettingsPath : IComponent
 public class SettingsParseInput : IComponent
 {
 	public					String					Value;
+}
+
+[Context(Ids.Settings)]
+[Unique]
+public class SettingsDictComponent : IComponent
+{
+	public			Dictionary<String,List<String>>	Dict;
 }
 
 }

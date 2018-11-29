@@ -56,6 +56,14 @@
     <Compile Include="Custom/Sources/**/*.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenEntitas.Core.Common\GenEntitas.Core.Common.csproj">
+      <Project>{23c531cc-7dbb-4641-b0ac-899369a67815}</Project>
+      <Name>GenEntitas.Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenEntitas.Core.Settings.Parser\GenEntitas.Core.Settings.Parser.csproj">
+      <Project>{a69ff147-f908-4414-bb40-f5f74171ce5a}</Project>
+      <Name>GenEntitas.Core.Settings.Parser</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitas.Core.Settings.Systems\GenEntitas.Core.Settings.Systems.csproj">
       <Project>{28d700b4-dfb0-400c-aa42-248c2a6433ce}</Project>
       <Name>GenEntitas.Core.Settings.Systems</Name>

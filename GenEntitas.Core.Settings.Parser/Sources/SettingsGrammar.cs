@@ -5,7 +5,7 @@ using Sprache;
 
 namespace GenEntitas
 {
-	public class SettingsGrammar
+	public class SettingsGrammar : ISettingsService
 	{
 		public					SettingsGrammar			( Contexts contexts )
 		{
@@ -18,25 +18,17 @@ namespace GenEntitas
 		public					Parser<String>			QuotedString;
 		public		Parser<KeyValuePair<String,List<String>>>	KStrVListStr;
 		public		Parser<Dictionary<String,List<String>>>	DictParser;
-		public					Parser<Contexts>		SettingsParser;
-		public					Parser<Contexts>		SystemGuidsSettingsParser;
 		public					CommentParser			Comments;
 		public					Parser<String>			RemoveCommentsParser;
 		private					Contexts				_contexts;
 
-		public					Contexts				Parse					( String str )
+		public		Dictionary<String,List<String>>		Parse					( String str )
 		{
 			var withoutComments = RemoveCommentsParser.Parse( str );
-			return SettingsParser.Parse( withoutComments );
+			return DictParser.Parse( withoutComments );
 		}
 
-		public					Contexts				ParseSystemGuids		( String str )
-		{
-			var withoutComments = RemoveCommentsParser.Parse( str );
-			return SystemGuidsSettingsParser.Parse( withoutComments );
-		}
-
-		public static			Boolean					BoolFromStr				( String s )
+		public					Boolean					BoolFromStr				( String s )
 		{
 			if ( String.Compare( s, "true", StringComparison.OrdinalIgnoreCase ) == 0 )
 			{
@@ -76,91 +68,6 @@ namespace GenEntitas
 			DictParser	=
 				from kv in KStrVListStr.Many(  )
 				select kv.ToDictionary( k => k.Key, k => k.Value );
-
-			SystemGuidsSettingsParser			=
-				(	from dict in DictParser
-					select dict )
-				.Select( d =>
-				{
-					if ( d.ContainsKey( nameof( SystemGuids ) ) )
-					{
-						var guids = new List<Guid>(  );
-						foreach ( var str in d[ nameof ( SystemGuids )])
-						{
-							var guid	= new Guid( str );
-							guids.Add( guid );
-						}
-						_contexts.settings.ReplaceSystemGuids( guids ); 
-					}
-					else
-					{
-						_contexts.settings.ReplaceSystemGuids( new List<Guid>(  ) ); 
-					}
-					return _contexts;
-				} );
-
-			SettingsParser			=
-				( 	from dict in DictParser
-					select dict )
-				.Select( d =>
-				{
-					if ( d.ContainsKey( nameof( LogGeneratedPaths ) ) )
-					{
-						_contexts.settings.isLogGeneratedPaths = BoolFromStr( d[nameof( LogGeneratedPaths )].FirstOrDefault(  ) );
-					}
-					else
-					{
-						_contexts.settings.isLogGeneratedPaths = true;
-					}
-
-					if ( d.ContainsKey( nameof( IgnoreNamespaces ) ) )
-					{
-						_contexts.settings.isIgnoreNamespaces = BoolFromStr( d[nameof( IgnoreNamespaces )].FirstOrDefault(  ) );
-					}
-					else
-					{
-						_contexts.settings.isIgnoreNamespaces = false;
-					}
-
-					if ( d.ContainsKey( nameof( RunInDryMode ) ) )
-					{
-						_contexts.settings.isRunInDryMode = BoolFromStr( d[nameof( RunInDryMode )].FirstOrDefault(  ) );
-					}
-					else
-					{
-						_contexts.settings.isRunInDryMode = false;
-					}
-
-					_contexts.settings.ReplaceGeneratedNamespace( d.ContainsKey( nameof( GeneratedNamespace ) )
-						? d[nameof( GeneratedNamespace )].FirstOrDefault(  )
-						: "" );
-
-					_contexts.settings.ReplaceRoslynPathToSolution( d.ContainsKey( nameof( RoslynPathToSolution ) )
-						? d[nameof( RoslynPathToSolution )].FirstOrDefault(  )
-						: "" );
-
-					_contexts.settings.ReplaceGeneratePath( d.ContainsKey( nameof( GeneratePath ) )
-						? d[nameof( GeneratePath )].FirstOrDefault(  )
-						: "" );
-
-					_contexts.settings.ReplaceReflectionAssemblyPaths( d.ContainsKey( nameof( ReflectionAssemblyPaths ) )
-						? d[nameof( ReflectionAssemblyPaths )]
-						: new List<string>(  ) );
-
-					_contexts.settings.ReplaceGenEntitasLangPaths( d.ContainsKey( nameof( GenEntitasLangPaths ) )
-						? d[nameof( GenEntitasLangPaths )]
-						: new List<string>(  ) );
-
-					_contexts.settings.ReplaceSearchPaths( d.ContainsKey( nameof( SearchPaths ) )
-						? d[nameof( SearchPaths )]
-						: new List<string>(  ) );
-
-					_contexts.settings.ReplaceWriteGeneratedPathsToCsProj( d.ContainsKey( nameof( WriteGeneratedPathsToCsProj ) )
-						? d[nameof( WriteGeneratedPathsToCsProj )].FirstOrDefault(  )
-						: "" );
-
-					return _contexts;
-				} );
 		}
 
 		private					void					InitCommentsParser		(  )

@@ -10,12 +10,13 @@ public static class SettingsComponentsLookup {
     public const int RoslynPathToSolution = 6;
     public const int RunInDryMode = 7;
     public const int SearchPaths = 8;
-    public const int SettingsParseInput = 9;
-    public const int SettingsPath = 10;
-    public const int SystemGuids = 11;
-    public const int WriteGeneratedPathsToCsProj = 12;
+    public const int SettingsDict = 9;
+    public const int SettingsParseInput = 10;
+    public const int SettingsPath = 11;
+    public const int SystemGuids = 12;
+    public const int WriteGeneratedPathsToCsProj = 13;
 
-    public const int TotalComponents = 13;
+    public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
         "GenEntitasLangPaths",
@@ -27,6 +28,7 @@ public static class SettingsComponentsLookup {
         "RoslynPathToSolution",
         "RunInDryMode",
         "SearchPaths",
+        "SettingsDict",
         "SettingsParseInput",
         "SettingsPath",
         "SystemGuids",
@@ -43,6 +45,7 @@ public static class SettingsComponentsLookup {
         typeof(GenEntitas.RoslynPathToSolution),
         typeof(GenEntitas.RunInDryMode),
         typeof(GenEntitas.SearchPaths),
+        typeof(GenEntitas.SettingsDictComponent),
         typeof(GenEntitas.SettingsParseInput),
         typeof(GenEntitas.SettingsPath),
         typeof(GenEntitas.SystemGuids),

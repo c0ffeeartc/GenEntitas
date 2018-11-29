@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Sources\Systems\GenEntitasLangSetSettingsSystem.cs" />
     <Compile Include="Sources\Systems\GenEntitasLangToCompsSystem.cs" />
     <Compile Include="Sources\Systems\GenEntitasLangReadFilesSystem.cs" />
   </ItemGroup>
@@ -42,6 +43,10 @@
     <Reference Include="System.ComponentModel.Composition" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenEntitas.Core.Settings.Components\GenEntitas.Core.Settings.Components.csproj">
+      <Project>{0010be83-5e85-4f3b-879f-3172a3d38e88}</Project>
+      <Name>GenEntitas.Core.Settings.Components</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitas.DataProvider.GenEntitasLang.Components\GenEntitas.DataProvider.GenEntitasLang.Components.csproj">
       <Project>{20a5e128-8bfd-4cc9-933e-215e6988e209}</Project>
       <Name>GenEntitas.DataProvider.GenEntitasLang.Components</Name>

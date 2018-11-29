@@ -33,6 +33,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Sources\Ids.cs" />
+    <Compile Include="Sources\Services\ISettingsService.cs" />
+    <Compile Include="Sources\Services\Services.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Libraries\Entitas\Entitas\Entitas.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
