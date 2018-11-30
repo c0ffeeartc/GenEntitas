@@ -47,10 +47,11 @@ namespace GenEntitas
 
 		public static		List<String>			GetContextNames			( this ISymbol t )
 		{
-			return t.GetAttributes(  )
-				.Where( attr => attr.AttributeClass.IsTypeOrHasBaseType( typeof( ContextAttribute ) ) )
-				.Select( attr => (String)attr.ConstructorArguments[0].Value )
-				.ToList(  );
+			return RoslynToTypesSystem.GetContextNames( t );
+//			return t.GetAttributes(  )
+//				.Where( attr => attr.AttributeClass.IsTypeOrHasBaseType( typeof( ContextAttribute ) ) )
+//				.Select( attr => (String)attr.ConstructorArguments[0].Value )
+//				.ToList(  );
 		}
 	}
 }

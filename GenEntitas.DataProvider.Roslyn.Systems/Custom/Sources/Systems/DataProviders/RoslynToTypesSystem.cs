@@ -29,7 +29,6 @@ namespace GenEntitas
 		{
 		}
 
-		public static	Dictionary<Type,List<String>> TypeToContextNames;
 		private				Contexts				_contexts;
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
@@ -137,7 +136,7 @@ namespace GenEntitas
 			return allTypes.ToList(  );
 		}
 
-        private static List<string> GetContextNames(ITypeSymbol type)
+        public static List<string> GetContextNames(ISymbol type)
         {
             List<string> contextAttributes = new List<string>();
 
