@@ -10,15 +10,15 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
     - PostProcessor systems write changes to disk, log, etc.
 
 ### Parts
-  - [Tests](./Tests)
-  - [Components](./GenEntitas.Core.Components)
-  - [Systems](./GenEntitas.Core.Systems)
   - [Console Runner](./GenEntitas.Runner.Console)
   - [Settings](GenEntitas.Core.Settings.Parser)
-  - [GenEntitasLang](./GenEntitas.DataProvider.GenEntitasLang.Parser)
-  - [RoslynDataProvider](./GenEntitas.DataProvider.Roslyn.Systems)
+  - [Systems](./GenEntitas.Core.Systems)
+  - [Components](./GenEntitas.Core.Components)
+  - [DataProvider.Reflection](./GenEntitas.DataProvider.Reflection.Systems)
+  - [DataProvider.Roslyn](./GenEntitas.DataProvider.Roslyn.Systems)
+  - [DataProvider.GenEntitasLang](./GenEntitas.DataProvider.GenEntitasLang.Parser)
   - [HelloWorld Plugin](./GenEntitas.Plugins.HelloWorld.Systems)
-
+  - [Tests](./Tests)
 
 ### Pros
   - familiar ECS architecture for Entitas users
@@ -31,3 +31,8 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
   - tied to specific entitas version
   - there is no settings auto creation. You'll have to provide paths to folders with unity dlls. After done once, settings can be copy/paste/tweaked for other projects
   - Roslyn data provider lacks server mode, and because of that is much slower compared to Entitas Jenny
+
+### Usage:
+ Before using build solution. See [Console Runner](./GenEntitas.Runner.Console) for details
+  - create settings. See [Settings](GenEntitas.Core.Settings.Parser)
+  - call `mono ./path_here/GenEntitas.exe --SettingsPath=./pathToSettings` . See [genComps.sh](genComps.sh)
