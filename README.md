@@ -4,7 +4,7 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
 ### How it works
   - Console Runner reads settings file
   - Systems are imported from dlls
-  - Systems `Initialize/Execute/Cleanup/TearDown` is called once
+  - Systems `Initialize/Execute/Cleanup/TearDown` once
     - DataProvider systems add entities with components
     - Generator systems react to components in entities
     - PostProcessor systems write changes to disk, log, etc.
