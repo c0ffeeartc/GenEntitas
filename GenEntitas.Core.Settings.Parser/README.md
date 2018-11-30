@@ -22,6 +22,7 @@ Example [GenComps.settings](../GenComps.settings)
 
   - `GeneratePath` - path to existing directory in which a new directory `Generated` will be created
   - `SearchPaths` - paths to folders with dll dependencies
+  - `SystemGuids` - defines order of systems execution (see [GenComps.settings](../GenComps.settings))
   - `RoslynPathToSolution` - optional path to `.sln` file for Roslyn data provider
   - `GenEntitasLangPaths` - optional paths to GenEntitasLang files for GenEntitasLang data provider
   - `ReflectionAssemblyPaths` - optional paths to `.dll` files for Reflection data provider
