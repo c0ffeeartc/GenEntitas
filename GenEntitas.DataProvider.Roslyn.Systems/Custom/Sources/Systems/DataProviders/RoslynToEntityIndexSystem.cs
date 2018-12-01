@@ -132,9 +132,11 @@ namespace GenEntitas.DataProvider.Roslyn
 					var data				= new EntityIndexData();
 					var attribute			= info.GetAttribute( typeof( AbstractEntityIndexAttribute ) );
 					var entityIndexType		= GetEntityIndexType( attribute.AttributeClass );
-					var typeName			= ( info is IFieldSymbol )
-						? ( info as IFieldSymbol ).Type.ToDisplayString(  )
-						: ( info is IPropertySymbol ) ? ( info as IPropertySymbol ).Type.ToDisplayString(  ) : null;
+					var typeName			= ( info is IFieldSymbol fieldSymbol )
+						? fieldSymbol.Type.ToDisplayString(  )
+						: ( info is IPropertySymbol symbol )
+							? symbol.Type.ToDisplayString(  )
+							: null;
 
 					data.SetEntityIndexType( entityIndexType.ToString(  ) );
 					data.IsCustom(false);
@@ -154,13 +156,13 @@ namespace GenEntitas.DataProvider.Roslyn
 			var data				= new EntityIndexData();
 
 			var attribute			= type.GetAttributes(  ).First( attr => attr.AttributeClass.ToString(  ) == typeof( CustomEntityIndexAttribute ).FullName );
-			var attrArg0			= (Type)attribute.ConstructorArguments[0].Value;  // FIXME: get string contextName
+			var attrArg0			= attribute.ConstructorArguments[0].Value as INamedTypeSymbol;  // FIXME: get string contextName
 
 			data.SetEntityIndexType( type.ToString(  ) );
 			data.IsCustom( true );
 			data.SetEntityIndexName( type.ToString(  ).RemoveDots(  ) );
 			data.SetHasMultiple( false );
-			data.SetContextNames( new[] { attrArg0.ToCompilableString(  ).ShortTypeName(  ).RemoveContextSuffix(  ) } );
+			data.SetContextNames( new[] { attrArg0.Name.ShortTypeName(  ).RemoveContextSuffix(  ) } );
 
 			var getMethods = type
 				.GetMembers(  )
@@ -169,7 +171,7 @@ namespace GenEntitas.DataProvider.Roslyn
 					&& m.DeclaredAccessibility == Accessibility.Public
 					&& m.HasAttribute( typeof( EntityIndexGetMethodAttribute ) ) )
 				.Select( m  => new MethodData(
-					(m as IMethodSymbol).ReturnType.Name,
+					(m as IMethodSymbol).ReturnType.ToDisplayString(  ),
 					(m as IMethodSymbol).Name,
 					(m as IMethodSymbol).Parameters
 						.Select( p => new MemberData( p.Type.ToString(  ), p.Name ) )

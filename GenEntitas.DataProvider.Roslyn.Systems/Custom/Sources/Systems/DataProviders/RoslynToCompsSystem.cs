@@ -138,6 +138,7 @@ namespace GenEntitas.DataProvider.Roslyn
 				.ToList(  );
 		}
 
+		// TODO: FIXME: doesn't handle inheritance
 		private				List<FieldInfo>			GetPublicFieldAndPropertyInfos ( INamedTypeSymbol type )
 		{
 			return GetPublicFieldAndPropertySymbols( type )
