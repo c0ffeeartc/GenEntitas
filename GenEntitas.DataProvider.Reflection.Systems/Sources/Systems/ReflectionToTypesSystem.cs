@@ -95,6 +95,10 @@ namespace GenEntitas
 			}
 			catch (ReflectionTypeLoadException e)
 			{
+				foreach ( var loaderException in e.LoaderExceptions )
+				{
+					Console.WriteLine( loaderException.Message );
+				}
 				return e.Types.Where( t => t != null ).ToList();
 			}
 		}
