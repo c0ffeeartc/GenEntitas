@@ -9,5 +9,5 @@
 
 ### Usage
 
-  - Add `RoslynPathToSolution = ./PathToYourSolution.sln` to settings file
+  - Add `RoslynPathToSolution = "./PathToYourSolution.sln"` to settings file
   - use console runner
