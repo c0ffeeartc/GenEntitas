@@ -2,6 +2,8 @@
   - Calls `Console.WriteLine("HelloWorld")`
   - Calls `Console.WriteLine` for each `HelloWorld` setting value
 
+Run `mono ./pathToExe/GenEntitas.exe --SettingsPath=./HelloWorld.settings` to see it in action
+
 ### Plugin Requirements:
   - Dll name matches pattern `GenEntitas.*.dll`
   - Dll is located in the same folder as `GenEntitas.exe`
