@@ -64,11 +64,17 @@
     <Compile Include="Sources\Systems\PostProcessors\PostProcWriteToDiskSystem.cs" />
     <Compile Include="Sources\Systems\PreProcessors\AssemblyResolver\AssemblyResolver.cs" />
     <Compile Include="Sources\Systems\PreProcessors\AssemblyResolver\AssemblyResolveSystem.cs" />
+    <Compile Include="Sources\Systems\PreProcessors\AssemblyResolver\SettingsSetAssemblyResolvePathsSystem.cs" />
     <Compile Include="Sources\Systems\PreProcessors\ImportSystems\ImportSystemsSystem.cs" />
     <Compile Include="Sources\Systems\PreProcessors\ImportSystems\MefImportSystems.cs" />
-    <Compile Include="Sources\Systems\PreProcessors\ImportSystems\SetSystemsOrderedSystem.cs" />
+    <Compile Include="Sources\Systems\PreProcessors\ImportSystems\SettingsSetSystemsOrderedSystem.cs" />
+    <Compile Include="Sources\Systems\PreProcessors\SettingsSetCoreSettingsSystem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenEntitas.Core.Common\GenEntitas.Core.Common.csproj">
+      <Project>{23c531cc-7dbb-4641-b0ac-899369a67815}</Project>
+      <Name>GenEntitas.Core.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenEntitas.Core.Components\GenEntitas.Core.Components.csproj">
       <Project>{4a7d34bd-21c3-48c7-9f88-86004c6b88c9}</Project>
       <Name>GenEntitas.Core.Components</Name>

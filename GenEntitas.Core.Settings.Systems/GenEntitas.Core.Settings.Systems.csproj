@@ -33,7 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Sources\Systems\SettingsParseSettingsDictSystem.cs" />
-    <Compile Include="Sources\Systems\SettingsSetCoreSettingsSystem.cs" />
     <Compile Include="Sources\Systems\SettingsReadFileSystem.cs" />
     <Compile Include="Sources\Systems\SettingsSetSystemGuidsSystem.cs" />
   </ItemGroup>

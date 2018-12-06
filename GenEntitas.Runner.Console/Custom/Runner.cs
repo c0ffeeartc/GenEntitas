@@ -25,11 +25,14 @@ namespace GenEntitas
 			_bootstrapSystems	= new Systems(  )
 				.Add( new SettingsReadFileSystem( _contexts ) )
 				.Add( new SettingsParseSettingsDictSystem( _contexts ) )
+
+				.Add( new SettingsSetAssemblyResolvePathsSystem( _contexts ) )
+				.Add( new AssemblyResolveSystem( _contexts ) )
+
 				.Add( new SettingsSetSystemGuidsSystem( _contexts ) )
 				.Add( new ImportSystemsSystem( _contexts ) )
-				.Add( new SetSystemsOrderedSystem( _contexts, _systems ) )
-				.Add( new SettingsSetCoreSettingsSystem( _contexts ) )
-				.Add( new AssemblyResolveSystem( _contexts ) )
+				.Add( new SettingsSetSystemsOrderedSystem( _contexts, _systems ) )
+
 				.Add( new DestroySystem( _contexts ) );
 				;
 		}

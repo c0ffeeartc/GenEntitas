@@ -10,6 +10,8 @@ GeneratePath = "./Generated/Sources"
 GeneratedNamespace = "GenEntitas"
 
 SystemGuids =
+    "6F2E73C6-B6D3-42C6-AA29-7A832DA32F3E", // SettingsSetCoreSettingsSystem
+
     "C893C745-BED3-48E6-8800-401EA88B8CE0", // RoslynSetSettingsSystem
     "065BF37D-6843-4BAB-8154-2B1C1A3D8968", // ReflectionSetSettingsSystem
     "19410422-FD8A-4FF0-880F-F620657602E8", // GenEntitasLangSetSettingsSystem

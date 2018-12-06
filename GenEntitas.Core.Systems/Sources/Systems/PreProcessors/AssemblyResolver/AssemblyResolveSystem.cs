@@ -13,22 +13,22 @@ namespace GenEntitas
 
 		protected override	ICollector<Ent>			GetTrigger				( IContext<Ent> context )
 		{
-			return context.CreateCollector( SettingsMatcher.SearchPaths );
+			return context.CreateCollector( SettingsMatcher.AssemblyResolvePaths );
 		}
 
 		protected override	Boolean					Filter					( Ent entity )
 		{
-			return entity.hasSearchPaths;
+			return entity.hasAssemblyResolvePaths;
 		}
 
 		protected override	void					Execute					( List<Ent> entities )
 		{
 			var ent = entities[0];
-			if ( ent.searchPaths.Value.Count == 0 )
+			if ( ent.assemblyResolvePaths.Value.Count == 0 )
 			{
 				return;
 			}
-			new AssemblyResolver( ent.searchPaths.Value.ToArray(  ) );
+			new AssemblyResolver( ent.assemblyResolvePaths.Value.ToArray(  ) );
 		}
 	}
 }

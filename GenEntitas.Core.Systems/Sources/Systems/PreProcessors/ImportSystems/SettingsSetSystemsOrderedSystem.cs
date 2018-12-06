@@ -8,9 +8,9 @@ using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
-	public class SetSystemsOrderedSystem : ReactiveSystem<Ent>
+	public class SettingsSetSystemsOrderedSystem : ReactiveSystem<Ent>
 	{
-		public				SetSystemsOrderedSystem		( Contexts contexts, Systems systems ) : base( contexts.settings )
+		public				SettingsSetSystemsOrderedSystem		( Contexts contexts, Systems systems ) : base( contexts.settings )
 		{
 			_contexts				= contexts;
 			_systems				= systems;

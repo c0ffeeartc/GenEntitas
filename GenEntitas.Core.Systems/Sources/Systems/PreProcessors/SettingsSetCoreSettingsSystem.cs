@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Entitas;
 using Ent = GenEntitas.SettingsEntity;
 
 namespace GenEntitas
 {
+	[Export(typeof(ISystem))]
+	[Guid("6F2E73C6-B6D3-42C6-AA29-7A832DA32F3E")]
 	public class SettingsSetCoreSettingsSystem : ReactiveSystem<Ent>
 	{
 		public				SettingsSetCoreSettingsSystem	( Contexts contexts ) : base( contexts.settings )
 		{
 			_contexts			= contexts;
+		}
+
+		public				SettingsSetCoreSettingsSystem	(  ) : this( Contexts.sharedInstance )
+		{
 		}
 
 		private				Contexts				_contexts;
@@ -64,10 +72,6 @@ namespace GenEntitas
 			_contexts.settings.ReplaceGeneratePath( d.ContainsKey( nameof( GeneratePath ) )
 				? d[nameof( GeneratePath )].FirstOrDefault(  )
 				: "" );
-
-			_contexts.settings.ReplaceSearchPaths( d.ContainsKey( nameof( SearchPaths ) )
-				? d[nameof( SearchPaths )]
-				: new List<string>(  ) );
 
 			_contexts.settings.ReplaceWriteGeneratedPathsToCsProj( d.ContainsKey( nameof( WriteGeneratedPathsToCsProj ) )
 				? d[nameof( WriteGeneratedPathsToCsProj )].FirstOrDefault(  )

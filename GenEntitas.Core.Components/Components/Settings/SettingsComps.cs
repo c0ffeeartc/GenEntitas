@@ -7,7 +7,7 @@ namespace GenEntitas
 {
 
 [Context(Ids.Settings), Unique]
-public class SearchPaths : IComponent
+public class AssemblyResolvePaths : IComponent
 {
 	public					List<String>			Value;
 }
