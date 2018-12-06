@@ -1,5 +1,5 @@
 ## HelloWorld plugin
-  - Calls `Console.WriteLine("HelloWorld")`
+  - Calls `Console.WriteLine(">> Hello world system")`
   - Calls `Console.WriteLine` for each `HelloWorld` setting value
 
 Run `mono ./pathToExe/GenEntitas.exe --SettingsPath=./HelloWorld.settings` to see it in action
