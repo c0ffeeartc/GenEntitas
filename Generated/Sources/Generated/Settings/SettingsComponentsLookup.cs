@@ -1,5 +1,5 @@
 namespace GenEntitas {
-public static class SettingsComponentsLookup {
+public static partial class SettingsComponentsLookup {
 
     public const int AssemblyResolvePaths = 0;
     public const int GenEntitasLangPaths = 1;

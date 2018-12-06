@@ -25,7 +25,7 @@ namespace GenEntitas
 		private				Contexts				_contexts;
 
 		private const		String					TEMPLATE				=
-@"public static class ${Lookup} {
+@"public static partial class ${Lookup} {
 
 ${componentConstantsList}
 

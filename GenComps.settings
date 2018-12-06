@@ -43,6 +43,7 @@ SystemGuids =
 
     "E92BE793-1836-4E0C-B29C-C8D2CF92E799", // GenComponentSystem
     "67E5AA92-AFDA-4EE3-AA24-2589129AE8F0", // GenCompLookupSystem
+    "62A85490-CA0F-4D5B-AB5E-EC8FF7D04979", // GenCompLookupDictsSystem
     "45EE2A41-1018-426C-A7EE-14B86197068B", // GenCompContextApiSystem
     "16BE46FC-D969-4E05-B250-7B3371AC34E8", // GenCompEntityApiSystem
     "015C78AA-656F-4D00-8F46-6C255FDFA8BD", // GenCompEntityApiInterfaceSystem

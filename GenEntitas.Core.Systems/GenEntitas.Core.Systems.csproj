@@ -35,6 +35,7 @@
     <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompContextApiSystem.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompEntityApiInterfaceSystem.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompEntityApiSystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompLookupDictsSystem.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompLookupSystem.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenCompMatcherApiSystem.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenComponent\GenComponentSystem.cs" />

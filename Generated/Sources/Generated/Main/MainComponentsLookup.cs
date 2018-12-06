@@ -1,5 +1,5 @@
 namespace GenEntitas {
-public static class MainComponentsLookup {
+public static partial class MainComponentsLookup {
 
     public const int AliasComp = 0;
     public const int AlreadyImplementedComp = 1;
