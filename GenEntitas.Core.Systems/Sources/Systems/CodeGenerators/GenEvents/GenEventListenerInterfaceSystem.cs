@@ -30,7 +30,7 @@ namespace GenEntitas
 
 		private const		String					TEMPLATE				=
 @"public interface I${EventListener} {
-    void On${ComponentName}${EventType}(${ContextName}Entity entity${methodParameters});
+    void On${Event}${EventType}(${ContextName}Entity entity${methodParameters});
 }
 ";
 

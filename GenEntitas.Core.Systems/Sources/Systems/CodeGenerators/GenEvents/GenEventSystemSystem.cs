@@ -56,7 +56,7 @@ namespace GenEntitas
                 _listenerBuffer.Clear();
                 _listenerBuffer.AddRange(listenerEntity.${eventListener}.value);
                 foreach (var listener in _listenerBuffer) {
-                    listener.On${ComponentName}${EventType}(e${methodArgs});
+                    listener.On${Event}${EventType}(e${methodArgs});
                 }
             }
         }

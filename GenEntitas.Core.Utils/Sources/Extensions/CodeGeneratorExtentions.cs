@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DesperateDevs.Utils;
 using Entitas;
+using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Plugins;
 
 namespace GenEntitas {
@@ -29,7 +30,8 @@ namespace GenEntitas {
 					var componentName				= ent.comp.FullTypeName.ToComponentName( contexts.settings.isIgnoreNamespaces );
 					var optionalContextName			= ent.contextNamesComp.Values.Count > 1 ? contextName : string.Empty;
 					var eventTypeSuffix				= ent.GetEventTypeSuffix( eventInfo );
-					var listenerComponentName		= optionalContextName + componentName + eventTypeSuffix + "Listener";
+					var theAnySuffix				= eventInfo.EventTarget == EventTarget.Any ? "Any" : "";
+					var listenerComponentName		= optionalContextName + theAnySuffix + componentName + eventTypeSuffix + "Listener";
 					var eventCompFullTypeName		= listenerComponentName.AddComponentSuffix();
 
 					var eventListenerCompEnt			= contexts.main.CreateEntity(  );

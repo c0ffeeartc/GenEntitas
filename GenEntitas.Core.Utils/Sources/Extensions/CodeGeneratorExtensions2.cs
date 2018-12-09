@@ -57,16 +57,13 @@ namespace GenEntitas {
         public static string Replace( this string template, Contexts contexts, MainEntity ent, string contextName,
 	        EventInfo eventInfo ) {
             var eventListener = ent.EventListener( contexts, contextName, eventInfo);
-            var lowerEventListener = ent.hasContextNamesComp && ent.contextNamesComp.Values.Count > 1
-                ? contextName.LowercaseFirst() + ent.ComponentName(contexts) + ent.GetEventTypeSuffix(eventInfo) + "Listener"
-                : ent.ComponentName(contexts).LowercaseFirst() + ent.GetEventTypeSuffix(eventInfo) + "Listener";
 
             return template
                 .Replace( contexts, ent, contextName)
                 .Replace("${EventListenerComponent}", eventListener.AddComponentSuffix())
                 .Replace("${Event}", ent.Event( contexts, contextName, eventInfo))
                 .Replace("${EventListener}", eventListener)
-                .Replace("${eventListener}", lowerEventListener)
+                .Replace("${eventListener}", eventListener.LowercaseFirst(  ) )
                 .Replace("${EventType}", ent.GetEventTypeSuffix(eventInfo));
         }
 
@@ -77,7 +74,8 @@ namespace GenEntitas {
 
 		public static string Event( this MainEntity ent, Contexts contexts, string contextName, EventInfo eventInfo ) {
 			var optionalContextName = ent.hasContextNamesComp && ent.contextNamesComp.Values.Count > 1 ? contextName : string.Empty;
-			return optionalContextName + ent.ComponentName( contexts ) + ent.GetEventTypeSuffix(eventInfo);
+			var theAnyPrefix = eventInfo.EventTarget == EventTarget.Any ? "Any" : "";
+			return optionalContextName + theAnyPrefix + ent.ComponentName( contexts ) + ent.GetEventTypeSuffix(eventInfo);
 		}
 
 		public static string EventListener( this MainEntity ent, Contexts contexts, string contextName, EventInfo eventInfo ) {
