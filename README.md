@@ -1,6 +1,9 @@
 # GenEntitas
 Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS framework
 
+[![Build Status](https://travis-ci.org/c0ffeeartc/GenEntitas.svg?branch=master)](https://travis-ci.org/c0ffeeartc/GenEntitas) 
+![](https://img.shields.io/apm/l/vim-mode.svg)
+
 ### How it works
   - Console Runner reads settings file
   - Systems are imported from dlls
