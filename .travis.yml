@@ -1,3 +1,4 @@
 language: csharp
+solution: CodeGen.sln
 script:
     - ./tests.sh
