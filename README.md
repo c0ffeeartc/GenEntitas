@@ -28,6 +28,8 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
   - easy to add custom generator - create System, add it to Systems
   - multiple input sources - dlls for reflection, GenEntitasLang files, Roslyn
   - option to wrap generated classes into namespace
+  - no default context. No need to specify contexts beforehand in settings, contexts are read from components
+  - Components without any generator attributes are not generated
 
 ### Cons
   - unofficial
