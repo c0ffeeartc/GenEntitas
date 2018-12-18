@@ -31,4 +31,4 @@ Later syntax will be better explained in a readme
 
 ### Usage
   - create files with GenEntitasLang syntax
-  - add `GenEntitasLangPaths = ./pathsToYourFileHere,~/anotherPath` to a settings file
+  - add `GenEntitasLangPaths = "./pathsToYourFileHere", "./anotherPath"` to a settings file
