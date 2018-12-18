@@ -26,7 +26,7 @@ comp Position in Game, Input
 
 ```
 
-All keywords and grammar may be found in [GenEntitasLangParser.cs](./Sources/GenEntitasLangParser.cs).
+All keywords and grammar can be found in [GenEntitasLangParser.cs](./Sources/GenEntitasLangParser.cs).
 Later syntax will be better explained in a readme
 
 ### Usage
