@@ -10,3 +10,4 @@ Run `mono ./pathToExe/GenEntitas.exe --SettingsPath=./HelloWorld.settings` to se
   - System has attribute `[Export(typeof(ISystem))]`
   - System has `Guid` attribute with unique guid
   - System has parameterless constructor, so it can be created during import
+  - To run system add it to `SystemGuids` in settings. See [HelloWorld.settings](./HelloWorld.settings)
