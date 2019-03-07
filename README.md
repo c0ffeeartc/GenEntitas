@@ -38,6 +38,7 @@ Entitas generator using [Entitas](https://github.com/sschmid/Entitas-CSharp) ECS
   - Roslyn data provider lacks server mode, and because of that is much slower compared to Entitas Jenny
 
 ### Usage:
- Before using build solution. See [Console Runner](./GenEntitas.Runner.Console) for details
+  - clone this repository
+  - build `CodeGen.sln` solution. See [Console Runner](./GenEntitas.Runner.Console) for details
   - create settings. See [Settings](GenEntitas.Core.Settings.Parser)
   - call `mono ./path_here/GenEntitas.exe --SettingsPath=./pathToSettings` . See [genComps.sh](genComps.sh)
