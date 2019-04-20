@@ -4,15 +4,18 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.ComponentModel.Composition;
+using System.Reflection;
 using System.Text;
 using DesperateDevs.Utils;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
+using Microsoft.Build.Construction;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
 using Ent = GenEntitas.SettingsEntity;
+using Project = Microsoft.CodeAnalysis.Project;
 
 namespace GenEntitas
 {
@@ -44,6 +47,22 @@ namespace GenEntitas
 
 		protected override	void					Execute					( List<Ent> ents )
 		{
+			{ // FIXME: HACK: remove after msbuild crossplatform fix
+			var settingsDict		= _contexts.settings.settingsDict.Dict;
+			var MSBUILD_EXE_PATH	= "MSBUILD_EXE_PATH";
+
+			if( !settingsDict.ContainsKey( MSBUILD_EXE_PATH ) )
+			{
+				throw new ArgumentException( "Roslyn requires `MSBUILD_EXE_PATH` in settings with path to msbuild or xbuild 14.0" );
+			}
+
+			var msBuildPathValue	= settingsDict[MSBUILD_EXE_PATH][0];
+			var nativeSharedMethod	= typeof(SolutionFile).Assembly.GetType("Microsoft.Build.Shared.NativeMethodsShared");
+			var isMonoField			= nativeSharedMethod.GetField("_isMono", BindingFlags.Static | BindingFlags.NonPublic);
+			isMonoField.SetValue(null, true);
+			Environment.SetEnvironmentVariable( MSBUILD_EXE_PATH, msBuildPathValue );
+			}
+
 			var pathToSolution		= ents[0].roslynPathToSolution.Value;
 			var allTypes			= CollectAllInformation( pathToSolution );
 
