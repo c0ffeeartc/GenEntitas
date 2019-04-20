@@ -1,5 +1,4 @@
 ## Roslyn Data Provider
- based on https://github.com/vedun-z/Entitas-CSharp
 
 ### How it works
   - Reads solution file
