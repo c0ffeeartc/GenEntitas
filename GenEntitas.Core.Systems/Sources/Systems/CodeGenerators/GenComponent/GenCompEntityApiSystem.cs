@@ -34,14 +34,16 @@ namespace GenEntitas
 
     public void Add${ComponentName}(${newMethodParameters}) {
         var index = ${Index};
-        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+        var componentPool = GetComponentPool(index);
+        var component = componentPool.Count > 0 ? (${ComponentType})componentPool.Pop() : new ${ComponentType}();
 ${memberAssignmentList}
         AddComponent(index, component);
     }
 
     public void Replace${ComponentName}(${newMethodParameters}) {
         var index = ${Index};
-        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+        var componentPool = GetComponentPool(index);
+        var component = componentPool.Count > 0 ? (${ComponentType})componentPool.Pop() : new ${ComponentType}();
 ${memberAssignmentList}
         ReplaceComponent(index, component);
     }
