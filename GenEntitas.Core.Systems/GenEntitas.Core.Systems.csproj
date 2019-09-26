@@ -47,6 +47,7 @@
     <Compile Include="Sources\Systems\CodeGenerators\GenContext\GenContextSystem.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenEntity\GenEntityIndexSystem.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenEntity\GenEntitySystem.cs" />
+    <Compile Include="Sources\Systems\CodeGenerators\GenEvents\Gen_AllEventSystems_System.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenEvents\GenContextEventSystemsSystem.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenEvents\GenEventEntityApiSystem.cs" />
     <Compile Include="Sources\Systems\CodeGenerators\GenEvents\GenEventListenerCompSystem.cs" />

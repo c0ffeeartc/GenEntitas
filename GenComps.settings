@@ -58,6 +58,7 @@ SystemGuids =
     "9D74C6E5-14D2-4678-A81D-C916C008C8D6", // GenEventSystemSystem
     "DAF1F159-1E60-44B0-8510-DE0A001E18E8", // GenContextEventSystemsSystem
     "E5400EF9-6EB2-4BCA-885D-1315AC7B1C4D", // GenEventSystemsSystem
+    "28160892-AD0E-4080-BC2F-2D356926CD06", // Gen_AllEventSystems_System
 
     //"93E843A5-D1F0-4F8E-825C-D5627635ADF7", // PostProcAddFileHeaderSystem
     "DAFB3479-BCDD-4CFB-BA35-5D072FC9FD34", // PostProcMergeFilesSystem
