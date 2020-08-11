@@ -37,6 +37,10 @@ namespace GenEntitas
 		{
 			var ent					= ents[0];
 			var pathToSolution		= ent.roslynPathToSolution.Value;
+			if ( !pathToSolution.EndsWith(".sln"))
+			{
+				return;
+			}
 			var newPathToSolution	= WorkaroundProjectNames( pathToSolution );
 			if ( pathToSolution != newPathToSolution )
 			{

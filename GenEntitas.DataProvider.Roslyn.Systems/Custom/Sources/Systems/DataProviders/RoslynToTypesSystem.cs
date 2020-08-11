@@ -116,43 +116,62 @@ namespace GenEntitas
 			_contexts.main.ReplaceRoslynComponentTypes( compTypes.ToList(  ) );
 		}
 
-        private List<INamedTypeSymbol> CollectAllInformation(string pathToSolutionOrProjectFile)
-        {
-            using (var workspace = MSBuildWorkspace.Create())
-            {
-                if (pathToSolutionOrProjectFile.EndsWith(".sln"))
-                {
-                    var solution = workspace.OpenSolutionAsync(pathToSolutionOrProjectFile).Result;
+		private List<INamedTypeSymbol> CollectAllInformation(string pathToSolutionOrProjectFile)
+		{
+			using (var workspace = MSBuildWorkspace.Create())
+			{
+				var typeSymbols = new List<INamedTypeSymbol>(  );
+				var sb = new StringBuilder(  );
+				var filePaths = pathToSolutionOrProjectFile.Split(',');
+				foreach ( var pathName in filePaths )
+				{
+					if (pathName.EndsWith(".sln"))
+					{
+						var solution = workspace.OpenSolutionAsync(pathName).Result;
+						sb.Append( solution.FilePath + ": {" );
 
-					var sb = new StringBuilder(  );
-					var typeSymbols = new List<INamedTypeSymbol>(  );
-                    foreach (var project in solution.Projects)
-                    {
-                        var result = AnalyzeProject(project);
-                        typeSymbols.AddRange(result);
+						var projectCount = 0;
+						foreach (var project in solution.Projects)
+						{
+							var result = AnalyzeProject(project);
+							typeSymbols.AddRange(result);
+							sb.Append( project.Name ) ;
+							sb.Append( ", " ) ;
+							projectCount++;
+						}
+						if ( projectCount > 0 )
+						{
+							sb.Remove( sb.Length - 2, 2 );
+						}
+						sb.Append( "}, " );
+					}
+					else
+					{
+						var project = workspace.OpenProjectAsync(pathName).Result;
+						var result = AnalyzeProject(project);
+						typeSymbols.AddRange(result);
 						sb.Append( project.Name ) ;
 						sb.Append( ", " ) ;
-                    }
-					if ( sb.Length > 0 )
-					{
-						sb.Remove( sb.Length - 2, 2 );
 					}
-					Console.WriteLine( typeof(RoslynToTypesSystem) + ": " + Path.GetFileName( solution.FilePath ) + ": " + solution.ProjectIds.Count + " projects: " + sb );
-					return typeSymbols;
-                }
-                else
-                {
-                    var project = workspace.OpenProjectAsync(pathToSolutionOrProjectFile).Result;
-                    return AnalyzeProject(project);
-                }
-            }
-        }
+				}
+				Console.WriteLine( typeof(RoslynToTypesSystem) + ": " + filePaths.Length.ToString() + " : " + sb );
+				return typeSymbols;
+			}
+		}
 
-        private List<INamedTypeSymbol> AnalyzeProject(Project project)
-        {
-            var compilation = project.GetCompilationAsync().Result;
-            var allTypes = compilation.GetSymbolsWithName(x => true, SymbolFilter.Type).OfType<ITypeSymbol>().Where(t => t is INamedTypeSymbol).OfType<INamedTypeSymbol>();
-			return allTypes.ToList(  );
+		private List<INamedTypeSymbol> AnalyzeProject(Project project)
+		{
+			try
+			{
+				var compilation = project.GetCompilationAsync().Result;
+				var allTypes = compilation.GetSymbolsWithName(x => true, SymbolFilter.Type).OfType<ITypeSymbol>().Where(t => t is INamedTypeSymbol).OfType<INamedTypeSymbol>();
+				return allTypes.ToList(  );
+			}
+			catch ( Exception ex )
+			{
+				Console.WriteLine( "Error getting types from '" + project.Name + "': " + ex.Message );
+				return new List<INamedTypeSymbol>();
+			}
 		}
 
         public static List<string> GetContextNames(ISymbol type)
@@ -161,7 +180,8 @@ namespace GenEntitas
 
             foreach (var attribute in type.GetAttributes())
             {
-                if (attribute.AttributeClass.BaseType.ToDisplayString().Contains(typeof (ContextAttribute).ToCompilableString()))
+                if ( attribute.AttributeClass.BaseType != null
+                     && attribute.AttributeClass.BaseType.ToDisplayString().Contains(typeof (ContextAttribute).ToCompilableString()))
                 {
                     // we need to go deeper!
                     var declaration = attribute.AttributeConstructor.DeclaringSyntaxReferences.First().GetSyntax();
